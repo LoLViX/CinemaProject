@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://csn74rqubowqe"]
+
+[ext_resource type="PackedScene" uid="uid://clnje0khmc0ls" path="res://Assets/Props/chocolate.fbx" id="1_pg8gx"]
+
+[node name="Chocolate" type="Node3D"]
+
+[node name="chocolate" parent="." instance=ExtResource("1_pg8gx")]

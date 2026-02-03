@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvk1livi7kb5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qm32x"]
+
+[node name="ButterPopcorn" type="Node3D"]
+
+[node name="Butter_Popcorn" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0.031691343, 0)
+mesh = SubResource("BoxMesh_qm32x")

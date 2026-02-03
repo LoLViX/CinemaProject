@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cma25thnhmgrd"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_nkpir"]
+
+[node name="CaramelPopcorn" type="Node3D"]
+
+[node name="Caramel_Popcorn" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0.031691343, 0)
+mesh = SubResource("SphereMesh_nkpir")

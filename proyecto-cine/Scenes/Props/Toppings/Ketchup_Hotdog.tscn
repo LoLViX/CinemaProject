@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cih1fqm2t7dsb"]
+
+[ext_resource type="PackedScene" uid="uid://barb4rwl53bom" path="res://Assets/Props/ketchup_hotdog.fbx" id="1_xjall"]
+
+[node name="KetchupHotdog" type="Node3D"]
+
+[node name="ketchup_hotdog" parent="." instance=ExtResource("1_xjall")]

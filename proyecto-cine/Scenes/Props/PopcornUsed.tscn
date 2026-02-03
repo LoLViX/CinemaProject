@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkf7ofonbehhc"]
+
+[ext_resource type="PackedScene" uid="uid://5vf036b4bjcb" path="res://Assets/Props/popcorn_used.fbx" id="1_0yik7"]
+
+[node name="PopcornUsed" type="Node3D"]
+
+[node name="popcorn_used" parent="." instance=ExtResource("1_0yik7")]
+
+[node name="Markers" type="Marker3D" parent="."]
+
+[node name="M_Butter" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04951985, 0)
+
+[node name="M_Caramel" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04951985, 0)

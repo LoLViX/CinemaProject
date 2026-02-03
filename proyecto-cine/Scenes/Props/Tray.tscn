@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://eqcvxbqlovwx"]
+
+[ext_resource type="PackedScene" uid="uid://rv638r2u442m" path="res://Assets/Props/bandeja.fbx" id="1_dwh2p"]
+[ext_resource type="Script" uid="uid://uwuygkixropl" path="res://Scripts/Game/Tray.gd" id="1_xog0i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_24iko"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kbrp2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a3e7w"]
+
+[node name="Tray" type="Node3D"]
+script = ExtResource("1_xog0i")
+slots_path = NodePath("Slots")
+items_path = NodePath("Items")
+slot_colliders_path = NodePath("SlotColliders")
+
+[node name="bandeja" parent="." instance=ExtResource("1_dwh2p")]
+
+[node name="Slots" type="Node3D" parent="."]
+
+[node name="Slot_Food" type="Marker3D" parent="Slots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07962324, 0.07342611, 0.11218053)
+
+[node name="Slot_Drink" type="Marker3D" parent="Slots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0753151, 0.07342611, 0.13676912)
+
+[node name="Slot_Popcorn" type="Marker3D" parent="Slots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010258958, 0.07342611, -0.11734674)
+
+[node name="Items" type="Node3D" parent="."]
+
+[node name="SlotColliders" type="Node3D" parent="."]
+
+[node name="Area_Drink" type="Area3D" parent="SlotColliders"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0.101300254, 0.07735042, 0.15544808)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlotColliders/Area_Drink"]
+shape = SubResource("SphereShape3D_24iko")
+
+[node name="Area_Food" type="Area3D" parent="SlotColliders"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.057811804, 0.060922667, 0.11829193)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlotColliders/Area_Food"]
+shape = SubResource("BoxShape3D_kbrp2")
+
+[node name="Area_Popcorn" type="Area3D" parent="SlotColliders"]
+transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 0.0035397112, 0.07735042, -0.1309959)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlotColliders/Area_Popcorn"]
+shape = SubResource("BoxShape3D_a3e7w")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfco82imowyoj"]
+
+[ext_resource type="PackedScene" uid="uid://2j0k08e3xnq" path="res://Assets/Props/mustard_hotdog.fbx" id="1_2ct26"]
+
+[node name="MustardHotdog" type="Node3D"]
+
+[node name="mustard_hotdog" parent="." instance=ExtResource("1_2ct26")]

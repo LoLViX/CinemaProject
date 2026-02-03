@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://brj4l02pqx36o"]
+
+[ext_resource type="PackedScene" uid="uid://kgwegk3tb2l3" path="res://Assets/Props/hotdog.fbx" id="1_8o1va"]
+
+[node name="Hotdog" type="Node3D"]
+
+[node name="hotdog" parent="." instance=ExtResource("1_8o1va")]
+
+[node name="Markers" type="Marker3D" parent="."]
+
+[node name="M_Ketchup" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0111834705, 0.04323726, 0)
+
+[node name="M_Mustard" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010419879, 0.04323726, 0)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b30y760f1ivuf"]
+
+[ext_resource type="PackedScene" uid="uid://bufqscjlcqe06" path="res://Assets/Props/drink_use.fbx" id="1_ycnml"]
+
+[node name="DrinkUse" type="Node3D"]
+
+[node name="drink_use" parent="." instance=ExtResource("1_ycnml")]
+
+[node name="__USE__" type="Node3D" parent="."]
