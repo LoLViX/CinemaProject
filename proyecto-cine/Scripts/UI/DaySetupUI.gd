@@ -24,6 +24,15 @@ const CHIP_SIZE := 11
 const CHIP_PAD_X := 8
 const CHIP_PAD_Y := 4
 
+# ── Cinema 80s palette ──────────────────────────────────────────────────────
+const C_BG      := Color(0.10, 0.04, 0.04, 0.96)
+const C_CARD    := Color(0.07, 0.02, 0.02, 0.99)
+const C_GOLD    := Color(0.95, 0.76, 0.15)
+const C_GOLD_DIM := Color(0.95, 0.76, 0.15, 0.45)
+const C_RED     := Color(0.70, 0.06, 0.06)
+const C_CREAM   := Color(0.97, 0.93, 0.80)
+const C_CREAM_D := Color(0.80, 0.75, 0.60)
+
 var _textdb: Node = null
 
 var _panel: Panel
@@ -47,6 +56,7 @@ func _build_ui() -> void:
 		c.queue_free()
 
 	_panel = Panel.new()
+	_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
 	add_child(_panel)
 
 	_root_v = VBoxContainer.new()
@@ -55,15 +65,16 @@ func _build_ui() -> void:
 
 	_title = Label.new()
 	_title.text = "DÍA 1 — CLASIFICA LA CARTELERA"
-	_title.add_theme_font_size_override("font_size", 22)
+	_title.add_theme_font_size_override("font_size", 24)
+	_title.add_theme_color_override("font_color", C_GOLD)
 	_root_v.add_child(_title)
 
 	_subtitle = Label.new()
 	_subtitle.text = "Marca los tags que CREES que encajan con cada peli (no te corregimos)."
-	_subtitle.modulate.a = 0.85
+	_subtitle.add_theme_color_override("font_color", C_CREAM_D)
 	_root_v.add_child(_subtitle)
 
-	_root_v.add_child(HSeparator.new())
+	_root_v.add_child(UITheme.gold_separator())
 
 	_scroll = ScrollContainer.new()
 	_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
@@ -77,11 +88,16 @@ func _build_ui() -> void:
 	_row.add_theme_constant_override("separation", 18)
 	_scroll.add_child(_row)
 
-	_root_v.add_child(HSeparator.new())
+	_root_v.add_child(UITheme.gold_separator())
 
 	_btn = Button.new()
 	_btn.text = "ABRIR CINE"
 	_btn.custom_minimum_size = Vector2(0, BTN_H)
+	_btn.add_theme_stylebox_override("normal",  UITheme.btn_style(false))
+	_btn.add_theme_stylebox_override("hover",   UITheme.btn_style(true))
+	_btn.add_theme_stylebox_override("pressed", UITheme.btn_style(false))
+	_btn.add_theme_color_override("font_color", C_CREAM)
+	_btn.add_theme_font_size_override("font_size", 16)
 	_btn.pressed.connect(_on_start_pressed)
 	_root_v.add_child(_btn)
 
@@ -140,6 +156,7 @@ func _make_movie_card(m: Dictionary) -> Control:
 
 	var card := PanelContainer.new()
 	card.custom_minimum_size = Vector2(CARD_W, 560)
+	card.add_theme_stylebox_override("panel", UITheme.card_style())
 
 	var vb := VBoxContainer.new()
 	vb.add_theme_constant_override("separation", 8)
@@ -164,7 +181,7 @@ func _make_movie_card(m: Dictionary) -> Control:
 
 	if pace != "":
 		var badge := PanelContainer.new()
-		badge.add_theme_stylebox_override("panel", _badge_style())
+		badge.add_theme_stylebox_override("panel", UITheme.badge_style())
 		badge.anchor_left = 1.0
 		badge.anchor_right = 1.0
 		badge.anchor_top = 0.0
@@ -186,26 +203,28 @@ func _make_movie_card(m: Dictionary) -> Control:
 	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", TITLE_SIZE)
-	title.add_theme_color_override("font_color", Color(1,1,1))
+	title.add_theme_color_override("font_color", C_CREAM)
 	title.text = _t(String(m.get("title_key","")))
 	vb.add_child(title)
 
 	var underline := Panel.new()
-	underline.custom_minimum_size = Vector2(0, 2)
-	underline.modulate = Color(0,0,0,0.35)
+	underline.custom_minimum_size = Vector2(0, 1)
+	var ul_style := StyleBoxFlat.new()
+	ul_style.bg_color = C_GOLD_DIM
+	underline.add_theme_stylebox_override("panel", ul_style)
 	vb.add_child(underline)
 
 	var syn := Label.new()
 	syn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	syn.add_theme_font_size_override("font_size", SYN_SIZE)
 	syn.text = _t(String(m.get("syn_key","")))
-	syn.modulate.a = 0.85
+	syn.add_theme_color_override("font_color", C_CREAM_D)
 	vb.add_child(syn)
 
 	var tags_title := Label.new()
 	tags_title.text = "Marca tags:"
 	tags_title.add_theme_font_size_override("font_size", 12)
-	tags_title.modulate.a = 0.9
+	tags_title.add_theme_color_override("font_color", C_GOLD)
 	vb.add_child(tags_title)
 
 	var flow := FlowContainer.new()
@@ -218,11 +237,13 @@ func _make_movie_card(m: Dictionary) -> Control:
 		chip.toggle_mode = true
 		chip.text = _pretty_tag(tag_id)
 		chip.add_theme_font_size_override("font_size", CHIP_SIZE)
+		chip.add_theme_color_override("font_color", C_CREAM)
+		chip.add_theme_color_override("font_pressed_color", Color(1.0, 1.0, 1.0))
+		chip.add_theme_color_override("font_hover_color", C_CREAM)
 
 		var arr: Array = RunState.player_tags_by_movie[movie_id]
 		chip.button_pressed = arr.has(tag_id)
 
-		# ✅ OFF muy apagado / ON vivo
 		chip.add_theme_stylebox_override("normal", _chip_style(tag_id, false))
 		chip.add_theme_stylebox_override("pressed", _chip_style(tag_id, true))
 		chip.add_theme_stylebox_override("hover", _chip_style(tag_id, false))
@@ -247,11 +268,16 @@ func _toggle_tag(movie_id: String, tag_id: String, on: bool) -> void:
 
 func _badge_style() -> StyleBoxFlat:
 	var sb := StyleBoxFlat.new()
-	sb.bg_color = Color(0,0,0,0.78)
-	sb.corner_radius_top_left = 10
-	sb.corner_radius_top_right = 10
-	sb.corner_radius_bottom_left = 10
-	sb.corner_radius_bottom_right = 10
+	sb.bg_color = Color(0.55, 0.05, 0.05, 0.92)
+	sb.border_width_left = 1
+	sb.border_width_right = 1
+	sb.border_width_top = 1
+	sb.border_width_bottom = 1
+	sb.border_color = C_GOLD
+	sb.corner_radius_top_left = 4
+	sb.corner_radius_top_right = 4
+	sb.corner_radius_bottom_left = 4
+	sb.corner_radius_bottom_right = 4
 	sb.content_margin_left = 8
 	sb.content_margin_right = 8
 	sb.content_margin_top = 4
@@ -263,12 +289,16 @@ func _chip_style(tag_id: String, pressed: bool) -> StyleBoxFlat:
 	var base := _tag_color(tag_id)
 
 	if pressed:
-		# ON: color vivo
 		sb.bg_color = base
+		sb.border_width_left = 1
+		sb.border_width_right = 1
+		sb.border_width_top = 1
+		sb.border_width_bottom = 1
+		sb.border_color = Color(1.0, 1.0, 1.0, 0.25)
 	else:
-		# OFF: apagado fuerte (gris + alpha)
-		var dim := base.lerp(Color(0.12,0.12,0.12), 0.70)
-		dim.a = 0.55
+		# OFF: visible sobre fondo oscuro, pero claramente apagado
+		var dim := base.lerp(Color(0.15, 0.10, 0.10), 0.58)
+		dim.a = 0.72
 		sb.bg_color = dim
 
 	sb.corner_radius_top_left = 10
@@ -319,3 +349,5 @@ func _pretty_tag(tag_id: String) -> String:
 		"oscura": return "Oscura"
 		"ligera": return "Ligera"
 		_: return tag_id.capitalize()
+
+# Estilos: ver UITheme.gd

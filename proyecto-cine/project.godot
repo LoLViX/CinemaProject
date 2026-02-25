@@ -24,6 +24,11 @@ CustomerDB="*res://Scripts/Customer/CustomerDB.gd"
 DayPlanDB="*res://Scripts/Core/DayPlanDB.gd"
 RunState="*res://Scripts/Game/RunState.gd"
 MatchingSystemAuto="*res://Scripts/Game/MatchingSystem.gd"
+SoundManager="*res://Scripts/Core/SoundManager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_mcp/plugin.cfg")
 
 [input]
 

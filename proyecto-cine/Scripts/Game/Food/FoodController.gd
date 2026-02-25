@@ -86,7 +86,7 @@ func _process(_delta: float) -> void:
 		return
 
 	# Refrescar checks solo si el estado de la bandeja cambio
-	if _order_hud != null and _order_hud.has_method("refresh") and _tray != null:
+	if _order_hud != null and _order_hud.has_method("refresh") and is_instance_valid(_tray):
 		if _tray.has_method("get_state"):
 			var new_state: Dictionary = _tray.call("get_state")
 			if new_state != _last_tray_state:
@@ -104,7 +104,7 @@ func _end_food_phase() -> void:
 	_active = false
 
 	# Penalizar si el pedido esta incompleto
-	if _order_hud != null and _order_hud.has_method("missing_count") and _tray != null:
+	if _order_hud != null and _order_hud.has_method("missing_count") and is_instance_valid(_tray):
 		if _tray.has_method("get_state"):
 			var missing: int = _order_hud.call("missing_count", _tray.call("get_state"))
 			if missing > 0 and "day_misses" in RunState:
@@ -129,7 +129,7 @@ func _end_food_phase() -> void:
 	emit_signal("food_phase_done")
 
 func _tray_has_any_item() -> bool:
-	if _tray == null:
+	if not is_instance_valid(_tray):
 		return false
 	if _tray.has_method("has_any_item"):
 		return bool(_tray.call("has_any_item"))
@@ -190,6 +190,10 @@ func handoff_tray_to_customer(customer: Node3D) -> void:
 		if is_instance_valid(tray_copy):
 			tray_copy.queue_free()
 	)
+
+## Devuelve el último estado conocido de la bandeja (para el sistema de propinas).
+func get_last_tray_state() -> Dictionary:
+	return _last_tray_state
 
 func clear_table_tray() -> void:
 	if _tray == null or not is_instance_valid(_tray):

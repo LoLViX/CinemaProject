@@ -5,6 +5,15 @@ class_name HUD
 # HUD.gd
 # ============================================================
 
+# ── Cinema 80s palette ──────────────────────────────────────────────────────
+const C_BG       := Color(0.10, 0.04, 0.04, 0.96)
+const C_CARD     := Color(0.07, 0.02, 0.02, 0.99)
+const C_GOLD     := Color(0.95, 0.76, 0.15)
+const C_GOLD_DIM := Color(0.95, 0.76, 0.15, 0.45)
+const C_RED      := Color(0.70, 0.06, 0.06)
+const C_CREAM    := Color(0.97, 0.93, 0.80)
+const C_CREAM_D  := Color(0.80, 0.75, 0.60)
+
 var _prompt_panel: Panel = null
 var _prompt_label: Label = null
 
@@ -21,11 +30,16 @@ var _bubble_timer: SceneTreeTimer = null
 # Guard para no hacer trabajo extra en cada frame
 var _prompt_visible: bool = false
 
+var _queue_panel: Panel = null
+var _queue_label: Label = null
+var _queue_dots: Label = null
+
 func _ready() -> void:
 	_build_prompt()
 	_build_bubble()
 	_build_debug()
 	_build_attend()
+	_build_queue_bar()
 	# Ocultar todo explícitamente al arrancar (sin guards)
 	_force_hide_all()
 
@@ -37,6 +51,8 @@ func _force_hide_all() -> void:
 		_bubble_panel.visible = false
 	if _attend_panel:
 		_attend_panel.visible = false
+	if _queue_panel:
+		_queue_panel.visible = false
 	_prompt_visible = false
 	_attend_open    = false
 
@@ -53,7 +69,8 @@ func _force_hide_all() -> void:
 # ──────────────────────────────────────────────────────────────
 func _build_prompt() -> void:
 	_prompt_panel = Panel.new()
-	_prompt_panel.visible = false          # ← empieza oculto siempre
+	_prompt_panel.visible = false
+	_prompt_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
 	add_child(_prompt_panel)
 	_prompt_panel.name = "PromptPanel"
 	_prompt_panel.anchor_left   = 0.5
@@ -78,6 +95,8 @@ func _build_prompt() -> void:
 	_prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_prompt_label.vertical_alignment   = VERTICAL_ALIGNMENT_CENTER
 	_prompt_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_prompt_label.add_theme_color_override("font_color", C_CREAM)
+	_prompt_label.add_theme_font_size_override("font_size", 15)
 
 func show_prompt(key: String) -> void:
 	if _prompt_panel == null or not is_instance_valid(_prompt_panel):
@@ -99,6 +118,7 @@ func hide_prompt() -> void:
 func _build_bubble() -> void:
 	_bubble_panel = Panel.new()
 	_bubble_panel.visible = false
+	_bubble_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
 	add_child(_bubble_panel)
 	_bubble_panel.name = "BubblePanel"
 	_bubble_panel.anchor_left   = 0.5
@@ -123,6 +143,8 @@ func _build_bubble() -> void:
 	_bubble_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_bubble_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_bubble_label.vertical_alignment   = VERTICAL_ALIGNMENT_CENTER
+	_bubble_label.add_theme_color_override("font_color", C_CREAM)
+	_bubble_label.add_theme_font_size_override("font_size", 17)
 
 func show_message(text: String, duration: float = 0.0) -> void:
 	if _bubble_panel == null or not is_instance_valid(_bubble_panel):
@@ -151,11 +173,10 @@ func hide_bubble() -> void:
 func _build_attend() -> void:
 	_attend_panel = Panel.new()
 	_attend_panel.visible = false
+	_attend_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
 	add_child(_attend_panel)
 	_attend_panel.name = "AttendPanel"
 
-	# Ocupa toda la pantalla menos un margen
-	# Panel centrado, ancho fijo para 5 tarjetas de ~200px
 	_attend_panel.anchor_left   = 0.5
 	_attend_panel.anchor_right  = 0.5
 	_attend_panel.anchor_top    = 0.05
@@ -180,8 +201,25 @@ func _build_attend() -> void:
 	req_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	req_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	req_label.add_theme_font_size_override("font_size", 20)
+	req_label.add_theme_color_override("font_color", C_GOLD)
 
-	# Scroll horizontal — ocupa el resto del panel bajo el label
+	# Separador dorado bajo el request label
+	var sep := HSeparator.new()
+	var sep_sb := StyleBoxLine.new()
+	sep_sb.color = C_GOLD_DIM
+	sep_sb.thickness = 1
+	sep.add_theme_stylebox_override("separator", sep_sb)
+	sep.anchor_left   = 0.0
+	sep.anchor_right  = 1.0
+	sep.anchor_top    = 0.0
+	sep.anchor_bottom = 0.0
+	sep.offset_left   =  20
+	sep.offset_right  = -20
+	sep.offset_top    =  60
+	sep.offset_bottom =  62
+	_attend_panel.add_child(sep)
+
+	# Scroll horizontal
 	var scroll := ScrollContainer.new()
 	scroll.name = "MovieScroll"
 	_attend_panel.add_child(scroll)
@@ -191,7 +229,7 @@ func _build_attend() -> void:
 	scroll.anchor_bottom = 1.0
 	scroll.offset_left   =  10
 	scroll.offset_right  = -10
-	scroll.offset_top    =  66
+	scroll.offset_top    =  70
 	scroll.offset_bottom = -10
 
 	var hbox := HBoxContainer.new()
@@ -235,6 +273,7 @@ func _make_movie_card(mid: String, title_key: String, poster_path: String,
 	var card := PanelContainer.new()
 	card.custom_minimum_size = Vector2(card_w, 0)
 	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.add_theme_stylebox_override("panel", UITheme.card_style())
 
 	var vbox := VBoxContainer.new()
 	vbox.add_theme_constant_override("separation", 5)
@@ -258,6 +297,7 @@ func _make_movie_card(mid: String, title_key: String, poster_path: String,
 	title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	title_lbl.add_theme_font_size_override("font_size", font_size_title)
+	title_lbl.add_theme_color_override("font_color", C_CREAM)
 	title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	vbox.add_child(title_lbl)
 
@@ -268,7 +308,7 @@ func _make_movie_card(mid: String, title_key: String, poster_path: String,
 	tags_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tags_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tags_lbl.add_theme_font_size_override("font_size", font_size_tags)
-	tags_lbl.modulate = Color(0.7, 0.9, 1.0)
+	tags_lbl.add_theme_color_override("font_color", C_GOLD)
 	tags_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	vbox.add_child(tags_lbl)
 
@@ -277,6 +317,10 @@ func _make_movie_card(mid: String, title_key: String, poster_path: String,
 	btn.text = "Elegir"
 	btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	btn.custom_minimum_size = Vector2(card_w, 36)
+	btn.add_theme_stylebox_override("normal",  UITheme.btn_style(false))
+	btn.add_theme_stylebox_override("hover",   UITheme.btn_style(true))
+	btn.add_theme_stylebox_override("pressed", UITheme.btn_style(false))
+	btn.add_theme_color_override("font_color", C_CREAM)
 	vbox.add_child(btn)
 	var captured_mid := mid
 	btn.pressed.connect(func(): _on_movie_picked(captured_mid))
@@ -336,6 +380,7 @@ var _fill_label: Label = null
 func _build_fill_bar() -> void:
 	_fill_panel = Panel.new()
 	_fill_panel.visible = false
+	_fill_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
 	add_child(_fill_panel)
 	_fill_panel.name = "FillPanel"
 	# Centro inferior
@@ -363,14 +408,30 @@ func _build_fill_bar() -> void:
 	_fill_label.text = "Llenando..."
 	_fill_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_fill_label.add_theme_font_size_override("font_size", 12)
+	_fill_label.add_theme_color_override("font_color", C_GOLD)
 	vbox.add_child(_fill_label)
 
 	_fill_bar = ProgressBar.new()
 	_fill_bar.min_value = 0
 	_fill_bar.max_value = 100
 	_fill_bar.value = 0
-	_fill_bar.custom_minimum_size = Vector2(0, 16)
+	_fill_bar.custom_minimum_size = Vector2(0, 14)
 	_fill_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# Estilo de la barra de progreso
+	var bar_bg := StyleBoxFlat.new()
+	bar_bg.bg_color = Color(0.15, 0.06, 0.06)
+	bar_bg.corner_radius_top_left = 3
+	bar_bg.corner_radius_top_right = 3
+	bar_bg.corner_radius_bottom_left = 3
+	bar_bg.corner_radius_bottom_right = 3
+	_fill_bar.add_theme_stylebox_override("background", bar_bg)
+	var bar_fill := StyleBoxFlat.new()
+	bar_fill.bg_color = C_GOLD
+	bar_fill.corner_radius_top_left = 3
+	bar_fill.corner_radius_top_right = 3
+	bar_fill.corner_radius_bottom_left = 3
+	bar_fill.corner_radius_bottom_right = 3
+	_fill_bar.add_theme_stylebox_override("fill", bar_fill)
 	vbox.add_child(_fill_bar)
 
 func set_fill_progress(show_it: bool, percent: int) -> void:
@@ -381,3 +442,85 @@ func set_fill_progress(show_it: bool, percent: int) -> void:
 		return
 	_fill_bar.value = percent
 	_fill_panel.visible = true
+
+# ──────────────────────────────────────────────────────────────
+# COLA DE CLIENTES  (esquina inferior izquierda)
+# ──────────────────────────────────────────────────────────────
+func _build_queue_bar() -> void:
+	_queue_panel = Panel.new()
+	_queue_panel.visible = false
+	_queue_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
+	add_child(_queue_panel)
+	_queue_panel.name = "QueuePanel"
+	_queue_panel.anchor_left   = 0.0
+	_queue_panel.anchor_right  = 0.0
+	_queue_panel.anchor_top    = 1.0
+	_queue_panel.anchor_bottom = 1.0
+	_queue_panel.offset_left   =  18
+	_queue_panel.offset_right  = 210
+	_queue_panel.offset_top    = -70
+	_queue_panel.offset_bottom = -18
+
+	var vbox := VBoxContainer.new()
+	vbox.anchor_left = 0.0; vbox.anchor_right = 1.0
+	vbox.anchor_top  = 0.0; vbox.anchor_bottom = 1.0
+	vbox.offset_left = 10; vbox.offset_right = -10
+	vbox.offset_top = 6; vbox.offset_bottom = -6
+	vbox.add_theme_constant_override("separation", 3)
+	_queue_panel.add_child(vbox)
+
+	_queue_label = Label.new()
+	_queue_label.add_theme_font_size_override("font_size", 11)
+	_queue_label.add_theme_color_override("font_color", C_GOLD)
+	_queue_label.text = "CLIENTES"
+	vbox.add_child(_queue_label)
+
+	_queue_dots = Label.new()
+	_queue_dots.add_theme_font_size_override("font_size", 14)
+	_queue_dots.add_theme_color_override("font_color", C_CREAM)
+	_queue_dots.text = ""
+	vbox.add_child(_queue_dots)
+
+## Actualiza el indicador de cola. done = clientes ya servidos, total = total del día.
+func update_queue(done: int, total: int) -> void:
+	if _queue_panel == null or not is_instance_valid(_queue_panel):
+		_build_queue_bar()
+	_queue_panel.visible = total > 0
+	if total <= 0:
+		return
+	_queue_label.text = "CLIENTES — DÍA %d" % RunState.day_index
+	var dots := ""
+	for i in range(total):
+		dots += "● " if i < done else "○ "
+	_queue_dots.text = dots.strip_edges()
+
+# ──────────────────────────────────────────────────────────────
+# POPUP DE DINERO  (+$50 propina, etc.)
+# ──────────────────────────────────────────────────────────────
+
+## Muestra un texto flotante animado de dinero ("+$50") que sube y desaparece.
+func show_money_popup(text: String) -> void:
+	var lbl := Label.new()
+	lbl.text = text
+	lbl.add_theme_font_size_override("font_size", 22)
+	lbl.add_theme_color_override("font_color", C_GOLD)
+	# Posición: centro-abajo de la pantalla
+	lbl.anchor_left   = 0.5
+	lbl.anchor_right  = 0.5
+	lbl.anchor_top    = 0.75
+	lbl.anchor_bottom = 0.75
+	lbl.offset_left   = -80
+	lbl.offset_right  =  80
+	lbl.offset_top    = -20
+	lbl.offset_bottom =  20
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	add_child(lbl)
+
+	var tw := lbl.create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(lbl, "offset_top",    lbl.offset_top    - 70, 1.4)
+	tw.tween_property(lbl, "offset_bottom", lbl.offset_bottom - 70, 1.4)
+	tw.tween_property(lbl, "modulate:a", 0.0, 1.4).set_delay(0.5)
+	tw.tween_callback(lbl.queue_free).set_delay(1.4)
+
+# Estilos: ver UITheme.gd

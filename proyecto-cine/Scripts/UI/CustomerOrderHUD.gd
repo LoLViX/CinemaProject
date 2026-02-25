@@ -1,5 +1,10 @@
 extends Node
 # CustomerOrderHUD.gd
+
+# ── Cinema 80s palette ──────────────────────────────────────────────────────
+const C_BG   := Color(0.10, 0.04, 0.04, 0.96)
+const C_GOLD := Color(0.95, 0.76, 0.15)
+const C_CREAM := Color(0.97, 0.93, 0.80)
 # Muestra el pedido de comida del cliente con checkmarks por item.
 # API:
 #   show_order(order: Dictionary)   -> muestra el pedido con todo en rojo
@@ -13,6 +18,7 @@ const PANEL_NAME := "OrderHUDPanel"
 var _panel: Panel = null
 var _rows: Dictionary = {}   # key -> Label
 var _order: Dictionary = {}
+var _complete_shown: bool = false   # evita reproducir sonido más de una vez
 
 func _ready() -> void:
 	_build_panel()
@@ -25,6 +31,7 @@ func _build_panel() -> void:
 		add_child(_panel)
 
 	_panel.visible = false
+	_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
 
 	# Esquina superior derecha
 	_panel.anchor_left   = 1.0
@@ -52,11 +59,16 @@ func _build_panel() -> void:
 	var title := Label.new()
 	title.name = "Title"
 	title.text = "PEDIDO:"
-	title.add_theme_font_size_override("font_size", 13)
-	title.modulate = Color(1.0, 0.85, 0.3)
+	title.add_theme_font_size_override("font_size", 14)
+	title.add_theme_color_override("font_color", C_GOLD)
 	vbox.add_child(title)
 
-	vbox.add_child(HSeparator.new())
+	var sep := HSeparator.new()
+	var sep_sb := StyleBoxLine.new()
+	sep_sb.color = Color(0.95, 0.76, 0.15, 0.40)
+	sep_sb.thickness = 1
+	sep.add_theme_stylebox_override("separator", sep_sb)
+	vbox.add_child(sep)
 
 	var items_box := VBoxContainer.new()
 	items_box.name = "ItemsBox"
@@ -101,10 +113,21 @@ func hide_order() -> void:
 		_panel.visible = false
 	_rows.clear()
 	_order = {}
+	_complete_shown = false
 
 func refresh(tray_state: Dictionary) -> void:
 	if _order.is_empty() or _panel == null or not _panel.visible:
 		return
+
+	# Feedback visual: borde verde si pedido completo, dorado si no
+	if is_complete(tray_state):
+		_panel.add_theme_stylebox_override("panel", _complete_style())
+		if not _complete_shown:
+			_complete_shown = true
+			SoundManager.play_complete()
+	else:
+		_complete_shown = false
+		_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
 
 	# Actualizar filas existentes (pedidas)
 	for key in _rows.keys():
@@ -114,11 +137,11 @@ func refresh(tray_state: Dictionary) -> void:
 		var has_it := _item_satisfied(key, tray_state)
 		var name_text := _row_label(key)
 		if has_it:
-			lbl.text = "V " + name_text
-			lbl.modulate = Color(0.4, 1.0, 0.4)
+			lbl.text = "✓ " + name_text
+			lbl.add_theme_color_override("font_color", Color(0.35, 1.0, 0.45))
 		else:
-			lbl.text = "X " + name_text
-			lbl.modulate = Color(1.0, 0.35, 0.35)
+			lbl.text = "✗ " + name_text
+			lbl.add_theme_color_override("font_color", Color(1.0, 0.35, 0.35))
 
 	# Mostrar extras NO pedidos
 	var items_box := _panel.get_node_or_null("VBox/ItemsBox") as VBoxContainer
@@ -184,8 +207,8 @@ func _maybe_add_row(parent: VBoxContainer, key: String, label_text: String) -> v
 	if key == "food" and _order.get("food", "") == "":
 		return
 	var lbl := Label.new()
-	lbl.text = "X " + label_text
-	lbl.modulate = Color(1.0, 0.35, 0.35)
+	lbl.text = "✗ " + label_text
+	lbl.add_theme_color_override("font_color", Color(1.0, 0.35, 0.35))
 	lbl.add_theme_font_size_override("font_size", 13)
 	parent.add_child(lbl)
 	_rows[key] = lbl
@@ -223,9 +246,25 @@ func _add_extra_row(parent: VBoxContainer, node_name: String, label_text: String
 	var lbl := Label.new()
 	lbl.name = node_name
 	lbl.text = "! " + label_text
-	lbl.modulate = Color(1.0, 0.6, 0.1)  # naranja para "sobra"
+	lbl.add_theme_color_override("font_color", Color(1.0, 0.62, 0.10))
 	lbl.add_theme_font_size_override("font_size", 12)
 	parent.add_child(lbl)
+
+func _complete_style() -> StyleBoxFlat:
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.04, 0.14, 0.04, 0.96)     # verde oscuro en lugar de burdeos
+	sb.border_width_left   = 3
+	sb.border_width_right  = 3
+	sb.border_width_top    = 3
+	sb.border_width_bottom = 3
+	sb.border_color = Color(0.20, 0.95, 0.35)        # verde brillante
+	sb.corner_radius_top_left     = 6
+	sb.corner_radius_top_right    = 6
+	sb.corner_radius_bottom_left  = 6
+	sb.corner_radius_bottom_right = 6
+	sb.shadow_color = Color(0.0, 0.6, 0.2, 0.55)
+	sb.shadow_size  = 8
+	return sb
 
 func _item_satisfied(key: String, tray: Dictionary) -> bool:
 	match key:

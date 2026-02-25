@@ -54,7 +54,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		var mb := event as InputEventMouseButton
-		if mb.button_index != MOUSE_BUTTON_LEFT:
+		if mb.button_index != MOUSE_BUTTON_RIGHT:
 			return
 
 		var hit := _raycast_areas_only()

@@ -22,19 +22,19 @@ func _ready() -> void:
 func _pick(arr: Array[String]) -> String:
 	return arr[RNG.randi_range(0, arr.size() - 1)] if arr.size() > 0 else ""
 
-func build_day_customers(todays_movies: Array, count: int) -> Array:
+func build_day_customers(todays_movies: Array, count: int, difficulty: int = 1) -> Array:
 	var day_tags: Array[String] = _tags_available_today(todays_movies)
 	var customers: Array = []
 
 	while customers.size() < count:
-		customers.append(_make_normal(day_tags))
+		customers.append(_make_normal(day_tags, difficulty))
 
 	return customers
 
 # -------------------------
 # Normal customers (generados)
 # -------------------------
-func _make_normal(day_tags: Array[String]) -> Dictionary:
+func _make_normal(day_tags: Array[String], difficulty: int = 1) -> Dictionary:
 	var must: Array[String] = []
 	var must_not: Array[String] = []
 
@@ -57,7 +57,7 @@ func _make_normal(day_tags: Array[String]) -> Dictionary:
 
 	var request_text := _build_request_text(must, must_not)
 
-	var food_order := _make_food_order()
+	var food_order := _make_food_order(difficulty)
 
 	return {
 		"type": "normal",
@@ -249,7 +249,7 @@ func _tag_name(tag_id: String, lang: String) -> String:
 #   mustard: bool  (solo si hotdog)
 #   butter: bool   (solo si popcorn)
 #   caramel: bool  (solo si popcorn)
-func _make_food_order() -> Dictionary:
+func _make_food_order(difficulty: int = 1) -> Dictionary:
 	var order := {
 		"drink": false,
 		"food": "",
@@ -260,6 +260,14 @@ func _make_food_order() -> Dictionary:
 		"caramel": false,
 	}
 
+	# Probabilidades escaladas por dificultad
+	# difficulty 1 (día 1): base | 2 (día 2): media | 3 (día 3+): alta
+	var topping_chance := 0.5  + (difficulty - 1) * 0.175  # 0.50 / 0.675 / 0.85
+	var drink_extra    := 0.40 + (difficulty - 1) * 0.15   # 0.40 / 0.55  / 0.70
+	var pop_combo      := 0.30 + (difficulty - 1) * 0.175  # 0.30 / 0.475 / 0.65
+	var ketchup_chance := 0.50 + (difficulty - 1) * 0.15   # 0.50 / 0.65  / 0.80
+	var mustard_chance := 0.40 + (difficulty - 1) * 0.15   # 0.40 / 0.55  / 0.70
+
 	# Siempre al menos una cosa
 	var roll := RNG.randi_range(0, 2)
 	match roll:
@@ -267,7 +275,7 @@ func _make_food_order() -> Dictionary:
 			order["drink"] = true
 		1: # Palomitas (con o sin topping)
 			order["popcorn"] = true
-			if RNG.randf() < 0.5:
+			if RNG.randf() < topping_chance:
 				if RNG.randf() < 0.5:
 					order["butter"] = true
 				else:
@@ -275,19 +283,19 @@ func _make_food_order() -> Dictionary:
 		2: # Comida (hotdog o chocolate)
 			if RNG.randf() < 0.6:
 				order["food"] = "hotdog"
-				if RNG.randf() < 0.5: order["ketchup"] = true
-				if RNG.randf() < 0.4: order["mustard"] = true
+				if RNG.randf() < ketchup_chance: order["ketchup"] = true
+				if RNG.randf() < mustard_chance: order["mustard"] = true
 			else:
 				order["food"] = "chocolate"
 
-	# 40% también quieren bebida además de lo anterior
-	if roll != 0 and RNG.randf() < 0.4:
+	# Bebida extra si no era solo bebida
+	if roll != 0 and RNG.randf() < drink_extra:
 		order["drink"] = true
 
-	# 30% también quieren palomitas si pidieron comida
-	if roll == 2 and RNG.randf() < 0.3:
+	# Palomitas combo si pidieron comida
+	if roll == 2 and RNG.randf() < pop_combo:
 		order["popcorn"] = true
-		if RNG.randf() < 0.4:
+		if RNG.randf() < topping_chance:
 			if RNG.randf() < 0.5:
 				order["butter"] = true
 			else:
