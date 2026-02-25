@@ -1,4 +1,4 @@
-extends Node
+﻿extends Node
 
 var RNG := RandomNumberGenerator.new()
 
@@ -128,24 +128,24 @@ func _build_request_en(a: String, b: String, n: String, must_count: int, not_cou
 		variants = [
 			"I want something with %s and a bit of %s… but please, no %s." % [a, b, n],
 			"Give me %s, and %s would be a bonus. Just not %s." % [a, b, n],
-			"%s + %s sounds perfect. If it turns into %s, I’m out." % [a, b, n]
+			"%s + %s sounds perfect. If it turns into %s, I'm out." % [a, b, n]
 		]
 	elif must_count >= 2 and not_count == 0:
 		variants = [
-			"I’m in the mood for %s with %s. Keep me hooked." % [a, b],
+			"I'm in the mood for %s with %s. Keep me hooked." % [a, b],
 			"Tonight: %s and %s. Surprise me." % [a, b],
 			"%s plus %s. Straight to the point." % [a, b]
 		]
 	elif must_count == 1 and not_count >= 1:
 		variants = [
 			"Something %s, but no %s please." % [a, n],
-			"I want %s. The only thing I don’t want is %s." % [a, n],
-			"%s… but if it’s %s, I’ll fall asleep." % [a, n]
+			"I want %s. The only thing I don't want is %s." % [a, n],
+			"%s… but if it's %s, I'll fall asleep." % [a, n]
 		]
 	else:
 		variants = [
 			"Give me %s. I want to feel it right away." % [a],
-			"I’m in the mood for %s. Nothing complicated." % [a],
+			"I'm in the mood for %s. Nothing complicated." % [a],
 			"%s. The good stuff." % [a]
 		]
 
@@ -166,7 +166,7 @@ func _pick_weighted_tag(day_tags: Array[String], avoid: Array[String] = []) -> S
 	var weights: Array[float] = []
 	for t in pool:
 		var w := 1.0
-		# oscura/ligera un poco menos para que no sea todo “tono”
+		# oscura/ligera un poco menos para que no sea todo "tono"
 		if t == "oscura" or t == "ligera":
 			w = 0.65
 		weights.append(w)

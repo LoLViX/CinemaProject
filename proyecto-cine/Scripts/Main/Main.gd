@@ -1,4 +1,4 @@
-extends Node3D
+﻿extends Node3D
 
 @onready var DaySetupUIScript = preload("res://Scripts/UI/DaySetupUI.gd")
 
@@ -7,7 +7,12 @@ func _enter_tree() -> void:
 	RunState.reset_run()
 
 func _ready() -> void:
-	# Deja SOLO 1 DaySetupUI (evita duplicados “debajo”)
+	# ── PauseUI (vive toda la sesión, por encima de todo) ─────
+	var pause_ui := PauseUI.new()
+	pause_ui.name = "PauseUI"
+	add_child(pause_ui)
+
+	# ── Deja SOLO 1 DaySetupUI (evita duplicados "debajo") ───
 	var uis := get_tree().get_nodes_in_group("day_setup_ui")
 	if uis.size() > 0:
 		# quedarnos con la primera y borrar el resto

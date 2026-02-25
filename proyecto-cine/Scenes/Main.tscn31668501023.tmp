@@ -1,0 +1,434 @@
+[gd_scene load_steps=33 format=3 uid="uid://dj5mvm8lg7mo0"]
+
+[ext_resource type="Script" uid="uid://ce67jdh2o2r58" path="res://Scripts/Main/Main.gd" id="1_kln2b"]
+[ext_resource type="PackedScene" uid="uid://by350p5gbl021" path="res://Assets/CinemaMesh.fbx" id="1_r150o"]
+[ext_resource type="PackedScene" uid="uid://bbn31hx3th6a1" path="res://Scenes/Customer.tscn" id="2_idj7w"]
+[ext_resource type="Script" uid="uid://db2qfkd2gcwni" path="res://Scripts/UI/StockHUD.gd" id="4_erwvk"]
+[ext_resource type="Script" uid="uid://cw7taggp8q5ip" path="res://Scripts/Customer/CustomerManager.gd" id="4_rgh2o"]
+[ext_resource type="Script" uid="uid://dugpgihgb30bn" path="res://Scripts/UI/CustomerOrderHUD.gd" id="5_0sclb"]
+[ext_resource type="Script" uid="uid://dqff5m231chaf" path="res://Scripts/UI/HUD.gd" id="5_pbw6q"]
+[ext_resource type="Script" uid="uid://cwciubmdnf6dn" path="res://Scripts/Game/InteractionController.gd" id="5_v1gob"]
+[ext_resource type="Script" uid="uid://cn4xncglq8niy" path="res://Scripts/UI/DaySetupUI.gd" id="7_jw32o"]
+[ext_resource type="Script" uid="uid://crrv18y12elnm" path="res://Scripts/Game/Food/DrinkStation.gd" id="8_50glp"]
+[ext_resource type="Script" uid="uid://dkb70x558ro1u" path="res://Scripts/Game/FoodStation.gd" id="9_2w5on"]
+[ext_resource type="Script" uid="uid://cjkald784juxa" path="res://Scripts/Game/Food/FoodController.gd" id="9_vy5pj"]
+[ext_resource type="PackedScene" uid="uid://kgwegk3tb2l3" path="res://Assets/Props/hotdog.fbx" id="10_h1m7h"]
+[ext_resource type="PackedScene" uid="uid://clnje0khmc0ls" path="res://Assets/Props/chocolate.fbx" id="11_erwvk"]
+[ext_resource type="PackedScene" uid="uid://eqcvxbqlovwx" path="res://Scenes/Props/Tray.tscn" id="11_grg3l"]
+[ext_resource type="PackedScene" uid="uid://cxw5wcu78eskp" path="res://Assets/Props/ketchup_bote.fbx" id="12_2w5on"]
+[ext_resource type="PackedScene" uid="uid://c0r7x2mn4yga3" path="res://Assets/Props/mustard_bote.fbx" id="13_346fj"]
+[ext_resource type="PackedScene" uid="uid://dqeqnes3f7yvj" path="res://Assets/Props/butter.fbx" id="14_0sclb"]
+[ext_resource type="Script" uid="uid://yucw2udrevx2" path="res://Scripts/Tools/ProjectReport.gd" id="18_346fj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_uu6xs"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_glv2v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jw32o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_50glp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sxkr1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fq0cl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwpts"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jyqft"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3tgeq"]
+size = Vector3(1.4404297, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c4ay3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_aht7i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_glv2v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_glv2v"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_kln2b")
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0.06975647, -0.9975641, 0, 0.9975641, 0.06975647, 1, 3.0491523e-09, -4.360491e-08, -2.5, 1.6, 1)
+
+[node name="Camera" type="Camera3D" parent="CameraRig"]
+current = true
+fov = 65.0
+
+[node name="HoldPoint" type="Marker3D" parent="CameraRig/Camera"]
+transform = Transform3D(1, 1.110223e-15, -2.1316282e-14, 0, 0.9999995, -3.7252903e-08, 0, 3.7252903e-08, 0.9999995, 0.0004862547, -0.027931094, -1.0182312)
+
+[node name="TrayHoldPoint" type="Marker3D" parent="CameraRig/Camera"]
+transform = Transform3D(1, 1.110223e-15, -2.4868996e-14, 0, 0.99999946, -3.7252903e-08, 0, 3.7252903e-08, 0.99999946, 0, -0.25, -0.7)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("5_pbw6q")
+
+[node name="DaySetupUI" type="CanvasLayer" parent="UI"]
+script = ExtResource("7_jw32o")
+
+[node name="Panel" type="Panel" parent="UI/DaySetupUI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBox" type="VBoxContainer" parent="UI/DaySetupUI/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="UI/DaySetupUI/Panel/VBox"]
+layout_mode = 2
+
+[node name="SeparatorTop" type="HSeparator" parent="UI/DaySetupUI/Panel/VBox"]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="UI/DaySetupUI/Panel/VBox"]
+layout_mode = 2
+
+[node name="MoviesRow" type="HBoxContainer" parent="UI/DaySetupUI/Panel/VBox/Scroll"]
+layout_mode = 2
+
+[node name="SeparatorBottom" type="HSeparator" parent="UI/DaySetupUI/Panel/VBox"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="UI/DaySetupUI/Panel/VBox"]
+layout_mode = 2
+
+[node name="StockHUD" type="CanvasLayer" parent="UI"]
+script = ExtResource("4_erwvk")
+
+[node name="CustomerOrderHUD" type="Node" parent="UI"]
+script = ExtResource("5_0sclb")
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="InteractionController" type="Node" parent="Systems"]
+script = ExtResource("5_v1gob")
+customer_manager_path = NodePath("../../Customers/CustomerManager")
+hud_path = NodePath("../../UI")
+food_controller_path = NodePath("../FoodController")
+
+[node name="FoodController" type="Node" parent="Systems"]
+script = ExtResource("9_vy5pj")
+camera_path = NodePath("../../CameraRig/Camera")
+hud_path = NodePath("../../UI")
+counter_cam_point_path = NodePath("../../CameraPoints/CounterCamPoint")
+food_cam_point_path = NodePath("../../CameraPoints/FoodCamPoint")
+tray_in_scene_path = NodePath("../../FoodArea/TrayPreview/Tray")
+drink_station_path = NodePath("../../FoodArea/DrinkStation")
+
+[node name="Customers" type="Node3D" parent="."]
+
+[node name="Customer" parent="Customers" instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+
+[node name="CustomerManager" type="Node3D" parent="Customers"]
+script = ExtResource("4_rgh2o")
+
+[node name="Points" type="Node3D" parent="."]
+
+[node name="CustomerSpawn" type="Node3D" parent="Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+
+[node name="Sphere" type="MeshInstance3D" parent="Points/CustomerSpawn"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_uu6xs")
+
+[node name="CounterPoint" type="Node3D" parent="Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Sphere" type="MeshInstance3D" parent="Points/CounterPoint"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_glv2v")
+
+[node name="QueueEnd" type="Node3D" parent="Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Sphere" type="MeshInstance3D" parent="Points/QueueEnd"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_glv2v")
+
+[node name="QueueStart" type="Node3D" parent="Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Sphere" type="MeshInstance3D" parent="Points/QueueStart"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_glv2v")
+
+[node name="ExitPoint" type="Node3D" parent="Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
+
+[node name="Sphere" type="MeshInstance3D" parent="Points/ExitPoint"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_glv2v")
+
+[node name="ExitPointAlt" type="Node3D" parent="Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4590797, 0, 10.948446)
+
+[node name="Sphere" type="MeshInstance3D" parent="Points/ExitPointAlt"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_glv2v")
+
+[node name="SpecialBackPoint" type="Node3D" parent="Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.459, 0, 1)
+
+[node name="Sphere" type="MeshInstance3D" parent="Points/SpecialBackPoint"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_glv2v")
+
+[node name="FoodArea" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.20219, 1.0976913, 1.0811169)
+script = ExtResource("9_2w5on")
+tray_path = NodePath("TrayPreview/Tray")
+stock_hud_path = NodePath("../UI/StockHUD")
+popcorn_pickup_path = NodePath("Pickups/PopcornPickup")
+hotdog_pickup_path = NodePath("Pickups/HotdogPickup")
+chocolate_pickup_path = NodePath("Pickups/ChocolatePickup")
+ketchup_pickup_path = NodePath("Toppings/KetchupPickup")
+mustard_pickup_path = NodePath("Toppings/MustardPickup")
+butter_pickup_path = NodePath("Toppings/ButterPickup")
+caramel_pickup_path = NodePath("Toppings/CaramelPickup")
+
+[node name="DrinkStation" type="Node3D" parent="FoodArea"]
+script = ExtResource("8_50glp")
+camera_path = NodePath("../../CameraRig/Camera")
+hold_point_path = NodePath("../../CameraRig/Camera/HoldPoint")
+cup_dispenser_area_path = NodePath("CupDispenser")
+nozzle_cola_path = NodePath("Nozzles/Nozzle_Cola")
+nozzle_orange_path = NodePath("Nozzles/Nozzle_Orange")
+nozzle_rootbeer_path = NodePath("Nozzles/Nozzle_RootBeer")
+
+[node name="CupDispenser" type="Area3D" parent="FoodArea/DrinkStation"]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0.099102974, -0.22276306, 0.63553715)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/DrinkStation/CupDispenser"]
+shape = SubResource("SphereShape3D_jw32o")
+
+[node name="Nozzles" type="Node3D" parent="FoodArea/DrinkStation"]
+
+[node name="Nozzle_Cola" type="Area3D" parent="FoodArea/DrinkStation/Nozzles"]
+transform = Transform3D(-1.070929e-08, 0, 0.245, 0, 0.245, 0, -0.245, 0, -1.070929e-08, 0.09699488, 0.3405224, 0.47684556)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_Cola"]
+transform = Transform3D(0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, -0.023071289, -1.0155587, -0.26535606)
+shape = SubResource("CapsuleShape3D_50glp")
+
+[node name="SnapPoint" type="Marker3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_Cola"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -0.023364067, -1.4407315, -0.3989277)
+
+[node name="Label3D" type="Label3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_Cola"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -0.036454678, 0, 0)
+text = "COLA
+"
+
+[node name="StockLabel" type="Label3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_Cola"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -0.036454678, 0, 0)
+text = "COLA
+"
+
+[node name="Nozzle_Orange" type="Area3D" parent="FoodArea/DrinkStation/Nozzles"]
+transform = Transform3D(-1.070929e-08, 0, 0.245, 0, 0.245, 0, -0.245, 0, -1.070929e-08, 0.09699487, 0.3405224, 0.2935117)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_Orange"]
+transform = Transform3D(0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, 0.021484375, -1.0155592, -0.26535416)
+shape = SubResource("CapsuleShape3D_50glp")
+
+[node name="SnapPoint" type="Marker3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_Orange"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0.014018536, -1.4407315, -0.3989277)
+
+[node name="Label3D" type="Label3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_Orange"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0.012152195, 0, 0)
+text = "NARANJA
+"
+
+[node name="StockLabel" type="Label3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_Orange"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0.012152195, 0, 0)
+text = "NARANJA
+"
+
+[node name="Nozzle_RootBeer" type="Area3D" parent="FoodArea/DrinkStation/Nozzles"]
+transform = Transform3D(-1.070929e-08, 0, 0.245, 0, 0.245, 0, -0.245, 0, -1.070929e-08, 0.09699486, 0.3405224, 0.11173743)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_RootBeer"]
+transform = Transform3D(0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, 0.04173708, -1.0155587, -0.26535606)
+shape = SubResource("CapsuleShape3D_50glp")
+
+[node name="SnapPoint" type="Marker3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_RootBeer"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0.032710075, -1.4407315, -0.3989277)
+
+[node name="Label3D" type="Label3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_RootBeer"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0.020252705, 0.09261179, 0)
+text = "ROOT
+BEER
+"
+
+[node name="StockLabel" type="Label3D" parent="FoodArea/DrinkStation/Nozzles/Nozzle_RootBeer"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0.020252705, 0.09261179, 0)
+text = "ROOT
+BEER
+"
+
+[node name="TrayToServe" type="Marker3D" parent="FoodArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22936654, -0.29342997, -0.7138782)
+
+[node name="TrayPreview" type="Node3D" parent="FoodArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22936654, -0.29342997, -0.7138782)
+
+[node name="Tray" parent="FoodArea/TrayPreview" instance=ExtResource("11_grg3l")]
+
+[node name="ServePoint" type="Marker3D" parent="FoodArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0603395, -0.26350188, 0)
+
+[node name="SlotDrink" type="Marker3D" parent="FoodArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0603395, -0.26350188, 0)
+
+[node name="Pickups" type="Node3D" parent="FoodArea"]
+
+[node name="PopcornPickup" type="Area3D" parent="FoodArea/Pickups"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, -0.115, -0.23)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/Pickups/PopcornPickup"]
+transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 0, 0, 0)
+shape = SubResource("SphereShape3D_sxkr1")
+
+[node name="StockLabel" type="Label3D" parent="FoodArea/Pickups/PopcornPickup"]
+transform = Transform3D(0.11987412, 0, 0.29669884, 0, 0.32, 0, -0.29669884, 0, 0.11987412, 0.12112379, 0.13625431, 0.048573375)
+text = "Popcorn"
+
+[node name="SpawnPoint" type="Marker3D" parent="FoodArea/Pickups/PopcornPickup"]
+
+[node name="HotdogPickup" type="Area3D" parent="FoodArea/Pickups"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.091607094, 0.08063817, 0.8935113)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/Pickups/HotdogPickup"]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
+shape = SubResource("BoxShape3D_fq0cl")
+
+[node name="StockLabel" type="Label3D" parent="FoodArea/Pickups/HotdogPickup"]
+transform = Transform3D(-0.44278046, -0.11021833, 0.25965813, 0, 0.48326504, 0.20513383, -0.2820823, 0.17300811, -0.4075816, 0.05662203, 0, -0.07461786)
+text = "Hotdog"
+
+[node name="SpawnPoint" type="Marker3D" parent="FoodArea/Pickups/HotdogPickup"]
+
+[node name="hotdog" parent="FoodArea/Pickups/HotdogPickup" instance=ExtResource("10_h1m7h")]
+transform = Transform3D(0.9972476, 0, -0.0741433, 0, 1, 0, 0.0741433, 0, 0.9972476, -0.06826019, -0.1056658, 0.036752462)
+
+[node name="hotdog2" parent="FoodArea/Pickups/HotdogPickup" instance=ExtResource("10_h1m7h")]
+transform = Transform3D(0.9726464, 0, -0.23229119, 0, 1, 0, 0.23229119, 0, 0.9726464, 0.01655674, -0.1056658, 0.036752462)
+
+[node name="hotdog3" parent="FoodArea/Pickups/HotdogPickup" instance=ExtResource("10_h1m7h")]
+transform = Transform3D(0.042939335, 0, 0.99907774, 0, 1, 0, -0.99907774, 0, 0.042939335, -0.03166485, -0.060716867, 0.034322023)
+
+[node name="ChocolatePickup" type="Area3D" parent="FoodArea/Pickups"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0036568642, 0.451236, 0.9489114)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/Pickups/ChocolatePickup"]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0.037240982, 0, -0.06813741)
+shape = SubResource("BoxShape3D_hwpts")
+
+[node name="StockLabel" type="Label3D" parent="FoodArea/Pickups/ChocolatePickup"]
+transform = Transform3D(-0.2581329, -0.007120534, 0.27192217, 0, 0.3748715, 0.009816355, -0.2720154, 0.0067571327, -0.25804448, 0.080144405, 0, -0.12517858)
+text = "Chocolate"
+
+[node name="SpawnPoint" type="Marker3D" parent="FoodArea/Pickups/ChocolatePickup"]
+
+[node name="chocolate4" parent="FoodArea/Pickups/ChocolatePickup" instance=ExtResource("11_erwvk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06569123, -0.0074341297)
+
+[node name="chocolate5" parent="FoodArea/Pickups/ChocolatePickup" instance=ExtResource("11_erwvk")]
+transform = Transform3D(0.6111679, 0.791501, 0, -0.791501, 0.6111679, 0, 0, 0, 1, 0.0565629, -0.08928752, -0.0074341297)
+
+[node name="chocolate6" parent="FoodArea/Pickups/ChocolatePickup" instance=ExtResource("11_erwvk")]
+transform = Transform3D(0.13501842, 0.17485736, 0.9752922, -0.791501, 0.6111679, 0, -0.5960673, -0.77194476, 0.2209187, 0.019482136, -0.08608878, -0.1142472)
+
+[node name="Toppings" type="Node3D" parent="FoodArea"]
+
+[node name="KetchupPickup" type="Area3D" parent="FoodArea/Toppings"]
+transform = Transform3D(-1.4424758e-08, 0, 0.33, 0, 0.33, 0, -0.33, 0, -1.4424758e-08, 0.42917085, -0.15451455, 0.08325207)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/Toppings/KetchupPickup"]
+transform = Transform3D(0.29000002, 0, -1.7763568e-15, 0, 0.29000002, 0, 1.7763568e-15, 0, 0.29000002, 0, -0.14769745, 0.044275284)
+shape = SubResource("CapsuleShape3D_jyqft")
+
+[node name="StockLabel" type="Label3D" parent="FoodArea/Toppings/KetchupPickup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16962981, 0.14586067)
+text = "Ketchup"
+
+[node name="ketchup_bote" parent="FoodArea/Toppings/KetchupPickup" instance=ExtResource("12_2w5on")]
+transform = Transform3D(2.955, 0, 0, 0, 2.955, 0, 0, 0, 2.955, 0, -0.4187224, 0)
+
+[node name="MustardPickup" type="Area3D" parent="FoodArea/Toppings"]
+transform = Transform3D(-1.4424758e-08, 0, 0.33, 0, 0.33, 0, -0.33, 0, -1.4424758e-08, 0.42917085, -0.15451455, 0.3334856)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/Toppings/MustardPickup"]
+transform = Transform3D(0.29000002, 0, -1.7763568e-15, 0, 0.29000002, 0, 1.7763568e-15, 0, 0.29000002, 0, -0.14769745, 0.044275284)
+shape = SubResource("CapsuleShape3D_jyqft")
+
+[node name="StockLabel" type="Label3D" parent="FoodArea/Toppings/MustardPickup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16962981, 0.14586067)
+text = "Mustard"
+
+[node name="mustard_bote" parent="FoodArea/Toppings/MustardPickup" instance=ExtResource("13_346fj")]
+transform = Transform3D(2.835, 0, -1.4210855e-14, 0, 2.835, 0, 1.4210855e-14, 0, 2.835, -0.005716324, -0.39890075, -0.0046949387)
+
+[node name="ButterPickup" type="Area3D" parent="FoodArea/Toppings"]
+transform = Transform3D(-1.7265998e-08, 0, 0.39499998, 0, 0.39499998, 0, -0.39499998, 0, -1.7265998e-08, 0.39160538, -0.23185039, -0.23103523)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/Toppings/ButterPickup"]
+transform = Transform3D(0.28855518, 0, -0.1798249, 0, 0.34, 0, 0.1798249, 0, 0.28855518, -0.011657238, -0.18939137, -0.00961113)
+shape = SubResource("BoxShape3D_3tgeq")
+
+[node name="StockLabel" type="Label3D" parent="FoodArea/Toppings/ButterPickup"]
+transform = Transform3D(0.48005006, 0.049579244, -0.34802148, 0.061159577, 0.5682903, 0.16532046, 0.34617415, -0.16915448, 0.45340416, 0.02006507, 0.02327013, -0.060708046)
+text = "Butter"
+
+[node name="butter" parent="FoodArea/Toppings/ButterPickup" instance=ExtResource("14_0sclb")]
+transform = Transform3D(-1.0085299, 0, -1.6980853, 0, 1.975, 0, 1.6980853, 0, -1.0085299, 0, -0.15881014, 0)
+
+[node name="CaramelPickup" type="Area3D" parent="FoodArea/Toppings"]
+transform = Transform3D(0.039670113, -0.042862974, 0.07492697, -0.0015966408, 0.08208209, 0.047801495, -0.08630606, -0.021220231, 0.033555463, 0.12834978, -0.22700334, 0.018075466)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodArea/Toppings/CaramelPickup"]
+shape = SubResource("SphereShape3D_c4ay3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FoodArea/Toppings/CaramelPickup/CollisionShape3D"]
+transform = Transform3D(0.795, 0, 0, 0, 0.795, 0, 0, 0, 0.795, 0, 0, 0)
+mesh = SubResource("SphereMesh_aht7i")
+skeleton = NodePath("../..")
+
+[node name="StockLabel" type="Label3D" parent="FoodArea/Toppings/CaramelPickup"]
+transform = Transform3D(1.7949998, -2.9802322e-08, 5.9604645e-08, 0, 1.795, -1.4901161e-08, 0, -5.9604645e-08, 1.7950001, 0.007009506, -0.36037445, 0.31737137)
+text = "Caramel"
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.23285091, 0.8472935, -0.47736198, 0.084864706, 0.5066852, 0.8579443, 0.96880275, 0.15926182, -0.18988755, 0, 7.130044, 0)
+light_color = Color(0.75421184, 0.73878026, 0.56452984, 1)
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Cinema" parent="World" instance=ExtResource("1_r150o")]
+
+[node name="CinemaArea" type="Area3D" parent="World/Cinema"]
+
+[node name="FloorCollision" type="CollisionShape3D" parent="World/Cinema/CinemaArea"]
+transform = Transform3D(25.34, 0, 0, 0, 25.34, 0, 0, 0, 25.34, 0, -12.646033, 0)
+shape = SubResource("BoxShape3D_glv2v")
+
+[node name="HumanRef" type="MeshInstance3D" parent="World"]
+transform = Transform3D(0.5, 0, 0, 0, 1.7, 0, 0, 0, 0.5, -2.859705, 0.84908056, 4.632166)
+mesh = SubResource("BoxMesh_glv2v")
+
+[node name="CameraPoints" type="Node3D" parent="."]
+
+[node name="CounterCamPoint" type="Marker3D" parent="CameraPoints"]
+transform = Transform3D(-4.371139e-08, 0.06975647, -0.9975641, 0, 0.9975641, 0.06975647, 1, 3.0491523e-09, -4.360491e-08, -2.5, 1.6, 1)
+
+[node name="FoodCamPoint" type="Marker3D" parent="CameraPoints"]
+transform = Transform3D(-4.371139e-08, -0.22495104, 0.97437006, 0, 0.97437006, 0.22495104, -1, 9.832922e-09, -4.259107e-08, -3, 1.45, 1)
+
+[node name="Reporter" type="Node" parent="."]
+script = ExtResource("18_346fj")

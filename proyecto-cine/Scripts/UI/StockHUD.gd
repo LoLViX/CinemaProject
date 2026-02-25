@@ -1,4 +1,4 @@
-extends Node
+﻿extends Node
 class_name StockHUD
 
 # ── Cinema 80s palette ──────────────────────────────────────────────────────
@@ -7,7 +7,7 @@ const C_GOLD  := Color(0.95, 0.76, 0.15)
 const C_CREAM := Color(0.97, 0.93, 0.80)
 const C_CREAM_D := Color(0.80, 0.75, 0.60)
 
-# Orden y nombres “bonitos” (luego lo pasaremos a TextDB ids)
+# Orden y nombres "bonitos" (luego lo pasaremos a TextDB ids)
 const ORDER: Array[String] = ["popcorn", "hotdog", "chocolate", "cup", "ketchup", "mustard", "butter", "caramel"]
 
 const LABELS := {

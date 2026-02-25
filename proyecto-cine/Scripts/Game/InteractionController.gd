@@ -328,8 +328,15 @@ func _on_next_day(eod_ui: Node) -> void:
 	if is_instance_valid(eod_ui):
 		eod_ui.queue_free()
 
-	# Avanzar al siguiente día (DaySystem actualiza RunState.day_index + customers_per_day)
-	DaySystem.next_day()
+	# DaySystem NO es autoload — buscarlo en el árbol de escena
+	var day_sys := get_tree().root.find_child("DaySystem", true, false)
+	if day_sys != null and day_sys.has_method("next_day"):
+		day_sys.call("next_day")
+	else:
+		# Fallback: avanzar día manualmente si DaySystem no se encuentra
+		RunState.day_index += 1
+		RunState.customers_per_day = clampi(3 + RunState.day_index * 2, 5, 10)
+		push_warning("InteractionController: DaySystem no encontrado, avanzando día manualmente")
 
 	# Buscar DaySetupUI y mostrarla con las nuevas películas
 	var setup_nodes := get_tree().get_nodes_in_group("day_setup_ui")
