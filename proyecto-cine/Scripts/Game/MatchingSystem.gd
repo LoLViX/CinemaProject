@@ -1,27 +1,27 @@
 extends Node
 class_name MatchingSystem
 
-# customer dict:
-# {
-#   "must": [tag_id...],
-#   "must_not": [tag_id...]
-# }
-#
-# true_tags: Array[String] de la peli real
+# Devuelve true si pasa el umbral de coincidencia entre el cliente y los tags de la película.
+static func pass_fail(customer: Dictionary, movie_tags: Array, threshold: int = 2) -> bool:
+	return score(customer, movie_tags) >= threshold
 
-static func pass_fail(customer: Dictionary, true_tags: Array, threshold: int = 2) -> bool:
+# Score simple: +1 por cada "must" presente, -1 por cada "must_not" presente
+static func score(customer: Dictionary, movie_tags: Array) -> int:
+	var s := 0
+
 	var must: Array = customer.get("must", [])
 	var must_not: Array = customer.get("must_not", [])
 
-	# Si viola un "must_not", fail directo
-	for t in must_not:
-		if true_tags.has(t):
-			return false
-
-	# Puntúa cuántos "must" cumple
-	var score_value: int = 0  # <-- NO usar "score" (evita shadowing)
 	for t in must:
-		if true_tags.has(t):
-			score_value += 1
+		if movie_tags.has(t):
+			s += 1
 
-	return score_value >= threshold
+	for t in must_not:
+		if movie_tags.has(t):
+			s -= 1
+
+	return s
+
+# Alias por compatibilidad si lo usabas en algún punto
+static func match_score(customer: Dictionary, movie_tags: Array) -> int:
+	return score(customer, movie_tags)

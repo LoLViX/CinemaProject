@@ -8,32 +8,23 @@ var REACT_OK: Array[String] = ["cust.react_ok.1","cust.react_ok.2","cust.react_o
 var REACT_BAD: Array[String] = ["cust.react_bad.1","cust.react_bad.2","cust.react_bad.3","cust.react_bad.4"]
 var GOODBYE: Array[String] = ["cust.goodbye.1","cust.goodbye.2","cust.goodbye.3","cust.goodbye.4"]
 
-# ===== Clientes especiales (tú los añadirás a mano) =====
-# Estructura recomendada:
-# {
-#   "type":"special",
-#   "id":"special.001",
-#   "request_text_es":"...", "request_text_en":"...",
-#   "food_key":"cust.foodask.2",
-#   "ok_key":"...", "bad_key":"...",
-#   "bye_key":"...",
-#   "must":["thriller"], "must_not":["comedy"],
-#   "exit_lane":"alt" # <- para el futuro (otra fila)
-# }
+# TextDB real en tu escena (NO autoload)
+const ABS_TEXTDB: String = "/root/TextDB"
+var _textdb: Node = null
+
+# ===== Clientes especiales (vacío por ahora, como ya lo tenías) =====
 var SPECIALS: Array[Dictionary] = []
+
+func _ready() -> void:
+	RNG.randomize()
+	_textdb = get_node_or_null(ABS_TEXTDB)
 
 func _pick(arr: Array[String]) -> String:
 	return arr[RNG.randi_range(0, arr.size() - 1)] if arr.size() > 0 else ""
 
 func build_day_customers(todays_movies: Array, count: int) -> Array:
-	RNG.randomize()
-
 	var day_tags: Array[String] = _tags_available_today(todays_movies)
-
 	var customers: Array = []
-
-	# (Por ahora NO meto specials automáticamente. Los meterás cuando quieras por día/evento.)
-	# Ejemplo futuro: customers.append(SPECIALS[0]) si toca.
 
 	while customers.size() < count:
 		customers.append(_make_normal(day_tags))
@@ -47,18 +38,18 @@ func _make_normal(day_tags: Array[String]) -> Dictionary:
 	var must: Array[String] = []
 	var must_not: Array[String] = []
 
-	# Elegimos 1 o 2 "must" del set del día (con peso)
+	# 1 must
 	var main := _pick_weighted_tag(day_tags)
 	if main != "":
 		must.append(main)
 
-	# 35% añade un segundo must distinto
+	# 35% segundo must
 	if day_tags.size() > 1 and RNG.randf() < 0.35:
 		var second := _pick_weighted_tag(day_tags, must)
 		if second != "":
 			must.append(second)
 
-	# 35% añade un must_not (si hay variedad)
+	# 35% must_not
 	if day_tags.size() > 1 and RNG.randf() < 0.35:
 		var avoid := _pick_weighted_tag(day_tags, must)
 		if avoid != "" and not must_not.has(avoid):
@@ -66,35 +57,36 @@ func _make_normal(day_tags: Array[String]) -> Dictionary:
 
 	var request_text := _build_request_text(must, must_not)
 
+	var food_order := _make_food_order()
+
 	return {
 		"type": "normal",
-		"request_text": request_text,      # <-- YA listo para mostrar (multidioma)
-		"food_key": _pick(FOODASK),
+		"request_text": request_text,
+		"food_order": food_order,
+		"food_key": _build_food_text(food_order),
 		"ok_key": _pick(REACT_OK),
 		"bad_key": _pick(REACT_BAD),
 		"bye_key": _pick(GOODBYE),
 		"must": must,
 		"must_not": must_not,
-		"exit_lane": "main"                # <-- para futuro (alt para especiales)
+		"exit_lane": "main"
 	}
 
 # -------------------------
-# Texto de petición (lo importante)
+# Texto de petición (multidioma)
 # -------------------------
 func _build_request_text(must: Array[String], must_not: Array[String]) -> String:
 	var lang := "es"
-	if Engine.has_singleton("TextDB") and TextDB.has_method("t"):
-		# TextDB es autoload, tiene variable "locale"
-		if "locale" in TextDB:
-			lang = String(TextDB.locale)
 
-	# Nombres human-friendly por idioma
+	# TextDB existe en escena, y tiene 'locale'
+	if _textdb != null:
+		if "locale" in _textdb:
+			lang = String(_textdb.get("locale"))
+
 	var a := _tag_name(String(must[0]) if must.size() > 0 else "", lang)
 	var b := _tag_name(String(must[1]) if must.size() > 1 else "", lang)
 	var n := _tag_name(String(must_not[0]) if must_not.size() > 0 else "", lang)
 
-
-	# Plantillas (ES/EN). Naturales, accionables, sin decir “tags” explícitamente.
 	if lang == "en":
 		return _build_request_en(a, b, n, must.size(), must_not.size())
 	return _build_request_es(a, b, n, must.size(), must_not.size())
@@ -121,7 +113,6 @@ func _build_request_es(a: String, b: String, n: String, must_count: int, not_cou
 			"Me apetece %s… pero como sea %s, me duermo." % [a, n]
 		]
 	else:
-		# must_count==1 y not_count==0
 		variants = [
 			"Quiero algo de %s. Que se note desde el minuto uno." % [a],
 			"Hoy me apetece %s. Sin complicaciones." % [a],
@@ -161,10 +152,9 @@ func _build_request_en(a: String, b: String, n: String, must_count: int, not_cou
 	return variants[RNG.randi_range(0, variants.size()-1)]
 
 # -------------------------
-# Tag picking (con pesos para evitar combinaciones raras)
+# Tag picking (pesos)
 # -------------------------
 func _pick_weighted_tag(day_tags: Array[String], avoid: Array[String] = []) -> String:
-	# Filtra
 	var pool: Array[String] = []
 	for t in day_tags:
 		if avoid.has(t):
@@ -173,17 +163,14 @@ func _pick_weighted_tag(day_tags: Array[String], avoid: Array[String] = []) -> S
 	if pool.size() == 0:
 		return ""
 
-	# Pesos simples: preferimos géneros “decidibles” y evitamos que todo sea dark/light siempre
 	var weights: Array[float] = []
 	for t in pool:
 		var w := 1.0
-		if t == "dark" or t == "light":
-			w = 0.6
-		if t == "fast" or t == "slow":
-			w = 0.8
+		# oscura/ligera un poco menos para que no sea todo “tono”
+		if t == "oscura" or t == "ligera":
+			w = 0.65
 		weights.append(w)
 
-	# Roulette
 	var sum := 0.0
 	for w in weights:
 		sum += w
@@ -196,7 +183,7 @@ func _pick_weighted_tag(day_tags: Array[String], avoid: Array[String] = []) -> S
 	return pool[pool.size()-1]
 
 # -------------------------
-# Available tags today (NO pide tags inexistentes)
+# Available tags today
 # -------------------------
 func _tags_available_today(movies: Array) -> Array[String]:
 	var s: Dictionary = {}
@@ -204,7 +191,6 @@ func _tags_available_today(movies: Array) -> Array[String]:
 		var tags: Array = m.get("true_tags", [])
 		for t in tags:
 			var tag: String = String(t)
-			# Aquí SÍ permitimos fast/slow para que el cliente pueda pedir “corta/larga”
 			s[tag] = true
 
 	var out: Array[String] = []
@@ -214,7 +200,7 @@ func _tags_available_today(movies: Array) -> Array[String]:
 	return out
 
 # -------------------------
-# Localized tag names
+# Localized tag names (IDs españoles)
 # -------------------------
 func _tag_name(tag_id: String, lang: String) -> String:
 	if tag_id == "":
@@ -222,36 +208,118 @@ func _tag_name(tag_id: String, lang: String) -> String:
 
 	if lang == "en":
 		match tag_id:
-			"action": return "action"
-			"comedy": return "comedy"
-			"horror": return "horror"
-			"thriller": return "thriller"
-			"mystery": return "mystery"
-			"scifi": return "sci-fi"
+			"accion": return "action"
 			"drama": return "drama"
-			"crime": return "crime"
-			"fantasy": return "fantasy"
-			"adventure": return "adventure"
-			"dark": return "dark tone"
-			"light": return "light tone"
-			"fast": return "short"
-			"slow": return "long"
+			"comedia": return "comedy"
+			"terror": return "horror"
+			"thriller": return "thriller"
+			"misterio": return "mystery"
+			"scifi": return "sci-fi"
+			"crimen": return "crime"
+			"fantasia": return "fantasy"
+			"aventura": return "adventure"
+			"oscura": return "dark tone"
+			"ligera": return "light tone"
 			_: return tag_id
 
 	# ES
 	match tag_id:
-		"action": return "acción"
-		"comedy": return "comedia"
-		"horror": return "terror"
-		"thriller": return "thriller"
-		"mystery": return "misterio"
-		"scifi": return "ciencia ficción"
+		"accion": return "acción"
 		"drama": return "drama"
-		"crime": return "crimen"
-		"fantasy": return "fantasía"
-		"adventure": return "aventura"
-		"dark": return "tono oscuro"
-		"light": return "tono ligero"
-		"fast": return "una película corta"
-		"slow": return "una película larga"
+		"comedia": return "comedia"
+		"terror": return "terror"
+		"thriller": return "thriller"
+		"misterio": return "misterio"
+		"scifi": return "ciencia ficción"
+		"crimen": return "crimen"
+		"fantasia": return "fantasía"
+		"aventura": return "aventura"
+		"oscura": return "tono oscuro"
+		"ligera": return "tono ligero"
 		_: return tag_id
+
+# -------------------------
+# Food order generation
+# -------------------------
+# food_order dict keys:
+#   drink: bool
+#   food: "" / "hotdog" / "chocolate"
+#   popcorn: bool
+#   ketchup: bool  (solo si hotdog)
+#   mustard: bool  (solo si hotdog)
+#   butter: bool   (solo si popcorn)
+#   caramel: bool  (solo si popcorn)
+func _make_food_order() -> Dictionary:
+	var order := {
+		"drink": false,
+		"food": "",
+		"popcorn": false,
+		"ketchup": false,
+		"mustard": false,
+		"butter": false,
+		"caramel": false,
+	}
+
+	# Siempre al menos una cosa
+	var roll := RNG.randi_range(0, 2)
+	match roll:
+		0: # Solo bebida
+			order["drink"] = true
+		1: # Palomitas (con o sin topping)
+			order["popcorn"] = true
+			if RNG.randf() < 0.5:
+				if RNG.randf() < 0.5:
+					order["butter"] = true
+				else:
+					order["caramel"] = true
+		2: # Comida (hotdog o chocolate)
+			if RNG.randf() < 0.6:
+				order["food"] = "hotdog"
+				if RNG.randf() < 0.5: order["ketchup"] = true
+				if RNG.randf() < 0.4: order["mustard"] = true
+			else:
+				order["food"] = "chocolate"
+
+	# 40% también quieren bebida además de lo anterior
+	if roll != 0 and RNG.randf() < 0.4:
+		order["drink"] = true
+
+	# 30% también quieren palomitas si pidieron comida
+	if roll == 2 and RNG.randf() < 0.3:
+		order["popcorn"] = true
+		if RNG.randf() < 0.4:
+			if RNG.randf() < 0.5:
+				order["butter"] = true
+			else:
+				order["caramel"] = true
+
+	return order
+
+func _build_food_text(o: Dictionary) -> String:
+	var parts: Array[String] = []
+
+	if o.get("popcorn", false):
+		var pop := "palomitas"
+		if o.get("butter", false): pop += " con mantequilla"
+		elif o.get("caramel", false): pop += " con caramelo"
+		parts.append(pop)
+
+	if o.get("food", "") == "hotdog":
+		var hd := "hotdog"
+		var tops: Array[String] = []
+		if o.get("ketchup", false): tops.append("ketchup")
+		if o.get("mustard", false): tops.append("mostaza")
+		if tops.size() > 0: hd += " con " + " y ".join(tops)
+		parts.append(hd)
+	elif o.get("food", "") == "chocolate":
+		parts.append("chocolate")
+
+	if o.get("drink", false):
+		parts.append("una bebida")
+
+	if parts.size() == 0:
+		return "Nada más, gracias."
+	if parts.size() == 1:
+		return "Ponme " + parts[0] + ", porfa."
+	var last: String = String(parts.pop_back())
+	return "Quiero " + ", ".join(parts) + " y " + last + "."

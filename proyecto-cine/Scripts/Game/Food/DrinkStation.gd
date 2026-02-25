@@ -1,5 +1,5 @@
 extends Node3D
-class_name DrinkStation
+# sin class_name para evitar "hides a global script class" si hay duplicados viejos
 
 # ---- FORZADO (IGNORA INSPECTOR) ----
 const USE_SCENE_PATH := "res://Scenes/Props/DrinkUse.tscn"
@@ -21,9 +21,9 @@ const DONE_SCENE_PATH := "res://Scenes/Props/DrinkDone.tscn"
 @export var allow_multiple_drinks: bool = false
 @export var debug_shift_force_spawn: bool = true
 
-var _cam: Camera3D
-var _hold: Node3D
-var _cup_area: Area3D
+var _cam: Camera3D = null
+var _hold: Node3D = null
+var _cup_area: Area3D = null
 var _tray: Node3D = null
 var _hud: Node = null
 

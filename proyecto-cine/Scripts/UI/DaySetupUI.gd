@@ -12,11 +12,10 @@ const TAGS: Array[String] = [
 	"aventura","oscura","ligera"
 ]
 
-# Layout (ancho/alto ya lo tenías bien)
-const CARD_W := 340
-const POSTER_H := 260
 const BTN_H := 52
-const SCROLL_H := 560
+const CARD_W := 220
+const POSTER_H := 180
+const SCROLL_H := 480
 
 # Tipos
 const TITLE_SIZE := 18
@@ -87,13 +86,15 @@ func _build_ui() -> void:
 	_root_v.add_child(_btn)
 
 func _apply_layout() -> void:
-	_panel.anchor_left = 0.03
-	_panel.anchor_right = 0.97
-	_panel.anchor_top = 0.03
+	# Panel centrado horizontalmente con ancho fijo basado en 5 tarjetas
+	var total_w := CARD_W * 5 + 18 * 4 + 28  # 5 tarjetas + gaps + padding
+	_panel.anchor_left   = 0.5
+	_panel.anchor_right  = 0.5
+	_panel.anchor_top    = 0.03
 	_panel.anchor_bottom = 0.97
-	_panel.offset_left = 0
-	_panel.offset_right = 0
-	_panel.offset_top = 0
+	_panel.offset_left   = -total_w / 2
+	_panel.offset_right  =  total_w / 2
+	_panel.offset_top    = 0
 	_panel.offset_bottom = 0
 
 	_root_v.anchor_left = 0.0

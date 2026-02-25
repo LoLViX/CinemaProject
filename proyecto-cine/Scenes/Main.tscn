@@ -106,6 +106,9 @@ script = ExtResource("5_0sclb")
 
 [node name="InteractionController" type="Node" parent="Systems"]
 script = ExtResource("5_v1gob")
+customer_manager_path = NodePath("../../Customers/CustomerManager")
+hud_path = NodePath("../../UI")
+food_controller_path = NodePath("../FoodController")
 
 [node name="FoodController" type="Node" parent="Systems"]
 script = ExtResource("9_vy5pj")
@@ -178,6 +181,15 @@ mesh = SubResource("SphereMesh_glv2v")
 [node name="FoodArea" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.20219, 1.0976913, 1.0811169)
 script = ExtResource("9_2w5on")
+tray_path = NodePath("TrayPreview/Tray")
+stock_hud_path = NodePath("../UI/StockHUD")
+popcorn_pickup_path = NodePath("Pickups/PopcornPickup")
+hotdog_pickup_path = NodePath("Pickups/HotdogPickup")
+chocolate_pickup_path = NodePath("Pickups/ChocolatePickup")
+ketchup_pickup_path = NodePath("Toppings/KetchupPickup")
+mustard_pickup_path = NodePath("Toppings/MustardPickup")
+butter_pickup_path = NodePath("Toppings/ButterPickup")
+caramel_pickup_path = NodePath("Toppings/CaramelPickup")
 
 [node name="DrinkStation" type="Node3D" parent="FoodArea"]
 script = ExtResource("8_50glp")

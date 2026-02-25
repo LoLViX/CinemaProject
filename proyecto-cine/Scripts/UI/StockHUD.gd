@@ -2,12 +2,13 @@ extends Node
 class_name StockHUD
 
 # Orden y nombres “bonitos” (luego lo pasaremos a TextDB ids)
-const ORDER: Array[String] = ["popcorn", "hotdog", "chocolate", "ketchup", "mustard", "butter", "caramel"]
+const ORDER: Array[String] = ["popcorn", "hotdog", "chocolate", "cup", "ketchup", "mustard", "butter", "caramel"]
 
 const LABELS := {
 	"popcorn":  "PALOMITAS",
 	"hotdog":   "HOTDOG",
 	"chocolate":"CHOCOLATE",
+	"cup":      "VASOS",
 	"ketchup":  "KETCHUP",
 	"mustard":  "MOSTAZA",
 	"butter":   "MANTEQUILLA",
