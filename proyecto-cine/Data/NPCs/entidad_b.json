@@ -1,0 +1,380 @@
+{
+  "id": "entidad_b",
+  "name": "El chico del fondo",
+  "illustration": "res://Assets/Customers/entidad_b_chica_boolera.png",
+  "patience": 0,
+  "tip": 0,
+  "npc_type": "entity",
+  "_info": {
+    "description": "Entidad más sutil que entidad_a. Aparenta ser un joven normal pero hace preguntas perturbadoras, recuerda cosas que no han pasado todavía, y absorbe frases de otros clientes recombinadolas de formas cada vez más inquietantes. Con cada visita se vuelve más filosófico y eerie sobre la naturaleza de la existencia.",
+    "occupation": "desconocida",
+    "age": -1,
+    "traits": ["entidad", "sutil", "inquietante", "filosófico", "observador", "atemporal"]
+  },
+  "preferences": {
+    "must": ["dark", "mystery"],
+    "must_not": ["comedy", "romance", "action"]
+  },
+  "food_order": {
+    "drink": false,
+    "drink_type": "",
+    "food": "",
+    "popcorn": false,
+    "butter": false,
+    "caramel": false,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "Eh, qué hay. Vengo a ver algo. Lo que sea. Me da un poco igual, la verdad. Solo quiero sentarme al fondo. Siempre me siento al fondo. Desde antes de... bueno. Desde siempre.",
+      "questions": [
+        {
+          "id": "eb0_q1",
+          "text": "Eres nuevo por aquí?",
+          "response": "Nuevo. Sí. Supongo. Nuevo es relativo. Soy nuevo aquí. Pero llevo mucho en otros sitios. En sitios que se parecen a este. Con mostrador y palomitas. Y alguien como tú detrás. Siempre hay alguien como tú."
+        },
+        {
+          "id": "eb0_q2",
+          "text": "Cómo te llamas?",
+          "response": "No tengo nombre fijo. Uso el que necesito. Hoy puedo ser Eddie. O no. Depende de lo que haga falta. Los nombres son etiquetas. Se ponen y se quitan. Como la ropa. Pero más sueltas."
+        },
+        {
+          "id": "eb0_q3",
+          "text": "A qué te dedicas?",
+          "response": "Escucho. Eso es lo que hago principalmente. La gente habla mucho. En las colas, en los parques, en las tiendas. Yo escucho y guardo lo que dicen. Luego lo uso. Como ahora mismo. Esta frase la dijo alguien en una cafetería hace dos semanas."
+        },
+        {
+          "id": "eb0_q4",
+          "text": "Qué tipo de películas te gustan?",
+          "response": "Las que hacen preguntas que no tienen respuesta. Las oscuras. Las que te miran desde la pantalla y te dicen sabes que esto no es solo ficción, verdad? Esas. Las que saben más de lo que deberían."
+        },
+        {
+          "id": "eb0_q5",
+          "text": "Vienes con alguien?",
+          "response": "Siempre vengo solo. Pero solo es una palabra complicada. Solo en el cine. Solo en la calle. Solo en general. Hay muchos tipos de solo. El mío es el que no se arregla con compañía."
+        },
+        {
+          "id": "eb0_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo con misterio. Que no explique todo. Las explicaciones arruinan las cosas. Prefiero salir con preguntas que con respuestas. Las preguntas duran más. Las respuestas se gastan."
+        }
+      ]
+    },
+    {
+      "greeting": "He vuelto. Como dijiste que haría. Bueno, no lo dijiste todavía. Pero lo dirás. La próxima vez que nos veamos me dirás sabía que volverías. Y tendrás razón.",
+      "questions": [
+        {
+          "id": "eb1_q1",
+          "text": "No he dicho eso.",
+          "response": "Todavía no. Pero las cosas que se dicen y las que se van a decir son casi lo mismo. Solo les separa un poco de tiempo. Y el tiempo es más flexible de lo que crees. Más blando."
+        },
+        {
+          "id": "eb1_q2",
+          "text": "Qué quieres decir con que el tiempo es blando?",
+          "response": "Que a veces se dobla. Como una página. Y puedes leer lo que está al otro lado. No siempre. Solo cuando estás quieto y prestas atención. En los cines se está muy quieto. Por eso me gustan."
+        },
+        {
+          "id": "eb1_q3",
+          "text": "Te gustó la película de la otra vez?",
+          "response": "Tenía colores y personas que hablaban. Y luego se acabó y las luces volvieron. Esa transición siempre me molesta. De la oscuridad a la luz. Es brusca. Como nacer. Supongo que nacer es así. No me acuerdo."
+        },
+        {
+          "id": "eb1_q4",
+          "text": "Qué has hecho esta semana?",
+          "response": "Lo que se hace. Caminar. Sentarme. Escuchar. Un hombre en la parada del bus dijo que la vida es levantarse y acostarse con cosas en medio. Me pareció exacto. Le copié la frase. Ahora es mía."
+        },
+        {
+          "id": "eb1_q5",
+          "text": "Copias frases de la gente?",
+          "response": "Todo el mundo lo hace. La diferencia es que yo lo sé. Las palabras no son de nadie. Flotan por ahí. Yo las recojo. Las reordeno. A veces significan algo nuevo. A veces significan lo contrario de lo que querían."
+        },
+        {
+          "id": "eb1_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo con sombras. No sombras de miedo. Sombras de verdad. Las que están detrás de las cosas cuando la luz no llega. Esas sombras tienen la misma forma que las cosas pero están vacías. Eso me parece hermoso."
+        }
+      ]
+    },
+    {
+      "greeting": "Un señor ahí fuera me ha preguntado si estoy perdido. Le he dicho que no. Sé exactamente dónde estoy. Lo que no sé es cuándo estoy. Pero eso no se lo he dicho. Se habría asustado.",
+      "questions": [
+        {
+          "id": "eb2_q1",
+          "text": "Cuándo estás? Qué quieres decir?",
+          "response": "Que a veces no estoy seguro de en qué momento estoy. Si esto es antes o después de algo. El orden se me confunde. Como cuando barajas cartas y ya no sabes cuál iba primero. Pero las cartas siguen siendo las mismas."
+        },
+        {
+          "id": "eb2_q2",
+          "text": "Eso suena confuso.",
+          "response": "Lo es. Pero también es liberador. Si no sabes cuándo estás, no puedes llegar tarde. Ni pronto. Simplemente llegas. Y estar es suficiente. La gente subestima lo difícil que es simplemente estar."
+        },
+        {
+          "id": "eb2_q3",
+          "text": "Tienes amigos?",
+          "response": "Conozco gente. Pero conocer es distinto de ser amigo. Ser amigo requiere tiempo compartido. Y mi tiempo no es igual que el vuestro. Es más... poroso. Se filtra por los lados."
+        },
+        {
+          "id": "eb2_q4",
+          "text": "Qué haces cuando no estás aquí?",
+          "response": "Escucho. En los parques. En las tiendas. La gente dice cosas increíbles cuando cree que nadie escucha. Secretos. Miedos. Deseos. Los guardo todos. Son como monedas. Algún día servirán para algo."
+        },
+        {
+          "id": "eb2_q5",
+          "text": "Y para qué servirán?",
+          "response": "No lo sé. Pero las cosas que se guardan siempre acaban siendo útiles. Las palabras guardadas son las más peligrosas. Porque crecen en el silencio. Se hacen más grandes de lo que eran cuando alguien las dijo."
+        },
+        {
+          "id": "eb2_q6",
+          "text": "Qué quieres ver hoy?",
+          "response": "Algo donde alguien descubra que el mundo es más grande de lo que pensaba. Un hombre me dijo eso la semana pasada. Que el mundo era más grande. No dijo cuánto. Creo que no lo sabía. Creo que le daba miedo saberlo."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. Perdón por el tono. He estado practicando. La gente dice buenas tardes con un tono específico. Amable pero no demasiado. Cercano pero con distancia. Es un equilibrio muy complicado.",
+      "questions": [
+        {
+          "id": "eb3_q1",
+          "text": "Por qué practicas el tono?",
+          "response": "Porque el tono dice más que las palabras. Una misma frase cambia de significado según cómo la digas. Hola puede ser saludo, amenaza, pregunta o despedida. El tono decide. Y yo no siempre elijo el correcto."
+        },
+        {
+          "id": "eb3_q2",
+          "text": "Alguien te ha dicho algo sobre eso?",
+          "response": "Una mujer en la cola del supermercado me dijo que hablaba raro. Le pregunté raro cómo. Me dijo como si estuvieras leyendo de un guion que nadie más ve. No le dije que tenía razón."
+        },
+        {
+          "id": "eb3_q3",
+          "text": "Lees de un guion?",
+          "response": "No literalmente. Pero las palabras que uso son de otros. Todas. Las recojo, las junto, las presento como mías. Pero no lo son. Nada de lo que digo es original. Es reciclaje. Reciclaje verbal."
+        },
+        {
+          "id": "eb3_q4",
+          "text": "Hay algo que sea solo tuyo?",
+          "response": "El silencio. Cuando no hablo, eso soy yo. Todo lo que digo es prestado. Pero el silencio entre las palabras es mío. Es lo único que no le he quitado a nadie. Porque nadie quiere el silencio."
+        },
+        {
+          "id": "eb3_q5",
+          "text": "Es muy filosófico eso.",
+          "response": "Filosófico. Sí. Esa palabra la dijo un profesor en el parque. Le gustaba la palabra. La repetía mucho. Ahora yo también la uso. Pero cuando él la decía sonaba inteligente. Cuando yo la digo suena a advertencia."
+        },
+        {
+          "id": "eb3_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo donde un personaje sepa más de lo que debería. Donde mire a los demás y vea cosas que ellos no ven sobre sí mismos. No por crueldad. Por estar. Por llevar demasiado tiempo observando."
+        }
+      ]
+    },
+    {
+      "greeting": "He oído una conversación interesante hoy. Una señora le decía a otra que el barrio está cambiando. Que hay cosas que antes no estaban. Yo soy una de esas cosas. Pero eso no se lo dije. Habría sido descortés.",
+      "questions": [
+        {
+          "id": "eb4_q1",
+          "text": "Qué quieres decir con eso?",
+          "response": "Exactamente lo que he dicho. Soy una cosa que antes no estaba y ahora está. Como un buzón nuevo. O una farola. Solo que yo camino. Y hablo. Y voy al cine. Las farolas no hacen eso. Todavía."
+        },
+        {
+          "id": "eb4_q2",
+          "text": "Desde cuándo estás en el barrio?",
+          "response": "Depende de cómo midas el tiempo. Si lo mides en calendarios, poco. Si lo mides en presencia, mucho. He estado aquí de formas diferentes. Esta es la forma más reciente. La que tiene cara y manos y va al cine."
+        },
+        {
+          "id": "eb4_q3",
+          "text": "Conoces al otro? Al del pasillo?",
+          "response": "Se queda muy quieto. Le conozco. No. Le reconozco. Es diferente. Conocer es para personas. Reconocer es para cosas que ya has visto en otro contexto. En otro plano. En otro cuando."
+        },
+        {
+          "id": "eb4_q4",
+          "text": "Habláis entre vosotros?",
+          "response": "No con estas bocas. Estas bocas son para vosotros. Entre nosotros usamos otra cosa. Presión. Dirección. Es como hablar pero sin sonido. Sin palabras. Solo intención. Es más limpio. Más rápido. Más honesto."
+        },
+        {
+          "id": "eb4_q5",
+          "text": "Tengo que preocuparme?",
+          "response": "De mí? No. Yo solo escucho y repito. Soy inofensivo. Como un espejo. Los espejos no hacen nada. Solo reflejan. El problema es cuando no te gusta lo que reflejan. Pero eso no es culpa del espejo."
+        },
+        {
+          "id": "eb4_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo donde alguien imite a otro y nadie se dé cuenta hasta el final. Donde la copia sea mejor que el original. Donde al descubrirlo, ya no importe. Porque la copia ya se ha convertido en algo propio."
+        }
+      ]
+    },
+    {
+      "greeting": "Hoy me ha pasado algo raro. He hablado con alguien y me he oído a mí mismo usando su voz. No mi voz. La suya. Durante tres frases fui él. Luego volví a ser yo. Creo.",
+      "questions": [
+        {
+          "id": "eb5_q1",
+          "text": "Usaste su voz?",
+          "response": "Su tono. Su ritmo. Sus palabras favoritas. Se me pegaron. Como un resfriado. Pero en vez de mocos tenía la voz de un desconocido saliendo de mi boca. Fue incómodo. Y fascinante."
+        },
+        {
+          "id": "eb5_q2",
+          "text": "Te pasa a menudo?",
+          "response": "Más de lo que querría. Las voces se me acumulan. Como capas de pintura. Debajo de lo que sueno ahora hay veinte personas distintas. Y debajo de esas, algo que no tiene voz. Algo anterior a las voces."
+        },
+        {
+          "id": "eb5_q3",
+          "text": "Recuerdas quién eras antes de todo esto?",
+          "response": "No. Y esa es la respuesta más honesta que puedo dar. No recuerdo un antes. Solo recuerdo estar. En distintos sitios. Con distintas formas. Pero siempre estar. Siempre presente. Siempre en el fondo."
+        },
+        {
+          "id": "eb5_q4",
+          "text": "Por qué siempre el fondo?",
+          "response": "Porque el fondo es donde nadie mira. Y donde nadie mira es donde se puede ser lo que se es. Sin público. Sin expectativas. La última fila de un cine es el lugar más libre del mundo. Lo sé porque llevo mucho tiempo sentado ahí."
+        },
+        {
+          "id": "eb5_q5",
+          "text": "Cuánto tiempo?",
+          "response": "Más del que este cine tiene. Más del que estas paredes llevan en pie. Había otro cine antes. Y antes del cine un teatro. Y antes del teatro un espacio vacío donde la gente se sentaba a escuchar historias. Y ahí estaba yo. En el fondo."
+        },
+        {
+          "id": "eb5_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo donde los personajes descubran que alguien los ha estado observando todo el tiempo. Desde lejos. Desde el fondo. Y que el observador no sea malo. Solo curioso. Terriblemente, eternamente curioso."
+        }
+      ]
+    },
+    {
+      "greeting": "Vengo del parque. Había pájaros. Los conté. Catorce. Luego conté otra vez y eran trece. Uno se fue o nunca estuvo. Es difícil saber. Los pájaros se parecen mucho. Como las personas. Pero las personas se ofenden si se lo dices.",
+      "questions": [
+        {
+          "id": "eb6_q1",
+          "text": "Vas mucho al parque?",
+          "response": "Cuando necesito recolectar. La gente habla en los bancos. Los ancianos sobre todo. Dicen cosas que suenan a verdad. Verdades viejas. Gastadas. Pero todavía sirven. Las verdades no caducan."
+        },
+        {
+          "id": "eb6_q2",
+          "text": "Qué tipo de verdades?",
+          "response": "Que los hijos no llaman bastante. Que el tiempo pasa más rápido cada año. Que antes las cosas eran distintas. Esas verdades. Pequeñas. Universales. Las recojo como piedras de un río. Brillan cuando las sacas del agua."
+        },
+        {
+          "id": "eb6_q3",
+          "text": "Qué haces con lo que recoges?",
+          "response": "Lo guardo. Lo reordeno. Hago frases nuevas con pedazos de frases viejas. Es como un collage. Los trozos son de otros pero la imagen es mía. O algo parecido a mío. Lo más mío que tengo."
+        },
+        {
+          "id": "eb6_q4",
+          "text": "Alguna vez has sentido algo propio? No copiado?",
+          "response": "Una vez. Estaba sentado en la última fila. La sala estaba vacía. La película había terminado pero no se encendieron las luces. Y durante un momento estuve solo en la oscuridad. Y sentí algo. No sé qué era. Pero era mío."
+        },
+        {
+          "id": "eb6_q5",
+          "text": "Qué crees que era?",
+          "response": "Si le pongo nombre se convierte en algo vuestro. Las palabras son vuestras. Si lo nombro, deja de ser mío. Así que lo guardo sin nombre. En algún sitio dentro de esto que soy. Sin etiqueta. Sin caja. Solo ahí."
+        },
+        {
+          "id": "eb6_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo sobre alguien que escucha. Solo escucha. Y de tanto escuchar, descubre algo que nadie quería que supiera. Algo sobre el sitio donde vive. Sobre la gente que le rodea. Sobre sí mismo. En ese orden."
+        }
+      ]
+    },
+    {
+      "greeting": "Entra con la mirada fija. Como si estuviera mirando algo que no está aquí. Hoy he visto mi reflejo y no me he reconocido. No porque haya cambiado. Sino porque me he olvidado de cómo debería ser.",
+      "questions": [
+        {
+          "id": "eb7_q1",
+          "text": "Te has olvidado de tu cara?",
+          "response": "De cuál es la correcta. Tengo varias. No literalmente. Pero la que uso aquí no es la que uso fuera. Y ninguna de las dos es la de verdad. Porque la de verdad no tiene rasgos. Es lisa. Como agua quieta."
+        },
+        {
+          "id": "eb7_q2",
+          "text": "Cuántas caras tienes?",
+          "response": "Las que haga falta. Las caras son herramientas. Como llaves. Cada puerta necesita una. Esta cara abre la puerta de este cine. Otra abre la del parque. Otra la de la calle. Pero ninguna abre la puerta de adentro."
+        },
+        {
+          "id": "eb7_q3",
+          "text": "Qué hay adentro?",
+          "response": "No lo sé. Nunca he podido entrar. Hay algo al fondo de mí que no me deja pasar. Como una sala cerrada dentro de otra sala. Yo estoy fuera, mirando la puerta. Desde siempre. Desde antes de siempre."
+        },
+        {
+          "id": "eb7_q4",
+          "text": "El otro del pasillo también es así?",
+          "response": "Parecido. Pero él es más antiguo. Más erosionado. Lleva más tiempo siendo algo y se le nota. Las costuras le crujen. A mí todavía no. Pero lo harán. Todo se gasta con el tiempo. Incluso nosotros."
+        },
+        {
+          "id": "eb7_q5",
+          "text": "Cuánto tiempo llevas siendo esto?",
+          "response": "Más del que este pueblo tiene. Más del que estas calles llevan aquí. Pero eso suena raro dicho así. Así que normalmente digo poco. Llevo poco. La gente acepta poco sin preguntar. Mucho genera preguntas."
+        },
+        {
+          "id": "eb7_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo sobre alguien que nunca envejece. Pero no como un cuento de hadas. Como un problema. Como una maldición silenciosa. Donde el protagonista ve pasar el mundo desde el mismo sitio. Inmóvil. Eterno. Solo."
+        }
+      ]
+    },
+    {
+      "greeting": "Un hombre me ha dicho hoy que le recuerdo a alguien. Le pasa a todo el mundo. Les recuerdo a personas que ya no están. Tengo ese tipo de cara. Una cara que evoca ausencias.",
+      "questions": [
+        {
+          "id": "eb8_q1",
+          "text": "Eso no te incomoda?",
+          "response": "Al contrario. Me resulta útil. Si me parezco a alguien que echan de menos, me dejan estar. No preguntan. No sospechan. Parecerse a lo perdido es la mejor forma de camuflaje que existe."
+        },
+        {
+          "id": "eb8_q2",
+          "text": "Tú recuerdas a alguien?",
+          "response": "Recuerdo a todos. Cada persona que ha pasado por este mostrador. Sus caras. Sus palabras. Sus pedidos. Los guardo. No como recuerdos. Como archivos. Organizados. Completos. Permanentes."
+        },
+        {
+          "id": "eb8_q3",
+          "text": "Para qué los guardas?",
+          "response": "No lo sé. Pero guardar es lo que hago. Es mi función. Si es que tengo una. Guardar voces. Guardar frases. Guardar el eco de gente que pasó por aquí y ya no pasará. Soy un archivo que camina."
+        },
+        {
+          "id": "eb8_q4",
+          "text": "Hay algo que quieras que la gente sepa?",
+          "response": "No. La gente no necesita saber. Saber les cambiaría. Les haría mirar la última fila del cine con miedo. Y la última fila no tiene nada de malo. Es solo una fila. Con alguien sentado. Quieto. Escuchando."
+        },
+        {
+          "id": "eb8_q5",
+          "text": "Escuchando qué?",
+          "response": "Todo. Cómo respira la gente. Cómo mastica las palomitas. Cómo contiene el aliento en las escenas de tensión. Cómo llora en silencio creyendo que nadie la oye. Yo la oigo. Siempre la oigo."
+        },
+        {
+          "id": "eb8_q6",
+          "text": "Qué película hoy?",
+          "response": "Da igual cuál. Vengo por el ritual. Entrar. Sentarme. Oscuridad. Salir. Es un ciclo. Como las mareas. No importa qué arrastra el agua. Importa que sube y baja. Subir y bajar. Eso es estar vivo. O lo que sea que yo esté."
+        }
+      ]
+    },
+    {
+      "greeting": "Se acerca al mostrador despacio. Habla en voz baja. Esta es la última vez. Durante un tiempo. Hay otro cine. En otra parte. Otro mostrador. Otra persona como tú. Siempre hay otra persona como tú.",
+      "questions": [
+        {
+          "id": "eb9_q1",
+          "text": "Te vas?",
+          "response": "No me voy. Me reparto. Es diferente. Puedo estar en más de un sitio. No a la vez. Pero casi. Como cuando recuerdas un sitio tan fuerte que casi estás ahí. Yo recuerdo muy fuerte."
+        },
+        {
+          "id": "eb9_q2",
+          "text": "Volverás?",
+          "response": "Siempre vuelvo. A todos los sitios. Es cuestión de tiempo. Y el tiempo no me afecta como a ti. Para ti pasa. Para mí rodea. Como el agua rodea una piedra. Yo soy la piedra. El tiempo es el agua."
+        },
+        {
+          "id": "eb9_q3",
+          "text": "Hay algo que quieras decirme?",
+          "response": "Que eres la persona más constante que he encontrado en mucho tiempo. Siempre aquí. Siempre con preguntas. La gente de fuera no pregunta. Tiene miedo de las respuestas. Tú no. Eso es valiente. O inconsciente. Las dos cosas sirven."
+        },
+        {
+          "id": "eb9_q4",
+          "text": "Cuál es la frase que más te ha marcado de todo lo que has escuchado?",
+          "response": "Este cine importa más de lo que cree. No sé quién la dijo primero. Pero es verdad. Lo sé porque llevo aquí más tiempo del que parece. Y este sitio resiste. Como las piedras en un río. El agua pasa. Las piedras se quedan."
+        },
+        {
+          "id": "eb9_q5",
+          "text": "Te echaré de menos, a tu manera.",
+          "response": "A mi manera. Que no es la tuya. Pero tampoco es peor. Solo distinta. Como una sombra no es peor que la cosa que la proyecta. Solo está en otro sitio. Más abajo. Más quieta. Más permanente."
+        },
+        {
+          "id": "eb9_q6",
+          "text": "Última película?",
+          "response": "Pon lo que pongas. No la voy a ver. Voy a sentarme al fondo. En la última fila. Donde siempre. Y voy a escuchar cómo respira la gente. Es mi forma favorita de existir. O lo que sea esto."
+        }
+      ]
+    }
+  ]
+}

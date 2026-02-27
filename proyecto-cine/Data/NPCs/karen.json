@@ -1,0 +1,381 @@
+{
+  "id": "karen",
+  "name": "Karen Mitchell",
+  "illustration": "res://Assets/Customers/chica_radio.png",
+  "npc_type": "human",
+  "patience": 7,
+  "tip": 2,
+  "_info": {
+    "description": "Locutora de la radio local. Entusiasta, habla rápido, ama la cultura pop. Usa la radio para mantener el ánimo del pueblo. Poco a poco descubre que los oyentes le cuentan cosas inquietantes.",
+    "occupation": "Locutora de radio",
+    "age": 30,
+    "traits": ["entusiasta", "rápida", "pop culture", "perceptiva"],
+    "arc": "Empieza siendo la chica divertida y pop. Poco a poco revela que usa la radio para algo más que entretenimiento: mantiene al pueblo unido. Acaba siendo una aliada que comparte información valiosa sobre lo que los oyentes reportan."
+  },
+  "preferences": {
+    "must": ["comedy", "adventure"],
+    "must_not": ["horror", "crime"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "orange",
+    "food": "",
+    "popcorn": true,
+    "butter": false,
+    "caramel": false,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "¡Hola, hola, hola! Soy Karen Mitchell, de Radio Maple, 98.7 FM. Seguro que me has oído alguna mañana. O no, porque nadie escucha la radio local. Pero aquí estoy, viniendo al cine como una persona normal. ¿Qué tienes para mí?",
+      "questions": [
+        {
+          "id": "k1_q1",
+          "text": "¿Llevas la radio local tú sola?",
+          "response": "Prácticamente. Tengo un técnico de sonido, Gary, que se encarga de que no explote nada. Pero la programación, las entrevistas, la música y la locución son cosa mía. Ocho horas al día hablando sola en una cabina. Es terapéutico, en cierto modo."
+        },
+        {
+          "id": "k1_q2",
+          "text": "¿Qué tipo de programas haces?",
+          "response": "De todo. Noticias locales por la mañana, música por la tarde, y un programa de llamadas los viernes por la noche que se llama 'Maple Nights.' La gente llama para pedir canciones, contar historias, quejarse del alcalde. Es caótico pero divertido."
+        },
+        {
+          "id": "k1_q3",
+          "text": "¿Te gusta el cine?",
+          "response": "Me encanta. Soy de las que se sabe los diálogos de memoria. Comedias sobre todo. Y aventuras. Nada de terror, que me paso tres noches sin dormir. Soy muy sugestionable, es un defecto profesional."
+        },
+        {
+          "id": "k1_q4",
+          "text": "¿Llevas mucho en el pueblo?",
+          "response": "Diez años. Vine de Portland para las prácticas de la universidad y me quedé. La radio de un pueblo pequeño no tiene el glamour de las grandes emisoras, pero tiene algo mejor: la gente te escucha de verdad. Saben tu nombre."
+        },
+        {
+          "id": "k1_q5",
+          "text": "¿Mucha gente escucha la radio?",
+          "response": "Más de la que crees. Los granjeros la ponen por la mañana, las tiendas la tienen de fondo, y los jubilados son mis fans más fieles. La señora Henderson me llama cada viernes para pedir a Frank Sinatra. Sin falta."
+        },
+        {
+          "id": "k1_q6",
+          "text": "¿Qué te apetece ver?",
+          "response": "Algo divertido y con acción. De esas donde pasan cosas todo el rato y no te aburres ni un segundo. Tengo el cerebro acostumbrado a ir a mil por hora, necesito estímulos."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Buenas! He venido volando. Acabo de terminar el programa de la tarde y me he dicho: Karen, te mereces una película. La del otro día fue genial, por cierto. La mencioné en antena.",
+      "questions": [
+        {
+          "id": "k2_q1",
+          "text": "¿Mencionaste el cine en la radio?",
+          "response": "Sí, le di un par de menciones gratis. Publicidad no pagada, que es la mejor. Dije que había un cine en el pueblo donde te recomiendan películas en persona. Como en los viejos tiempos. A la gente le gustó."
+        },
+        {
+          "id": "k2_q2",
+          "text": "¿Cómo va la radio?",
+          "response": "Bien, aunque los viernes están siendo raros. El programa de llamadas está recibiendo... mensajes extraños. No amenazas ni nada de eso. Más bien gente que llama para contar cosas que no entiende. Ruidos, luces, sensaciones."
+        },
+        {
+          "id": "k2_q3",
+          "text": "¿Qué tipo de cosas cuentan?",
+          "response": "Un señor llamó diciendo que su perro llevaba tres noches ladrando hacia el bosque a las tres de la madrugada. Otra señora dijo que las luces de su calle parpadean siempre a la misma hora. Cosas así. Solas no significan nada, pero juntas..."
+        },
+        {
+          "id": "k2_q4",
+          "text": "¿Te preocupa?",
+          "response": "No sé si preocupar es la palabra. Me intriga. Soy periodista, al fin y al cabo. Cuando veo un patrón, quiero tirar del hilo. Pero también sé que a veces la gente ve patrones donde no los hay."
+        },
+        {
+          "id": "k2_q5",
+          "text": "¿Qué has hecho con esos testimonios?",
+          "response": "Los apunto todos. Tengo un cuaderno donde anoto la fecha, la hora y lo que cuenta cada persona. Es deformación profesional. Aún no sé si es algo o nada, pero prefiero tener los datos por si acaso."
+        },
+        {
+          "id": "k2_q6",
+          "text": "¿Qué quieres ver hoy?",
+          "response": "Una aventura. De las que te hacen sentir que el mundo es grande y emocionante. Necesito salir un rato de mi cabina y de mi cuaderno de misterios."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. Hoy no vengo tan animada como siempre. Llevo una semana dándole vueltas a algo y necesito hablar con alguien que no sea mi micrófono.",
+      "questions": [
+        {
+          "id": "k3_q1",
+          "text": "¿Qué te ronda?",
+          "response": "Las llamadas al programa. Cada viernes son más. Y más raras. La semana pasada una chica joven llamó llorando diciendo que su hermano no era su hermano. Que parecía él pero no era él. Le colgué porque pensé que era una broma. Pero su voz..."
+        },
+        {
+          "id": "k3_q2",
+          "text": "¿Crees que decía la verdad?",
+          "response": "No lo sé. Pero la forma en que lo dijo... No era una broma. Estaba aterrada. Y no es la primera vez que alguien llama con algo así. La gente de este pueblo está viendo cosas y no sabe a quién contárselo."
+        },
+        {
+          "id": "k3_q3",
+          "text": "¿Has hablado con alguien sobre esto?",
+          "response": "Con Gary, mi técnico. Me miró por encima de las gafas y me dijo: 'Karen, este pueblo siempre ha sido raro. Tú solo no te habías dado cuenta.' Lleva aquí toda la vida. Sabe cosas que no cuenta."
+        },
+        {
+          "id": "k3_q4",
+          "text": "¿Qué vas a hacer?",
+          "response": "Seguir escuchando. Es lo que mejor sé hacer. Si la gente necesita un sitio donde contar lo que les pasa, la radio puede ser ese sitio. Aunque lo que cuenten me dé escalofríos."
+        },
+        {
+          "id": "k3_q5",
+          "text": "¿No tienes miedo de que te afecte?",
+          "response": "Ya me afecta. Antes dormía como un tronco. Ahora me quedo despierta pensando en las llamadas. En los patrones. En si debería hacer algo más que apuntarlos en un cuaderno."
+        },
+        {
+          "id": "k3_q6",
+          "text": "¿Qué necesitas ver hoy?",
+          "response": "Algo que me haga reír. De verdad. Una comedia tonta, sin pretensiones. Necesito dos horas sin pensar en llamadas misteriosas ni en cuadernos llenos de notas."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Hola! Vale, hoy vengo con energías renovadas. He decidido que voy a hacer algo con toda la información que tengo. Algo productivo.",
+      "questions": [
+        {
+          "id": "k4_q1",
+          "text": "¿Qué tienes en mente?",
+          "response": "Un especial de radio. 'Historias del pueblo.' Voy a recopilar los testimonios, anonimizarlos, y emitirlos como un programa especial. Si esto es real, la gente merece saberlo. Si no lo es, al menos será buen entretenimiento."
+        },
+        {
+          "id": "k4_q2",
+          "text": "¿No te da miedo la reacción?",
+          "response": "Un poco. Hay gente que se va a reír y gente que se va a asustar. Pero la función de un medio de comunicación es informar, ¿no? Aunque sea un medio de comunicación con un solo micrófono y un técnico medio dormido."
+        },
+        {
+          "id": "k4_q3",
+          "text": "¿Gary te apoya?",
+          "response": "A su manera. Me dijo: 'Si lo haces, hazlo bien. No como esos programas sensacionalistas.' Y tiene razón. Quiero ser seria. Presentar los hechos y dejar que la gente saque sus propias conclusiones."
+        },
+        {
+          "id": "k4_q4",
+          "text": "¿Has descubierto algo nuevo?",
+          "response": "He cruzado las fechas de todas las llamadas con el calendario. Las quejas aumentan los martes y los viernes. Siempre entre las diez y las tres de la madrugada. No sé qué significa, pero es un patrón demasiado claro para ser coincidencia."
+        },
+        {
+          "id": "k4_q5",
+          "text": "¿Alguien más investiga esto?",
+          "response": "El sheriff ha pasado un par de veces por la emisora a pedirme las grabaciones. No me ha dicho para qué, pero se le notaba preocupado. Si el sheriff se lo toma en serio, algo hay."
+        },
+        {
+          "id": "k4_q6",
+          "text": "¿Qué te apetece ver?",
+          "response": "Una aventura. De las que te hacen sentir valiente. Necesito cargar las pilas antes de lanzarme a hacer periodismo de investigación en un pueblo de tres mil habitantes."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Emití el especial. La reacción ha sido... intensa. Mucha gente llamando. Algunos enfadados, otros agradecidos. Y algunos que me han contado cosas nuevas que no sabía.",
+      "questions": [
+        {
+          "id": "k5_q1",
+          "text": "¿Cómo fue el programa?",
+          "response": "Una hora y media de testimonios. Sin música, sin efectos. Solo las voces de la gente contando lo que han visto. Fue sobrecogedor. Gary me dijo después que fue lo mejor que he hecho en la radio. Y Gary no hace cumplidos."
+        },
+        {
+          "id": "k5_q2",
+          "text": "¿Quién se enfadó?",
+          "response": "El alcalde. Me llamó al día siguiente diciendo que estoy creando pánico innecesario. Que el pueblo tiene bastantes problemas sin que yo invente fantasmas. Le dije que no he inventado nada, solo he puesto un micrófono delante de la gente."
+        },
+        {
+          "id": "k5_q3",
+          "text": "¿Y los que estaban agradecidos?",
+          "response": "Muchos. Gente que pensaba que estaba loca por ver cosas raras y ahora sabe que no es la única. Una señora me abrazó en el supermercado y me dijo: 'Gracias por hacerme sentir que no estoy sola.' Eso vale más que cualquier rating."
+        },
+        {
+          "id": "k5_q4",
+          "text": "¿Has recibido amenazas?",
+          "response": "No amenazas exactamente. Pero alguien dejó una nota en la puerta de la emisora que decía: 'Hay cosas que es mejor no remover.' Sin firma. Gary lo fotografió y se lo dimos al sheriff. Él tampoco parecía sorprendido."
+        },
+        {
+          "id": "k5_q5",
+          "text": "¿Vas a seguir con esto?",
+          "response": "Sí. Ahora más que nunca. Si alguien se ha molestado en dejar una nota, es que estoy tocando algo importante. La verdad no siempre es cómoda, pero alguien tiene que contarla. Y resulta que tengo un micrófono."
+        },
+        {
+          "id": "k5_q6",
+          "text": "¿Qué película quieres?",
+          "response": "Algo con humor. Necesito equilibrar toda la tensión de esta semana con algo que me haga soltar una carcajada. El cerebro necesita descansar."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas. He estado pensando mucho. En la radio, en el pueblo, en lo que hago y por qué lo hago. Necesitaba venir aquí a resetearme.",
+      "questions": [
+        {
+          "id": "k6_q1",
+          "text": "¿Qué te tiene tan pensativa?",
+          "response": "Me he dado cuenta de que la radio no es solo entretenimiento. Para mucha gente de este pueblo es su conexión con el mundo. Hay ancianos que viven solos y mi voz es lo primero que oyen cada mañana. Eso es una responsabilidad enorme."
+        },
+        {
+          "id": "k6_q2",
+          "text": "¿Te pesa esa responsabilidad?",
+          "response": "A veces. Pero también me da un propósito. Cuando vine de Portland pensé que era un paso atrás. Una radio local en un pueblo perdido. Ahora sé que es lo más importante que he hecho nunca."
+        },
+        {
+          "id": "k6_q3",
+          "text": "¿Siguen llegando llamadas raras?",
+          "response": "Menos, pero más concretas. La gente ya no llama para contar cosas vagas. Ahora dan fechas, horas, ubicaciones. Es como si el programa les hubiera dado permiso para ser específicos. Tengo un mapa del pueblo lleno de chinchetas."
+        },
+        {
+          "id": "k6_q4",
+          "text": "¿Has encontrado algún patrón nuevo?",
+          "response": "Las chinchetas se concentran en tres zonas: el bosque norte, el barrio viejo y... cerca de aquí, la verdad. No sé si significa algo o si es porque la gente de estas zonas es la que más escucha la radio. Pero ahí está."
+        },
+        {
+          "id": "k6_q5",
+          "text": "¿Le has contado esto al sheriff?",
+          "response": "Sí. Me escuchó sin interrumpir, que viniendo de Dale es mucho. Luego se quedó mirando el mapa un buen rato y dijo: 'Karen, ten cuidado.' No me dijo de qué, pero me lo dijo muy en serio."
+        },
+        {
+          "id": "k6_q6",
+          "text": "¿Qué quieres ver esta noche?",
+          "response": "Algo de aventura. Sobre alguien que descubre un misterio y lo resuelve. O al menos lo intenta. Necesito sentir que buscar la verdad sirve para algo."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Hola! Hoy vengo animada. He tomado una decisión importante sobre la radio. Y quería contártelo antes que a nadie.",
+      "questions": [
+        {
+          "id": "k7_q1",
+          "text": "¿Qué has decidido?",
+          "response": "Voy a hacer un programa semanal fijo sobre el pueblo. No solo las cosas raras, todo. Las historias de la gente, los recuerdos, las preocupaciones. Un archivo oral. Para que quede constancia de lo que fue este lugar."
+        },
+        {
+          "id": "k7_q2",
+          "text": "¿Por qué 'lo que fue'?",
+          "response": "Porque los pueblos cambian. O desaparecen. Y cuando eso pasa, las historias se pierden. No quiero que eso le pase a este pueblo. Aunque se vaya vaciando, las voces de su gente merecen ser recordadas."
+        },
+        {
+          "id": "k7_q3",
+          "text": "¿La gente participa?",
+          "response": "Más de lo que esperaba. He entrevistado a quince personas esta semana. Gente mayor sobre todo. Me cuentan cómo era el pueblo hace treinta, cuarenta años. Las tiendas que había, las fiestas, los veranos. Es precioso y triste a la vez."
+        },
+        {
+          "id": "k7_q4",
+          "text": "¿Gary sigue contigo?",
+          "response": "Más comprometido que nunca. Ha empezado a digitalizar las cintas viejas de la emisora. Hay grabaciones de los años sesenta ahí dentro. Voces de gente que ya no está. Es como encontrar un tesoro."
+        },
+        {
+          "id": "k7_q5",
+          "text": "¿Cómo te sientes con todo esto?",
+          "response": "Plena. Por primera vez siento que hago algo que importa de verdad. No es solo poner canciones y dar el tiempo. Es preservar la memoria de un lugar. Suena grandilocuente, pero es lo que es."
+        },
+        {
+          "id": "k7_q6",
+          "text": "¿Qué película te apetece?",
+          "response": "Algo con corazón. Una historia sobre comunidad, sobre gente que se cuida mutuamente. Necesito recordar por qué hago lo que hago."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas noches. El programa de esta semana ha sido el más escuchado en la historia de Radio Maple. Gary casi se cae de la silla cuando vio los números.",
+      "questions": [
+        {
+          "id": "k8_q1",
+          "text": "¡Enhorabuena! ¿Qué emisión fue?",
+          "response": "La entrevista con el abuelo Morrison. Tiene noventa y dos años y lleva toda la vida aquí. Me contó cosas que no están en ningún libro. Sobre los fundadores del pueblo, sobre cosas que pasaban en el bosque hace décadas. La gente llamó durante horas después."
+        },
+        {
+          "id": "k8_q2",
+          "text": "¿Qué contó sobre el bosque?",
+          "response": "Que siempre ha habido algo ahí. Desde que él era niño. Su abuela le decía que no fuera al bosque de noche y que si oía música, no la siguiera. Pensé que era un cuento, pero lo dijo con una seriedad que no se puede fingir a los noventa y dos años."
+        },
+        {
+          "id": "k8_q3",
+          "text": "¿La gente sigue llamando?",
+          "response": "Sí, pero ha cambiado el tono. Ya no es miedo. Es más como... aceptación. La gente ha empezado a hablar de estas cosas con naturalidad. Como si nombrarlas les quitara poder. Quizás esa es la función real de la radio."
+        },
+        {
+          "id": "k8_q4",
+          "text": "¿Has pensado en llevar esto más allá?",
+          "response": "Una emisora de la ciudad me ha contactado. Quieren hacer un reportaje sobre Radio Maple y el pueblo. Les he dicho que sí, pero con condiciones: que respeten a la gente y que no conviertan esto en un circo. Son sus historias, no un espectáculo."
+        },
+        {
+          "id": "k8_q5",
+          "text": "¿Qué opina el alcalde ahora?",
+          "response": "Sigue sin hablarme. Pero su mujer me llamó en secreto para felicitarme. Me dijo que el programa de Morrison la hizo llorar. Así que diría que vamos ganando."
+        },
+        {
+          "id": "k8_q6",
+          "text": "¿Qué película quieres?",
+          "response": "Algo épico. De esas aventuras donde un grupo de gente normal hace algo extraordinario. Porque eso es lo que estamos haciendo aquí, a nuestra manera."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Vengo del estudio. He grabado el que creo que es el mejor programa que he hecho nunca. Y estoy agotada, pero feliz.",
+      "questions": [
+        {
+          "id": "k9_q1",
+          "text": "¿De qué iba el programa?",
+          "response": "Una recopilación de todo. Las voces del pueblo, las historias, los misterios, los recuerdos. Dos horas de audio que resumen lo que es este lugar. Lo he llamado 'Voces de Maple.' Es mi obra maestra, aunque suene pretencioso."
+        },
+        {
+          "id": "k9_q2",
+          "text": "¿Cuándo lo emites?",
+          "response": "El viernes. Y tengo los nervios de un estreno de Hollywood. He invitado a todo el pueblo a escucharlo. Vamos a ponerlo en la plaza con altavoces, como los cines de verano pero con radio."
+        },
+        {
+          "id": "k9_q3",
+          "text": "¿Gary está orgulloso?",
+          "response": "Gary no dice esas cosas. Pero cuando terminamos de editar, se quitó los cascos, me miró y dijo: 'Buen trabajo, Mitchell.' Viniendo de Gary, eso es como un discurso de aceptación del Oscar."
+        },
+        {
+          "id": "k9_q4",
+          "text": "¿Qué esperas que pase después?",
+          "response": "Que la gente se sienta vista. Que sepan que sus historias importan. Que este pueblo, con todos sus misterios y sus rarezas, es un lugar que vale la pena. Eso es todo lo que quiero."
+        },
+        {
+          "id": "k9_q5",
+          "text": "¿Hay algo que quieras decirme?",
+          "response": "Que gracias. Muchas de las ideas para el programa salieron de nuestras conversaciones aquí. Tú me enseñaste que escuchar es un arte. Y yo lo apliqué a la radio. Así que parte de esto es tuyo."
+        },
+        {
+          "id": "k9_q6",
+          "text": "¿Qué película te pido para hoy?",
+          "response": "Algo celebratorio. Algo que me haga sentir que hemos conseguido algo bueno. Una comedia, una aventura, lo que sea. Pero que acabe bien. Hoy quiero finales felices."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Buenas noches! La emisión en la plaza fue un éxito. Vino medio pueblo. Hubo risas, lágrimas, y al final alguien trajo sidra y nos quedamos todos charlando hasta la medianoche. Fue mágico.",
+      "questions": [
+        {
+          "id": "k10_q1",
+          "text": "¿Cómo te sientes?",
+          "response": "Como si hubiera encontrado mi sitio. Llevo diez años aquí y por fin entiendo por qué me quedé. No fue un paso atrás. Fue exactamente donde tenía que estar. Este pueblo me necesitaba y yo lo necesitaba a él."
+        },
+        {
+          "id": "k10_q2",
+          "text": "¿Qué va a ser de Radio Maple?",
+          "response": "Seguiremos. Ahora tenemos más oyentes que nunca. La emisora de la ciudad quiere retransmitir algunos programas. Y Gary ha propuesto formar a jóvenes del pueblo para que la radio siga cuando nosotros no estemos. El viejo tiene corazón."
+        },
+        {
+          "id": "k10_q3",
+          "text": "¿El alcalde ha cambiado de opinión?",
+          "response": "Apareció en la plaza. No dijo nada, solo se sentó y escuchó. Al final se acercó, me dio la mano y dijo: 'Buen programa, Mitchell.' Eso, para un político, es prácticamente una declaración de amor."
+        },
+        {
+          "id": "k10_q4",
+          "text": "¿Algún consejo para mí?",
+          "response": "Sigue haciendo lo que haces. Este cine y mi radio son parecidos: lugares donde la gente puede ser ella misma. No subestimes el poder de eso. En un mundo ruidoso, un sitio donde te escuchan de verdad es un refugio."
+        },
+        {
+          "id": "k10_q5",
+          "text": "Ha sido un placer, Karen.",
+          "response": "El placer es mío. Y oye, cuando quieras te hago una entrevista en la radio. 'El chico del cine que escucha mejor que nadie.' Sería un buen programa. Piénsalo. Y cuídate. Nos vemos aquí el próximo viernes."
+        },
+        {
+          "id": "k10_q6",
+          "text": "¿Qué quieres ver hoy?",
+          "response": "Sorpréndeme. Después de tantas noches aquí, confío en ti a ciegas. Ponme lo que más te guste a ti. Hoy quiero ver el mundo a través de tus ojos."
+        }
+      ]
+    }
+  ]
+}

@@ -93,7 +93,7 @@ func show_order(order: Dictionary) -> void:
 	for ch in items_box.get_children():
 		ch.queue_free()
 
-	_maybe_add_row(items_box, "drink",    "Bebida")
+	_maybe_add_row(items_box, "drink",    _drink_label(_order.get("drink_type", "")))
 	_maybe_add_row(items_box, "popcorn",  "Palomitas")
 	if order.get("butter",  false): _maybe_add_row(items_box, "butter",  "+ Mantequilla")
 	if order.get("caramel", false): _maybe_add_row(items_box, "caramel", "+ Caramelo")
@@ -179,15 +179,27 @@ func refresh(tray_state: Dictionary) -> void:
 			# Es una comida no pedida
 			var food_name := "Hotdog" if tray_food.contains("hotdog") else "Chocolate"
 			_add_extra_row(items_box, "EXTRA_food", food_name + " (no pedido)")
+		elif key == "drink" and _order.get("drink", false):
+			# Bebida pedida: comprobar que el tipo coincide
+			var ordered_type: String = _order.get("drink_type", "")
+			var placed_type: String  = String(tray_state.get("drink_type", ""))
+			if ordered_type == "" or placed_type == ordered_type:
+				continue  # tipo correcto o sin tipo especificado → no es extra
+			# Tipo incorrecto → avisar
+			_add_extra_row(items_box, "EXTRA_drink", _drink_label(placed_type) + " (no pedida)")
 		elif _order.get(key, false):
 			continue  # estaba pedido, no es extra
 		else:
 			_add_extra_row(items_box, "EXTRA_" + key, String(extra_checks[key][1]))
 
 func is_complete(tray_state: Dictionary) -> bool:
+	# Comprobar que todos los items pedidos están en la bandeja
 	for key in _rows.keys():
 		if not _item_satisfied(key, tray_state):
 			return false
+	# Comprobar que NO hay extras no pedidos en la bandeja
+	if _has_extras(tray_state):
+		return false
 	return true
 
 func missing_count(tray_state: Dictionary) -> int:
@@ -195,7 +207,48 @@ func missing_count(tray_state: Dictionary) -> int:
 	for key in _rows.keys():
 		if not _item_satisfied(key, tray_state):
 			count += 1
+	# Items extras también cuentan como error
+	if _has_extras(tray_state):
+		count += 1
 	return count
+
+## Nº de items pedidos que SÍ están correctamente en la bandeja.
+func correct_count(tray_state: Dictionary) -> int:
+	var count := 0
+	for key in _rows.keys():
+		if _item_satisfied(key, tray_state):
+			count += 1
+	return count
+
+## True si la bandeja contiene items que NO fueron pedidos.
+func _has_extras(tray_state: Dictionary) -> bool:
+	# Bebida no pedida
+	if bool(tray_state.get("drink", false)) and not bool(_order.get("drink", false)):
+		return true
+	# Tipo de bebida incorrecto
+	if bool(tray_state.get("drink", false)) and bool(_order.get("drink", false)):
+		var otype: String = String(_order.get("drink_type", ""))
+		var ptype: String = String(tray_state.get("drink_type", ""))
+		if otype != "" and ptype != "" and otype != ptype:
+			return true
+	# Palomitas no pedidas
+	if bool(tray_state.get("popcorn", false)) and not bool(_order.get("popcorn", false)):
+		return true
+	# Comida no pedida o tipo equivocado
+	var tray_food: String = String(tray_state.get("food", ""))
+	var order_food: String = String(_order.get("food", ""))
+	if tray_food != "" and (order_food == "" or not tray_food.contains(order_food)):
+		return true
+	# Toppings no pedidos
+	if bool(tray_state.get("ketchup", false)) and not bool(_order.get("ketchup", false)):
+		return true
+	if bool(tray_state.get("mustard", false)) and not bool(_order.get("mustard", false)):
+		return true
+	if bool(tray_state.get("butter", false)) and not bool(_order.get("butter", false)):
+		return true
+	if bool(tray_state.get("caramel", false)) and not bool(_order.get("caramel", false)):
+		return true
+	return false
 
 # ──────────────────────────────────────────────────────────────
 # Internos
@@ -215,7 +268,7 @@ func _maybe_add_row(parent: VBoxContainer, key: String, label_text: String) -> v
 
 func _row_label(key: String) -> String:
 	match key:
-		"drink":    return "Bebida"
+		"drink":    return _drink_label(_order.get("drink_type", ""))
 		"popcorn":  return "Palomitas"
 		"butter":   return "+ Mantequilla"
 		"caramel":  return "+ Caramelo"
@@ -266,9 +319,24 @@ func _complete_style() -> StyleBoxFlat:
 	sb.shadow_size  = 8
 	return sb
 
+func _drink_label(drink_type: String) -> String:
+	match drink_type:
+		"cola":     return "Cola"
+		"orange":   return "Naranjada"
+		"rootbeer": return "Root Beer"
+	return "Bebida"
+
 func _item_satisfied(key: String, tray: Dictionary) -> bool:
 	match key:
-		"drink":   return bool(tray.get("drink",   false))
+		"drink":
+			if not bool(tray.get("drink", false)):
+				return false
+			# Validar que el tipo de bebida coincide con el pedido
+			var ordered_type: String = _order.get("drink_type", "")
+			if ordered_type == "":
+				return true  # no se especificó tipo, cualquier bebida vale
+			var placed_type: String = String(tray.get("drink_type", ""))
+			return placed_type == ordered_type
 		"popcorn": return bool(tray.get("popcorn", false))
 		"butter":  return bool(tray.get("butter",  false))
 		"caramel": return bool(tray.get("caramel", false))

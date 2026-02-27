@@ -2,20 +2,20 @@ extends Node
 
 func label(tag_id: String) -> String:
 	match tag_id:
-		"action": return "Acción"
-		"comedy": return "Comedia"
-		"horror": return "Terror"
-		"thriller": return "Thriller"
-		"mystery": return "Misterio"
-		"scifi": return "Sci-Fi"
-		"drama": return "Drama"
-		"crime": return "Crimen"
-		"fantasy": return "Fantasía"
+		"action":    return "Acción"
+		"comedy":    return "Comedia"
+		"horror":    return "Terror"
+		"thriller":  return "Thriller"
+		"mystery":   return "Misterio"
+		"scifi":     return "Sci-Fi"
+		"drama":     return "Drama"
+		"crime":     return "Crimen"
+		"fantasy":   return "Fantasía"
 		"adventure": return "Aventura"
-		"dark": return "Oscura"
-		"light": return "Ligera"
-		"fast": return "Corta"
-		"slow": return "Larga"
+		"dark":      return "Oscura"
+		"popcorn":   return "Para pasar el rato"
+		"slow_burn": return "Película lenta"
+		"fast":      return "Corta"
 		_: return tag_id
 
 # Colores fijos por tag (para UI consistente)
@@ -31,21 +31,21 @@ func color(tag_id: String) -> Color:
 		"crime":     return Color(0.35, 0.35, 0.35)
 		"fantasy":   return Color(0.45, 0.35, 0.85)
 		"adventure": return Color(0.85, 0.40, 0.10)
-		"dark":      return Color(0.10, 0.10, 0.12)
-		"light":     return Color(0.70, 0.70, 0.70)
-		"fast":      return Color(0.85, 0.75, 0.20) # Corta
-		"slow":      return Color(0.20, 0.35, 0.55) # Larga
+		"dark":      return Color(0.22, 0.22, 0.26)
+		"popcorn":   return Color(0.85, 0.70, 0.15)  # amarillo palomitas
+		"slow_burn": return Color(0.20, 0.35, 0.55)  # azul pausado
+		"fast":      return Color(0.85, 0.75, 0.20)
 		_:           return Color(0.25, 0.25, 0.28)
 
-# El jugador NO puede elegir corta/larga (viene por duración)
+# El jugador NO puede elegir corta/lenta (vienen por duración)
 func is_selectable(tag_id: String) -> bool:
-	return not (tag_id == "fast" or tag_id == "slow")
+	return not (tag_id == "fast" or tag_id == "slow_burn")
 
 func all_tags() -> Array[String]:
 	return [
 		"action","drama","comedy",
 		"horror","thriller","mystery",
 		"scifi","crime","fantasy",
-		"adventure","dark","light",
-		"fast","slow"
+		"adventure","dark","popcorn",
+		"slow_burn","fast"
 	]

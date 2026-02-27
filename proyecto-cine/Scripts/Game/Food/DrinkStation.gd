@@ -12,9 +12,9 @@ const DONE_SCENE_PATH := "res://Scenes/Props/DrinkDone.tscn"
 @export var hold_point_path: NodePath
 @export var cup_dispenser_area_path: NodePath
 
-@export var nozzle_cola_path: NodePath
-@export var nozzle_orange_path: NodePath
-@export var nozzle_rootbeer_path: NodePath
+@export var nozzle_cola_path: NodePath      # → stock item "cola"
+@export var nozzle_orange_path: NodePath    # → stock item "orange"
+@export var nozzle_rootbeer_path: NodePath  # → stock item "rootbeer"
 
 @export var fill_seconds: float = 2.0
 @export var snap_time: float = 0.10
@@ -28,7 +28,8 @@ var _tray: Node3D = null
 var _hud: Node = null
 
 var _nozzles: Array[Area3D] = []
-var _nozzle_to_snap: Dictionary = {} # Area3D -> Marker3D
+var _nozzle_to_snap: Dictionary = {}   # Area3D -> Marker3D
+var _nozzle_to_drink: Dictionary = {}  # Area3D -> String ("cola"/"orange"/"rootbeer")
 
 enum State { IDLE, HOLDING, FILLING }
 var _state: int = State.IDLE
@@ -48,7 +49,9 @@ func set_tray(tray: Node3D) -> void:
 
 func set_active(on: bool) -> void:
 	active = on
-	if not active:
+	if active:
+		sync_nozzle_visibility()
+	else:
 		_cleanup_use()
 
 func _ready() -> void:
@@ -78,19 +81,20 @@ func _ready() -> void:
 		print("FORCED use_scene =", USE_SCENE_PATH, " ok=", _use_scene != null)
 		print("FORCED done_scene =", DONE_SCENE_PATH, " ok=", _done_scene != null)
 
-	_setup_nozzle(nozzle_cola_path)
-	_setup_nozzle(nozzle_orange_path)
-	_setup_nozzle(nozzle_rootbeer_path)
+	_setup_nozzle(nozzle_cola_path,     "cola")
+	_setup_nozzle(nozzle_orange_path,   "orange")
+	_setup_nozzle(nozzle_rootbeer_path, "rootbeer")
 
 	set_process(true)
 	set_process_unhandled_input(true)
 
-func _setup_nozzle(path: NodePath) -> void:
+func _setup_nozzle(path: NodePath, drink_type: String) -> void:
 	var noz := get_node_or_null(path) as Area3D
 	if noz == null:
 		return
 	_nozzles.append(noz)
-	_nozzle_to_snap[noz] = noz.get_node_or_null("SnapPoint") as Marker3D
+	_nozzle_to_snap[noz]  = noz.get_node_or_null("SnapPoint") as Marker3D
+	_nozzle_to_drink[noz] = drink_type
 
 func _process(_delta: float) -> void:
 	if not active:
@@ -175,6 +179,13 @@ func _kill_snap_tween() -> void:
 	_snap_tween = null
 
 func _start_fill() -> void:
+	# Validar stock antes de llenar
+	if _hover_nozzle != null:
+		var dt: String = String(_nozzle_to_drink.get(_hover_nozzle, ""))
+		if dt != "" and not StockManager.has_stock(dt):
+			_cleanup_use()
+			return
+
 	_state = State.FILLING
 	_set_fill_ui(true, 0)
 
@@ -190,6 +201,13 @@ func _start_fill() -> void:
 func _finish_fill() -> void:
 	_set_fill_ui(false, 100)
 
+	# Descontar stock de la bebida del grifo usado
+	var drink_type: String = ""
+	if _hover_nozzle != null:
+		drink_type = String(_nozzle_to_drink.get(_hover_nozzle, "cola"))
+		if not StockManager.use(drink_type):
+			push_warning("DrinkStation: sin stock de " + drink_type)
+
 	if is_instance_valid(_cup_use):
 		_cup_use.queue_free()
 	_cup_use = null
@@ -198,6 +216,13 @@ func _finish_fill() -> void:
 	_hover_nozzle = null
 
 	_spawn_done_on_tray()
+
+	# Notificar a la bandeja qué tipo de bebida fue colocada (para validación)
+	if _tray != null and is_instance_valid(_tray) and drink_type != "":
+		if _tray.has_method("set_drink_type"):
+			_tray.call("set_drink_type", drink_type)
+
+	sync_nozzle_visibility()
 
 func _spawn_done_on_tray() -> void:
 	if _tray == null:
@@ -267,3 +292,10 @@ func _raycast() -> Dictionary:
 func _set_fill_ui(show_it: bool, percent: int) -> void:
 	if _hud != null and _hud.has_method("set_fill_progress"):
 		_hud.call("set_fill_progress", show_it, percent)
+
+## Oculta/muestra los nozzles 3D según stock disponible.
+func sync_nozzle_visibility() -> void:
+	for noz in _nozzles:
+		var drink_type: String = String(_nozzle_to_drink.get(noz, ""))
+		if drink_type != "":
+			noz.visible = StockManager.has_stock(drink_type)

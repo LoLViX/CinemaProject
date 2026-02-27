@@ -1,6 +1,33 @@
 extends Node
 class_name InteractionController
 
+const _StockPurchaseUIScript  = preload("res://Scripts/UI/StockPurchaseUI.gd")
+const _PatienceSystemScript   = preload("res://Scripts/Game/PatienceSystem.gd")
+const _DialogueSystemScript   = preload("res://Scripts/Game/DialogueSystem.gd")
+
+# ── FUNCTION MAP (leer solo líneas necesarias en cada sesión) ─────────────────
+# _ready()                    L57  — setup nodos, señales, patience, dialogue
+# _start_day()                L117 — init lista clientes, satisfacción máx
+# _process()                  L162 — barra paciencia + input E
+# _on_recommend_movie()       L225 — matching, dinero, → fase comida
+# _on_food_done()             L305 — propina, stock, satisfacción bandeja
+# _show_reaction()            L409 — label flotante sobre cliente 3D
+# _advance_customer()         L441 — avanzar índice, fin de día
+# _show_end_of_day()          L454 — eventos fin día, StockPurchaseUI
+# _show_results_screen()      L497 — EndOfDayUI
+# _on_next_day()              L510 — DaySystem.next_day(), DaySetupUI
+# _on_patience_warning()      L562 — aviso paciencia baja
+# _on_patience_depleted()     L574 — cliente se va sin ser atendido
+# _on_counter_ready()         L602 — cliente llega al mostrador
+# _on_counter_left()          L618 — cliente sale
+# _needs_dialogue()           L633 — ¿NPC necesita diálogo previo?
+# _show_npc_dialogue()        L644 — familia / grief / NPC encounter
+# _open_movie_panel()         L685 — abre panel de recomendar película
+# _get_supplanted_encounter() L691 — encuentro entidad para suplantado (Fase 2+)
+# _start_food_directly()      L718 — fase comida sin película (duelo, Fase 2+)
+# _update_special_room_hud()  L755 — actualiza indicador Sala Especial (Fase 2+)
+# ─────────────────────────────────────────────────────────────────────────────
+
 @export var customer_manager_path: NodePath
 @export var hud_path: NodePath
 @export var food_controller_path: NodePath
@@ -20,6 +47,12 @@ var _last_result: String = ""
 var _last_food_complete: bool = false   # para la reacción flotante
 
 var _special_waiting_ack: bool = false
+
+# PatienceSystem
+var _patience: Node = null
+
+# DialogueSystem
+var _dialogue: Node = null
 
 func _ready() -> void:
 	manager = get_node_or_null(customer_manager_path)
@@ -43,6 +76,38 @@ func _ready() -> void:
 	if food.has_signal("food_phase_done"):
 		food.connect("food_phase_done", Callable(self, "_on_food_done"))
 
+	# PatienceSystem
+	_patience = _PatienceSystemScript.new()
+	add_child(_patience)
+	_patience.patience_depleted.connect(_on_patience_depleted)
+	_patience.patience_warning.connect(_on_patience_warning)
+	_patience.patience_critical.connect(_on_patience_critical)
+
+	# DialogueSystem — se adjunta al HUD para que el panel salga en 2D
+	_dialogue = _DialogueSystemScript.new()
+	add_child(_dialogue)
+	_dialogue.init(hud)
+	# Drenar paciencia cuando el jugador hace una pregunta al NPC
+	_dialogue.question_asked.connect(func():
+		if _patience != null:
+			_patience.drain_wrong_answer()
+	)
+
+	# ContaminationManager — aplicar tinte cuando el nivel cambia (Fase 2+)
+	if RunState.CURRENT_PHASE >= 2:
+		if ContaminationManager.has_signal("level_changed"):
+			ContaminationManager.level_changed.connect(func(_lv: float):
+				ContaminationManager.apply_hud_tint(hud)
+			)
+		ContaminationManager.apply_hud_tint(hud)
+
+	# SpecialRoom — actualizar indicador de sala especial (Fase 2+)
+	if RunState.CURRENT_PHASE >= 2:
+		if SpecialRoom.has_signal("neutralized"):
+			SpecialRoom.neutralized.connect(func(_id: String): _update_special_room_hud())
+		if SpecialRoom.has_signal("capacity_recharged"):
+			SpecialRoom.capacity_recharged.connect(func(_cap: int): _update_special_room_hud())
+
 	var ui := get_tree().get_first_node_in_group("day_setup_ui")
 	if ui != null and ui.has_signal("day_setup_done"):
 		ui.connect("day_setup_done", Callable(self, "_start_day"))
@@ -55,19 +120,13 @@ func _start_day() -> void:
 	_last_food_complete = false
 	_update_debug()
 	_special_waiting_ack = false
+	# day_max_satisfaction se calcula después de saber cuántos clientes hay
 
-	var plan: Array = []
 	var day_i := int(RunState.day_index) if "day_index" in RunState else 1
-	plan = DayPlanDB.load_day_plan(day_i)
 
 	# Dificultad escala con el día (1→3)
 	var difficulty := clampi(day_i, 1, 3)
-
-	if plan.size() > 0:
-		_customer_list = _build_customers_from_plan(plan, difficulty)
-	else:
-		var count := RunState.customers_per_day
-		_customer_list = CustomerDB.build_day_customers(RunState.todays_movies, count, difficulty)
+	_customer_list = DayPlanDB.build_day(day_i, difficulty)
 
 	if _customer_list.size() == 0:
 		_customer_list = [{
@@ -85,29 +144,39 @@ func _start_day() -> void:
 	_customer_index = 0
 	_current_customer = _customer_list[0]
 
+	# Pasar ilustraciones al CustomerManager para asignar sprites
+	if manager.has_method("set_illustrations"):
+		var illus_list: Array = []
+		for c in _customer_list:
+			illus_list.append(c.get("illustration", ""))
+		manager.call("set_illustrations", illus_list)
+
 	if manager.has_method("start_day"):
 		manager.call("start_day", _customer_list.size())
+
+	# Calcular satisfacción máxima posible del día
+	var normal_count: int = 0
+	for c in _customer_list:
+		if not _is_special(c):
+			normal_count += 1
+	RunState.day_max_satisfaction = normal_count * RunState.SAT_MAX_PER_CUSTOMER
+	_update_satisfaction_hud()
 
 	# Actualizar cola visual
 	_update_queue()
 
-func _build_customers_from_plan(plan: Array, difficulty: int = 1) -> Array:
-	var out: Array = []
-	for e in plan:
-		var kind := String(e.get("kind","normal"))
-		if kind == "special":
-			out.append({
-				"type":"special",
-				"request_text": String(e.get("text","")),
-				"exit_lane":"alt"
-			})
-		else:
-			var built := CustomerDB.build_day_customers(RunState.todays_movies, 1, difficulty)
-			if built.size() > 0:
-				out.append(built[0])
-	return out
 
 func _process(_delta: float) -> void:
+	# Actualizar barra de paciencia cada frame (tanto en fase conversación como comida)
+	if _patience != null and _counter_ready:
+		if hud != null and is_instance_valid(hud) and hud.has_method("set_patience_bar"):
+			var profile := String(_current_customer.get("patience_profile", "normal"))
+			if profile != "entity" and not _patience.is_depleted():
+				var is_crit: bool = _patience.is_critical()
+				hud.call("set_patience_bar", true, _patience.get_fraction(), is_crit)
+			elif profile == "entity" or _patience.is_depleted():
+				hud.call("set_patience_bar", false, 0.0, false)
+
 	if _in_food:
 		return
 
@@ -118,6 +187,10 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("serve_next"):
 		# Si el panel de recomendar está abierto, ignorar E
 		if hud.has_method("is_attend_open") and hud.call("is_attend_open"):
+			return
+
+		# Si el diálogo de NPC está abierto, ignorar E
+		if _dialogue != null and _dialogue.is_open():
 			return
 
 		# Segundo E para despachar al especial
@@ -148,9 +221,13 @@ func _process(_delta: float) -> void:
 			hud.call("show_prompt", "ui.counter_ready")
 			return
 
+		# NPCs con narrative_arc y familia_alterada → diálogo primero
+		if _needs_dialogue(_current_customer):
+			_show_npc_dialogue()
+			return
+
 		# Normal: abrir panel de recomendar película
-		var line_norm: String = String(_current_customer.get("request_text","Hola… ¿me recomiendas algo?"))
-		hud.call("show_attend", line_norm, RunState.todays_movies, RunState.player_tags_by_movie)
+		_open_movie_panel()
 
 func _on_recommend_movie(movie_id: String) -> void:
 	if _in_food:
@@ -164,51 +241,93 @@ func _on_recommend_movie(movie_id: String) -> void:
 	if movie.is_empty():
 		return
 
-	var ok: bool = MatchingSystem.pass_fail(_current_customer, movie.get("true_tags", []), 2)
+	# Threshold dinámico: 1 must → threshold 1, 2 musts → threshold 2.
+	var must_count: int = (_current_customer.get("must", []) as Array).size()
+	var match_threshold: int = max(1, must_count)
+	var ok: bool = MatchingSystem.pass_fail(_current_customer, movie.get("true_tags", []), match_threshold)
+
+	# Entrada fija independientemente del acierto
+	RunState.earn_money(RunState.TICKET_PRICE)
+	if hud.has_method("show_money_popup"):
+		hud.call("show_money_popup", "+$%d entrada" % RunState.TICKET_PRICE)
+
+	# Si es entidad y elige la película de la Sala Especial → neutralización (Fase 2+)
+	if RunState.CURRENT_PHASE >= 2:
+		var is_entity: bool = String(_current_customer.get("patience_profile", "")) == "entity"
+		if is_entity and RunState.todays_movies.size() > 0:
+			var sr_movie_id: String = String(RunState.todays_movies.back().get("id", ""))
+			if movie_id == sr_movie_id:
+				var sr_npc_id: String = String(_current_customer.get("npc_id", ""))
+				if sr_npc_id != "":
+					SpecialRoom.try_neutralize(sr_npc_id)
 
 	if ok:
 		RunState.day_hits += 1
 		_last_result = "OK"
-		RunState.earn_money(50)
+		RunState.add_satisfaction(RunState.SAT_MOVIE_HIT)
 		SoundManager.play_success()
-		if hud.has_method("show_money_popup"):
-			hud.call("show_money_popup", "+$50")
 	else:
 		RunState.day_misses += 1
 		_last_result = "FALLO"
-		RunState.earn_money(10)
+		# No satisfacción por mala recomendación (tampoco drena paciencia, solo satisfacción)
 		SoundManager.play_fail()
-		if hud.has_method("show_money_popup"):
-			hud.call("show_money_popup", "+$10")
+		# La familia alterada penaliza la estabilidad (Fase 2+)
+		if RunState.CURRENT_PHASE >= 2:
+			if String(_current_customer.get("type", "")) == "familia_alterada":
+				StabilityManager.apply_delta(-15)
+				if hud != null and is_instance_valid(hud):
+					hud.call("show_message", "Los Henderson parecen… incómodos.", 2.0)
+
 	_update_debug()
+	_update_satisfaction_hud()
 
 	_in_food = true
+	# Cambiar paciencia a modo comida (drena más lento)
+	if _patience != null:
+		_patience.set_mode_food()
+	# Ocultar Sala Especial durante la fase de comida (Fase 2+)
+	if RunState.CURRENT_PHASE >= 2:
+		if hud != null and is_instance_valid(hud) and hud.has_method("hide_special_room"):
+			hud.call("hide_special_room")
 
-	var react_key: String = String(_current_customer.get("ok_key" if ok else "bad_key", "cust.react_ok.1"))
+	# La película no genera reacción textual — solo afecta satisfacción y sonido.
+	# El cliente pide su comida directamente.
 	var food_key:  String = String(_current_customer.get("food_key", "cust.foodask.1"))
 	_pending_goodbye_key   = String(_current_customer.get("bye_key", "cust.goodbye.1"))
 
-	hud.call("show_message", TextDB.t(react_key), 1.6)
-	get_tree().create_timer(1.6).timeout.connect(func():
-		hud.call("show_message", TextDB.t(food_key), 1.4)
-		get_tree().create_timer(1.4).timeout.connect(func():
-			if food.has_method("start_food_phase"):
-				var food_order: Dictionary = _current_customer.get("food_order", {})
-				food.call("start_food_phase", food_order)
-			else:
-				_on_food_done()
-		)
+	hud.call("show_message", TextDB.t(food_key), 1.4)
+	get_tree().create_timer(1.4).timeout.connect(func():
+		if food.has_method("start_food_phase"):
+			var food_order: Dictionary = _current_customer.get("food_order", {})
+			# Distorsión de comida solo en Fase 2+
+			if RunState.CURRENT_PHASE >= 2:
+				food_order = ContaminationManager.distort_food_order(food_order)
+			food.call("start_food_phase", food_order)
+		else:
+			_on_food_done()
 	)
 
 func _on_food_done() -> void:
 	if hud == null or not is_instance_valid(hud):
 		return
+	if _patience != null:
+		_patience.stop()
+	if hud.has_method("set_patience_bar"):
+		hud.call("set_patience_bar", false, 0.0)
 
-	# Leer estado de la bandeja para propina y reacción
+	# Registrar lo que ha consumido este cliente (tracking de stock vendido)
+	var customer_food_order: Dictionary = _current_customer.get("food_order", {})
+	StockManager.track_sold(customer_food_order)
+
+	# Ingresos por venta de comida
+	var food_rev: int = StockManager.food_revenue(customer_food_order)
+	if food_rev > 0:
+		RunState.earn_money(food_rev)
+		if hud != null and is_instance_valid(hud) and hud.has_method("show_money_popup"):
+			hud.call("show_money_popup", "+$%d comida" % food_rev)
+
+	# ── Evaluar bandeja ANTES de dar propina ──────────────────
 	var tray_complete := false
-	if food != null and food.has_method("get_tray") or (food != null and food.has_method("get_tray_state")):
-		pass  # se evalúa abajo via order_hud
-	# Intentar evaluar directamente desde order_hud
 	var order_hud := get_tree().get_root().find_child("*OrderHUD*", true, false)
 	if order_hud == null:
 		order_hud = get_tree().get_root().find_child("CustomerOrderHUD", true, false)
@@ -218,9 +337,8 @@ func _on_food_done() -> void:
 	if manager != null and manager.has_method("get_counter_customer"):
 		customer_node = manager.call("get_counter_customer")
 
-	# Mostrar reacción flotante y calcular propina
+	# Evaluar bandeja para satisfacción
 	if order_hud != null and order_hud.has_method("is_complete"):
-		# Necesitamos el tray_state — se obtiene desde FoodController si es posible
 		var tray_state: Dictionary = {}
 		if food != null and food.has_method("get_last_tray_state"):
 			tray_state = food.call("get_last_tray_state")
@@ -228,16 +346,28 @@ func _on_food_done() -> void:
 		_last_food_complete = tray_complete
 
 		if tray_complete:
-			RunState.earn_money(20)
+			RunState.add_satisfaction(RunState.SAT_FOOD_PERFECT)
 			SoundManager.play_cash()
-			if hud.has_method("show_money_popup"):
-				hud.call("show_money_popup", "+$20 propina")
 		else:
-			RunState.earn_money(5)
-			if hud.has_method("show_money_popup"):
-				hud.call("show_money_popup", "+$5")
+			# Parcial solo si al menos 1 item pedido está bien Y no hay extras
+			var correct: int = 0
+			if order_hud.has_method("correct_count"):
+				correct = order_hud.call("correct_count", tray_state)
+			if correct > 0:
+				RunState.add_satisfaction(RunState.SAT_FOOD_PARTIAL)
+			# correct == 0 → 0 satisfacción (todo mal o todo vacío)
 
-	# Texto flotante sobre el cliente
+	_update_satisfaction_hud()
+
+	# Propina solo si la comida fue perfecta
+	if tray_complete:
+		var tip_amount: int = int(_current_customer.get("tip", 2))
+		if tip_amount > 0:
+			RunState.earn_money(tip_amount)
+			if hud != null and is_instance_valid(hud) and hud.has_method("show_money_popup"):
+				hud.call("show_money_popup", "+$%d propina" % tip_amount)
+
+	# Texto flotante sobre el cliente (solo valora comida)
 	if is_instance_valid(customer_node):
 		_show_reaction(customer_node, tray_complete)
 
@@ -245,24 +375,30 @@ func _on_food_done() -> void:
 
 	var mgr_ref := manager
 	var food_ref := food
-	var hud_ref := hud
+	var _hud_ref := hud
 
-	get_tree().create_timer(0.35).timeout.connect(func():
-		if not is_instance_valid(mgr_ref) or not is_instance_valid(food_ref):
+	# Registrar visita NPC si corresponde (satisfacción solo por comida)
+	var npc_id: String = String(_current_customer.get("npc_id", ""))
+	if npc_id != "":
+		var sat_delta: int = 10 if tray_complete else -5
+		NPCRegistry.record_visit(npc_id, sat_delta)
+
+	# Marcar NPC como visto hoy
+	var npc_id_track: String = String(_current_customer.get("npc_id", ""))
+	if npc_id_track != "" and not RunState.npc_seen_today.has(npc_id_track):
+		RunState.npc_seen_today.append(npc_id_track)
+
+	# La bandeja ya está en el ServePoint (movida al acabar food phase).
+	# Esperar 2s para que el jugador la vea, luego quitar y despachar.
+	get_tree().create_timer(2.0).timeout.connect(func():
+		if is_instance_valid(food_ref) and food_ref.has_method("dismiss_tray"):
+			food_ref.call("dismiss_tray")
+		if not is_instance_valid(mgr_ref):
 			return
-		if mgr_ref.has_method("get_counter_customer") and food_ref.has_method("handoff_tray_to_customer"):
-			var c := mgr_ref.call("get_counter_customer") as Node3D
-			if c != null and is_instance_valid(c):
-				food_ref.call("handoff_tray_to_customer", c)
-
-		get_tree().create_timer(0.2).timeout.connect(func():
-			if not is_instance_valid(mgr_ref):
-				return
-			mgr_ref.call("serve_current")
-			_in_food = false
-			_advance_customer()
-			_update_debug()
-		)
+		mgr_ref.call("serve_current")
+		_in_food = false
+		_advance_customer()
+		_update_debug()
 	)
 
 func _show_reaction(customer_node: Node, is_perfect: bool) -> void:
@@ -311,7 +447,49 @@ func _update_queue() -> void:
 		hud.call("update_queue", _customer_index, _customer_list.size())
 
 func _show_end_of_day() -> void:
-	# Instanciar EndOfDayUI y conectar señal
+	# Calcular must_appear_tomorrow
+	RunState.compute_must_appear()
+
+	# Procesar eventos de fin de día — Fase 2+
+	if RunState.CURRENT_PHASE >= 2:
+		EventsManager.process_end_of_day()       # muertes por distorsión
+		SpecialRoom.end_of_day(RunState.satisfaction_fraction())  # recarga sala especial
+
+	# Convertir satisfacción diaria en cambio de fama
+	FameManager.process_end_of_day(RunState.satisfaction_fraction())
+
+	# Auto-save al final del día (slot 1)
+	SaveManager.save_slot(1)
+
+	# Comprobar finales antes de mostrar aprovisionamiento
+	EndingManager.check()
+	if EndingManager.is_ended():
+		return
+
+	# Victoria: completar día 10
+	if RunState.day_index >= 10:
+		if RunState.CURRENT_PHASE >= 2:
+			# Fase 2+: victoria condicionada por estabilidad
+			var victory_type: String = "victory"
+			if StabilityManager.stability < 40.0:
+				victory_type = "hollow"
+			EndingManager.trigger_victory(victory_type)
+		else:
+			# Fase 1: victoria simple
+			EndingManager.trigger_victory("victory")
+		return
+
+	# Mostrar panel de compra de stock primero
+	var spu := _StockPurchaseUIScript.new()
+	get_tree().root.add_child(spu)
+	spu.show_purchase(StockManager.end_of_day_summary())
+	spu.purchase_confirmed.connect(func(_cost: int):
+		if is_instance_valid(spu):
+			spu.queue_free()
+		_show_results_screen()
+	)
+
+func _show_results_screen() -> void:
 	var eod := EndOfDayUI.new()
 	get_tree().root.add_child(eod)
 	eod.show_results(
@@ -338,6 +516,11 @@ func _on_next_day(eod_ui: Node) -> void:
 		RunState.customers_per_day = clampi(3 + RunState.day_index * 2, 5, 10)
 		push_warning("InteractionController: DaySystem no encontrado, avanzando día manualmente")
 
+	# Ocultar Sala Especial durante la pantalla de cartelera (Fase 2+)
+	if RunState.CURRENT_PHASE >= 2:
+		if hud != null and is_instance_valid(hud) and hud.has_method("hide_special_room"):
+			hud.call("hide_special_room")
+
 	# Buscar DaySetupUI y mostrarla con las nuevas películas
 	var setup_nodes := get_tree().get_nodes_in_group("day_setup_ui")
 	if setup_nodes.size() > 0:
@@ -360,6 +543,55 @@ func _update_debug() -> void:
 func _is_special(c: Dictionary) -> bool:
 	return String(c.get("type","")) == "special"
 
+func _update_satisfaction_hud() -> void:
+	if hud == null or not is_instance_valid(hud):
+		return
+	if hud.has_method("update_satisfaction"):
+		hud.call("update_satisfaction",
+			RunState.day_satisfaction,
+			RunState.day_max_satisfaction
+		)
+
+# ── PatienceSystem ─────────────────────────────────────────────
+
+func _on_patience_warning(fraction: float) -> void:
+	if hud == null or not is_instance_valid(hud):
+		return
+	if fraction <= 0.25:
+		if hud.has_method("show_message"):
+			hud.call("show_message", "…", 0.8)
+
+func _on_patience_critical() -> void:
+	# Fase 2 activada — mostrar aviso visual
+	if hud != null and is_instance_valid(hud) and hud.has_method("show_message"):
+		hud.call("show_message", "El cliente se está impacientando...", 2.0)
+
+func _on_patience_depleted() -> void:
+	if _in_food:
+		# En fase comida: ya no hay vuelta atrás, dejar que _on_food_done lo gestione
+		return
+	if not _counter_ready:
+		return
+
+	# Cliente se va por falta de paciencia
+	if RunState.CURRENT_PHASE >= 2:
+		StabilityManager.apply_delta(-5)  # Estabilidad solo en Fase 2+
+	_counter_ready = false
+
+	if hud != null and is_instance_valid(hud):
+		hud.call("hide_prompt")
+		hud.call("hide_attend")
+		hud.call("show_message", _random_impatience_message(), 2.0)
+		if hud.has_method("set_patience_bar"):
+			hud.call("set_patience_bar", false, 0.0)
+
+	if manager != null and is_instance_valid(manager):
+		manager.call("serve_current")
+
+	_in_food = false
+	_advance_customer()
+	_update_debug()
+
 # ── Señales del CustomerManager ────────────────────────────────
 
 func _on_counter_ready(_customer: Node) -> void:
@@ -367,6 +599,13 @@ func _on_counter_ready(_customer: Node) -> void:
 	# Mostrar el prompt solo en este momento exacto
 	if not _in_food:
 		hud.call("show_prompt", "ui.counter_ready")
+	# Iniciar paciencia con el perfil del cliente actual
+	if _patience != null and not _current_customer.is_empty():
+		var profile: String = String(_current_customer.get("patience_profile", "normal"))
+		_patience.start_for(profile)
+	# Restaurar indicador Sala Especial al llegar un cliente (Fase 2+)
+	if RunState.CURRENT_PHASE >= 2 and not _in_food:
+		_update_special_room_hud()
 
 func _on_counter_changed(customer: Node) -> void:
 	_counter_ready = (customer != null)
@@ -376,3 +615,140 @@ func _on_counter_left(_customer: Node) -> void:
 	_special_waiting_ack = false
 	hud.call("hide_prompt")
 	hud.call("hide_message")
+	if hud.has_method("set_patience_bar"):
+		hud.call("set_patience_bar", false, 0.0)
+	if _patience != null:
+		_patience.stop()
+	if _dialogue != null:
+		_dialogue.hide()
+
+# ── DialogueSystem y eventos narrativos ────────────────────────
+
+## True si este cliente necesita pasar por el diálogo antes del panel de películas.
+func _needs_dialogue(c: Dictionary) -> bool:
+	if bool(c.get("is_grieving", false)):
+		return true
+	if String(c.get("type", "")) == "familia_alterada":
+		return true
+	var npc_id := String(c.get("npc_id", ""))
+	if npc_id == "":
+		return false
+	return true  # todos los NPCs pasan por diálogo
+
+## Muestra el panel de diálogo contextual para el cliente actual (NPC o familia).
+func _show_npc_dialogue() -> void:
+	if _dialogue == null:
+		_open_movie_panel()
+		return
+
+	var ctype := String(_current_customer.get("type", ""))
+
+	if ctype == "familia_alterada":
+		_dialogue.show_simple(
+			"The Hendersons",
+			String(_current_customer.get("request_text", "...")),
+			[{"text": "Recomendar una película →", "action": Callable(self, "_open_movie_panel")}]
+		)
+		return
+
+	# Grief: primer cliente en duelo
+	if bool(_current_customer.get("is_grieving", false)):
+		_dialogue.show_simple(
+			String(_current_customer.get("display_name", "Cliente")),
+			String(_current_customer.get("grief_text", "...")),
+			[{"text": "Claro... pasa.", "action": Callable(self, "_start_food_directly")}]
+		)
+		return
+
+	# NPC normal o suplantado con encounter
+	var npc_id := String(_current_customer.get("npc_id", ""))
+	var encounter: Dictionary = {}
+
+	if bool(_current_customer.get("is_supplanted", false)):
+		# Suplantado: usar encuentro de entidad en vez del humano
+		encounter = _get_supplanted_encounter(npc_id)
+	else:
+		encounter = NPCRegistry.get_current_encounter(npc_id)
+
+	if encounter.is_empty():
+		_open_movie_panel()
+		return
+
+	_dialogue.show_encounter(npc_id, encounter, Callable(self, "_open_movie_panel"))
+
+## Abre el panel de selección de película (llamado desde el diálogo o directamente).
+func _open_movie_panel() -> void:
+	var line: String = String(_current_customer.get("request_text", "Hola… ¿me recomiendas algo?"))
+	hud.call("show_attend", line, RunState.todays_movies, RunState.player_tags_by_movie)
+
+## Devuelve un encuentro de entidad aleatorio para un NPC suplantado.
+## El humano mantiene su apariencia pero usa diálogos de entidad.
+func _get_supplanted_encounter(_npc_id: String) -> Dictionary:
+	# Buscar todos los NPCs entidad en el pool
+	var entity_ids: Array = []
+	for eid in RunState.run_npc_pool:
+		if NPCRegistry.get_effective_type(eid) == "entity":
+			entity_ids.append(eid)
+	if entity_ids.is_empty():
+		# Fallback: buscar cualquier entidad en el registro
+		for eid in ["entidad_a", "entidad_b"]:
+			if NPCRegistry.npc_exists(eid):
+				entity_ids.append(eid)
+	if entity_ids.is_empty():
+		return {}
+	# Elegir entidad y encuentro al azar
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	var chosen_entity: String = entity_ids[rng.randi_range(0, entity_ids.size() - 1)]
+	var def: Dictionary = NPCRegistry.get_npc(chosen_entity)
+	var encounters: Array = def.get("encounters", [])
+	if encounters.is_empty():
+		return {}
+	# Usar un encuentro aleatorio (evitar el 0 que es presentación si hay más)
+	var min_idx: int = 1 if encounters.size() > 1 else 0
+	var idx: int = rng.randi_range(min_idx, encounters.size() - 1)
+	return encounters[idx] as Dictionary
+
+## Inicia la fase de comida directamente sin recomendar película (cliente en duelo — Fase 2+).
+func _start_food_directly() -> void:
+	_in_food = true
+	if _patience != null:
+		_patience.set_mode_food()
+	if RunState.CURRENT_PHASE >= 2:
+		if hud != null and is_instance_valid(hud) and hud.has_method("hide_special_room"):
+			hud.call("hide_special_room")
+	var food_order: Dictionary = _current_customer.get("food_order", {})
+	if RunState.CURRENT_PHASE >= 2:
+		food_order = ContaminationManager.distort_food_order(food_order)
+	if food != null and food.has_method("start_food_phase"):
+		food.call("start_food_phase", food_order)
+	else:
+		_on_food_done()
+
+# ── Mensajes de impaciencia ─────────────────────────────────────
+
+func _random_impatience_message() -> String:
+	var path := "res://Data/events.json"
+	if not FileAccess.file_exists(path):
+		return "…"
+	var f := FileAccess.open(path, FileAccess.READ)
+	if f == null:
+		return "…"
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed == null or not (parsed is Dictionary):
+		return "…"
+	var msgs: Array = ((parsed as Dictionary).get("impatience_messages", []) as Array)
+	if msgs.is_empty():
+		return "…"
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	return String(msgs[rng.randi_range(0, msgs.size() - 1)])
+
+# ── Sala Especial ───────────────────────────────────────────────
+
+func _update_special_room_hud() -> void:
+	if hud == null or not is_instance_valid(hud):
+		return
+	if hud.has_method("update_special_room"):
+		hud.call("update_special_room", SpecialRoom.get_capacity(), SpecialRoom.get_used())

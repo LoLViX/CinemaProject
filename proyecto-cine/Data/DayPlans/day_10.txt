@@ -1,0 +1,6 @@
+# Día 10 — final de la demo, todos los sistemas al máximo
+slots: 7
+entity_slots: 3
+story_npc: frank
+story_npc: eddie
+story_npc: richard

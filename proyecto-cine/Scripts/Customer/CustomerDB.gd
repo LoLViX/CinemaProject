@@ -2,6 +2,22 @@
 
 var RNG := RandomNumberGenerator.new()
 
+# Pool de ilustraciones para clientes random (sin NPC asignado)
+const RANDOM_ILLUSTRATIONS: Array[String] = [
+	"res://Assets/Customers/chica_camarera.png",
+	"res://Assets/Customers/chica_fit.png",
+	"res://Assets/Customers/chica_punk.png",
+	"res://Assets/Customers/chica_radio.png",
+	"res://Assets/Customers/chico_cartero.png",
+	"res://Assets/Customers/chico_dj.png",
+	"res://Assets/Customers/chico_nerd.png",
+	"res://Assets/Customers/hombre_empresario_creido.png",
+	"res://Assets/Customers/hombre_mayor_veterano.png",
+	"res://Assets/Customers/hombre_pescadero.png",
+	"res://Assets/Customers/hombre_policia.png",
+	"res://Assets/Customers/chica_peluquera.png",
+]
+
 # Pools de keys (reacciones / comida / despedida) -> TextDB
 var FOODASK: Array[String] = ["cust.foodask.1","cust.foodask.2","cust.foodask.3"]
 var REACT_OK: Array[String] = ["cust.react_ok.1","cust.react_ok.2","cust.react_ok.3","cust.react_ok.4"]
@@ -22,14 +38,23 @@ func _ready() -> void:
 func _pick(arr: Array[String]) -> String:
 	return arr[RNG.randi_range(0, arr.size() - 1)] if arr.size() > 0 else ""
 
+## Genera 'count' clientes aleatorios (para slots sin NPC en el plan del día).
 func build_day_customers(todays_movies: Array, count: int, difficulty: int = 1) -> Array:
 	var day_tags: Array[String] = _tags_available_today(todays_movies)
 	var customers: Array = []
-
-	while customers.size() < count:
+	for _i in range(count):
 		customers.append(_make_normal(day_tags, difficulty))
-
 	return customers
+
+## Construye un cliente NPC concreto buscando su ID en npcs.json.
+func make_npc_customer_by_id(npc_id: String, todays_movies: Array, difficulty: int = 1) -> Dictionary:
+	var npc_def: Dictionary = NPCRegistry.get_npc(npc_id)
+	if npc_def.is_empty():
+		push_warning("CustomerDB: NPC '%s' no encontrado en npcs.json — generando cliente aleatorio" % npc_id)
+		var fallback_tags := _tags_available_today(todays_movies)
+		return _make_normal(fallback_tags, difficulty)
+	var day_tags := _tags_available_today(todays_movies)
+	return _make_npc_customer(npc_def, day_tags, difficulty)
 
 # -------------------------
 # Normal customers (generados)
@@ -59,8 +84,14 @@ func _make_normal(day_tags: Array[String], difficulty: int = 1) -> Dictionary:
 
 	var food_order := _make_food_order(difficulty)
 
+	# Ilustración aleatoria del pool
+	var illus: String = ""
+	if RANDOM_ILLUSTRATIONS.size() > 0:
+		illus = RANDOM_ILLUSTRATIONS[RNG.randi_range(0, RANDOM_ILLUSTRATIONS.size() - 1)]
+
 	return {
 		"type": "normal",
+		"illustration": illus,
 		"request_text": request_text,
 		"food_order": food_order,
 		"food_key": _build_food_text(food_order),
@@ -166,8 +197,8 @@ func _pick_weighted_tag(day_tags: Array[String], avoid: Array[String] = []) -> S
 	var weights: Array[float] = []
 	for t in pool:
 		var w := 1.0
-		# oscura/ligera un poco menos para que no sea todo "tono"
-		if t == "oscura" or t == "ligera":
+		# tono/mood tags un poco menos para que no dominen las peticiones
+		if t == "dark" or t == "popcorn" or t == "slow_burn":
 			w = 0.65
 		weights.append(w)
 
@@ -200,7 +231,7 @@ func _tags_available_today(movies: Array) -> Array[String]:
 	return out
 
 # -------------------------
-# Localized tag names (IDs españoles)
+# Localized tag names (IDs en inglés, como en MovieDB)
 # -------------------------
 func _tag_name(tag_id: String, lang: String) -> String:
 	if tag_id == "":
@@ -208,34 +239,38 @@ func _tag_name(tag_id: String, lang: String) -> String:
 
 	if lang == "en":
 		match tag_id:
-			"accion": return "action"
-			"drama": return "drama"
-			"comedia": return "comedy"
-			"terror": return "horror"
-			"thriller": return "thriller"
-			"misterio": return "mystery"
-			"scifi": return "sci-fi"
-			"crimen": return "crime"
-			"fantasia": return "fantasy"
-			"aventura": return "adventure"
-			"oscura": return "dark tone"
-			"ligera": return "light tone"
+			"action":    return "action"
+			"drama":     return "drama"
+			"comedy":    return "comedy"
+			"horror":    return "horror"
+			"thriller":  return "thriller"
+			"mystery":   return "mystery"
+			"scifi":     return "sci-fi"
+			"crime":     return "crime"
+			"fantasy":   return "fantasy"
+			"adventure": return "adventure"
+			"dark":      return "dark"
+			"popcorn":   return "feel-good"
+			"slow_burn": return "slow-burn"
+			"fast":      return "short"
 			_: return tag_id
 
 	# ES
 	match tag_id:
-		"accion": return "acción"
-		"drama": return "drama"
-		"comedia": return "comedia"
-		"terror": return "terror"
-		"thriller": return "thriller"
-		"misterio": return "misterio"
-		"scifi": return "ciencia ficción"
-		"crimen": return "crimen"
-		"fantasia": return "fantasía"
-		"aventura": return "aventura"
-		"oscura": return "tono oscuro"
-		"ligera": return "tono ligero"
+		"action":    return "acción"
+		"drama":     return "drama"
+		"comedy":    return "comedia"
+		"horror":    return "terror"
+		"thriller":  return "thriller"
+		"mystery":   return "misterio"
+		"scifi":     return "ciencia ficción"
+		"crime":     return "crimen"
+		"fantasy":   return "fantasía"
+		"adventure": return "aventura"
+		"dark":      return "tono oscuro"
+		"popcorn":   return "para pasar el rato"
+		"slow_burn": return "lenta"
+		"fast":      return "corta"
 		_: return tag_id
 
 # -------------------------
@@ -243,15 +278,19 @@ func _tag_name(tag_id: String, lang: String) -> String:
 # -------------------------
 # food_order dict keys:
 #   drink: bool
+#   drink_type: "cola" / "orange" / "rootbeer"  (solo si drink=true)
 #   food: "" / "hotdog" / "chocolate"
 #   popcorn: bool
 #   ketchup: bool  (solo si hotdog)
 #   mustard: bool  (solo si hotdog)
 #   butter: bool   (solo si popcorn)
 #   caramel: bool  (solo si popcorn)
+const DRINK_TYPES := ["cola", "orange", "rootbeer"]
+
 func _make_food_order(difficulty: int = 1) -> Dictionary:
 	var order := {
 		"drink": false,
+		"drink_type": "",
 		"food": "",
 		"popcorn": false,
 		"ketchup": false,
@@ -273,6 +312,7 @@ func _make_food_order(difficulty: int = 1) -> Dictionary:
 	match roll:
 		0: # Solo bebida
 			order["drink"] = true
+			order["drink_type"] = DRINK_TYPES[RNG.randi_range(0, 2)]
 		1: # Palomitas (con o sin topping)
 			order["popcorn"] = true
 			if RNG.randf() < topping_chance:
@@ -291,6 +331,7 @@ func _make_food_order(difficulty: int = 1) -> Dictionary:
 	# Bebida extra si no era solo bebida
 	if roll != 0 and RNG.randf() < drink_extra:
 		order["drink"] = true
+		order["drink_type"] = DRINK_TYPES[RNG.randi_range(0, 2)]
 
 	# Palomitas combo si pidieron comida
 	if roll == 2 and RNG.randf() < pop_combo:
@@ -302,6 +343,60 @@ func _make_food_order(difficulty: int = 1) -> Dictionary:
 				order["caramel"] = true
 
 	return order
+
+# -------------------------
+# NPC customers (fijos)
+# -------------------------
+func _make_npc_customer(npc_def: Dictionary, day_tags: Array[String], _difficulty: int) -> Dictionary:
+	# Preferencias de película
+	var prefs: Dictionary = npc_def.get("preferences", npc_def.get("base_preferences", {}))
+	var must: Array[String] = []
+	var must_not: Array[String] = []
+	for t in prefs.get("must", []):
+		must.append(String(t))
+	for t in prefs.get("must_not", []):
+		must_not.append(String(t))
+
+	# Si ningún must está disponible hoy, elegir uno del pool del día
+	var filtered_must: Array[String] = []
+	for t in must:
+		if day_tags.has(t):
+			filtered_must.append(t)
+	if filtered_must.is_empty() and day_tags.size() > 0:
+		filtered_must.append(_pick_weighted_tag(day_tags))
+	if not filtered_must.is_empty():
+		must = filtered_must
+
+	# Pedido de comida definido en el JSON (determinístico)
+	var food_order: Dictionary = {}
+	if npc_def.has("food_order"):
+		food_order = (npc_def["food_order"] as Dictionary).duplicate()
+	else:
+		food_order = _make_food_order(1)
+
+	var request_text := _build_request_text(must, must_not)
+	var npc_id := String(npc_def.get("id", ""))
+
+	# Ilustración del JSON del NPC
+	var npc_illus: String = String(npc_def.get("illustration", ""))
+
+	return {
+		"type": "npc",
+		"npc_id": npc_id,
+		"illustration": npc_illus,
+		"display_name": String(npc_def.get("name", npc_def.get("display_name", ""))),
+		"patience_profile": NPCRegistry.patience_to_profile(int(npc_def.get("patience", 7))),
+		"tip": int(npc_def.get("tip", 2)),
+		"request_text": request_text,
+		"food_order": food_order,
+		"food_key": _build_food_text(food_order),
+		"ok_key": _pick(REACT_OK),
+		"bad_key": _pick(REACT_BAD),
+		"bye_key": _pick(GOODBYE),
+		"must": must,
+		"must_not": must_not,
+		"exit_lane": "main",
+	}
 
 func _build_food_text(o: Dictionary) -> String:
 	var parts: Array[String] = []
@@ -323,7 +418,13 @@ func _build_food_text(o: Dictionary) -> String:
 		parts.append("chocolate")
 
 	if o.get("drink", false):
-		parts.append("una bebida")
+		var dtype := String(o.get("drink_type", ""))
+		var dlabel := "una bebida"
+		match dtype:
+			"cola":     dlabel = "una cola"
+			"orange":   dlabel = "una naranjada"
+			"rootbeer": dlabel = "una root beer"
+		parts.append(dlabel)
 
 	if parts.size() == 0:
 		return "Nada más, gracias."

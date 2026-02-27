@@ -1,0 +1,379 @@
+{
+  "id": "tammy",
+  "name": "Tammy Brooks",
+  "illustration": "res://Assets/Customers/chica_fit.png",
+  "patience": 6,
+  "tip": 2,
+  "_info": {
+    "description": "Instructora de aeróbic en el gimnasio del pueblo. Enérgica, obsesionada con la salud en público pero amante secreta de la comida basura. El cine es su refugio de culpa.",
+    "occupation": "Instructora de aeróbic",
+    "age": 28,
+    "traits": ["enérgica", "insegura", "alegre", "perfeccionista"]
+  },
+  "preferences": {
+    "must": ["action", "adventure"],
+    "must_not": ["drama", "dark"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "orange",
+    "food": "hotdog",
+    "popcorn": false,
+    "butter": false,
+    "caramel": false,
+    "ketchup": false,
+    "mustard": true
+  },
+  "encounters": [
+    {
+      "greeting": "¡Hola, hola! Soy Tammy, doy clases de aeróbic en el gimnasio de la calle Main. Me han dicho que aquí ponen pelis buenas. Vengo corriendo del trabajo, literalmente, ja, ja. ¡Qué sitio más mono!",
+      "questions": [
+        {
+          "id": "ta1_q1",
+          "text": "¿Eres la instructora del gimnasio?",
+          "response": "¡Sí! Llevo tres años dando clases. Aeróbic, step, un poco de todo. Me encanta. Bueno, la mayoría de días. Hay mañanas que me levanto a las cinco y media y me pregunto por qué no estudié contabilidad como mi hermana."
+        },
+        {
+          "id": "ta1_q2",
+          "text": "¿Vienes mucho al cine?",
+          "response": "La verdad es que no tanto como me gustaría. Siempre estoy entre el gimnasio, las clases privadas y cuidar lo que como. O sea, lo que se supone que como. Hoy me he dicho: Tammy, necesitas una tarde para ti."
+        },
+        {
+          "id": "ta1_q3",
+          "text": "¿Llevas mucho en el pueblo?",
+          "response": "Desde que acabé el instituto. Me fui un año a la ciudad a estudiar, pero volví. Aquí me conoce todo el mundo. A veces eso es bueno y a veces... pues no tanto. Pero el gimnasio funciona bien, así que aquí me quedo."
+        },
+        {
+          "id": "ta1_q4",
+          "text": "¿Qué haces cuando no trabajas?",
+          "response": "Pues... se supone que entreno, como sano, medito. Eso es lo que le digo a mis alumnas. La realidad es que a veces me tumbo en el sofá con la tele puesta y no hago nada. Pero eso no lo cuentes, ¿eh?"
+        },
+        {
+          "id": "ta1_q5",
+          "text": "¿Vienes sola o con amigas?",
+          "response": "Sola. Mis amigas del gimnasio son geniales, pero si vengo con ellas van a ver lo que pido de comer y luego se acaba la magia. Aquí nadie me conoce. Bueno, ahora tú sí, pero confío en tu discreción."
+        },
+        {
+          "id": "ta1_q6",
+          "text": "¿Qué tipo de película te apetece?",
+          "response": "Algo con energía, ¿sabes? Que me suba el ánimo. Acción, aventuras... algo que me haga sentir que estoy viviendo cosas. Nada triste ni oscuro, por favor. Ya tengo bastante con la realidad."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Hola otra vez! He venido directa desde el gimnasio. Bueno, he pasado por casa a ducharme, no soy tan salvaje. ¿Qué tal? ¿Me has echado de menos?",
+      "questions": [
+        {
+          "id": "ta2_q1",
+          "text": "¿Cómo te ha ido la semana?",
+          "response": "Intensa. He tenido clase doble el martes y el jueves. Y una clienta nueva que quiere ponerse en forma para su boda. Le he dicho que con tres meses tiene de sobra. La pobre está más nerviosa que yo antes de una competición."
+        },
+        {
+          "id": "ta2_q2",
+          "text": "¿Has hecho competiciones de aeróbic?",
+          "response": "Hace años, sí. Gané un par de trofeos regionales. Pero dejé de competir a los veinticinco. La presión de estar siempre perfecta era... agotadora. Ahora solo enseño. Es más sano. O eso me digo."
+        },
+        {
+          "id": "ta2_q3",
+          "text": "¿Qué tal la película de la otra vez?",
+          "response": "¡Me gustó mucho! Justo lo que necesitaba. Me fui a casa con ganas de hacer cosas. Esa sensación dura poco, pero mientras dura es genial."
+        },
+        {
+          "id": "ta2_q4",
+          "text": "¿Te cuidas mucho la alimentación?",
+          "response": "Se supone que sí. Soy instructora de fitness, tengo que dar ejemplo. Ensaladas, proteína, nada de azúcar... eso es la versión oficial. La versión real incluye algún que otro hotdog a escondidas. Como el que voy a pedir ahora."
+        },
+        {
+          "id": "ta2_q5",
+          "text": "¿Tu familia también es deportista?",
+          "response": "Mi madre no ha hecho ejercicio en su vida y tiene más energía que yo. Mi padre jugaba al béisbol en el instituto. Mi hermana es contable y dice que levantar archivadores cuenta como deporte. Así que no, soy la oveja fitness de la familia."
+        },
+        {
+          "id": "ta2_q6",
+          "text": "¿Qué te apetece ver hoy?",
+          "response": "Algo movido. Que haya persecuciones, explosiones, lo que sea. Paso el día diciéndole a la gente que se mueva, así que cuando me siento quiero ver a otros moverse por mí."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. Hoy he venido más tranquila. Sin prisas. Bueno, un poco de prisa sí, que tengo clase a las siete de la mañana. Pero me merezco esto.",
+      "questions": [
+        {
+          "id": "ta3_q1",
+          "text": "¿Todo bien? Te veo algo distinta.",
+          "response": "Sí, es que... hoy una alumna me ha dicho que ojalá tuviera mi cuerpo. Y no sé por qué me ha sentado raro. Antes eso me alegraba. Ahora me hace pensar si la gente me ve como persona o como un anuncio de gimnasio."
+        },
+        {
+          "id": "ta3_q2",
+          "text": "¿Te preocupa mucho la imagen?",
+          "response": "Más de lo que debería. Es que cuando tu trabajo es estar en forma, tu cuerpo es tu currículum. Si un día estoy hinchada o no me queda bien el top, noto las miradas. O creo que las noto. Igual es cosa mía."
+        },
+        {
+          "id": "ta3_q3",
+          "text": "¿Tienes amigas fuera del gimnasio?",
+          "response": "Pocas. En el instituto tenía un grupo, pero se fueron todas a la ciudad. Yo me quedé. Las del gimnasio son compañeras, pero cuando hablan de mí siempre es Tammy la de aeróbic. Como si no fuera nada más."
+        },
+        {
+          "id": "ta3_q4",
+          "text": "¿Qué te gustaría ser aparte de instructora?",
+          "response": "No lo sé. Eso es lo que me asusta. Llevo tanto tiempo siendo la chica del gimnasio que no sé qué hay debajo. De pequeña quería ser veterinaria, pero eso fue hace mil años."
+        },
+        {
+          "id": "ta3_q5",
+          "text": "¿Por eso vienes al cine sola?",
+          "response": "Supongo que sí. Aquí puedo comer lo que quiera, sentarme sin preocuparme de si tengo buena postura, y nadie me dice nada. Es el único sitio donde no estoy actuando. Bueno, aquí y en mi sofá."
+        },
+        {
+          "id": "ta3_q6",
+          "text": "¿Algo en especial que te apetezca hoy?",
+          "response": "Algo de aventuras. Que alguien salga de su zona de confort y le vaya bien. Necesito creer que eso es posible."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Hola! Hoy tengo una noticia. Me han propuesto dar un curso de aeróbic en la tele local. El canal del condado. ¿Puedes creerlo? Estoy emocionada y aterrorizada a partes iguales.",
+      "questions": [
+        {
+          "id": "ta4_q1",
+          "text": "¡Eso es genial! ¿Cuándo empieza?",
+          "response": "El mes que viene, si acepto. Graban en el estudio de la calle Elm. Sería media hora a la semana. El problema es que me van a ver miles de personas. ¿Y si me equivoco? ¿Y si no doy bien en cámara?"
+        },
+        {
+          "id": "ta4_q2",
+          "text": "¿Vas a aceptar?",
+          "response": "Quiero decir que sí, pero tengo miedo. En el gimnasio controlo todo. La música, la luz, el espejo. En la tele no controlo nada. Y la gente opina. Ya sabes cómo es este pueblo, cualquier cosa es motivo de conversación."
+        },
+        {
+          "id": "ta4_q3",
+          "text": "¿Qué dice tu familia?",
+          "response": "Mi madre dice que voy a ser famosa. Mi padre dice que no se fíe de la tele. Mi hermana dice que negocie bien el contrato. Todos tienen razón y ninguno me ayuda con lo que de verdad me preocupa."
+        },
+        {
+          "id": "ta4_q4",
+          "text": "¿Qué es lo que de verdad te preocupa?",
+          "response": "Que me juzguen. Que alguien diga que estoy gorda o que mi rutina es mala. En persona puedo ignorarlo. En la tele es permanente. Alguien lo graba, lo sube a internet y ya está. Para siempre."
+        },
+        {
+          "id": "ta4_q5",
+          "text": "¿No crees que estás siendo demasiado dura contigo misma?",
+          "response": "Probablemente. Pero es difícil no serlo cuando llevas diez años mirándote al espejo buscando defectos. Es mi trabajo, pero también es mi trampa. A veces pienso que si me dedicara a otra cosa sería más feliz."
+        },
+        {
+          "id": "ta4_q6",
+          "text": "Bueno, ¿qué película te vendría bien hoy?",
+          "response": "Algo donde alguien se enfrente a sus miedos y gane. Acción, aventura, lo que sea. Pero con un personaje que tenga agallas. Necesito inspiración."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. He aceptado lo de la tele. Empiezo a grabar la semana que viene. Estoy tan nerviosa que he hecho tres clases seguidas hoy para quemar la ansiedad. Creo que he asustado a mis alumnas.",
+      "questions": [
+        {
+          "id": "ta5_q1",
+          "text": "¡Enhorabuena! ¿Cómo te sientes?",
+          "response": "Como si hubiera saltado de un avión sin paracaídas. Emocionada, sí. Pero también con ganas de vomitar. ¿Las dos cosas pueden ir juntas? Creo que sí."
+        },
+        {
+          "id": "ta5_q2",
+          "text": "¿Has preparado ya la rutina para la tele?",
+          "response": "Tengo tres versiones. Ninguna me convence. La primera es muy fácil, la segunda muy difícil y la tercera es aburrida. Llevo ensayando delante del espejo como una loca. Mi gato me mira con cara de preocupación."
+        },
+        {
+          "id": "ta5_q3",
+          "text": "¿Tienes gato?",
+          "response": "Se llama Pretzel. Es gordo, perezoso y come más que yo. Es la prueba viviente de que no hago caso de mis propios consejos de salud. Pero es el mejor compañero de sofá del mundo."
+        },
+        {
+          "id": "ta5_q4",
+          "text": "¿La gente del pueblo ya lo sabe?",
+          "response": "Medio pueblo lo sabe. La otra mitad lo sabrá mañana. En el supermercado me han felicitado tres personas. La señora de la farmacia me ha dicho que me va a grabar todos los episodios. Es bonito, pero agobiante."
+        },
+        {
+          "id": "ta5_q5",
+          "text": "¿Estás comiendo bien con tanto estrés?",
+          "response": "Define bien. Si bien es ensalada y pollo a la plancha, no. Si bien es hotdogs y refrescos de naranja a escondidas en el cine, entonces sí, estoy comiendo genial. No me juzgues."
+        },
+        {
+          "id": "ta5_q6",
+          "text": "¿Qué te pido hoy?",
+          "response": "Algo que me distraiga de mis nervios. Una peli de acción con mucho ritmo. Que no me dé tiempo a pensar en la grabación. Dos horas de no ser Tammy la del gimnasio."
+        }
+      ]
+    },
+    {
+      "greeting": "He grabado el primer episodio. No me ha salido perfecto, pero no ha sido un desastre. Creo. ¿Se nota que he llorado en el coche antes de venir? Da igual. Necesito esta película.",
+      "questions": [
+        {
+          "id": "ta6_q1",
+          "text": "¿Qué tal ha ido la grabación?",
+          "response": "Pues... me he equivocado dos veces en la coreografía. El cámara ha dicho que no se notaba, pero yo sé que sí. He sonreído tanto que me duele la cara. Literalmente. Pero lo he hecho. He salido en la tele."
+        },
+        {
+          "id": "ta6_q2",
+          "text": "¿Has visto el resultado?",
+          "response": "No me atrevo. Me han dicho que sale bien, pero yo voy a ver todos los defectos. La barriga, el pelo fuera de sitio, la sonrisa forzada. Soy mi peor crítica. Lo sé. Pero saberlo no ayuda."
+        },
+        {
+          "id": "ta6_q3",
+          "text": "¿Y la reacción de la gente?",
+          "response": "Mi madre ha llamado llorando de emoción. Mis alumnas han aplaudido en clase. Una señora que no conozco me ha parado por la calle para decirme que le ha gustado. Ha sido... raro. Bonito, pero raro."
+        },
+        {
+          "id": "ta6_q4",
+          "text": "¿Por qué raro?",
+          "response": "Porque no estoy acostumbrada a que me valoren por algo que no sea mi físico. Esa señora me ha dicho que la he motivado. No que tenía buen cuerpo, sino que la he motivado. Es diferente. ¿Se nota la diferencia?"
+        },
+        {
+          "id": "ta6_q5",
+          "text": "Se nota. ¿Cómo te hace sentir eso?",
+          "response": "Confusa. Contenta. Un poco triste por haber tardado tanto en sentirlo. Pero sobre todo con ganas de hacerlo otra vez. Mejor esta vez. Sin tanto miedo."
+        },
+        {
+          "id": "ta6_q6",
+          "text": "¿Qué te apetece ver para celebrarlo?",
+          "response": "Algo de aventuras. Una historia donde alguien descubre que es más valiente de lo que pensaba. Cursi, lo sé. Pero hoy me lo he ganado."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Llevo cuatro episodios grabados y la audiencia sube cada semana. No me lo creo. Bueno, intento creérmelo. Mi terapeuta dice que tengo que aprender a aceptar cosas buenas. ¿Ves? Hasta tengo terapeuta ahora.",
+      "questions": [
+        {
+          "id": "ta7_q1",
+          "text": "¿Vas a terapia? Eso está bien.",
+          "response": "Empecé hace un mes. Al principio me daba vergüenza. Una instructora de fitness en terapia, como si fuera una contradicción. Pero no lo es. Puedo tener abdominales y ansiedad al mismo tiempo."
+        },
+        {
+          "id": "ta7_q2",
+          "text": "¿Qué tal el programa de tele?",
+          "response": "Mejor de lo que esperaba. El equipo es majo. Ya no me equivoco tanto. Y la semana pasada improvisé un ejercicio que no estaba en el guion y al director le encantó. Estoy empezando a disfrutarlo."
+        },
+        {
+          "id": "ta7_q3",
+          "text": "¿Cómo llevas la fama local?",
+          "response": "Es extraño. Ahora me reconocen en la cafetería, en el supermercado. Antes solo me conocían del gimnasio. Una niña me pidió un autógrafo. ¡Un autógrafo! Casi me da algo."
+        },
+        {
+          "id": "ta7_q4",
+          "text": "¿Ha cambiado algo en tu día a día?",
+          "response": "Sí. Como mejor. No porque deba, sino porque quiero cuidarme de verdad. Y sigo comiendo hotdogs aquí, pero ya no me siento culpable. Bueno, un poco sí. Pero menos. Es un progreso."
+        },
+        {
+          "id": "ta7_q5",
+          "text": "¿Sigues viniendo sola al cine?",
+          "response": "Sí, y creo que siempre vendré sola. Este es mi sitio. Donde puedo ser yo sin el uniforme de aeróbic, sin la cámara, sin las alumnas mirándome. Solo Tammy y una buena película. Y mostaza. Mucha mostaza."
+        },
+        {
+          "id": "ta7_q6",
+          "text": "¿Qué te pongo hoy?",
+          "response": "Algo con acción pero que tenga corazón. Que los personajes sientan cosas de verdad. Ya no me bastan solo las explosiones. Quiero las explosiones Y los sentimientos."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye, ¿puedo contarte algo? Hoy me ha pasado una cosa rara. Una alumna me ha dicho que empezó a hacer ejercicio por mí. No por mi programa, sino porque le dije una vez en clase que no se rindiera. No me acordaba de haberlo dicho.",
+      "questions": [
+        {
+          "id": "ta8_q1",
+          "text": "Eso es muy bonito.",
+          "response": "Sí. Y me ha hecho pensar en cuántas cosas decimos sin darnos cuenta que importan. Yo paso el día gritando dale, más, vamos y resulta que entre medias dije algo que le cambió la vida a alguien. Sin enterarme."
+        },
+        {
+          "id": "ta8_q2",
+          "text": "¿Te ha hecho replantearte algo?",
+          "response": "Me ha hecho pensar que quizá mi trabajo no es solo ponerme en forma y enseñar coreografías. Quizá es algo más. La terapeuta dice que llevo años infravalorándome. Empiezo a creer que tiene razón."
+        },
+        {
+          "id": "ta8_q3",
+          "text": "¿Cómo va el programa de tele?",
+          "response": "Van a renovar para otra temporada. El director quiere que haga un segmento de motivación al final de cada episodio. Algo personal, no solo ejercicios. Me da pánico pero también ilusión."
+        },
+        {
+          "id": "ta8_q4",
+          "text": "¿Sigues nerviosa delante de la cámara?",
+          "response": "Menos. Ahora la cámara ya no es un enemigo, es más como un espejo que no juzga. Suena raro, lo sé. Pero los espejos del gimnasio siempre me han juzgado. La cámara solo graba lo que hay."
+        },
+        {
+          "id": "ta8_q5",
+          "text": "¿Pretzel sigue gordo?",
+          "response": "Más que nunca. El veterinario me ha dicho que le ponga a dieta. Le he dicho que ya somos dos. Nos hemos mirado el uno al otro y hemos decidido que esta noche hay pizza. La dieta empieza el lunes."
+        },
+        {
+          "id": "ta8_q6",
+          "text": "¿Qué te apetece ver?",
+          "response": "Algo de aventuras con un personaje que descubra quién es de verdad. Creo que estoy en esa fase yo también. Me vendría bien una guía, aunque sea de ficción."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola, cielo. Hoy he cumplido veintinueve. Mi último año de los veinte. Suena dramático, ¿verdad? Pues así me siento. Dramática y con ganas de hotdog.",
+      "questions": [
+        {
+          "id": "ta9_q1",
+          "text": "¡Felicidades! ¿Cómo lo celebras?",
+          "response": "Mi madre me ha hecho tarta. Mis alumnas me han regalado una cinta para el pelo. Y yo me he regalado esto: una tarde de cine sin culpa. Sin contar calorías, sin pensar en la clase de mañana. Solo yo."
+        },
+        {
+          "id": "ta9_q2",
+          "text": "¿Te preocupa cumplir años?",
+          "response": "Antes sí, mucho. En mi trabajo la edad es un reloj que no para. Pero ahora... no sé. He aprendido cosas este año que no sabía a los veinte. Que está bien no ser perfecta. Que un hotdog no arruina tu vida. Que la gente te quiere por cómo eres."
+        },
+        {
+          "id": "ta9_q3",
+          "text": "Has cambiado desde la primera vez que viniste.",
+          "response": "¿Se nota? Espero que sí. Antes venía escondiéndome. Ahora vengo porque quiero. Es diferente. Este cine ha sido parte de eso, ¿sabes? Un sitio donde no tenía que actuar."
+        },
+        {
+          "id": "ta9_q4",
+          "text": "¿Qué tal la terapia?",
+          "response": "Bien. He aprendido que la ansiedad no se va, pero se puede vivir con ella. Como con un compañero de piso molesto. Está ahí, pero ya no manda. La mayoría de días."
+        },
+        {
+          "id": "ta9_q5",
+          "text": "¿Algún plan para el año que viene?",
+          "response": "Seguir con el programa. Quizá dar un taller de autoestima y ejercicio. Y seguir viniendo aquí. Este sitio es mi terapia barata. Con mostaza."
+        },
+        {
+          "id": "ta9_q6",
+          "text": "¿Qué quieres ver en tu cumpleaños?",
+          "response": "Algo épico. Que me haga sentir que todo es posible. Acción, aventura, lo que tengas. Hoy no quiero pensar. Solo sentir."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. ¿Sabes qué? Hoy me he mirado al espejo y por primera vez en mucho tiempo no he buscado defectos. Solo me he mirado. Y me he dicho: estás bien, Tammy. Así, sin más. He venido a celebrarlo.",
+      "questions": [
+        {
+          "id": "ta10_q1",
+          "text": "Me alegro mucho. ¿Qué ha cambiado?",
+          "response": "Todo y nada. Sigo dando clases, sigo saliendo en la tele, sigo teniendo ansiedad a veces. Pero ya no necesito ser perfecta. Necesito ser yo. Y resulta que yo molo bastante."
+        },
+        {
+          "id": "ta10_q2",
+          "text": "¿Cómo va el programa?",
+          "response": "Genial. El segmento de motivación es lo que más gusta. La gente me escribe cartas. Cartas de verdad, en papel. Una señora de setenta años me ha dicho que gracias a mí ha vuelto a caminar por las mañanas. He llorado tres veces leyéndola."
+        },
+        {
+          "id": "ta10_q3",
+          "text": "¿Sigues comiendo hotdogs a escondidas?",
+          "response": "Ya no a escondidas. La semana pasada traje a una amiga del gimnasio aquí y pedimos los dos un hotdog. Se quedó mirándome como si hubiera confesado un crimen. Le dije: Karen, es un hotdog, no una bomba nuclear. Relajémonos."
+        },
+        {
+          "id": "ta10_q4",
+          "text": "¿Has pensado en dejar el gimnasio?",
+          "response": "No. Me gusta enseñar. Pero ya no es lo único que soy. Soy instructora, presentadora de tele, amante de los gatos gordos y clienta habitual de este cine. Eso es más que suficiente."
+        },
+        {
+          "id": "ta10_q5",
+          "text": "Ha sido un placer verte crecer, Tammy.",
+          "response": "Uy, no me hagas llorar que se me corre el rímel. Gracias, de verdad. Este sitio ha sido más importante de lo que crees. Aquí aprendí que no pasa nada por ser imperfecta. Y que la mostaza es el mejor condimento del mundo."
+        },
+        {
+          "id": "ta10_q6",
+          "text": "¿Qué te pongo para la ocasión?",
+          "response": "La mejor película de acción que tengas. Hoy no es un día cualquiera. Hoy es el día en que Tammy Brooks se quiere tal como es. Y eso merece una peli de las buenas."
+        }
+      ]
+    }
+  ]
+}

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PoryectoCine"
-run/main_scene="uid://dj5mvm8lg7mo0"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://Icons/icon.svg"
 
@@ -23,8 +23,17 @@ TagDB="*res://Scripts/Game/TagDB.gd"
 CustomerDB="*res://Scripts/Customer/CustomerDB.gd"
 DayPlanDB="*res://Scripts/Core/DayPlanDB.gd"
 RunState="*res://Scripts/Game/RunState.gd"
+StabilityManager="*res://Scripts/Core/StabilityManager.gd"
+EndingManager="*res://Scripts/Game/EndingManager.gd"
+StockManager="*res://Scripts/Core/StockManager.gd"
+NPCRegistry="*res://Scripts/Core/NPCRegistry.gd"
 MatchingSystemAuto="*res://Scripts/Game/MatchingSystem.gd"
 SoundManager="*res://Scripts/Core/SoundManager.gd"
+SpecialRoom="*res://Scripts/Game/SpecialRoom.gd"
+ContaminationManager="*res://Scripts/Game/ContaminationManager.gd"
+EventsManager="*res://Scripts/Game/EventsManager.gd"
+SaveManager="*res://Scripts/Game/SaveManager.gd"
+FameManager="*res://Scripts/Core/FameManager.gd"
 
 [editor_plugins]
 

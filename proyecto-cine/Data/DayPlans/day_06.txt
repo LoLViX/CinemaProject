@@ -1,0 +1,5 @@
+# Día 6 — presión creciente, 2 entidades
+slots: 5
+entity_slots: 2
+story_npc: karen
+story_npc: eddie

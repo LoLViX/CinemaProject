@@ -1,0 +1,379 @@
+{
+  "id": "billy",
+  "name": "Billy Dawson",
+  "illustration": "res://Assets/Customers/chico_cartero.png",
+  "patience": 8,
+  "tip": 2,
+  "_info": {
+    "description": "Cartero del pueblo. Conoce a todo el mundo, ha oído todo, y no puede evitar contarlo. Amable, extrovertido, con un secreto culpable: lee las postales de los vecinos. Sin querer se convierte en la mejor fuente de información del pueblo.",
+    "occupation": "Cartero",
+    "age": 32,
+    "traits": ["sociable", "cotilla", "amable", "curioso", "locuaz", "culpable"]
+  },
+  "preferences": {
+    "must": ["comedy", "mystery"],
+    "must_not": ["horror", "dark"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "cola",
+    "food": "",
+    "popcorn": true,
+    "butter": true,
+    "caramel": false,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "Buenas! Soy Billy. Billy Dawson. El cartero. Bueno, uno de los carteros. El otro es Phil, pero Phil tiene la ruta de los polígonos y eso no cuenta. Yo llevo el centro y las residenciales. Conozco a todo el mundo. Literalmente.",
+      "questions": [
+        {
+          "id": "bi0_q1",
+          "text": "Encantado, Billy. Mucho reparto hoy?",
+          "response": "Veintitrés paradas. Más un desvío porque la señora Henderson se ha mudado y nadie actualizó la dirección. He acabado dejando el paquete con el vecino, que resulta que es su exmarido. Las rutas de correo son telenovelas, te lo juro."
+        },
+        {
+          "id": "bi0_q2",
+          "text": "Conoces a mucha gente del barrio?",
+          "response": "A todos. A los Miller del 42, que reciben revistas de jardinería. A los Chen, que piden todo por catálogo. Al viejo Murray, que escribe cartas a mano a un hermano en Montana. Conozco a la gente por lo que recibe. Y se recibe de todo."
+        },
+        {
+          "id": "bi0_q3",
+          "text": "Te gusta ser cartero?",
+          "response": "Me encanta. Estás fuera todo el día, hablas con gente, te mueves. Hay días malos, claro. Lluvia, perros sueltos, el buzón del señor Kowalski que está oxidado y me corta los dedos. Pero en general, no me cambio por nadie."
+        },
+        {
+          "id": "bi0_q4",
+          "text": "Vienes mucho al cine?",
+          "response": "Siempre que puedo. El turno acaba a las tres y después tengo la tarde libre. Mi mujer trabaja hasta las seis, así que tengo un hueco perfecto. Palomitas, cola, butaca. El trío sagrado del hombre libre."
+        },
+        {
+          "id": "bi0_q5",
+          "text": "No te gusta el terror?",
+          "response": "Para nada. Bastante miedo paso con el rottweiler de los Parker, que un día de estos me arranca la mano. En el cine quiero reírme o resolver un misterio. Nada de sangre, nada de sustos. La vida ya da bastante miedo."
+        },
+        {
+          "id": "bi0_q6",
+          "text": "Qué te apetece ver?",
+          "response": "Algo con humor. O un buen misterio con giros que no veas venir. Me gustan las pelis donde al final dices ah, claro, las pistas estaban ahí desde el principio. Sorpréndeme. Y ponme palomitas con mantequilla, que hoy me lo merezco."
+        }
+      ]
+    },
+    {
+      "greeting": "Eh, hola de nuevo! Hoy he tenido un día de esos. El camión se averió, repartí a pie la mitad de la ruta. Mis pies tienen opiniones muy fuertes sobre mí ahora mismo. Pero aquí estoy. Fiel al cine.",
+      "questions": [
+        {
+          "id": "bi1_q1",
+          "text": "Vaya día. Te gustó la película de la otra vez?",
+          "response": "Mucho. Se la conté a mi mujer y me dijo que le estaba haciendo spoilers. Le dije que los spoilers son amor, porque quiero que disfrute sabiendo lo bueno que viene. No me habló en una hora. Mereció la pena."
+        },
+        {
+          "id": "bi1_q2",
+          "text": "Cómo está tu mujer?",
+          "response": "Linda está bien. Trabaja en la clínica dental del doctor Ross. Recepcionista. Es la persona más organizada que conozco. Tiene el armario ordenado por color. Yo tengo la ropa ordenada por dónde cayó. Somos complementarios."
+        },
+        {
+          "id": "bi1_q3",
+          "text": "Alguna novedad en la ruta?",
+          "response": "Los Williams han puesto un buzón nuevo con forma de pez. Es horrible. Pero al menos cabe el correo. El anterior era tan pequeño que tenía que doblar las revistas. Y una vez doblé una factura y el señor Williams pensó que le cobraban el doble. Casi me denuncia."
+        },
+        {
+          "id": "bi1_q4",
+          "text": "La gente confía mucho en su cartero.",
+          "response": "Más de lo que creen. Yo sé quién recibe cartas de abogados, quién está suscrito a revistas raras, quién recibe paquetes de madrugada. El cartero lo sabe todo. Es como ser espía, pero con uniforme azul y un sueldo peor."
+        },
+        {
+          "id": "bi1_q5",
+          "text": "Y todo eso te lo guardas?",
+          "response": "Claro. Bueno. Casi todo. A veces se me escapa algo con Linda. Pero ella es una tumba. Lo que entra en nuestra cocina no sale. Es como Las Vegas pero con café instantáneo."
+        },
+        {
+          "id": "bi1_q6",
+          "text": "Qué te pongo hoy?",
+          "response": "Un misterio. De los de pueblo pequeño donde todo el mundo tiene secretos. Me encantan porque vivo exactamente eso. Solo que en mi caso los secretos vienen en sobres y los reparto yo mismo."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye, tengo que contarte algo. No debería, pero me va a explotar si no se lo digo a alguien. Los Thompson se divorcian. Lo sé porque he entregado cartas del mismo abogado a los dos. Por separado. En la misma mañana.",
+      "questions": [
+        {
+          "id": "bi2_q1",
+          "text": "Eso no deberías saberlo, Billy.",
+          "response": "Ya lo sé! Pero es que los sobres son transparentes contra la luz. No es que los lea a propósito. Es que el sol me da en la cara y de repente veo PETITION FOR DISSOLUTION a través del papel. No es culpa mía que el papel sea fino."
+        },
+        {
+          "id": "bi2_q2",
+          "text": "Te pasa mucho eso de ver cosas que no deberías?",
+          "response": "Más de lo que me gustaría. Las postales son lo peor. Están ahí, abiertas, con el texto a la vista. No puedo no leerlas. Es como si alguien te pusiera un cartel delante y te dijera no lo leas. Imposible."
+        },
+        {
+          "id": "bi2_q3",
+          "text": "Te sientes culpable?",
+          "response": "Todos los días. Es mi cruz. Sé cosas de la gente que no debería saber. Que la señora Miller escribe a un hombre en Portland que no es su marido. Que los Chen reciben medicinas de un sitio raro. Que el viejo Murray tiene una hija que nunca le contesta."
+        },
+        {
+          "id": "bi2_q4",
+          "text": "Has pensado en dejar de mirar?",
+          "response": "Lo intento. Linda me dice Billy, mira al frente, entrega y vete. Y lo hago. Casi siempre. Pero a veces una postal tiene una frase que te engancha y antes de darte cuenta ya la has leído entera. Es una adicción, amigo. El chisme involuntario."
+        },
+        {
+          "id": "bi2_q5",
+          "text": "Mucha responsabilidad.",
+          "response": "No te lo imaginas. A veces siento que soy el que más sabe de este pueblo y el que menos puede hablar. Es como ser un cura sin iglesia. Un confesor sin sotana. Un tipo con uniforme azul y demasiada información."
+        },
+        {
+          "id": "bi2_q6",
+          "text": "Qué quieres ver?",
+          "response": "Una comedia. Necesito reírme. Hoy he cargado con los secretos de medio pueblo y me pesan. Ponme algo ligero, tonto si hace falta. Que no me haga pensar en buzones ni en sobres transparentes."
+        }
+      ]
+    },
+    {
+      "greeting": "Hoy ha pasado algo raro en la ruta. He dejado un paquete en el 27 de Elm Street y cuando me he dado la vuelta, la puerta estaba abierta. Pero no había nadie. Y estoy seguro de que estaba cerrada hace un segundo.",
+      "questions": [
+        {
+          "id": "bi3_q1",
+          "text": "A lo mejor alguien la abrió desde dentro.",
+          "response": "Eso pensé. Pero he llamado al timbre y nada. He mirado por la ventana y la casa estaba vacía. Bueno, vacía no. Los muebles estaban. Pero no había nadie. Y juro que olía a algo raro. Como a humedad vieja."
+        },
+        {
+          "id": "bi3_q2",
+          "text": "Quién vive en esa casa?",
+          "response": "Ahí está lo raro. No lo sé. Y conozco a todo el mundo en mi ruta. Pero esa dirección empezó a recibir correo hace unas semanas. Sobres sin remitente. Papel grueso. Sin nombre del destinatario. Solo la dirección."
+        },
+        {
+          "id": "bi3_q3",
+          "text": "Has preguntado a los vecinos?",
+          "response": "La señora del 25 dice que nunca ha visto entrar ni salir a nadie. El del 29 dice que a veces oye música por la noche pero muy baja. Como de radio vieja. No sé. A lo mejor son okupas. Pero los okupas no reciben correo."
+        },
+        {
+          "id": "bi3_q4",
+          "text": "Quizá deberías dejarlo estar.",
+          "response": "Probablemente. Pero es que soy cartero. Mi trabajo literal es ir a las puertas de la gente. Si una puerta se abre sola, me incumbe. Profesionalmente hablando. Y también por pura curiosidad, que es mi peor defecto."
+        },
+        {
+          "id": "bi3_q5",
+          "text": "Has notado algo más raro en el barrio?",
+          "response": "Ahora que lo dices, la semana pasada Phil me contó que en su ruta hay un buzón que no estaba antes. Apareció un día. Nuevo, sin casa detrás. Solo un poste y un buzón en medio de un descampado. Phill dice que se ha equivocado de calle. Pero Phil lleva quince años en esa ruta."
+        },
+        {
+          "id": "bi3_q6",
+          "text": "Qué te apetece ver hoy?",
+          "response": "Un misterio. De los buenos. De los que empiezan con algo pequeño que no cuadra y acaban destapando algo enorme. Hoy estoy con ganas de resolver un caso. Aunque sea ficticio."
+        }
+      ]
+    },
+    {
+      "greeting": "Sabes qué? Hoy he hecho algo que no debería. He abierto una postal. No a propósito. Se me cayó al suelo, se mojó con un charco, y al recogerla la tinta se corrió. Tuve que leerla para saber a quién iba. Esa es mi versión.",
+      "questions": [
+        {
+          "id": "bi4_q1",
+          "text": "Y qué decía?",
+          "response": "Era para el viejo Murray. De su hija. Después de años sin contestar, le ha escrito. Dice que lo siente. Que quiere volver a hablar. Que el silencio ha durado demasiado. Casi me echo a llorar en medio de la acera."
+        },
+        {
+          "id": "bi4_q2",
+          "text": "Eso es bonito.",
+          "response": "Es precioso. Y yo no debería saberlo. Pero lo sé. Y cuando le di la postal al señor Murray y vi cómo le temblaban las manos al reconocer la letra... amigo. Ser cartero es el mejor y el peor trabajo del mundo."
+        },
+        {
+          "id": "bi4_q3",
+          "text": "Linda sabe lo de las postales?",
+          "response": "Linda sabe todo. Es mi confesora. Me dice Billy, un día te van a pillar y te van a despedir. Y yo le digo que es culpa del sol y del papel fino. Y ella pone los ojos en blanco. Llevamos diez años así. Funciona."
+        },
+        {
+          "id": "bi4_q4",
+          "text": "Tenéis hijos?",
+          "response": "Todavía no. Linda dice que antes quiere pagar el coche. Yo digo que un niño y un coche no se pagan a la vez, así que a elegir. De momento gana el coche. Pero le he pillado mirando ropa de bebé en el catálogo de Sears. Así que hay esperanza."
+        },
+        {
+          "id": "bi4_q5",
+          "text": "Llevas mucho con ella?",
+          "response": "Desde el instituto. Ella era la más lista de la clase. Yo era el más hablador. Me acerqué a hablarle y ella me dijo si no te callas me cambio de sitio. Treinta segundos después estábamos riendo. Quince años después, aquí seguimos."
+        },
+        {
+          "id": "bi4_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo con corazón. Una comedia que te deje bien por dentro. De esas que al salir piensas oye, la gente no está tan mal. Hoy necesito eso. Después de la postal de Murray, me siento generoso con el mundo."
+        }
+      ]
+    },
+    {
+      "greeting": "Eh, necesito contarte algo y prométeme que no se lo dices a nadie. Bueno, a ti te cuento todo, que eres como mi diario pero con palomitas. El caso es que he vuelto a pasar por la casa del 27 de Elm Street.",
+      "questions": [
+        {
+          "id": "bi5_q1",
+          "text": "La casa misteriosa? Qué ha pasado?",
+          "response": "He dejado el sobre como siempre. Pero esta vez había alguien en la ventana. Solo una silueta. De pie. Quieta. Me ha mirado. O eso creo. No tenía cara que yo pudiera ver. Solo una forma oscura detrás del cristal."
+        },
+        {
+          "id": "bi5_q2",
+          "text": "Eso suena inquietante.",
+          "response": "Inquietante es quedarse corto. He salido de ahí a paso rápido. Bueno, a paso de cartero que no quiere admitir que tiene miedo. Que es un paso normal pero más sudoroso."
+        },
+        {
+          "id": "bi5_q3",
+          "text": "Se lo has contado a alguien?",
+          "response": "A Linda. Me ha dicho que deje de inventarme películas. Que será un inquilino nuevo, tímido, que no abre la puerta. Tiene sentido. Excepto que los inquilinos tímidos no se quedan de pie en la ventana mirando fijamente al cartero. Eso no lo hacen."
+        },
+        {
+          "id": "bi5_q4",
+          "text": "Vas a seguir repartiendo ahí?",
+          "response": "Tengo que hacerlo. Es mi ruta. No puedo saltarme una dirección porque me da escalofríos. Aunque Phil me ha ofrecido intercambiar esa calle por su polígono. Le he dicho que no. Orgullo de cartero. Estúpido, pero orgullo."
+        },
+        {
+          "id": "bi5_q5",
+          "text": "Ten cuidado, Billy.",
+          "response": "Lo tendré. Pero oye, tú que ves gente rara en este cine todo el día... alguna vez has tenido un cliente que te diera mala espina? De esos que algo no cuadra pero no sabes qué?"
+        },
+        {
+          "id": "bi5_q6",
+          "text": "Qué quieres ver hoy?",
+          "response": "Un misterio. No, espera. Una comedia. No, un misterio. A ver, algo que mezcle las dos cosas. Humor y suspense. Que me distraiga pero que también me dé algo que pensar. Hoy mi cabeza va a mil."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas! Hoy estoy de buen humor. Linda me ha dicho que estamos embarazados. Bueno, ella está embarazada. Yo estoy en estado de shock. Pero del bueno. Creo. Ponme una cola, que necesito azúcar para procesar esto.",
+      "questions": [
+        {
+          "id": "bi6_q1",
+          "text": "Enhorabuena, Billy!",
+          "response": "Gracias! Todavía no me lo creo. Fui a la farmacia a comprar el test y el farmacéutico me dijo felicidades como si ya lo supiera. Este pueblo es imposible. La noticia llega antes que el correo."
+        },
+        {
+          "id": "bi6_q2",
+          "text": "Cómo está Linda?",
+          "response": "Feliz. Asustada. Feliz y asustada. Dice que hay que preparar la habitación del bebé, que es donde tengo los discos. Le he dicho que los discos pueden convivir con un bebé. Me ha mirado de una forma que significa no, no pueden."
+        },
+        {
+          "id": "bi6_q3",
+          "text": "Vas a ser buen padre.",
+          "response": "Eso espero. Conozco a todos los niños del barrio de la ruta. Les doy caramelos, les cuento chistes. Pero supongo que ser padre es distinto. Es veinticuatro horas. Sin ruta que acabe a las tres. Sin cine por las tardes. Bueno, menos cine."
+        },
+        {
+          "id": "bi6_q4",
+          "text": "Menos cine?",
+          "response": "Linda dice que cuando nazca el bebé no voy a tener tiempo para nada. Yo le digo que siempre habrá tiempo para el cine. Es terapia, le digo. Imprescindible para la salud mental del padre. No me ha comprado el argumento."
+        },
+        {
+          "id": "bi6_q5",
+          "text": "Ya verás cómo sí.",
+          "response": "Más te vale tener razón. Porque si cierras los martes o algo así, me presentaré con el bebé en brazos y las palomitas en la otra mano. Aviso."
+        },
+        {
+          "id": "bi6_q6",
+          "text": "Qué te apetece ver?",
+          "response": "Algo alegre. Comedia pura. De reírse hasta que duela la barriga. Hoy el mundo es bonito y quiero que siga así dos horas más. Ponme lo mejor que tengas. Invito yo las palomitas. Bueno, no. Pero el gesto cuenta."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye. Hoy en la ruta me he cruzado con un tipo que no había visto nunca. Y yo conozco a todo el mundo. Le he dicho buenos días y me ha mirado como si le hubiera hablado en chino. Luego ha sonreído. Pero la sonrisa no le llegaba a los ojos.",
+      "questions": [
+        {
+          "id": "bi7_q1",
+          "text": "Mucha gente nueva en el pueblo?",
+          "response": "Ese es el tema. No se ha mudado nadie nuevo. Lo sabría porque recibirían correo de cambio de dirección. Pero este tipo... no recibe correo. No está en ninguna ruta. Es como si hubiera aparecido de la nada."
+        },
+        {
+          "id": "bi7_q2",
+          "text": "A lo mejor solo está de paso.",
+          "response": "Puede. Pero le he visto tres veces esta semana. Siempre en la misma esquina. De pie. Mirando las casas. No hace nada. Solo mira. Como si estuviera aprendiendo a reconocer las cosas. Es difícil de explicar."
+        },
+        {
+          "id": "bi7_q3",
+          "text": "Cómo era?",
+          "response": "Normal. Ese es el problema. Era tan normal que daba cosa. Ropa corriente, cara corriente, pelo corriente. Pero algo estaba fuera de sitio. Como una foto donde todo parece bien pero hay un detalle que no cuadra y no sabes cuál."
+        },
+        {
+          "id": "bi7_q4",
+          "text": "Quizá estás demasiado atento.",
+          "response": "Es posible. Linda dice que estoy paranoico desde lo de la casa del 27. Pero oye, cuando tu trabajo es conocer a la gente, notas cuando alguien no encaja. Es instinto de cartero. Y el instinto de cartero no falla."
+        },
+        {
+          "id": "bi7_q5",
+          "text": "Cómo va lo del bebé?",
+          "response": "Linda está de cuatro meses. Se le nota un poquito. Hemos comprado la cuna el sábado. La más barata de la tienda pero la más bonita, según yo. Según Linda es horrible. Así que es perfecta."
+        },
+        {
+          "id": "bi7_q6",
+          "text": "Qué quieres ver hoy?",
+          "response": "Un misterio bueno. De esos donde el detective ata cabos que nadie más ve. Me identifico con ese tipo de personaje. Gente que presta atención a los detalles. Gente que sabe cuándo algo no cuadra."
+        }
+      ]
+    },
+    {
+      "greeting": "Eh! He traído a Linda. Bueno, Linda se ha traído a sí misma, que conste. Está en el baño. Dice que el bebé le aplasta la vejiga. Mientras viene te cuento: he descubierto algo sobre la casa del 27.",
+      "questions": [
+        {
+          "id": "bi8_q1",
+          "text": "Qué has descubierto?",
+          "response": "He mirado en los registros de correo. La dirección no existía hace un año. No en nuestro sistema. No hay historial. Es como si la casa hubiera empezado a existir un día y nadie se hubiera preguntado cómo."
+        },
+        {
+          "id": "bi8_q2",
+          "text": "Eso es imposible.",
+          "response": "Lo sé. He ido al ayuntamiento a preguntar y la chica del registro me ha mirado raro. Me ha dicho que esa dirección lleva ahí toda la vida. Que ha vivido gente siempre. Pero no me ha podido dar un solo nombre. Ni uno."
+        },
+        {
+          "id": "bi8_q3",
+          "text": "Billy, quizá deberías dejarlo.",
+          "response": "Probablemente. Pero ya me conoces. No puedo dejar un misterio a medias. Es como empezar una película y salirte antes del final. Necesito saber. Aunque lo que encuentre no me guste."
+        },
+        {
+          "id": "bi8_q4",
+          "text": "Cómo está Linda con todo esto?",
+          "response": "Me ha dicho que si no dejo de hablar de la casa del 27 va a dar a luz ahí solo para darme un susto. Es su forma de decirme que la quiero. Creo. Con Linda nunca estás seguro."
+        },
+        {
+          "id": "bi8_q5",
+          "text": "Al menos ahora viene al cine contigo.",
+          "response": "Sí! Dice que desde que está embarazada le apetecen palomitas y oscuridad. Que es básicamente la definición de un cine. Le he dicho que si al bebé le gustan las pelis será gracias a mí. Me ha dicho que si al bebé le gusta cotillear será culpa mía."
+        },
+        {
+          "id": "bi8_q6",
+          "text": "Qué os apetece ver?",
+          "response": "Linda quiere comedia. Yo quiero misterio. Vamos a negociar. Algo que tenga humor pero también intriga. Un punto medio. Que es donde Linda y yo vivimos desde hace quince años. En el punto medio."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas, amigo. Hoy vengo tranquilo. Sin misterios, sin casas raras, sin postales ajenas. Solo un cartero cansado con una mujer embarazada de ocho meses que le ha mandado al cine para que deje de reorganizar la habitación del bebé.",
+      "questions": [
+        {
+          "id": "bi9_q1",
+          "text": "Casi llega el momento.",
+          "response": "Tres semanas. Estoy tan nervioso que ayer entregué el correo del 14 en el 41. Y el del 41 en el 14. Phil tuvo que corregirme. Phil. El que se pierde en los polígonos. Así estoy."
+        },
+        {
+          "id": "bi9_q2",
+          "text": "Vas a seguir viniendo al cine?",
+          "response": "Siempre. Aunque sea con el bebé. Linda dice que los cines no son sitio para bebés. Yo digo que si está oscuro y hay ruido blanco de fondo, el bebé dormirá mejor que en casa. Es ciencia. Creo."
+        },
+        {
+          "id": "bi9_q3",
+          "text": "Has dejado lo de la casa del 27?",
+          "response": "Más o menos. He decidido que hay cosas que es mejor no saber. Que un buen cartero entrega y se va. Que bastantes secretos llevo ya encima. Uno más y me hundo. Así que entrego el sobre, no miro, y sigo."
+        },
+        {
+          "id": "bi9_q4",
+          "text": "Has aprendido algo de todo esto?",
+          "response": "Que este pueblo tiene más capas de las que pensaba. Que la gente guarda cosas que no imaginas. Que hay sitios que no cuadran. Y que a veces lo mejor que puedes hacer es ser amable, entregar el correo, y confiar en que alguien más se encarga del resto."
+        },
+        {
+          "id": "bi9_q5",
+          "text": "Alguien como quién?",
+          "response": "Como tú, por ejemplo. Tú también conoces a todo el mundo. También escuchas. También notas cosas. La diferencia es que yo reparto cartas y tú recomiendas películas. Pero en el fondo hacemos lo mismo: conectamos a la gente con lo que necesita."
+        },
+        {
+          "id": "bi9_q6",
+          "text": "Qué quieres ver hoy?",
+          "response": "Lo que tú digas. Después de tantas visitas, confío en tu criterio. Ponme algo bueno. Algo que pueda contarle a Linda cuando llegue. Algo que algún día le cuente a mi hijo. La primera película que vi antes de que nacieras. Eso quiero."
+        }
+      ]
+    }
+  ]
+}

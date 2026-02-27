@@ -49,8 +49,8 @@ func _build_ui() -> void:
 	_panel.anchor_bottom = 0.5
 	_panel.offset_left   = -240
 	_panel.offset_right  =  240
-	_panel.offset_top    = -220
-	_panel.offset_bottom =  220
+	_panel.offset_top    = -300
+	_panel.offset_bottom =  300
 	add_child(_panel)
 
 	# VBox interior
@@ -110,6 +110,33 @@ func _build_ui() -> void:
 	total_lbl.add_theme_color_override("font_color", C_CREAM_D)
 	vb.add_child(total_lbl)
 
+	# Fama y estabilidad
+	var fame_lbl := Label.new()
+	fame_lbl.name = "Fame"
+	fame_lbl.text = ""
+	fame_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	fame_lbl.add_theme_font_size_override("font_size", 15)
+	fame_lbl.add_theme_color_override("font_color", C_GOLD)
+	vb.add_child(fame_lbl)
+
+	var stab_lbl := Label.new()
+	stab_lbl.name = "Stability"
+	stab_lbl.text = ""
+	stab_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	stab_lbl.add_theme_font_size_override("font_size", 15)
+	stab_lbl.add_theme_color_override("font_color", C_CREAM_D)
+	vb.add_child(stab_lbl)
+
+	# Advertencia económica
+	var warn_lbl := Label.new()
+	warn_lbl.name = "Warning"
+	warn_lbl.text = ""
+	warn_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	warn_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	warn_lbl.add_theme_font_size_override("font_size", 13)
+	warn_lbl.add_theme_color_override("font_color", C_RED)
+	vb.add_child(warn_lbl)
+
 	vb.add_child(UITheme.gold_separator())
 
 	# Botón siguiente día
@@ -148,8 +175,37 @@ func show_results(day: int, hits: int, total_customers: int, money: int, rating:
 	if r_lbl != null:
 		r_lbl.add_theme_color_override("font_color", rc)
 
-	_set_label(vb, "Money",  "Propinas hoy: $%d" % money)
+	_set_label(vb, "Money",  "Dinero hoy: $%d" % money)
 	_set_label(vb, "Total",  "Acumulado total: $%d" % RunState.total_money)
+
+	# Fama
+	var fame_val := FameManager.get_fame()
+	_set_label(vb, "Fame", "Fama: %d / %d" % [fame_val, FameManager.MAX_FAME])
+	var fame_lbl_node := _find_label(vb, "Fame")
+	if fame_lbl_node != null:
+		if fame_val <= 2:
+			fame_lbl_node.add_theme_color_override("font_color", C_RED)
+		elif fame_val >= 8:
+			fame_lbl_node.add_theme_color_override("font_color", C_GREEN)
+
+	# Estabilidad (distorsión) — solo visible en Fase 2+
+	if RunState.CURRENT_PHASE >= 2:
+		var stab_pct := int(StabilityManager.get_pct() * 100)
+		var distortion_display := 10 - int(StabilityManager.stability / 10.0)
+		_set_label(vb, "Stability", "Distorsión: %d / 10" % distortion_display)
+		var stab_node := _find_label(vb, "Stability")
+		if stab_node != null:
+			if distortion_display >= 7:
+				stab_node.add_theme_color_override("font_color", C_RED)
+			elif distortion_display >= 4:
+				stab_node.add_theme_color_override("font_color", Color(0.95, 0.76, 0.15))
+
+	# Advertencia económica
+	var avg_daily_cost := 30  # coste medio estimado de stock diario
+	if RunState.total_money < avg_daily_cost and RunState.total_money > 0:
+		_set_label(vb, "Warning", "⚠ Fondos bajos. Considera cargar un día anterior.")
+	elif RunState.total_money <= 0:
+		_set_label(vb, "Warning", "⚠ Sin fondos. Riesgo de cierre económico.")
 
 	# Sonido de fin de día
 	SoundManager.play_success()

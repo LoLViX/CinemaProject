@@ -1,5 +1,7 @@
 extends CanvasLayer
 class_name PauseUI
+
+signal exit_to_menu_requested   # Main.gd lo escucha para guardar antes de salir
 # ============================================================
 # PauseUI.gd — Pantalla de pausa (ESC)
 # ============================================================
@@ -89,9 +91,24 @@ func _build_ui() -> void:
 	btn_resume.pressed.connect(_on_resume)
 	vb.add_child(btn_resume)
 
+	# Botón Ajustes (placeholder)
+	var btn_settings := Button.new()
+	btn_settings.text = "⚙  AJUSTES"
+	btn_settings.custom_minimum_size = Vector2(0, 36)
+	btn_settings.add_theme_stylebox_override("normal",  UITheme.btn_style(false))
+	btn_settings.add_theme_stylebox_override("hover",   UITheme.btn_style(true))
+	btn_settings.add_theme_stylebox_override("pressed", UITheme.btn_style(false))
+	btn_settings.add_theme_color_override("font_color", C_CREAM_D)
+	btn_settings.add_theme_font_size_override("font_size", 14)
+	btn_settings.process_mode = Node.PROCESS_MODE_ALWAYS
+	btn_settings.pressed.connect(_on_settings)
+	vb.add_child(btn_settings)
+
+	vb.add_child(UITheme.gold_separator())
+
 	# Botón Volver al menú
 	var btn_menu := Button.new()
-	btn_menu.text = "↩  VOLVER AL MENÚ"
+	btn_menu.text = "↩  GUARDAR Y SALIR AL MENÚ"
 	btn_menu.custom_minimum_size = Vector2(0, 36)
 	var sb_grey := StyleBoxFlat.new()
 	sb_grey.bg_color = Color(0.20, 0.08, 0.08, 0.90)
@@ -137,9 +154,18 @@ func _on_resume() -> void:
 	get_tree().paused = false
 	SoundManager.play_click()
 
+func _on_settings() -> void:
+	pass  # TODO: abrir pantalla de ajustes
+
 func _on_menu() -> void:
+	visible = false
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	# Guardar en slot 1 automáticamente al salir
+	if Engine.has_singleton("SaveManager") or get_node_or_null("/root/SaveManager") != null:
+		SaveManager.save_slot(1)
+	emit_signal("exit_to_menu_requested")
+	# Ir al menú principal
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 func _refresh_stats() -> void:
 	if _stats_lbl == null:

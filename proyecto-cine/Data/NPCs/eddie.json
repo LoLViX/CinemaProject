@@ -1,0 +1,379 @@
+{
+  "id": "eddie",
+  "name": "Eddie Reeves",
+  "illustration": "res://Assets/Customers/chico_dj.png",
+  "patience": 5,
+  "tip": 1,
+  "_info": {
+    "description": "DJ del club nocturno del pueblo. Joven, enrollado, obsesionado con la música. Dejó la universidad y usa la imagen de DJ para esconder sus inseguridades. El cine le recuerda a su infancia.",
+    "occupation": "DJ",
+    "age": 22,
+    "traits": ["enrollado", "inseguro", "nostálgico", "impaciente"]
+  },
+  "preferences": {
+    "must": ["action", "sci-fi"],
+    "must_not": ["drama", "mystery"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "cola",
+    "food": "",
+    "popcorn": true,
+    "butter": false,
+    "caramel": false,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "Ey, ¿qué pasa? Soy Eddie. Eddie Reeves. Pincho en el Neon, el club de la calle Oak. Seguro que has oído hablar de mí. O no. Da igual. Me han dicho que aquí ponen pelis que molan. Vamos a comprobarlo.",
+      "questions": [
+        {
+          "id": "ed1_q1",
+          "text": "¿Eres el DJ del Neon?",
+          "response": "El mismo. Pincho viernes y sábados. A veces jueves si hay evento. Música electrónica, algo de funk, lo que pida la noche. El Neon es pequeño pero tiene buen rollo. Bueno, cuando viene gente."
+        },
+        {
+          "id": "ed1_q2",
+          "text": "¿Vienes mucho al cine?",
+          "response": "No mucho. Mis horarios son raros. Me acuesto a las cuatro de la mañana y me levanto a mediodía. Pero hoy no tengo bolo y estaba aburrido en casa. El cine era lo más interesante que se me ha ocurrido."
+        },
+        {
+          "id": "ed1_q3",
+          "text": "¿Llevas mucho pinchando?",
+          "response": "Tres años. Empecé con dieciocho, mezclando en mi cuarto con unos auriculares que me regaló mi tío. Luego el dueño del Neon me dio una oportunidad y aquí sigo. No gano una fortuna, pero hago lo que me gusta."
+        },
+        {
+          "id": "ed1_q4",
+          "text": "¿Eres de aquí?",
+          "response": "Nacido y criado. Mis padres tienen la ferretería de la avenida principal. Reeves & Sons, aunque el sons soy yo y no pienso vender tornillos. Bueno, eso es lo que les he dicho a ellos. No les ha hecho mucha gracia."
+        },
+        {
+          "id": "ed1_q5",
+          "text": "¿Vives solo?",
+          "response": "Con un colega, Mike. Tenemos un apartamento encima de la lavandería. Es pequeño, huele a detergente y las paredes son finas. Pero tiene enchufe para mis equipos y eso es lo que importa."
+        },
+        {
+          "id": "ed1_q6",
+          "text": "¿Qué tipo de pelis te van?",
+          "response": "Acción y ciencia ficción. Lo visual, tío. Mundos raros, naves, explosiones. Cosas que te vuelen la cabeza. Nada de dramas ni de películas lentas que te hacen pensar demasiado. Para pensar ya tengo la semana."
+        }
+      ]
+    },
+    {
+      "greeting": "Ey, hola otra vez. He venido antes de trabajar. Pincho a las once, así que tengo tiempo. La peli de la otra vez estuvo decente. Los efectos especiales molaban.",
+      "questions": [
+        {
+          "id": "ed2_q1",
+          "text": "¿Qué tal el club?",
+          "response": "Regular. El viernes vino poca gente. El sábado algo más. Es que en este pueblo la gente se acuesta pronto. Yo pincho para las paredes a veces. Pero cuando la pista se llena... tío, no hay nada igual."
+        },
+        {
+          "id": "ed2_q2",
+          "text": "¿Compones tu propia música?",
+          "response": "Estoy en ello. Tengo un programa en el portátil y hago beats cuando puedo. No son gran cosa, pero alguno está bien. Mike dice que mole, pero Mike dice que todo mola. No es muy fiable como crítico."
+        },
+        {
+          "id": "ed2_q3",
+          "text": "¿Has pensado en enviar tu música a alguien?",
+          "response": "Sí y no. Tengo miedo de que me digan que es basura. Mientras no la enseño, puedo creer que es buena. Es estúpido, lo sé. Pero es más fácil soñar que arriesgarse."
+        },
+        {
+          "id": "ed2_q4",
+          "text": "¿Qué dicen tus padres del trabajo de DJ?",
+          "response": "Mi padre dice que no es un trabajo de verdad. Mi madre dice que mientras sea feliz... pero con esa cara que pone cuando no está convencida. Los quiero, pero no entienden. Para ellos trabajo es la ferretería."
+        },
+        {
+          "id": "ed2_q5",
+          "text": "¿Tienes novia?",
+          "response": "No. He tenido rollos, pero nada serio. Las chicas del pueblo me ven como Eddie el DJ, el tío guay que pincha los fines. No saben que entre semana como cereales a las tres de la tarde en calzoncillos. Quizá es mejor así."
+        },
+        {
+          "id": "ed2_q6",
+          "text": "¿Qué quieres ver hoy?",
+          "response": "Ciencia ficción. Algo con naves, planetas, cosas raras. Cuanto más lejos de este pueblo, mejor. Necesito que mi cabeza viaje un rato."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Hoy no estoy muy hablador. Bueno, sí. Es que he discutido con mi padre. Otra vez. Lo de siempre. Que cuándo voy a buscar un trabajo de verdad. Que la música no paga facturas.",
+      "questions": [
+        {
+          "id": "ed3_q1",
+          "text": "¿Qué ha pasado exactamente?",
+          "response": "He ido a cenar a casa de mis padres y mi padre ha sacado el tema de la universidad. Que si me arrepiento de haberlo dejado. Que un amigo suyo tiene un hijo que es ingeniero y gana bien. Siempre el mismo disco. Sin juego de palabras."
+        },
+        {
+          "id": "ed3_q2",
+          "text": "¿Dejaste la universidad?",
+          "response": "Sí. Después del primer año. Estudiaba administración de empresas. Me aburría tanto que quería gritar. Un día me di cuenta de que no me veía en una oficina el resto de mi vida y lo dejé. Mis padres no me lo han perdonado."
+        },
+        {
+          "id": "ed3_q3",
+          "text": "¿Te arrepientes?",
+          "response": "A veces. No de haberlo dejado, sino de no tener un plan mejor. Pinchar está bien, pero no sé si quiero hacerlo con cuarenta años. ¿Y entonces qué? ¿Vuelvo a la ferretería? Ese pensamiento me da más miedo que cualquier película de terror."
+        },
+        {
+          "id": "ed3_q4",
+          "text": "¿Qué te gustaría hacer si pudieras elegir?",
+          "response": "Producir música. De verdad. En un estudio. Hacer bandas sonoras, quizá. Las pelis que me gustan tienen músicas increíbles. Ese sintetizador que te pone los pelos de punta. Yo quiero hacer eso. Pero ¿cómo? Desde aquí no se llega a ningún lado."
+        },
+        {
+          "id": "ed3_q5",
+          "text": "¿Por qué no lo intentas?",
+          "response": "Porque si lo intento y fallo, se acabó el sueño. Y el sueño es lo único que tengo ahora mismo. Es patético, lo sé. Pero al menos cuando pincho un viernes por la noche puedo cerrar los ojos y creer que estoy en algún sitio grande."
+        },
+        {
+          "id": "ed3_q6",
+          "text": "Venga, ¿qué te pongo hoy?",
+          "response": "Acción. Algo con mucho ruido. No quiero pensar. Quiero sentarme, comer palomitas y olvidarme de que mi padre cree que soy un fracasado."
+        }
+      ]
+    },
+    {
+      "greeting": "Ey. ¿Sabes qué? El otro día encontré una cinta VHS en el desván de mis padres. Una grabación de cuando yo tenía siete años. Salgo viendo Star Wars por primera vez. Gritando de emoción. Me ha revuelto todo.",
+      "questions": [
+        {
+          "id": "ed4_q1",
+          "text": "¿Qué sentiste al verla?",
+          "response": "Pues... nostalgia brutal. Ese crío no sabía nada del mundo. Solo sabía que las naves espaciales molaban y que quería ser piloto. Todo era sencillo. Ahora tengo veintidós años y no sé qué quiero ser de mayor."
+        },
+        {
+          "id": "ed4_q2",
+          "text": "¿Ibas mucho al cine de pequeño?",
+          "response": "Cada sábado. Mi madre me llevaba. Palomitas sin mantequilla, cola grande. Siempre la misma rutina. Era nuestro momento. Antes de que todo se complicara con la universidad y las peleas con mi padre."
+        },
+        {
+          "id": "ed4_q3",
+          "text": "¿Tu madre te apoya más?",
+          "response": "Ella intenta. Me trae comida al apartamento, me pregunta por el club. Pero sé que también está decepcionada. Solo que lo disimula mejor. Las madres son así. Te quieren aunque no entiendan tus decisiones."
+        },
+        {
+          "id": "ed4_q4",
+          "text": "¿Echas de menos esa época?",
+          "response": "Mucho. Echo de menos no tener que preocuparme por el alquiler, por el futuro, por si mi música es lo bastante buena. Echo de menos creer que todo era posible. Ahora sé que no todo es posible. Y eso duele."
+        },
+        {
+          "id": "ed4_q5",
+          "text": "¿Por eso vienes al cine?",
+          "response": "Creo que sí. No me había dado cuenta hasta ahora, pero sí. Es como volver a ese sábado por la mañana. Palomitas, butaca, pantalla grande. Por un rato soy ese crío otra vez. Sin facturas ni miedos."
+        },
+        {
+          "id": "ed4_q6",
+          "text": "¿Qué te apetece hoy?",
+          "response": "Ciencia ficción. Algo con naves y estrellas. Como cuando tenía siete años y todo era nuevo. Necesito esa sensación."
+        }
+      ]
+    },
+    {
+      "greeting": "Tío, tengo que contarte algo. He mandado una de mis canciones a un productor de la ciudad. Un tío que produce para artistas independientes. Le encontré en internet. Me he tirado tres horas escribiendo el email.",
+      "questions": [
+        {
+          "id": "ed5_q1",
+          "text": "¡Por fin! ¿Cuál le has mandado?",
+          "response": "Una que se llama Neon Dust. Es electrónica con toques de funk. Tiene un sintetizador que me gusta mucho. No es perfecta, pero es mía. Si no le gusta... bueno, al menos lo habré intentado."
+        },
+        {
+          "id": "ed5_q2",
+          "text": "¿Cómo te sientes?",
+          "response": "Como si me hubiera tirado de un puente. Pero con red. O sin red. No lo sé. Estoy nervioso. Miro el móvil cada cinco minutos. Mike dice que me relaje, pero Mike se relaja con todo. Es fácil decirlo cuando no es tu sueño."
+        },
+        {
+          "id": "ed5_q3",
+          "text": "¿Se lo has contado a tus padres?",
+          "response": "No. Si sale bien, se lo digo. Si sale mal, nadie se entera. No necesito la cara de decepción de mi padre otra vez. Bastante tengo con la mía."
+        },
+        {
+          "id": "ed5_q4",
+          "text": "¿Qué esperas que pase?",
+          "response": "En el mejor caso, que le guste y quiera escuchar más. En el peor, que no conteste. Lo peor no es el rechazo, es el silencio. Cuando ni siquiera mereces un no. Eso es lo que me aterra."
+        },
+        {
+          "id": "ed5_q5",
+          "text": "Creo que has hecho bien, Eddie.",
+          "response": "Gracias, tío. En serio. No mucha gente me dice eso. En el pueblo soy el DJ que dejó la uni. Aquí soy alguien que intenta algo. Es diferente. Me gusta más la versión de aquí."
+        },
+        {
+          "id": "ed5_q6",
+          "text": "¿Qué vemos para calmar los nervios?",
+          "response": "Acción pura. Algo rápido con buena banda sonora. Que no me deje pensar. Dos horas sin mirar el móvil. Si es que puedo."
+        }
+      ]
+    },
+    {
+      "greeting": "Ha contestado. El productor. Ha contestado. Dice que le gusta el beat de Neon Dust y que quiere escuchar más. Más. ¿Entiendes lo que eso significa? Alguien de verdad quiere escuchar mi música.",
+      "questions": [
+        {
+          "id": "ed6_q1",
+          "text": "¡Eso es increíble, Eddie!",
+          "response": "No me lo creo todavía. He leído el email siete veces. Se llama Marcus y tiene un pequeño sello discográfico. No es Sony, pero es real. Un sello real que ha escuchado mi música y no ha vomitado."
+        },
+        {
+          "id": "ed6_q2",
+          "text": "¿Le vas a mandar más temas?",
+          "response": "Sí. Tengo cuatro que están medio terminados. Voy a trabajar como un loco esta semana para pulirlos. Mike dice que me ha visto más contento que nunca. Tiene razón. Estoy flipando."
+        },
+        {
+          "id": "ed6_q3",
+          "text": "¿Se lo has contado a alguien?",
+          "response": "A Mike. Y a mi madre. Le he llamado y me he puesto a hablar tan rápido que no me entendía. Cuando lo ha pillado se ha puesto a llorar. Llora por todo, mi madre. Pero esta vez creo que eran lágrimas buenas."
+        },
+        {
+          "id": "ed6_q4",
+          "text": "¿Y tu padre?",
+          "response": "No todavía. Quiero tener algo más concreto antes de decírselo. Si le digo ahora que un tío de internet dice que le mola mi música, me va a mirar con esa cara. Ya sabes cuál. La de eso no paga hipotecas."
+        },
+        {
+          "id": "ed6_q5",
+          "text": "¿Cómo afecta esto al club?",
+          "response": "Sigo pinchando igual. Pero ahora mezclo con más ganas. El viernes metí uno de mis temas en el set y la gente bailó. Bailaron mi música. Tío. Mi música. Es una sensación que no tiene precio."
+        },
+        {
+          "id": "ed6_q6",
+          "text": "¿Qué quieres ver para celebrar?",
+          "response": "Ciencia ficción. Algo futurista con una banda sonora brutal. Hoy quiero soñar en grande. Creo que me lo he ganado."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye, ¿puedo sentarme un rato antes de la peli? Necesito hablar. Marcus me ha propuesto ir a su estudio en la ciudad para grabar un EP. Un EP, tío. Seis canciones. Profesional. Pero tengo que pagar parte de la producción.",
+      "questions": [
+        {
+          "id": "ed7_q1",
+          "text": "¿Cuánto cuesta?",
+          "response": "Más de lo que tengo. Pero menos de lo que pensaba. Marcus me ha hecho un buen precio. Dice que cree en el proyecto. Tengo algo ahorrado del club, pero no llego. Estoy pensando en pedir prestado."
+        },
+        {
+          "id": "ed7_q2",
+          "text": "¿A quién le pedirías?",
+          "response": "A mis padres. Que es exactamente lo que no quiero hacer. Pedirle dinero a mi padre para la música es como pedirle a un vegano que te financie una hamburguesería. Pero no tengo otra opción."
+        },
+        {
+          "id": "ed7_q3",
+          "text": "¿Crees que te lo darán?",
+          "response": "Mi madre sí. Mi padre... no lo sé. Tengo que convencerle de que esto es serio. Que no es un capricho de crío. Que un profesional ha escuchado mi música y quiere grabarla. Eso tiene que significar algo."
+        },
+        {
+          "id": "ed7_q4",
+          "text": "¿Qué pasa si dice que no?",
+          "response": "Busco otra forma. Trabajo más turnos en el club, vendo equipos que no uso, lo que sea. No voy a dejar pasar esto. Es la primera vez que alguien me abre una puerta y no pienso quedarme mirando desde fuera."
+        },
+        {
+          "id": "ed7_q5",
+          "text": "Has madurado mucho, Eddie.",
+          "response": "¿Tú crees? A veces me siento igual que a los dieciocho. Perdido. Pero ahora al menos sé hacia dónde quiero ir. Eso es más de lo que tenía antes. Y este cine tiene parte de culpa. Aquí empecé a pensar de verdad."
+        },
+        {
+          "id": "ed7_q6",
+          "text": "¿Qué te pongo mientras piensas?",
+          "response": "Acción con buena música. Algo que me cargue las pilas. Porque mañana tengo que hacer la llamada más difícil de mi vida."
+        }
+      ]
+    },
+    {
+      "greeting": "Tío. Mi padre me ha dicho que sí. No solo me ha dado el dinero. Me ha dicho: hazlo bien, Eddie. Así, sin más. Sin sermón. Sin la cara. Solo hazlo bien. Creo que estoy en shock.",
+      "questions": [
+        {
+          "id": "ed8_q1",
+          "text": "Eso es enorme.",
+          "response": "No te haces idea. Le he explicado todo. Le he puesto mis canciones en el móvil. Se ha quedado callado un rato largo. Y luego ha dicho: suena bien, hijo. Suena bien. Llevaba años esperando que dijera algo así."
+        },
+        {
+          "id": "ed8_q2",
+          "text": "¿Cómo te sientes?",
+          "response": "Como si me hubieran quitado un peso de encima que no sabía que llevaba. Mi padre me ha escuchado. De verdad. No la música, sino a mí. Ha entendido que esto es lo que quiero. Eso vale más que el dinero."
+        },
+        {
+          "id": "ed8_q3",
+          "text": "¿Cuándo vas al estudio?",
+          "response": "El mes que viene. Dos semanas en la ciudad grabando. Marcus ya tiene el estudio reservado. Estoy trabajando en los temas día y noche. Mike dice que parezco un loco. Probablemente tiene razón."
+        },
+        {
+          "id": "ed8_q4",
+          "text": "¿Qué dice Mike de todo esto?",
+          "response": "Está flipando. Es mi mejor amigo y sabe lo que esto significa para mí. Me ha regalado unos auriculares nuevos para la grabación. De los buenos. Ese tío no tiene dinero pero se ha gastado lo que no tiene en mí. Es mucho."
+        },
+        {
+          "id": "ed8_q5",
+          "text": "¿Vas a echar de menos el pueblo?",
+          "response": "Son solo dos semanas. Pero sí. Echo de menos cosas antes de irme. Este cine, por ejemplo. Las palomitas sin mantequilla. La tranquilidad. Cuando era pequeño quería irme de aquí. Ahora sé que siempre voy a volver."
+        },
+        {
+          "id": "ed8_q6",
+          "text": "¿Qué quieres ver antes de la gran aventura?",
+          "response": "Ciencia ficción. La mejor que tengas. Algo que me haga sentir que el futuro es increíble. Porque ahora mismo lo creo de verdad."
+        }
+      ]
+    },
+    {
+      "greeting": "He vuelto de la ciudad. El EP está grabado. Seis canciones. Suena profesional. Suena a mí, pero mejor. Marcus dice que lo va a distribuir en plataformas digitales el mes que viene. Soy un músico de verdad, tío.",
+      "questions": [
+        {
+          "id": "ed9_q1",
+          "text": "¿Cómo ha sido la experiencia?",
+          "response": "Intensa. Doce horas al día en el estudio. Marcus es exigente pero sabe lo que hace. Ha habido momentos en que quería tirar la toalla, pero luego escuchaba el resultado y todo tenía sentido. Es el trabajo más duro y más bonito que he hecho."
+        },
+        {
+          "id": "ed9_q2",
+          "text": "¿Tus padres han escuchado el EP?",
+          "response": "Se lo puse ayer. Mi madre ha llorado, como siempre. Mi padre ha escuchado las seis canciones enteras sin decir nada. Al final ha dicho: la tercera es mi favorita. La tercera. Mi padre tiene una canción favorita mía. No me lo creo."
+        },
+        {
+          "id": "ed9_q3",
+          "text": "¿Cómo se llama el EP?",
+          "response": "Neon Saturday. Por los sábados en el cine con mi madre y por el Neon, el club. Las dos cosas que me han hecho ser quien soy. Bueno, y este sitio. Pero Neon Saturday Cinema era demasiado largo."
+        },
+        {
+          "id": "ed9_q4",
+          "text": "¿Vas a seguir en el pueblo?",
+          "response": "De momento sí. Sigo pinchando en el Neon. Pero Marcus quiere que vaya a la ciudad de vez en cuando para trabajar en más cosas. Es un equilibrio. Ya no necesito huir del pueblo. Puedo estar aquí y hacer música al mismo tiempo."
+        },
+        {
+          "id": "ed9_q5",
+          "text": "¿Mike está orgulloso?",
+          "response": "Dice que quiere créditos en el EP por haberme aguantado tres años. Le he puesto en los agradecimientos. Mike, el mejor compañero de piso y peor crítico musical del mundo. Se ha reído. Creo que le ha emocionado."
+        },
+        {
+          "id": "ed9_q6",
+          "text": "¿Qué te apetece ver?",
+          "response": "Algo de acción épica. Con una banda sonora que te ponga los pelos de punta. Hoy quiero disfrutar de la música de otro y no pensar en la mía. Que descanse la cabeza un rato."
+        }
+      ]
+    },
+    {
+      "greeting": "Ey, hola. Hoy es un día especial. Neon Saturday ha salido en las plataformas. Mil reproducciones en la primera semana. No es un millón, pero es mil personas que han escuchado mi música. Mil desconocidos. Es una locura.",
+      "questions": [
+        {
+          "id": "ed10_q1",
+          "text": "Felicidades, Eddie. Te lo mereces.",
+          "response": "Gracias, tío. De verdad. Si me hubieras dicho hace un año que iba a estar aquí, con un EP publicado y mi padre orgulloso, no te habría creído. Era el DJ que dejó la uni. Ahora soy algo más."
+        },
+        {
+          "id": "ed10_q2",
+          "text": "¿Qué es lo siguiente?",
+          "response": "Marcus quiere grabar un álbum completo. Pero sin prisas. Dice que lo bueno se cocina lento. Me gusta esa filosofía. Antes tenía prisa por todo. Ahora sé que las cosas llegan cuando tienen que llegar."
+        },
+        {
+          "id": "ed10_q3",
+          "text": "¿Sigues comiendo cereales a las tres de la tarde?",
+          "response": "A veces. Pero ahora también cocino. Mi madre me ha enseñado a hacer pollo asado. No está mal. Mike dice que sabe a cartón con especias, pero ese tío come pizza fría de desayuno, así que su opinión no cuenta."
+        },
+        {
+          "id": "ed10_q4",
+          "text": "¿Cómo va la relación con tu padre?",
+          "response": "Mejor que nunca. El otro día vino al Neon un viernes. Se sentó en la barra con una cerveza y me escuchó pinchar una hora. No bailó, claro, es mi padre. Pero estaba ahí. Y eso es todo lo que necesitaba."
+        },
+        {
+          "id": "ed10_q5",
+          "text": "Ha sido un viaje, ¿eh?",
+          "response": "Sí, tío. Y este cine ha sido parte de él. Venía aquí para escapar, pero al final encontré algo. No sé qué exactamente. Quizá a mí mismo. Suena cursi, lo sé. Pero es verdad. Palomitas sin mantequilla y autoconocimiento. Buen combo."
+        },
+        {
+          "id": "ed10_q6",
+          "text": "Última visita especial, ¿qué ponemos?",
+          "response": "La mejor peli de ciencia ficción que tengas. Algo que me recuerde a ese crío de siete años que veía Star Wars y gritaba de emoción. Porque ese crío sigue aquí dentro. Y hoy tiene motivos para gritar."
+        }
+      ]
+    }
+  ]
+}

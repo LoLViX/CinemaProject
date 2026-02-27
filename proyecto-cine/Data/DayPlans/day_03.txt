@@ -1,0 +1,7 @@
+# Día 3 — 6 clientes humanos, guía advierte
+# Fase 2+: slots era 10 + warning_entities activo
+slots: 6
+story_npc: tammy
+story_npc: frank
+story_npc: guia
+warning_entities

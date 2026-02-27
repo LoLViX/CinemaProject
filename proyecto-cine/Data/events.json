@@ -1,0 +1,26 @@
+{
+  "_doc": "Mensajes de duelo y eventos. {name} se reemplaza por el nombre del NPC muerto.",
+  "impatience_messages": [
+    "Ya era hora... pero ya es tarde.",
+    "¿Qué hace, dormir? Déjelo, me voy.",
+    "Llevo aquí una eternidad. Olvídelo.",
+    "La próxima vez me traigo un libro.",
+    "No tengo el día para esto. Adiós.",
+    "Pensé que este sitio era diferente.",
+    "No volveré. Hay otros cines.",
+    "Esto es lo más lento que he visto en mi vida.",
+    "Ya me veía la película en casa.",
+    "Me voy. Tiempo es lo que no tengo.",
+    "A este paso cierras antes de que me atiendas."
+  ],
+  "grief_messages": [
+    "¿Has oído lo de {name}? Encontraron... no sé, no me lo explico. Necesito desconectar un rato.",
+    "Vengo porque... lo de {name}. Aquí uno se olvida un poco. Dame algo, lo que sea.",
+    "No puedo creer lo de {name}. Llevábamos años viniendo los dos... Solo quiero una película tranquila.",
+    "He visto a la familia de {name} esta mañana. Estaban destrozados. Yo... solo quiero sentarme y ver algo.",
+    "No hablo de ello. De {name}. Pero necesitaba salir de casa. Ponme lo que tengas."
+  ],
+  "warning_entities": [
+    "Ha llamado alguien. No sé bien de qué oficina. Dicen que hay varias... cosas interesadas en el cine. No especificaron más. Deben de venir pronto. Actúa con normalidad."
+  ]
+}

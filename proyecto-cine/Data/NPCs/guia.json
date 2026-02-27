@@ -1,0 +1,380 @@
+{
+  "id": "guia",
+  "name": "Walt Kowalski",
+  "illustration": "res://Assets/Customers/hombre_misterioso.png",
+  "npc_type": "guide",
+  "patience": 10,
+  "tip": 5,
+  "_info": {
+    "description": "Veterano de Vietnam, jubilado, críptico y cálido. Parece saber demasiado sobre el cine y lo que hay debajo. Fue quien modificó la Sala Especial hace décadas. Habla en metáforas, medias verdades y silencios largos. Actúa como mentor no oficial del jugador.",
+    "occupation": "Jubilado. Veterano de Vietnam. Antiguo encargado del cine.",
+    "age": 65,
+    "traits": ["críptico", "cálido", "melancólico", "sabio", "protector", "veterano"]
+  },
+  "preferences": {
+    "must": ["mystery", "drama"],
+    "must_not": []
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "rootbeer",
+    "food": "",
+    "popcorn": true,
+    "butter": true,
+    "caramel": false,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "Buenas tardes, muchacho. He estado ahí fuera un rato, mirando la fachada. La marquesina todavía tiene la grieta del setenta y ocho. Nadie la ha arreglado. Bien. Algunas grietas son necesarias. Dejan entrar la luz correcta.",
+      "questions": [
+        {
+          "id": "gu0_q1",
+          "text": "Nos conocemos?",
+          "response": "No todavía. Pero conoceré este edificio mejor que tú. Cada tabla del suelo, cada goteta del techo. Trabajé aquí antes de que tú nacieras, probablemente. Antes de Vietnam. Antes de muchas cosas. Digamos que soy un viejo amigo de las paredes."
+        },
+        {
+          "id": "gu0_q2",
+          "text": "Trabajó aquí?",
+          "response": "Fue mi primer empleo. Diecisiete años, detrás de ese mismo mostrador. Vendía palomitas y cortaba entradas. Luego vino la guerra y me fui. Cuando volví, el cine era otro. Yo también era otro. Pero las paredes seguían en su sitio."
+        },
+        {
+          "id": "gu0_q3",
+          "text": "Estuvo en Vietnam?",
+          "response": "Dos tours. Sesenta y ocho y setenta. Infantería. No me gusta hablar de eso, pero tampoco me gusta fingir que no pasó. La guerra te enseña una cosa: a distinguir lo que es real de lo que parece real. Y en este pueblo esa habilidad es útil."
+        },
+        {
+          "id": "gu0_q4",
+          "text": "A qué se refiere con que el pueblo necesita esa habilidad?",
+          "response": "A que no todo lo que camina por estas calles salió de una casa, muchacho. Pero eso ya lo irá descubriendo. No es algo que se pueda contar de golpe. Es como una buena película: se revela escena a escena. Y apenas estamos en los créditos de apertura."
+        },
+        {
+          "id": "gu0_q5",
+          "text": "Suena misterioso.",
+          "response": "Misterioso es una palabra generosa. Yo diría que es necesario. Hay cosas que este cine contiene. No películas. Otras cosas. Más viejas. Más quietas. Pero no se preocupe por eso hoy. Hoy solo hemos venido a presentarnos."
+        },
+        {
+          "id": "gu0_q6",
+          "text": "Qué quiere ver?",
+          "response": "Un buen misterio. De esos donde el detective sabe que algo no cuadra pero no puede probarlo. Donde la verdad está ahí, delante de todos, y nadie la ve. Me recuerda a algo. Pero eso es otra historia."
+        }
+      ]
+    },
+    {
+      "greeting": "Aquí sigue. Bien. Los que se quedan importan más que los que llegan. Cualquiera puede entrar por una puerta. Quedarse al otro lado es lo difícil.",
+      "questions": [
+        {
+          "id": "gu1_q1",
+          "text": "Por qué dice que importa que me quede?",
+          "response": "Porque este cine necesita a alguien constante. Un punto fijo. Como la Estrella Polar. Los marineros no la eligen, pero la necesitan. Usted es la Estrella Polar de este mostrador, muchacho. Aunque todavía no lo sepa."
+        },
+        {
+          "id": "gu1_q2",
+          "text": "Ha notado algo raro con algunos clientes?",
+          "response": "Raro. Esa palabra hace mucho trabajo. Hay clientes que entran y el aire cambia. No mucho. Un grado. Medio grado. La mayoría de gente no lo nota. Pero usted tiene nariz para estas cosas. Se le nota en los ojos cuando algo le incomoda."
+        },
+        {
+          "id": "gu1_q3",
+          "text": "Usted quién es exactamente?",
+          "response": "Walt Kowalski. Veterano. Jubilado. Viudo. Cliente habitual de este cine desde antes de que usted midiera más que el mostrador. Si quiere más que eso, tendrá que seguir preguntando. Pero no hoy. Hoy solo necesito una película y mis palomitas."
+        },
+        {
+          "id": "gu1_q4",
+          "text": "Su mujer...",
+          "response": "Dorothy. Murió en el setenta y nueve. Cáncer. Rápido, al menos. Veníamos juntos todos los viernes. Ella se sentaba a la izquierda porque oía mejor del oído derecho. Todavía le guardo el sitio. Por costumbre."
+        },
+        {
+          "id": "gu1_q5",
+          "text": "Lo siento.",
+          "response": "No lo sienta. Dorothy vivió bien y murió en paz. En esta vida eso es más de lo que la mayoría consigue. Además, mientras este cine siga abierto, una parte de ella sigue aquí. En la butaca de la izquierda. Fila siete."
+        },
+        {
+          "id": "gu1_q6",
+          "text": "Qué le pongo hoy?",
+          "response": "Un drama. Tranquilo. De los que no necesitan gritar para decir algo importante. Como una conversación entre dos personas que saben que el tiempo se acaba pero no lo mencionan. Eso. Eso es buen cine."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes, muchacho. He notado que presta atención. A la gente. A lo que dicen. A lo que no dicen. Eso está bien. Porque lo que no se dice es más importante que lo que se dice. Siempre.",
+      "questions": [
+        {
+          "id": "gu2_q1",
+          "text": "A qué se refiere?",
+          "response": "A que algunos clientes hablan distinto. No mal. Distinto. Como si las palabras les costaran. Como si estuvieran traduciendo de un idioma que no tiene gramática. La mayoría de gente no se fija. Usted sí. Se le nota."
+        },
+        {
+          "id": "gu2_q2",
+          "text": "Debería preocuparme?",
+          "response": "Preocuparse es mirar al precipicio. Estar alerta es mirar dónde pisas. Son cosas distintas. Usted no necesita preocuparse. Necesita mirar. Escuchar. Y cuando algo le parezca fuera de lugar, hacerle caso a esa sensación. Nunca ignor el instinto."
+        },
+        {
+          "id": "gu2_q3",
+          "text": "Usted sabe algo que yo no.",
+          "response": "Sé muchas cosas, muchacho. Pero las cosas que sé se cuentan despacio. Como se pela una cebolla. Capa a capa. Si arrancas todas las capas de golpe, solo te quedan lágrimas y nada que llevarte a la boca."
+        },
+        {
+          "id": "gu2_q4",
+          "text": "Qué tiene de especial este cine?",
+          "response": "Todos los cines son oscuridad compartida. Pero este tiene una oscuridad más vieja. Más honda. No es mala. Es como un pozo: da miedo mirar dentro, pero es donde está el agua. Y este pueblo lleva mucho tiempo sediento."
+        },
+        {
+          "id": "gu2_q5",
+          "text": "La guerra le enseñó a hablar así?",
+          "response": "La guerra me enseñó que la verdad directa mata. No metafóricamente. Literalmente. En Vietnam aprendí a decir las cosas de lado. A dar la información sin dar el impacto. Es un hábito que no se pierde. Y aquí es útil."
+        },
+        {
+          "id": "gu2_q6",
+          "text": "Qué quiere ver?",
+          "response": "Un misterio. Uno donde el detective no tenga todas las piezas pero avance igual. Donde la brújula no funcione pero el norte siga existiendo. Me gustan esos protagonistas. Me recuerdan a usted."
+        }
+      ]
+    },
+    {
+      "greeting": "Muchacho. Siéntese un momento. Bueno, no puede, está trabajando. Pero escuche. Tiene que saber algo sobre la sala del fondo. La que tiene las butacas distintas. La que huele diferente.",
+      "questions": [
+        {
+          "id": "gu3_q1",
+          "text": "La Sala Especial?",
+          "response": "Así la llaman ahora. Antes era solo la sala dos. Yo le hice algunos cambios. En el sesenta y siete, antes de irme a Vietnam. Sabía que iba a necesitarlos cuando volviera. Y tenía razón."
+        },
+        {
+          "id": "gu3_q2",
+          "text": "Qué tipo de cambios?",
+          "response": "La acústica. El ángulo de las butacas. La tela de las paredes. Cosas pequeñas que suenan ridículas dichas en voz alta. Pero que juntas crean algo. Como un embudo. O una red. La sala atrapa lo que necesita ser atrapado."
+        },
+        {
+          "id": "gu3_q3",
+          "text": "Usted modificó la sala? Por qué?",
+          "response": "Porque Dorothy me lo pidió. Ella lo notó antes que yo. Decía que había cosas en el pueblo que no cuadraban. Sombras con peso. Sonidos donde no debería haber sonidos. Era lista, Dorothy. Más que yo. Me dijo arréglalo. Y lo arreglé."
+        },
+        {
+          "id": "gu3_q4",
+          "text": "Hay algo peligroso en esa sala?",
+          "response": "Un martillo es peligroso si lo usas mal. Un río es peligroso si no sabes nadar. La sala es una herramienta. Contiene lo que hay que contener. Libera lo que hay que liberar. El peligro no está en la sala. Está en no usarla."
+        },
+        {
+          "id": "gu3_q5",
+          "text": "Cómo supo qué hacer?",
+          "response": "El anterior encargado. Un tipo llamado Silas. Viejo como el pecado. Me enseñó lo básico antes de que le fallara el corazón. Fumaba como un carretero y hablaba como un filósofo. Ojalá le hubiera escuchado más. Pero tenía diecisiete años y era idiota."
+        },
+        {
+          "id": "gu3_q6",
+          "text": "Qué quiere ver hoy?",
+          "response": "Algo sobre alguien que construye. Un puente, una casa, una máquina. Me gustan las historias de gente que crea cosas donde antes no había nada. Es el acto más humano que existe. Y aquí hacemos falta más humanos."
+        }
+      ]
+    },
+    {
+      "greeting": "Hoy le veo cansado, muchacho. Normal. Este trabajo pesa. No por las palomitas ni por las colas. Pesa por lo otro. Lo que no viene en el contrato. Lo que nadie te prepara para ver.",
+      "questions": [
+        {
+          "id": "gu4_q1",
+          "text": "Usted pasó por esto?",
+          "response": "Pasé. Cuando volví de Vietnam y retomé el cine, pensé que lo peor ya había pasado. La selva, los disparos, los amigos que no volvieron. Pero resulta que hay otro tipo de guerra. Más silenciosa. Más larga. Y se libra detrás de un mostrador."
+        },
+        {
+          "id": "gu4_q2",
+          "text": "Qué son exactamente esas cosas?",
+          "response": "No tienen nombre que les haga justicia. No son fantasmas. No son demonios. Son huecos. Vacíos con forma humana que han aprendido a caminar y a hablar. Más o menos. Algunos mejor que otros. A los buenos les cuesta distinguirlos. Los malos ni se molestan en fingir."
+        },
+        {
+          "id": "gu4_q3",
+          "text": "Son peligrosos?",
+          "response": "No como un arma. No muerden ni atacan. Pero erosionan. Como el agua erosiona la piedra. Despacio. Sin intención. Solo por estar. Su presencia desgasta la realidad. Hace que las cosas sean menos sólidas. Por eso la sala importa. Los contiene."
+        },
+        {
+          "id": "gu4_q4",
+          "text": "Cuántos hay?",
+          "response": "Más de los que le gustaría saber. Pero la mayoría no son un problema. Vienen, ven su película, se van. El problema es cuando se acumulan. O cuando uno se queda demasiado tiempo fuera de la sala. Ahí es donde las costuras crujen."
+        },
+        {
+          "id": "gu4_q5",
+          "text": "Cómo lo hizo usted solo todos esos años?",
+          "response": "No fui solo. Dorothy me ayudó hasta que ya no pudo. Y antes de eso, Silas me guió. Nadie hace esto solo, muchacho. Siempre hay alguien que vino antes. Alguien que te pasa la antorcha. Yo soy esa antorcha para usted."
+        },
+        {
+          "id": "gu4_q6",
+          "text": "Qué quiere ver hoy?",
+          "response": "Un misterio. De los de verdad. Donde alguien investiga algo que todo el pueblo quiere ignorar. Le suena, verdad? Me encantan las películas que se parecen a la vida. Sobre todo cuando la vida es así de rara."
+        }
+      ]
+    },
+    {
+      "greeting": "Muchacho. El barrio no está bien. No mal del todo, pero las costuras se notan. Las cosas que deberían estar firmes se ablandan. Los bordes que deberían estar definidos se difuminan. Lo ha sentido?",
+      "questions": [
+        {
+          "id": "gu5_q1",
+          "text": "A qué se refiere con las costuras?",
+          "response": "La realidad es como una tela. Tiene trama, urdimbre. La mayor parte del tiempo es firme. Pero a veces se estira. Se adelgaza. Y cuando eso pasa, lo que hay debajo se asoma. No mucho. Un borde. Una sombra. Suficiente para que alguien como usted lo note."
+        },
+        {
+          "id": "gu5_q2",
+          "text": "El cine tiene algo que ver?",
+          "response": "El cine es un punto de sutura. El más importante de los que quedan. Mientras funcione, la tela se mantiene. Si cerrase... no quiero pensarlo. Cuando cerró el Rialto en el setenta y cuatro, el barrio sur se volvió irreconocible en tres meses. No por vandalismo. Por algo peor."
+        },
+        {
+          "id": "gu5_q3",
+          "text": "Hay otros puntos de sutura?",
+          "response": "Había. La librería de Third Avenue. Cerró hace dos años. La iglesia vieja de Oak Street. La derribaron para hacer un aparcamiento. Cada vez que uno se cierra, la presión recae en los que quedan. Y este cine aguanta más de lo que debería. Gracias a la sala. Y gracias a usted."
+        },
+        {
+          "id": "gu5_q4",
+          "text": "Qué pasa si el cine no aguanta?",
+          "response": "Entonces lo que está debajo dejaría de estar debajo. Y la gente vería lo que usted ya ve. Pero sin preparación. Sin contexto. Sin un mostrador donde apoyarse. He visto el pánico en los ojos de un pelotón entero en el sesenta y ocho. Lo de aquí sería peor."
+        },
+        {
+          "id": "gu5_q5",
+          "text": "Por qué me cuenta todo esto?",
+          "response": "Porque nadie se lo contó a Dorothy a tiempo. Y cuando ella lo descubrió sola, el peso casi la aplasta. No quiero que le pase eso a usted. La información es armadura, muchacho. Cuanto más sepa, más fuerte será."
+        },
+        {
+          "id": "gu5_q6",
+          "text": "Qué quiere ver?",
+          "response": "Un drama sobre alguien que carga con una responsabilidad que no eligió. Pero que la lleva con dignidad. Con la espalda recta y los ojos abiertos. Me recuerda a alguien que conozco."
+        }
+      ]
+    },
+    {
+      "greeting": "Muchacho. Tengo que hablarle de la capacidad de la sala. Es importante. Más importante que cualquier otra cosa que le haya dicho. Así que escuche bien.",
+      "questions": [
+        {
+          "id": "gu6_q1",
+          "text": "Qué pasa con la sala?",
+          "response": "Tiene un límite. No de butacas. De contención. Puede absorber una cantidad de presencia antes de necesitar recuperarse. Cuando se llena, necesita tiempo. Si la fuerza, las paredes se ablandan. Y lo que hay dentro empieza a filtrarse por los bordes."
+        },
+        {
+          "id": "gu6_q2",
+          "text": "Cómo sé cuándo está llena?",
+          "response": "Lo sentirá. El aire se pone denso. Los colores se apagan. Y si presta mucha atención, oirá un zumbido bajo. Como un transformador viejo. Así suena la sala trabajando. Conteniendo. Haciendo lo que tiene que hacer."
+        },
+        {
+          "id": "gu6_q3",
+          "text": "Puedo hacer algo para ayudarla?",
+          "response": "Mande a los indicados. No a todos. Solo a los que necesitan estar ahí. La sala distingue. Si manda al equivocado, gasta capacidad sin motivo. Si manda al correcto, la sala se fortalece. Es un equilibrio delicado. Como aquel en las trincheras: un movimiento mal calculado y todo se desmorona."
+        },
+        {
+          "id": "gu6_q4",
+          "text": "Qué pasa si algo se filtra?",
+          "response": "Nada inmediato. No hay explosiones. Solo que las cosas se vuelven menos fiables. Los recuerdos de la gente se contradicen. Las calles no llevan donde deberían. El viejo reloj de la plaza se atrasa los martes. Pequeñeces que se acumulan hasta que ya no son pequeñeces."
+        },
+        {
+          "id": "gu6_q5",
+          "text": "Cómo lo manejaba usted?",
+          "response": "Con Dorothy. Ella tenía un sexto sentido para esto. Sabía cuándo la sala necesitaba descanso. Me decía Walt, hoy no. Y yo le hacía caso. Porque Dorothy nunca se equivocaba. Ni una vez. Ojalá estuviera aquí para guiarle a usted también."
+        },
+        {
+          "id": "gu6_q6",
+          "text": "Qué le apetece ver?",
+          "response": "Algo sobre un maestro y un alumno. Donde el maestro sabe que el alumno le superará. Y está en paz con eso. Es la historia más vieja del mundo, muchacho. Y la más bonita."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes, muchacho. He traído algo para usted. No es un objeto. Es una idea. Llevo semanas buscando cómo decirla. Hoy creo que estoy listo.",
+      "questions": [
+        {
+          "id": "gu7_q1",
+          "text": "Qué idea?",
+          "response": "Que usted no está aquí por casualidad. Los lugares viejos tienen una especie de gravedad. Atraen a quien necesitan. Como un río atrae el agua de la montaña. No es magia. Es física antigua. Y este cine le necesitaba a usted."
+        },
+        {
+          "id": "gu7_q2",
+          "text": "Por qué a mí?",
+          "response": "Porque escucha. Porque pregunta. Porque cuando algo no cuadra, usted no lo ignora. Lo guarda. Lo piensa. Eso es exactamente lo que este sitio necesita. Un testigo atento. Un guardián que ve lo que otros no ven."
+        },
+        {
+          "id": "gu7_q3",
+          "text": "Usted también fue elegido?",
+          "response": "Hace mucho. Cuando este cine abrió, yo tenía pelo oscuro y rodillas que funcionaban. Me quedé porque algo me dijo quédate. No una voz. Una sensación. Más fuerte que cualquier orden que recibí en el ejército."
+        },
+        {
+          "id": "gu7_q4",
+          "text": "Esto terminará algún día?",
+          "response": "Todo termina. Pero no hoy. Y probablemente no mañana. Lo importante no es cuándo termina sino qué hace usted mientras tanto. Cada cliente bien atendido, cada entidad contenida, cada día que el cine abre... es una victoria. Pequeña. Silenciosa. Pero victoria."
+        },
+        {
+          "id": "gu7_q5",
+          "text": "Dorothy sabía todo esto?",
+          "response": "Dorothy sabía más que yo. Siempre. Ella veía las cosas que yo solo intuía. Decía que el cine respiraba. Que tenía algo parecido a un corazón. Se reía cuando yo le preguntaba dónde estaba el corazón. Decía detrás del mostrador, Walt. Siempre detrás del mostrador."
+        },
+        {
+          "id": "gu7_q6",
+          "text": "Qué quiere ver?",
+          "response": "Un drama con final agridulce. De los que te dejan un nudo pero también algo de luz. Como una puesta de sol después de un día largo. Triste porque se acaba. Bonita porque existió."
+        }
+      ]
+    },
+    {
+      "greeting": "Muchacho. Hoy le veo tranquilo. Ya no intenta entenderlo todo. Ha dejado de pelearse con el misterio y ha empezado a vivir con él. Ese es el paso más difícil. El resto es oficio.",
+      "questions": [
+        {
+          "id": "gu8_q1",
+          "text": "Cómo lo sabe?",
+          "response": "Porque lo he visto antes. En mí. Después de Vietnam hubo una fase de rabia, una de miedo, una de obsesión. Y luego llegó la calma. No porque el horror desapareciera. Sino porque aprendí a cargar con él sin que me aplastara."
+        },
+        {
+          "id": "gu8_q2",
+          "text": "Hubo otros como yo antes?",
+          "response": "Algunos. No muchos. Uno se fue a la semana. Otro aguantó un año pero empezó a hablar solo. Otro se quedó pero perdió la capacidad de ver lo que había que ver. Usted es distinto. Tiene el equilibrio justo."
+        },
+        {
+          "id": "gu8_q3",
+          "text": "Qué pasó con el que hablaba solo?",
+          "response": "Se fue a Cleveland. Abrió una ferretería. Vive bien. A veces me manda una postal. Siempre dice lo mismo: Espero que el cine siga en pie. Y yo siempre contesto lo mismo: Sigue. Mientras haya alguien detrás del mostrador, sigue."
+        },
+        {
+          "id": "gu8_q4",
+          "text": "Tiene miedo de que un día no haya nadie?",
+          "response": "Tenía. Ya no. Porque ahora está usted. Y usted tiene algo que los otros no tenían. No sé qué es exactamente. Puede que sea terquedad. Puede que sea vocación. Puede que sea simple decencia. Cualquiera de las tres vale."
+        },
+        {
+          "id": "gu8_q5",
+          "text": "Gracias, Walt.",
+          "response": "No me las dé a mí. Délas al cine. Al edificio. A las butacas que crujen. A las paredes que contienen lo que contienen. Yo solo soy un viejo que viene a ver películas y a recordar a su mujer. El mérito es de usted."
+        },
+        {
+          "id": "gu8_q6",
+          "text": "Qué película hoy?",
+          "response": "Algo sobre alguien que encuentra su lugar. No con fanfarrias. Con la certeza tranquila de estar donde debe estar. Como un tornillo que encaja en su rosca. Sin ruido. Sin esfuerzo. Solo encaja."
+        }
+      ]
+    },
+    {
+      "greeting": "Muchacho. Hoy vengo a ver una película y a decirle algo que llevo tiempo guardando. Puede que no vuelva en una temporada. No porque no quiera. Sino porque ya no hace falta. Usted ya sabe lo que tiene que saber.",
+      "questions": [
+        {
+          "id": "gu9_q1",
+          "text": "Se va?",
+          "response": "No como se va la gente. No hago maletas. Solo dejaré de pasar por aquí un tiempo. Hay otros sitios que necesitan atención. Otros pueblos. Otros cines que se caen a pedazos. Pero este siempre será el primero. Y usted siempre será el que me devolvió la esperanza."
+        },
+        {
+          "id": "gu9_q2",
+          "text": "Estaré bien sin usted?",
+          "response": "Mejor que bien. Ya no me necesita. Quizá nunca me necesitó del todo. Yo fui la excusa para que se hiciera las preguntas correctas. Las respuestas siempre fueron suyas. Desde el primer día detrás de ese mostrador."
+        },
+        {
+          "id": "gu9_q3",
+          "text": "Qué hago si las cosas se ponen difíciles?",
+          "response": "Lo que ha hecho siempre. Escuchar. Preguntar. Prestar atención. Y cuando algo no cuadre, confiar en el instinto. El cine le respalda. La sala le respalda. Dorothy le respalda, desde donde esté. Y yo también. Siempre."
+        },
+        {
+          "id": "gu9_q4",
+          "text": "Hay algo más que deba saber?",
+          "response": "Solo una cosa. Este cine importa. No como negocio. Como lugar. Como punto de sutura entre lo que es y lo que podría romperse. Usted es su guardián ahora. No es un peso, muchacho. Es un privilegio. El mayor que conozco."
+        },
+        {
+          "id": "gu9_q5",
+          "text": "Le echaré de menos, Walt.",
+          "response": "Y yo a usted. Y a estas palomitas horribles. Y a esa root beer que sabe a rayos. Y a la butaca de Dorothy. Pero las cosas buenas no se pierden. Se guardan. En las paredes. En las butacas. En la oscuridad de la sala. Ahí estaré."
+        },
+        {
+          "id": "gu9_q6",
+          "text": "Última película. Qué quiere ver?",
+          "response": "La que usted elija. Me fío de su criterio. Siempre me fié. Desde aquella primera vez que me recomendó algo y supe que entendía lo que necesitaba sin que yo dijera nada. Eso no se enseña, muchacho. Se tiene. Y usted lo tiene."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,381 @@
+{
+  "id": "linda",
+  "name": "Linda Mason",
+  "illustration": "res://Assets/Customers/chica_peluquera.png",
+  "npc_type": "human",
+  "patience": 8,
+  "tip": 2,
+  "_info": {
+    "description": "Peluquera del pueblo. Habla mucho, conoce los secretos de todos porque la gente se desahoga en su silla. Debajo de la fachada alegre hay una mujer solitaria que busca conexiones reales.",
+    "occupation": "Peluquera",
+    "age": 35,
+    "traits": ["habladora", "cotilla", "empática", "solitaria"],
+    "arc": "Empieza siendo la cotilla simpática del pueblo. Poco a poco revela que usa el cotilleo como escudo para no hablar de sí misma. Acaba abriéndose y confiando en el jugador."
+  },
+  "preferences": {
+    "must": ["drama", "romance"],
+    "must_not": ["horror", "sci-fi"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "orange",
+    "food": "",
+    "popcorn": true,
+    "butter": false,
+    "caramel": true,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "¡Hola, hola! Soy Linda, la del salón de belleza de la calle Oak. Seguro que me has visto pasar por aquí mil veces, pero nunca había entrado. Hoy me he dicho: Linda, date un capricho, que te lo mereces.",
+      "questions": [
+        {
+          "id": "li1_q1",
+          "text": "¿Tienes el salón de belleza de la calle Oak?",
+          "response": "Sí, el mismo. Llevo ocho años con él. Al principio no venía nadie, pero ahora medio pueblo pasa por mi silla. Las señoras del club de lectura, las chicas del instituto... Hasta el alcalde viene a cortarse el pelo conmigo, aunque no le queda mucho que cortar."
+        },
+        {
+          "id": "li1_q2",
+          "text": "¿Llevas mucho tiempo en el pueblo?",
+          "response": "Toda la vida. Nací aquí, crecí aquí, y aquí sigo. A veces pienso en irme a la ciudad, pero luego abro el salón por la mañana y entra la señora Henderson con su permanente y se me pasa."
+        },
+        {
+          "id": "li1_q3",
+          "text": "¿Qué tipo de películas te gustan?",
+          "response": "Las que te hacen llorar un poquito. No de tristeza, sino de emoción. Historias de amor, dramas familiares... Nada de monstruos ni naves espaciales, que bastante tengo con el día a día."
+        },
+        {
+          "id": "li1_q4",
+          "text": "¿Vienes sola al cine?",
+          "response": "Sí, hoy sola. Mis amigas están siempre ocupadas con los maridos y los niños. Yo no tengo ni lo uno ni lo otro, así que tengo más tiempo libre. Que suena triste, pero tiene sus ventajas."
+        },
+        {
+          "id": "li1_q5",
+          "text": "¿Conoces a mucha gente del pueblo?",
+          "response": "A casi todos. Cuando alguien se sienta en tu silla y le pones la toalla, se relaja y empieza a hablar. Te enteras de todo: quién se ha peleado con quién, quién se va a divorciar, quién debe dinero. La peluquería es como un confesionario, pero con secador."
+        },
+        {
+          "id": "li1_q6",
+          "text": "¿Qué te apetece ver hoy?",
+          "response": "Algo bonito. Con sentimiento, ¿sabes? Que cuando salga de aquí me sienta un poco mejor que cuando entré. Confío en tu criterio."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Buenas! ¿Me recuerdas? Linda, la peluquera. La película del otro día me encantó. Se la recomendé a tres clientas y a la señora del estanco.",
+      "questions": [
+        {
+          "id": "li2_q1",
+          "text": "¿Qué te pareció la película?",
+          "response": "Me gustó muchísimo. Cuando llegué a casa me puse a pensar en la protagonista y en cómo manejaba las cosas. Me vi un poco reflejada, la verdad. Bueno, un poco mucho."
+        },
+        {
+          "id": "li2_q2",
+          "text": "¿Cómo va el salón?",
+          "response": "Bien, como siempre. Esta semana he tenido a la mujer del pastor, que venía con un humor de perros. Resulta que encontró unos recibos raros en la chaqueta de su marido. No te cuento más, que no quiero ser cotilla."
+        },
+        {
+          "id": "li2_q3",
+          "text": "¿Siempre te cuentan tantas cosas?",
+          "response": "Siempre. A veces pienso que sé demasiado sobre demasiada gente. Pero no lo puedo evitar, la gente necesita hablar y yo tengo buena cara para escuchar. Es un don y una maldición."
+        },
+        {
+          "id": "li2_q4",
+          "text": "¿Y tú le cuentas tus cosas a alguien?",
+          "response": "Pues... no mucho. Todo el mundo viene a contarme sus problemas, pero a mí nadie me pregunta cómo estoy. Supongo que asumen que estoy bien porque siempre sonrío. Es lo que tiene ser la alegre del pueblo."
+        },
+        {
+          "id": "li2_q5",
+          "text": "¿Algo interesante que hayas oído esta semana?",
+          "response": "Los Patterson se van a mudar. Parece que el marido tiene un trabajo nuevo en la ciudad. Y la vieja biblioteca va a cerrar, que eso sí me da pena. Ah, y el hijo de los Cooper ha vuelto de la universidad con un pendiente. Su madre casi se desmaya."
+        },
+        {
+          "id": "li2_q6",
+          "text": "¿Qué te apetece ver hoy?",
+          "response": "Algo romántico, si tienes. O un buen drama. Necesito desconectar de los problemas de los demás y meterme en los de alguien ficticio un rato."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola, cariño. Perdona que llegue un poco despeinada, qué ironía. Ha sido un día largo en el salón y necesitaba salir de ahí.",
+      "questions": [
+        {
+          "id": "li3_q1",
+          "text": "¿Día duro?",
+          "response": "No duro exactamente, sino... cansado. A veces me agota escuchar a tanta gente. Hoy han sido seis clientas seguidas contándome sus penas. Y yo ahí, sonriendo y asintiendo. Al final te vacías un poco."
+        },
+        {
+          "id": "li3_q2",
+          "text": "¿No puedes poner límites?",
+          "response": "Es difícil. Si les digo que no quiero oír sus problemas, dejan de venir. Y si dejan de venir, no pago el alquiler. Así que sonrío, escucho y les cobro la permanente. Es el trato."
+        },
+        {
+          "id": "li3_q3",
+          "text": "¿Tienes a alguien con quien desahogarte tú?",
+          "response": "Tenía una amiga, Donna. Pero se fue a Denver hace dos años y desde entonces hablamos cada vez menos. Las llamadas se fueron espaciando y ahora... bueno, ahora vengo al cine. No es lo mismo, pero algo es algo."
+        },
+        {
+          "id": "li3_q4",
+          "text": "¿Echas de menos a Donna?",
+          "response": "Más de lo que me gustaría admitir. Era la única persona a la que le contaba todo sin filtro. Con ella no tenía que ser la Linda simpática. Podía ser la Linda cansada, la Linda enfadada. La Linda de verdad."
+        },
+        {
+          "id": "li3_q5",
+          "text": "¿Algún cotilleo nuevo del pueblo?",
+          "response": "El viejo Thompson jura que vio algo raro en el bosque el martes por la noche. Dice que había luces entre los árboles. Los del bar se rieron de él, pero a mí me pareció que hablaba en serio. Thompson es muchas cosas, pero mentiroso no."
+        },
+        {
+          "id": "li3_q6",
+          "text": "¿Qué quieres ver hoy?",
+          "response": "Algo que me haga sentir acompañada. Una historia donde los personajes se cuiden entre ellos. Hoy necesito eso."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Buenas tardes! Hoy vengo con buenas noticias: la señora Henderson me ha dejado una propina por primera vez en ocho años. Creo que se acerca el fin del mundo.",
+      "questions": [
+        {
+          "id": "li4_q1",
+          "text": "¿Tan rara es la señora Henderson?",
+          "response": "Rara no, tacaña. Pero hoy estaba distinta. Casi cariñosa. Me dijo que el pueblo necesita gente como yo. Casi me caigo de la silla. Llevo ocho años cortándole el pelo y nunca me había dicho algo así."
+        },
+        {
+          "id": "li4_q2",
+          "text": "¿Hay algo raro en el ambiente del pueblo?",
+          "response": "Ahora que lo dices... sí. La gente está rara esta semana. Más callada. Menos quejas. Y eso en una peluquería es como si el mar se quedase en calma antes de una tormenta. No sé si me explico."
+        },
+        {
+          "id": "li4_q3",
+          "text": "¿Has oído algo más sobre lo que vio Thompson?",
+          "response": "Nada oficial. Pero su hija vino a teñirse y me contó que su padre ahora duerme con la escopeta al lado de la cama. Y que el perro ladra hacia el bosque cada noche a la misma hora. Las dos cosas me dan un poco de cosa."
+        },
+        {
+          "id": "li4_q4",
+          "text": "¿Cómo estás tú?",
+          "response": "Bien, creo. Bueno, un poco sola. Los domingos son lo peor. Cierro el salón y me quedo en casa viendo la tele. A veces pienso que debería salir más, conocer gente, pero este pueblo no es exactamente Nueva York."
+        },
+        {
+          "id": "li4_q5",
+          "text": "¿Has pensado en buscar pareja?",
+          "response": "Ja, ¿aquí? Conozco a todos los hombres del pueblo y a la mayoría les he cortado el pelo llorando por sus ex. No es exactamente un catálogo atractivo. Además, a estas alturas ya me he acostumbrado a estar sola. O eso me digo."
+        },
+        {
+          "id": "li4_q6",
+          "text": "¿Qué te gustaría ver hoy?",
+          "response": "Algo que me haga suspirar. Una buena historia de amor, de las de antes. De esas donde se miran y ya sabes que van a acabar juntos. Necesito un poco de romanticismo hoy."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola... Hoy no vengo tan parlanchina, perdona. Ha sido una semana complicada. Pero el cine siempre me anima.",
+      "questions": [
+        {
+          "id": "li5_q1",
+          "text": "¿Qué ha pasado?",
+          "response": "Nada grave, solo... me he dado cuenta de algo. Llevo ocho años en este pueblo escuchando a todo el mundo y no tengo a nadie a quien llamar si me pasa algo. Eso pesa cuando lo piensas de verdad."
+        },
+        {
+          "id": "li5_q2",
+          "text": "¿No tienes familia cerca?",
+          "response": "Mi madre vive en Tucson. Hablamos por teléfono los domingos, pero es una llamada de quince minutos donde las dos fingimos que todo va bien. Mi padre se fue cuando yo tenía diez años. No volvió."
+        },
+        {
+          "id": "li5_q3",
+          "text": "¿Por eso te quedaste en el pueblo?",
+          "response": "Puede ser. El salón me da una razón para levantarme cada mañana. Las clientas me necesitan, o al menos necesitan que alguien las escuche. Y yo necesito sentirme necesitada. Es un círculo."
+        },
+        {
+          "id": "li5_q4",
+          "text": "¿Nunca has pensado en irte?",
+          "response": "Miles de veces. Donna siempre me decía que me fuera con ella a Denver. Pero me daba miedo. ¿Y si allí nadie me conoce? ¿Y si no soy nadie sin mi salón y mis clientas? Es tonto, lo sé."
+        },
+        {
+          "id": "li5_q5",
+          "text": "¿Cómo están las cosas en el pueblo?",
+          "response": "Raras. Dos familias se han ido esta semana. Sin avisar, sin despedirse. La casa de los Miller amaneció vacía el jueves. Con la comida aún en la nevera, según dicen. No sé qué pensar."
+        },
+        {
+          "id": "li5_q6",
+          "text": "¿Qué necesitas ver hoy?",
+          "response": "Algo sobre alguien que empieza de cero. Alguien valiente, que se atreve a cambiar. Necesito inspiración, aunque sea de mentira."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas. Hoy he cerrado el salón antes. No tenía citas para la tarde y me parecía absurdo quedarme ahí sola mirando las paredes.",
+      "questions": [
+        {
+          "id": "li6_q1",
+          "text": "¿Menos clientas?",
+          "response": "Bastantes menos. Entre las familias que se han ido y las que ya no salen tanto... el pueblo se está quedando vacío. O al menos más callado. Y yo sin gente soy como una radio sin emisoras."
+        },
+        {
+          "id": "li6_q2",
+          "text": "¿Sabes por qué se va la gente?",
+          "response": "Oficialmente, por trabajo. Extraoficialmente... no sé. La mujer de Cooper me dijo algo raro antes de irse. Me dijo: 'Linda, deberías prestar más atención a lo que pasa de noche.' No quiso explicar más."
+        },
+        {
+          "id": "li6_q3",
+          "text": "¿Has notado algo tú misma?",
+          "response": "Ruidos. Nada del otro mundo, pero... mi gato se pone nervioso a partir de las diez. Y el otro día, al cerrar el salón, juraría que alguien me estaba mirando desde el otro lado de la calle. Pero no había nadie."
+        },
+        {
+          "id": "li6_q4",
+          "text": "¿Tienes miedo?",
+          "response": "No exactamente. Tengo esa sensación de cuando sabes que algo va a cambiar pero no sabes qué. Como antes de una tormenta grande. Es más inquietud que miedo."
+        },
+        {
+          "id": "li6_q5",
+          "text": "¿Puedo ayudarte en algo?",
+          "response": "Ya lo haces. Vengo aquí y puedo hablar sin que me miren raro. En el salón yo escucho a los demás. Aquí alguien me escucha a mí. No sabes lo que eso vale."
+        },
+        {
+          "id": "li6_q6",
+          "text": "¿Qué quieres ver esta noche?",
+          "response": "Algo que me recuerde que el mundo no se está desmoronando. Un drama tranquilo, con gente normal haciendo cosas normales. Necesito normalidad."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. ¿Sabes qué? He llamado a Donna. Después de meses sin hablar. Le he contado todo lo que siento. Ha sido raro pero liberador.",
+      "questions": [
+        {
+          "id": "li7_q1",
+          "text": "¿Qué te dijo Donna?",
+          "response": "Que soy idiota por no haberla llamado antes. Que en Denver hay trabajo para peluqueras. Y que tiene un sofá cama esperándome. Me reí y lloré al mismo tiempo. Hacía mucho que no hacía eso."
+        },
+        {
+          "id": "li7_q2",
+          "text": "¿Vas a irte?",
+          "response": "No lo sé aún. Pero por primera vez la idea no me da tanto miedo. Quizás este pueblo ya me ha dado todo lo que podía darme. Y yo a él."
+        },
+        {
+          "id": "li7_q3",
+          "text": "¿Qué pasaría con el salón?",
+          "response": "Podría traspasarlo. O cerrarlo. Ocho años de mi vida ahí dentro. Cada silla, cada espejo, los compré yo sola. Pero las cosas materiales se pueden dejar atrás. Las personas no."
+        },
+        {
+          "id": "li7_q4",
+          "text": "¿Cómo está el pueblo?",
+          "response": "Más raro cada día. Ayer no vino nadie al salón en toda la mañana. Ni una sola persona. Salí a la calle y estaba medio desierta. Como si el pueblo se estuviera apagando poco a poco."
+        },
+        {
+          "id": "li7_q5",
+          "text": "¿Hay algo más que quieras contarme?",
+          "response": "Solo que me alegro de haber empezado a venir aquí. Eres de las pocas personas con las que puedo ser yo misma. Sin la sonrisa de servicio, sin el personaje. Solo Linda."
+        },
+        {
+          "id": "li7_q6",
+          "text": "¿Qué película te apetece?",
+          "response": "Una de esas películas sobre segundas oportunidades. Donde alguien deja todo atrás y descubre que lo mejor estaba por venir. Necesito creer en eso."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. He tomado una decisión. Bueno, casi. Estoy al noventa por ciento. Necesito la película de hoy para llegar al cien.",
+      "questions": [
+        {
+          "id": "li8_q1",
+          "text": "¿Qué has decidido?",
+          "response": "Voy a cerrar el salón. Voy a irme a Denver con Donna. Suena a locura, ¿verdad? Treinta y cinco años en este pueblo y de repente... Pero si no lo hago ahora, no lo haré nunca."
+        },
+        {
+          "id": "li8_q2",
+          "text": "¿Cuándo te irías?",
+          "response": "Antes de que acabe el mes. Donna ya está buscándome un sitio donde trabajar. Dice que hay un salón en su barrio que necesita a alguien. No es mío, pero es un comienzo."
+        },
+        {
+          "id": "li8_q3",
+          "text": "¿Vas a echar de menos el pueblo?",
+          "response": "Partes de él, sí. La luz de la mañana en la calle principal. El olor a café del diner de Debbie. Y esto, el cine. Venir aquí a charlar un rato. Eso lo voy a echar mucho de menos."
+        },
+        {
+          "id": "li8_q4",
+          "text": "¿Has avisado a tus clientas?",
+          "response": "A algunas. La señora Henderson se echó a llorar, que nunca pensé que viviría para ver eso. Me dijo que era la mejor peluquera que había tenido. Ocho años tardó en decírmelo."
+        },
+        {
+          "id": "li8_q5",
+          "text": "¿Cómo te sientes?",
+          "response": "Asustada y emocionada a partes iguales. Es la primera vez en mi vida que hago algo solo por mí. Sin pensar en los demás, sin calcular consecuencias. Solo... saltar."
+        },
+        {
+          "id": "li8_q6",
+          "text": "¿Qué quieres ver hoy?",
+          "response": "Algo que me dé el empujón final. Una historia sobre alguien que se arriesga y le sale bien. O mal, pero al menos lo intentó. Eso es lo que importa."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola, cariño. Ya está todo casi listo. La semana que viene cierro el salón. Así que este es uno de mis últimos cines aquí.",
+      "questions": [
+        {
+          "id": "li9_q1",
+          "text": "¿Cómo llevas los preparativos?",
+          "response": "Es agotador, pero bonito a la vez. Empaqué las fotos del salón y me emocioné. Ocho años de recuerdos en cajas de cartón. La vida cabe en menos espacio del que crees."
+        },
+        {
+          "id": "li9_q2",
+          "text": "¿Alguien va a quedarse con el salón?",
+          "response": "La sobrina de la señora Patterson. Tiene veinte años y muchas ganas. Le he dejado todos mis productos y mis notas sobre cada clienta. Sus gustos, sus alergias, qué temas evitar. Un manual de supervivencia."
+        },
+        {
+          "id": "li9_q3",
+          "text": "¿Qué es lo que más vas a echar de menos?",
+          "response": "Las conversaciones. No los cotilleos, las conversaciones de verdad. Cuando alguien bajaba la guardia en mi silla y me contaba algo real. Esos momentos. Y venir aquí a verte."
+        },
+        {
+          "id": "li9_q4",
+          "text": "¿Donna sabe que vas en serio?",
+          "response": "Le mandé el billete de autobús por correo. Me llamó gritando de la emoción. Dice que tiene el sofá cama preparado y una botella de vino esperando. Creo que las dos necesitábamos esto."
+        },
+        {
+          "id": "li9_q5",
+          "text": "¿Tienes algún consejo para mí?",
+          "response": "Escucha a la gente, pero no te olvides de escucharte a ti mismo. Yo me pasé años siendo el oído de todo el mundo y me olvidé de mis propias necesidades. No cometas ese error."
+        },
+        {
+          "id": "li9_q6",
+          "text": "¿Última película antes de irte?",
+          "response": "La penúltima. Ponme algo emotivo. De esas que te hacen llorar pero con una sonrisa. Que estoy sensible y no me importa."
+        }
+      ]
+    },
+    {
+      "greeting": "Bueno, aquí estoy. Última noche en el pueblo. Mañana a las seis cojo el autobús a Denver. No podía irme sin pasar por aquí.",
+      "questions": [
+        {
+          "id": "li10_q1",
+          "text": "¿Estás lista?",
+          "response": "Lista no sé, pero preparada sí. La maleta está hecha, el salón está cerrado, las llaves entregadas. Es raro mirar tu vida empaquetada y pensar: esto era todo."
+        },
+        {
+          "id": "li10_q2",
+          "text": "¿Algún arrepentimiento?",
+          "response": "Solo uno: no haberlo hecho antes. Pero también creo que todo tiene su momento. Si me hubiera ido hace cinco años, no habría conocido este cine. Ni a ti. Y eso habría sido una pena."
+        },
+        {
+          "id": "li10_q3",
+          "text": "¿Volverás algún día?",
+          "response": "Quién sabe. Si vuelvo, será de visita. A cortarle el pelo a la señora Henderson por los viejos tiempos. Y a sentarme aquí con unas palomitas con caramelo, como siempre."
+        },
+        {
+          "id": "li10_q4",
+          "text": "¿Qué le dirías al pueblo si pudiera oírte?",
+          "response": "Gracias. Por todo. Por los cotilleos, las risas, las lágrimas en mi silla. Por enseñarme que escuchar es un superpoder, pero que también hay que dejarse escuchar. Este pueblo me hizo quien soy."
+        },
+        {
+          "id": "li10_q5",
+          "text": "Te voy a echar de menos, Linda.",
+          "response": "Y yo a ti. Más de lo que crees. Has sido de las pocas personas que me preguntaban cómo estoy de verdad. Cuida este lugar. Y cuídate tú. Prométemelo."
+        },
+        {
+          "id": "li10_q6",
+          "text": "¿Qué quieres ver en tu última noche?",
+          "response": "Elige tú. Después de tantas películas, confío en ti como no confío en nadie. Sorpréndeme una última vez."
+        }
+      ]
+    }
+  ]
+}

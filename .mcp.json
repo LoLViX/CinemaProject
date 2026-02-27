@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "godot": {
+      "command": "C:\\Users\\ivans\\GIT\\CinemaProject\\proyecto-cine\\python\\.venv\\Scripts\\python.exe",
+      "args": ["server.py"],
+      "cwd": "C:\\Users\\ivans\\GIT\\CinemaProject\\proyecto-cine\\python"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# Día 9 — pre-final, guía se despide
+slots: 6
+entity_slots: 2
+story_npc: guia
+story_npc: dale
+familia_alterada

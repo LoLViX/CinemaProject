@@ -1,0 +1,4 @@
+# Día 2 — 5 clientes (solo humanos)
+slots: 5
+story_npc: debbie
+story_npc: karen

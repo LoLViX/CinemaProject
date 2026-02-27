@@ -1,0 +1,379 @@
+{
+  "id": "howard",
+  "name": "Howard Finch",
+  "illustration": "res://Assets/Customers/chico_nerd.png",
+  "patience": 9,
+  "tip": 1,
+  "_info": {
+    "description": "Estudiante de instituto, tímido, sin amigos, con una enciclopedia de cine en la cabeza. Apenas habla en clase pero es capaz de recitarte el reparto completo de cualquier película de ciencia ficción. El cine es su santuario.",
+    "occupation": "Estudiante de instituto",
+    "age": 17,
+    "traits": ["tímido", "inteligente", "cinéfilo", "solitario", "apasionado", "inseguro"]
+  },
+  "preferences": {
+    "must": ["sci-fi", "adventure"],
+    "must_not": ["romance", "crime"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "rootbeer",
+    "food": "chocolate",
+    "popcorn": true,
+    "butter": false,
+    "caramel": true,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "Hola. Perdona. Perdona que moleste. Es que... quería una entrada. Si no es molestia. Es la primera vez que vengo solo. Bueno, siempre vengo solo. Pero es la primera vez que vengo solo aquí.",
+      "questions": [
+        {
+          "id": "hw0_q1",
+          "text": "No molestas. Bienvenido. Cómo te llamas?",
+          "response": "Howard. Howard Finch. Del instituto Lincoln. Segundo de bachillerato. Bueno, eso no importa. Perdona. Hablo demasiado cuando estoy nervioso. Que es siempre."
+        },
+        {
+          "id": "hw0_q2",
+          "text": "Vienes mucho al cine?",
+          "response": "Al multicine del centro comercial sí. Pero es ruidoso y la gente habla durante la película. Aquí parece... diferente. Más pequeño. Más serio. Como un cine de verdad. De los de antes."
+        },
+        {
+          "id": "hw0_q3",
+          "text": "Te gustan las películas?",
+          "response": "Me encantan. Es... lo que más me gusta del mundo. Tengo una libreta donde apunto todas las que veo. Con nota, director, año y una frase de resumen. Llevo trescientas doce. No es por presumir. Es que no tengo mucho más que hacer."
+        },
+        {
+          "id": "hw0_q4",
+          "text": "Trescientas doce? Eso es impresionante.",
+          "response": "Tú crees? En el instituto dicen que es raro. Que soy raro. Bueno, no lo dicen directamente. Simplemente no me hablan. Que es peor, en cierto modo. Pero da igual. Las películas no te ignoran."
+        },
+        {
+          "id": "hw0_q5",
+          "text": "Qué géneros te gustan más?",
+          "response": "Ciencia ficción sobre todo. Y aventuras. Me gusta cuando la cámara te lleva a un sitio que no existe y te lo hace sentir real. Blade Runner, Alien, Star Wars, 2001... cada una es una puerta a otro mundo. Y yo necesito puertas."
+        },
+        {
+          "id": "hw0_q6",
+          "text": "Qué quieres ver hoy?",
+          "response": "Algo de ciencia ficción, si tienes. O aventuras. Algo con mundos grandes. Que al salir de la sala el mundo real parezca pequeño un rato. Eso es lo que busco. Siempre."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Soy Howard. El de la otra vez. No sé si te acuerdas. Seguro que ves a mucha gente. No tienes por qué acordarte. Pero yo sí me acuerdo. De la película, digo. Fue muy buena.",
+      "questions": [
+        {
+          "id": "hw1_q1",
+          "text": "Claro que me acuerdo. Qué tal te fue?",
+          "response": "Bien. Muy bien. Me senté en la fila seis, a la derecha. La acústica era perfecta. Y no había nadie comiendo nachos a mi lado. Eso solo ya vale el precio de la entrada."
+        },
+        {
+          "id": "hw1_q2",
+          "text": "Eres muy observador con los detalles.",
+          "response": "Es que los detalles importan. En las películas y en todo. La diferencia entre una buena película y una obra maestra son los detalles que no notas la primera vez. Ridley Scott lo sabe. Kubrick lo sabía. Yo intento aprenderlo."
+        },
+        {
+          "id": "hw1_q3",
+          "text": "Estudias algo de cine?",
+          "response": "No. Estudio lo normal. Matemáticas, historia, inglés. Se me da bien, supongo. Pero no me interesa. Lo que me interesa no lo enseñan en Lincoln. No hay asignatura de por qué Alien es una metáfora del capitalismo corporativo."
+        },
+        {
+          "id": "hw1_q4",
+          "text": "Has pensado en estudiar cine en la universidad?",
+          "response": "Mis padres quieren que sea ingeniero. Mi padre dice que el cine no es una profesión, es un hobby. Mi madre dice que hay que ser práctico. Ninguno de los dos ha visto 2001. Así que no saben de qué hablan."
+        },
+        {
+          "id": "hw1_q5",
+          "text": "A veces los hobbies se convierten en profesión.",
+          "response": "Eso le dije a mi padre. Me contestó que Spielberg no salió de un instituto de pueblo. Y tiene razón. Pero tampoco salió de una fábrica de motores, que es donde él quiere que acabe yo. No sé. Es complicado."
+        },
+        {
+          "id": "hw1_q6",
+          "text": "Qué quieres ver?",
+          "response": "Ciencia ficción si hay. Me da igual si es vieja o nueva. Mientras tenga ideas. Eso es lo que me gusta de la ciencia ficción: no te dice cómo es el mundo, te dice cómo podría ser. Y a veces el podría ser es mejor que el es."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Hoy he venido directo del instituto. Me he saltado la clase de gimnasia. No le digas a nadie. Bueno, no conoces a nadie de mi instituto. Pero por si acaso.",
+      "questions": [
+        {
+          "id": "hw2_q1",
+          "text": "Gimnasia no te gusta?",
+          "response": "Es la peor hora del día. Nos ponen a jugar al baloncesto y los capitanes eligen equipos. Yo siempre soy el último. O el penúltimo, si está Tommy Walsh, que tiene asma. Es humillante. Prefiero estar aquí."
+        },
+        {
+          "id": "hw2_q2",
+          "text": "Los demás te tratan mal?",
+          "response": "No es que me traten mal. Es que no me tratan. Soy invisible. Paso por los pasillos y nadie me saluda. Me siento en la cafetería y nadie se sienta conmigo. No es odio. Es peor. Es nada."
+        },
+        {
+          "id": "hw2_q3",
+          "text": "Eso debe ser duro.",
+          "response": "Lo es. Pero he desarrollado un sistema. Me pongo los auriculares, escucho bandas sonoras de películas, y finjo que estoy en otra parte. En la cubierta de una nave espacial. En un desierto alienígena. Cualquier sitio menos la cafetería de Lincoln."
+        },
+        {
+          "id": "hw2_q4",
+          "text": "Tus padres saben cómo lo pasas?",
+          "response": "Mi madre sospecha. A veces me pregunta qué tal en el colegio y yo digo bien. Y ella dice bien de verdad o bien de Howard. Porque sabe que mi bien significa he sobrevivido otro día. Pero no insiste."
+        },
+        {
+          "id": "hw2_q5",
+          "text": "Hay alguien en el instituto con quien te lleves bien?",
+          "response": "Hay una chica en la biblioteca que lee cómics. Una vez le vi leyendo uno de Moebius y casi le digo algo. Pero me entró pánico y me fui. Llevo tres semanas intentando hablarle. No sé por qué es tan difícil."
+        },
+        {
+          "id": "hw2_q6",
+          "text": "Qué te apetece ver?",
+          "response": "Algo de aventuras. De esas donde el protagonista es alguien normal que acaba haciendo algo increíble. No necesito superhéroes. Solo alguien corriente que descubra que es más de lo que pensaba."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. He traído mi libreta. Quería enseñarte algo. Si no es molestia. Bueno, si es molestia también, porque ya la he sacado y ahora no sé cómo guardarla sin que sea raro.",
+      "questions": [
+        {
+          "id": "hw3_q1",
+          "text": "Enséñame, me encantaría verla.",
+          "response": "Mira. Cada página es una película. Fecha, título, director, reparto principal, género, mi valoración del uno al diez, y una frase resumen. Esta es Blade Runner: Un detective busca lo que significa ser humano y descubre que él tampoco lo sabe. Le puse un diez."
+        },
+        {
+          "id": "hw3_q2",
+          "text": "Esto es increíble, Howard.",
+          "response": "De verdad? Mis padres dicen que es una pérdida de tiempo. Que en vez de apuntar películas debería apuntar fórmulas de física. Pero a mí las fórmulas no me dicen nada. Las películas me dicen todo."
+        },
+        {
+          "id": "hw3_q3",
+          "text": "Cuál es tu favorita de todas?",
+          "response": "Es como preguntarme cuál es mi órgano favorito. Los necesito todos. Pero si me pones contra la pared... 2001. Es la película que me hizo entender que el cine no es solo entretenimiento. Es la cosa más grande que ha hecho la humanidad. Después de ir a la luna."
+        },
+        {
+          "id": "hw3_q4",
+          "text": "Has intentado escribir algo? Un guion, una historia...",
+          "response": "Tengo... tengo tres cuadernos llenos de ideas. En casa, debajo de la cama. Nunca se los he enseñado a nadie. Son ideas para películas. Con escenas, diálogos, todo. Pero probablemente son malas. Seguro que son malas."
+        },
+        {
+          "id": "hw3_q5",
+          "text": "Seguro que no son malas.",
+          "response": "No lo sabes. Nadie lo sabe. Ese es el problema. No puedo enseñárselas a nadie porque me moriría de vergüenza. Pero si no se las enseño a nadie nunca sabré si valen algo. Es una trampa de la que no sé salir."
+        },
+        {
+          "id": "hw3_q6",
+          "text": "Qué quieres ver hoy?",
+          "response": "Ciencia ficción. Algo visionario. De esas películas que cuando se estrenaron nadie entendió y ahora son clásicos. Eso me da esperanza. Que algo que parece raro hoy puede ser importante mañana."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Hoy ha pasado algo. En el instituto. La chica de la biblioteca. La de los cómics de Moebius. Me ha hablado. Ella a mí. Le he contestado. Con palabras y todo. No muchas. Pero palabras.",
+      "questions": [
+        {
+          "id": "hw4_q1",
+          "text": "Qué te ha dicho?",
+          "response": "Me ha preguntado si el cómic que estaba leyendo era mío. He dicho que sí. Era uno de Métal Hurlant. Me ha dicho que le gustaba la portada. Le he dicho gracias. Y luego me he ido. Porque soy un cobarde profesional."
+        },
+        {
+          "id": "hw4_q2",
+          "text": "Pero te ha hablado. Eso es un paso.",
+          "response": "Un paso de bebé. De bebé con vértigo. Pero sí. Ha sido la primera conversación real que tengo en el instituto desde septiembre. Cuatro meses. Cuatro meses para dos frases. Voy a un ritmo impresionante."
+        },
+        {
+          "id": "hw4_q3",
+          "text": "Sabes cómo se llama?",
+          "response": "Grace. Grace Chen. Va un curso por debajo. Creo que le gusta dibujar porque siempre tiene las manos manchadas de tinta. Y lee cosas buenas. No los cómics de superhéroes normales. Los raros. Los buenos."
+        },
+        {
+          "id": "hw4_q4",
+          "text": "Le vas a hablar otra vez?",
+          "response": "Quiero. Pero cada vez que pienso en hacerlo el estómago se me pone del revés. Es como si mi cerebro supiera exactamente qué decir pero mi boca se negara a cooperar. Es una huelga interna."
+        },
+        {
+          "id": "hw4_q5",
+          "text": "A lo mejor podrías prestarle un cómic.",
+          "response": "Eso... eso es una idea brillante. Un cómic no requiere hablar. Lo dejas, te vas, y ella lo lee. Y si le gusta, te lo devuelve. Y en ese momento tienes otra excusa para hablar. Es un sistema. Me gustan los sistemas."
+        },
+        {
+          "id": "hw4_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo de aventuras. Algo donde el protagonista haga algo valiente aunque le tiemble todo por dentro. Necesito inspiración para mañana. Mañana le dejo el cómic en la mesa. O pasado. O la semana que viene. Pronto."
+        }
+      ]
+    },
+    {
+      "greeting": "Le dejé el cómic. En la mesa de la biblioteca. Con una nota que decía Creo que te gustará. Sin firma. Porque firmar habría sido demasiado. Ahora solo queda esperar. Y tener un ataque de ansiedad.",
+      "questions": [
+        {
+          "id": "hw5_q1",
+          "text": "Eso es muy valiente, Howard.",
+          "response": "Valiente? He dejado un cómic en una mesa y he salido corriendo. Los Navy SEALs no temblarían ante esto. Yo he temblado. Literalmente. Mis manos parecían una batidora."
+        },
+        {
+          "id": "hw5_q2",
+          "text": "Cuál le has dejado?",
+          "response": "The Incal. De Moebius y Jodorowsky. Es perfecto. Tiene ciencia ficción, arte increíble, y es lo suficientemente raro como para que si le gusta, sepa que somos de la misma especie. De la especie de los raros."
+        },
+        {
+          "id": "hw5_q3",
+          "text": "Crees que le gustará?",
+          "response": "No lo sé. Es un riesgo. Si no le gusta, pensará que soy un friki. Que ya lo piensa, probablemente. Pero si le gusta... si le gusta es la primera persona en diecisiete años que entiende lo que me importa."
+        },
+        {
+          "id": "hw5_q4",
+          "text": "Cómo te va en clase?",
+          "response": "Las notas bien. Siempre bien. Los exámenes son fáciles cuando tu alternativa a estudiar es estar solo en tu habitación mirando el techo. Estudio por aburrimiento. No es motivación pero funciona."
+        },
+        {
+          "id": "hw5_q5",
+          "text": "Este cine te sirve de refugio, no?",
+          "response": "Sí. No lo había pensado así pero sí. Aquí nadie me elige el último. Nadie me ignora. Me preguntas qué quiero ver, te lo digo, y me lo pones. Es la relación más sana que tengo. Sin contar la de mis padres. Que es sana pero ruidosa."
+        },
+        {
+          "id": "hw5_q6",
+          "text": "Qué quieres ver hoy?",
+          "response": "Ciencia ficción. Algo esperanzador. De esas películas donde el futuro es grande y extraño pero no da miedo. Donde hay sitio para gente como yo. Gente que no encaja aquí pero encajaría en una nave espacial."
+        }
+      ]
+    },
+    {
+      "greeting": "Grace me ha devuelto el cómic. Con una nota. Dice: Me ha encantado. Tienes más? He leído la nota once veces. La llevo en el bolsillo. No la voy a tirar nunca.",
+      "questions": [
+        {
+          "id": "hw6_q1",
+          "text": "Eso es fantástico, Howard!",
+          "response": "Es lo mejor que me ha pasado en el instituto. Puede que en la vida. Es una nota. Ocho palabras. Pero son las ocho palabras correctas. Las que significan no estás solo, chaval."
+        },
+        {
+          "id": "hw6_q2",
+          "text": "Le vas a dar más cómics?",
+          "response": "Le he preparado una selección. Akira, Nausicaä, Watchmen. Con notas explicativas en cada uno. Puede que sean demasiado largas. Puede que las notas sean más largas que los cómics. Soy así."
+        },
+        {
+          "id": "hw6_q3",
+          "text": "Habéis hablado en persona?",
+          "response": "Ayer. Cinco minutos en la biblioteca. Me ha contado que quiere estudiar ilustración. Que dibuja cómics propios. Me ha enseñado uno en su cuaderno y era... era muy bueno. Se lo he dicho. Y me he puesto rojo. Pero se lo he dicho."
+        },
+        {
+          "id": "hw6_q4",
+          "text": "Suena a que has hecho una amiga.",
+          "response": "Una amiga. Suena raro en mi boca. Nunca he tenido una de esas. No sé las reglas. Hay reglas? Se supone que hay que quedar fuera del instituto? Ir a sitios? Hablar de cosas que no sean cómics? No sé hacerlo."
+        },
+        {
+          "id": "hw6_q5",
+          "text": "Solo tienes que ser tú mismo.",
+          "response": "Eso dicen todos. Sé tú mismo. Pero y si tú mismo es un chaval que apunta películas en libretas y tiene miedo de hablar? Aunque... Grace es parecida. Callada. Rara. Buena rara. Igual ser yo mismo funciona con ella."
+        },
+        {
+          "id": "hw6_q6",
+          "text": "Qué quieres ver?",
+          "response": "Aventuras. Algo épico. Con viajes, descubrimientos, horizontes enormes. Hoy me siento como si hubiera encontrado un mapa del tesoro. No sé adónde lleva, pero el mapa existe. Y eso ya es mucho."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Tengo que contarte algo importante. Le he enseñado mis guiones a Grace. Los tres cuadernos. Todos. Ha tardado una semana en leerlos. Y luego me ha mirado y ha dicho: Howard, esto es bueno de verdad.",
+      "questions": [
+        {
+          "id": "hw7_q1",
+          "text": "Has enseñado tus guiones? Eso sí que es valiente.",
+          "response": "Estaba muerto de miedo. Le di los cuadernos con las manos temblando y me fui de la biblioteca. No dormí en tres días. Cada vez que sonaba el teléfono pensaba que era ella diciendo que eran horribles. Pero no. Ha dicho que son buenos."
+        },
+        {
+          "id": "hw7_q2",
+          "text": "Cuál le gustó más?",
+          "response": "El de ciencia ficción. Trata de un chico que descubre que su pueblo entero es una simulación y él es el único real. Grace dice que le recuerda a algo que no sabe explicar. Me ha pedido que le deje ilustrarlo. ILUSTRARLO."
+        },
+        {
+          "id": "hw7_q3",
+          "text": "Vais a hacer un cómic juntos?",
+          "response": "Eso parece. Ella dibuja, yo escribo. Es... es lo más emocionante que me ha pasado jamás. Más que ver Star Wars la primera vez. Y eso es mucho decir porque Star Wars me cambió la vida."
+        },
+        {
+          "id": "hw7_q4",
+          "text": "Tus padres qué dicen?",
+          "response": "No se lo he dicho todavía. Mi padre sigue con lo de ingeniería. Mi madre me pregunta si tengo amigos y yo le digo que sí, ahora sí. Y ella sonríe de esa forma que significa gracias a Dios."
+        },
+        {
+          "id": "hw7_q5",
+          "text": "Las cosas están cambiando para ti.",
+          "response": "Sí. Y me da miedo. Cuando estás solo tanto tiempo, te acostumbras. Sabes qué esperar: nada. Pero ahora hay algo. Y cuando hay algo, hay algo que perder. Y perder es lo que peor se me da."
+        },
+        {
+          "id": "hw7_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo de ciencia ficción con alma. De esas películas que son espectáculo pero también tienen algo que decir sobre las personas. Que te deslumbren los efectos pero te quedes pensando en los personajes. Eso es el cine perfecto."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Traigo el primer capítulo del cómic. Grace y yo lo hemos terminado. Quiero que seas la primera persona que lo vea. Bueno, la tercera. Grace lo ha visto. Y su gato, pero el gato no cuenta.",
+      "questions": [
+        {
+          "id": "hw8_q1",
+          "text": "Enséñame.",
+          "response": "Mira. Se llama Simulacro. El protagonista se llama Eli y vive en un pueblo donde todo parece normal pero nada lo es. Grace ha dibujado las naves con un estilo que mezcla Moebius con manga. Es... es precioso. No me puedo creer que haya escrito yo esto."
+        },
+        {
+          "id": "hw8_q2",
+          "text": "Es muy bueno, Howard.",
+          "response": "Gracias. De verdad. Eso significa mucho viniendo de alguien que ve cine todo el día. Tú sabes de historias. Si tú dices que es bueno, algo de bueno tendrá. O eres muy amable. Las dos cosas me valen."
+        },
+        {
+          "id": "hw8_q3",
+          "text": "Lo vais a publicar?",
+          "response": "Grace quiere mandarlo a un fanzine de la ciudad. Yo tengo pánico pero le he dicho que sí. Porque si digo que no, me quedo donde estaba. Y donde estaba era solo y debajo de la cama con tres cuadernos que nadie leía."
+        },
+        {
+          "id": "hw8_q4",
+          "text": "Has pensado más en lo de estudiar cine?",
+          "response": "He mirado escuelas. Hay una en Nueva York. Otra en Los Ángeles. Cuestan una fortuna. Pero hay becas. Y Grace dice que si mi portafolio es bueno, tengo posibilidades. Mi portafolio. Hace un año ni sabía que tenía uno."
+        },
+        {
+          "id": "hw8_q5",
+          "text": "Tu padre qué dice?",
+          "response": "Le he enseñado el cómic. Se ha quedado callado un rato largo. Luego ha dicho: No lo entiendo, pero se nota que te importa. Para mi padre, eso es un discurso de motivación. Ha sido suficiente."
+        },
+        {
+          "id": "hw8_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo que me inspire. Ciencia ficción o aventuras, lo que tengas. Pero que sea de las que te hacen querer crear algo al salir. De las que te prenden fuego por dentro. Hoy estoy listo para arder."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Es raro venir aquí y no estar nervioso. Antes entraba con el corazón a mil. Ahora entro como quien llega a casa. No sé cuándo pasó, pero este sitio se convirtió en mi sitio. Gracias por eso.",
+      "questions": [
+        {
+          "id": "hw9_q1",
+          "text": "Siempre serás bienvenido, Howard.",
+          "response": "Lo sé. Y eso es todo. Saber que hay un sitio donde puedes ir y alguien te pregunta qué quieres ver y le importa tu respuesta. En un mundo donde nadie pregunta nada, eso es revolucionario."
+        },
+        {
+          "id": "hw9_q2",
+          "text": "Cómo van las cosas?",
+          "response": "El fanzine ha aceptado nuestro cómic. Grace y yo estamos trabajando en el segundo capítulo. Mi madre llora cada vez que lo menciono. De las buenas. Creo que es la primera vez que me ve feliz de verdad."
+        },
+        {
+          "id": "hw9_q3",
+          "text": "Y el instituto?",
+          "response": "Sigue siendo el instituto. Pero ya no me importa tanto. Cuando tienes algo tuyo, algo que has creado, los pasillos se hacen más cortos. Las cafeterías vacías pesan menos. Porque sabes que eso es temporal y lo tuyo es real."
+        },
+        {
+          "id": "hw9_q4",
+          "text": "Qué has aprendido de todo esto?",
+          "response": "Que no estaba raro. Estaba solo. Y son cosas muy distintas. Ser raro es ser diferente. Estar solo es no tener a nadie que vea la diferencia como algo bueno. Grace lo ve. Tú lo ves. Eso lo cambia todo."
+        },
+        {
+          "id": "hw9_q5",
+          "text": "Algún día vas a hacer grandes películas.",
+          "response": "Si las hago, tú sales en los créditos. En agradecimientos especiales. Al tipo del cine que me trataba como a una persona cuando nadie más lo hacía. Howard Finch nunca olvida sus créditos."
+        },
+        {
+          "id": "hw9_q6",
+          "text": "Última película. Qué quieres ver?",
+          "response": "Lo que tú elijas. Confío en ti al cien por cien. Ponme la película que pondrías si fuera tu última noche de cine y quisieras enseñarle a alguien lo mejor que hay. Eso quiero. Lo mejor que hay."
+        }
+      ]
+    }
+  ]
+}

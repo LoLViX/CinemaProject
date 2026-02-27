@@ -1,4 +1,4 @@
-﻿extends Node
+﻿extends CanvasLayer
 class_name StockHUD
 
 # ── Cinema 80s palette ──────────────────────────────────────────────────────
@@ -7,18 +7,16 @@ const C_GOLD  := Color(0.95, 0.76, 0.15)
 const C_CREAM := Color(0.97, 0.93, 0.80)
 const C_CREAM_D := Color(0.80, 0.75, 0.60)
 
-# Orden y nombres "bonitos" (luego lo pasaremos a TextDB ids)
-const ORDER: Array[String] = ["popcorn", "hotdog", "chocolate", "cup", "ketchup", "mustard", "butter", "caramel"]
+# Solo los items comprables con stock limitado (condimentos son ilimitados, no se muestran)
+const ORDER: Array[String] = ["popcorn", "hotdog", "chocolate", "cola", "orange", "rootbeer"]
 
 const LABELS := {
-	"popcorn":  "PALOMITAS",
-	"hotdog":   "HOTDOG",
-	"chocolate":"CHOCOLATE",
-	"cup":      "VASOS",
-	"ketchup":  "KETCHUP",
-	"mustard":  "MOSTAZA",
-	"butter":   "MANTEQUILLA",
-	"caramel":  "CARAMELO",
+	"popcorn":   "Palomitas",
+	"hotdog":    "Hotdog",
+	"chocolate": "Chocolate",
+	"cola":      "Cola",
+	"orange":    "Naranjada",
+	"rootbeer":  "Root Beer",
 }
 
 var panel: Panel = null
@@ -38,9 +36,9 @@ func _build_ui() -> void:
 	panel.anchor_top = 0.0
 	panel.anchor_bottom = 0.0
 	panel.offset_left = 18
-	panel.offset_top = 18
-	panel.offset_right = 240
-	panel.offset_bottom = 18 + 32 + (ORDER.size() * 22) + 18
+	panel.offset_top = 76
+	panel.offset_right = 210
+	panel.offset_bottom = 76 + 30 + (ORDER.size() * 22) + 14
 
 	var v := VBoxContainer.new()
 	panel.add_child(v)
@@ -91,9 +89,11 @@ func _build_ui() -> void:
 		rows[id] = right
 
 func show_stock() -> void:
+	visible = true
 	if panel: panel.visible = true
 
 func hide_stock() -> void:
+	visible = false
 	if panel: panel.visible = false
 
 func set_stock(stock: Dictionary) -> void:

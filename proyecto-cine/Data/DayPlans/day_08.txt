@@ -1,0 +1,6 @@
+# Día 8 — día duro, 2 entidades
+slots: 6
+entity_slots: 2
+story_npc: linda
+story_npc: tammy
+story_npc: debbie

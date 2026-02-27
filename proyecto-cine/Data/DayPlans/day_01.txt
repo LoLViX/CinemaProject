@@ -1,7 +1,4 @@
-# Día 1
-customer: normal
-customer: normal
-
-special: "Presta atención, actúa con normalidad, el día 4 notarás “algo” entre la cola, no será un humano, no le des el gusto, recomiéndale una película que NO le haga ganas, no queremos que se acostumbre, estás llamando la atención a la clientela equivocada, pero era algo inevitable, sabíamos que pasaría, sigue así, estás haciendo un buen trabajo."
-
-customer: normal
+# Día 1 — 4 clientes (solo humanos)
+slots: 4
+story_npc: linda
+story_npc: dale

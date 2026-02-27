@@ -1,0 +1,381 @@
+{
+  "id": "debbie",
+  "name": "Debbie Wells",
+  "illustration": "res://Assets/Customers/chica_camarera.png",
+  "npc_type": "human",
+  "patience": 7,
+  "tip": 2,
+  "_info": {
+    "description": "Camarera del diner local. Joven, alegre por fuera, agotada por dentro. Trabaja turnos dobles para ahorrar dinero y algún día irse del pueblo. El cine es su refugio.",
+    "occupation": "Camarera",
+    "age": 25,
+    "traits": ["alegre", "trabajadora", "soñadora", "agotada"],
+    "arc": "Empieza siendo una chica optimista que habla de sus sueños. Poco a poco muestra el cansancio y la frustración de estar atrapada. Acaba encontrando fuerzas para tomar decisiones sobre su futuro."
+  },
+  "preferences": {
+    "must": ["comedy", "romance"],
+    "must_not": ["horror", "dark"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "cola",
+    "food": "",
+    "popcorn": true,
+    "butter": true,
+    "caramel": false,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "¡Hola! Por fin puedo venir. Soy Debbie, trabajo en el diner de enfrente. Llevo meses mirando el cartel del cine desde la ventana y diciendo 'mañana voy.' Pues hoy es mañana.",
+      "questions": [
+        {
+          "id": "de1_q1",
+          "text": "¿Trabajas en el diner de Bob?",
+          "response": "Sí, llevo tres años ahí. Turno de mañana y turno de tarde. A veces turno de noche si alguien falta. Bob dice que soy su mejor empleada. Yo le digo que soy su única empleada que no se ha ido todavía."
+        },
+        {
+          "id": "de1_q2",
+          "text": "¿Te gusta el trabajo?",
+          "response": "Me gusta la gente. Los truckers que paran a desayunar, las familias de los domingos, los abuelos que vienen a tomar café. El trabajo en sí es duro, pero las personas lo hacen llevadero."
+        },
+        {
+          "id": "de1_q3",
+          "text": "¿Qué tipo de películas te gustan?",
+          "response": "Comedias. Románticas. Todo lo que me haga reír o suspirar. En el diner veo suficiente drama real como para querer más en la pantalla. Necesito cosas que me hagan sentir bien."
+        },
+        {
+          "id": "de1_q4",
+          "text": "¿Llevas mucho tiempo en el pueblo?",
+          "response": "Toda la vida. Nací aquí, fui al instituto aquí, y aquí sigo. Mi plan era irme a la universidad, pero... las cosas se complicaron. Mi madre se puso enferma y alguien tenía que trabajar. Así que aquí estoy."
+        },
+        {
+          "id": "de1_q5",
+          "text": "¿Vienes sola?",
+          "response": "Sí. Mis amigas del instituto se fueron todas. Sarah está en Chicago, Jen en California. Yo soy la que se quedó. No me quejo, pero a veces te sientes un poco... estancada, ¿sabes?"
+        },
+        {
+          "id": "de1_q6",
+          "text": "¿Qué te apetece ver?",
+          "response": "Algo divertido. Ligero. Que me haga olvidar que mañana a las cinco de la mañana estoy otra vez detrás de la barra sirviendo café. Confío en ti."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Buenas! He venido corriendo del diner. Literalmente. Aún huelo a bacon, ¿verdad? Da igual, la película del otro día me alegró la semana entera.",
+      "questions": [
+        {
+          "id": "de2_q1",
+          "text": "¿Te gustó la película?",
+          "response": "Me encantó. Me reí tanto que la señora de al lado me mandó callar. Pero es que lo necesitaba. Cuando volví al diner al día siguiente, hasta Bob notó que estaba de mejor humor."
+        },
+        {
+          "id": "de2_q2",
+          "text": "¿Cómo va el diner?",
+          "response": "Igual que siempre. Café, huevos, pancakes, quejas sobre el tiempo. Aunque esta semana han venido menos clientes. La gente está rara, como más recogida. Menos ganas de salir de casa."
+        },
+        {
+          "id": "de2_q3",
+          "text": "¿Bob te trata bien?",
+          "response": "Bob es buen jefe. Gruñón pero bueno. Me paga lo justo, me deja comer gratis y no me grita. En este pueblo, eso ya es mucho. Lo que no hace es subirme el sueldo, pero bueno, un paso a la vez."
+        },
+        {
+          "id": "de2_q4",
+          "text": "¿Sigues pensando en irte del pueblo?",
+          "response": "Cada día. Tengo una carpeta en casa con folletos de universidades. Los miro antes de dormir como quien mira un catálogo de viajes sabiendo que no puede comprar el billete. Es triste pero es lo que hay."
+        },
+        {
+          "id": "de2_q5",
+          "text": "¿Cómo está tu madre?",
+          "response": "Mejor. Las pastillas nuevas le están sentando bien. Ya sale a pasear por las mañanas y ha vuelto a cocinar. Eso me quita un peso de encima, aunque me da miedo que sea temporal."
+        },
+        {
+          "id": "de2_q6",
+          "text": "¿Qué quieres ver hoy?",
+          "response": "Una comedia romántica. De las cursis, sí. No me juzgues. Necesito creer que el amor existe fuera de los pancakes y las propinas."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola... Perdona la cara. Llevo dieciséis horas de pie. Dos turnos seguidos porque Janet no ha venido. Pero aquí estoy, que el cine no se ve solo.",
+      "questions": [
+        {
+          "id": "de3_q1",
+          "text": "¿Estás bien? Pareces agotada.",
+          "response": "Estoy muerta. Los pies me están matando, tengo quemaduras de la plancha en los brazos y he servido más de sesenta cafés hoy. Pero si me quedo en casa me pongo a pensar y eso es peor."
+        },
+        {
+          "id": "de3_q2",
+          "text": "¿Janet falta mucho?",
+          "response": "Cada vez más. Creo que está buscando trabajo en la ciudad. No la culpo. Si yo pudiera, haría lo mismo. Pero alguien tiene que servir los huevos revueltos a las seis de la mañana."
+        },
+        {
+          "id": "de3_q3",
+          "text": "¿No puedes pedir días libres?",
+          "response": "En teoría sí. En la práctica, si no voy yo, no va nadie. Bob no puede llevar el diner solo y contratar a alguien nuevo lleva semanas. Así que voy, y voy, y voy. Hasta que un día no pueda más."
+        },
+        {
+          "id": "de3_q4",
+          "text": "¿Qué harías si pudieras hacer cualquier cosa?",
+          "response": "Estudiar enfermería. Siempre quise cuidar a la gente, pero no de esta manera. No sirviendo café sino de verdad. En un hospital, ayudando, haciendo algo que importe. Suena a fantasía, ¿verdad?"
+        },
+        {
+          "id": "de3_q5",
+          "text": "No es fantasía. Es un plan.",
+          "response": "Ojalá fuera así de fácil. Necesito dinero para la matrícula, tiempo para estudiar y alguien que cuide a mi madre. Son tres cosas que no tengo. Pero gracias por decirlo como si fuera posible. Necesitaba oír eso."
+        },
+        {
+          "id": "de3_q6",
+          "text": "¿Qué película necesitas hoy?",
+          "response": "Algo que me haga sonreír sin tener que pensar mucho. Estoy demasiado cansada para dramas. Solo quiero desconectar dos horas y olvidarme de todo."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Buenas tardes! Hoy tengo el día libre. El día libre de verdad. Sin llamadas de Bob, sin turnos extra. No sé qué hacer conmigo misma, así que he venido aquí.",
+      "questions": [
+        {
+          "id": "de4_q1",
+          "text": "¿Qué se siente teniendo un día libre?",
+          "response": "Raro. Me he levantado a las cinco por costumbre. He estado una hora sentada en la cocina sin saber qué hacer. Es como si mi cuerpo no supiera funcionar sin una cafetera al lado."
+        },
+        {
+          "id": "de4_q2",
+          "text": "¿Has hecho algo especial?",
+          "response": "He dado un paseo largo. He ido hasta el mirador y me he sentado a ver el pueblo desde arriba. Es bonito visto así, desde lejos. Desde dentro es otra cosa, pero desde arriba tiene algo."
+        },
+        {
+          "id": "de4_q3",
+          "text": "¿Cómo va lo de la enfermería?",
+          "response": "He hecho algo. He llamado a la universidad comunitaria de Riverside. Me han dicho que hay becas para adultos que trabajan. No cubre todo, pero es algo. He pedido los formularios. Es el primer paso real que doy."
+        },
+        {
+          "id": "de4_q4",
+          "text": "Eso es genial, Debbie.",
+          "response": "¿Tú crees? A veces pienso que soy demasiado mayor para empezar. Veinticinco años y sin estudios. Pero luego pienso que a los treinta tendré treinta con o sin título. Mejor con título."
+        },
+        {
+          "id": "de4_q5",
+          "text": "¿Algo interesante en el diner esta semana?",
+          "response": "Un trucker me contó que la autopista estaba cortada el martes por la noche. No por obras, sino porque había algo en la carretera. No un animal, algo que brillaba. Lo dijo riendo, pero se le notaba que no le hacía gracia."
+        },
+        {
+          "id": "de4_q6",
+          "text": "¿Qué te apetece ver hoy?",
+          "response": "Algo inspirador. Una de esas películas donde el protagonista empieza abajo y acaba arriba. Necesito creer que es posible. Hoy más que nunca."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. He rellenado los formularios de la beca. Los tengo en el bolso. Aún no los he enviado. He venido aquí a coger fuerzas.",
+      "questions": [
+        {
+          "id": "de5_q1",
+          "text": "¿Por qué no los has enviado?",
+          "response": "Miedo. Miedo a que me acepten y tenga que cambiar todo. Miedo a que me rechacen y confirmen que no sirvo para más que servir café. Los dos resultados me asustan por razones distintas."
+        },
+        {
+          "id": "de5_q2",
+          "text": "¿Se lo has contado a alguien?",
+          "response": "A mi madre. Se echó a llorar. Pensé que era de tristeza, pero era de orgullo. Me dijo que lleva años esperando que haga algo por mí misma. Eso casi me rompe."
+        },
+        {
+          "id": "de5_q3",
+          "text": "¿Qué dice Bob?",
+          "response": "No se lo he dicho aún. Bob depende de mí y no quiero dejarlo tirado. Pero tampoco puedo quedarme para siempre por lealtad a un diner. Tengo que pensar en mí. Es lo más egoísta que he hecho nunca y me siento culpable."
+        },
+        {
+          "id": "de5_q4",
+          "text": "No es egoísmo, es supervivencia.",
+          "response": "Gracias. De verdad. A veces necesito que alguien me diga que está bien querer más. En este pueblo parece que conformarte es lo normal y que aspirar a algo es ser pretenciosa."
+        },
+        {
+          "id": "de5_q5",
+          "text": "¿Cómo están las cosas en el pueblo?",
+          "response": "Más calladas. En el diner se nota. Antes había conversación, risas, discusiones sobre el partido. Ahora la gente come en silencio y se va rápido. Como si tuvieran prisa por llegar a casa antes de que oscurezca."
+        },
+        {
+          "id": "de5_q6",
+          "text": "¿Qué necesitas ver hoy?",
+          "response": "Algo valiente. Sobre alguien que toma una decisión difícil y no mira atrás. Necesito ese empujón. Quizás al salir del cine me atreva a echar los formularios al buzón."
+        }
+      ]
+    },
+    {
+      "greeting": "¡Los envié! Salí del cine la otra noche, fui directa al buzón de correos y los eché antes de arrepentirme. Ahora solo queda esperar.",
+      "questions": [
+        {
+          "id": "de6_q1",
+          "text": "¡Eso es increíble! ¿Cómo te sientes?",
+          "response": "Como si me hubiera tirado de un puente. Pero de los buenos. De los que tienen agua debajo. Estoy nerviosa, asustada, emocionada. Todo a la vez. No sé cómo la gente toma decisiones así sin explotar."
+        },
+        {
+          "id": "de6_q2",
+          "text": "¿Cuándo sabrás algo?",
+          "response": "En tres o cuatro semanas. Cada día voy a revisar el buzón como una loca. Mi madre me dice que tenga paciencia, pero ella también mira el buzón cuando cree que no la veo."
+        },
+        {
+          "id": "de6_q3",
+          "text": "¿Se lo has dicho a Bob?",
+          "response": "Sí. Se quedó callado un buen rato. Luego me dijo: 'Debbie, eres la mejor camarera que he tenido. Pero no quiero que seas camarera toda tu vida.' Casi lloro ahí mismo."
+        },
+        {
+          "id": "de6_q4",
+          "text": "¿Cómo va el diner?",
+          "response": "Regular. Cada vez viene menos gente. Bob está pensando en cerrar los martes y miércoles. Dice que no compensa abrir para cuatro gatos. El pueblo se está vaciando y se nota en las propinas."
+        },
+        {
+          "id": "de6_q5",
+          "text": "¿Te preocupa eso?",
+          "response": "Me preocupa Bob. Si cierra el diner, no sé qué haría. Es su vida. Pero también pienso que quizás es una señal más de que es hora de irse. De que este sitio se está apagando."
+        },
+        {
+          "id": "de6_q6",
+          "text": "¿Qué quieres ver hoy?",
+          "response": "Algo alegre. Estoy de buen humor y quiero mantenerlo. Una comedia, algo tonto, algo que me haga reír hasta que me duela la tripa. Me lo merezco."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola... Ha llegado la carta. La tengo aquí. No la he abierto. He venido directa. Necesito a alguien al lado cuando la abra.",
+      "questions": [
+        {
+          "id": "de7_q1",
+          "text": "Ábrela.",
+          "response": "Espera, espera... Dame un segundo... Vale. La abro. Aquí va... 'Estimada señorita Wells, nos complace informarle...' ¡Me han aceptado! ¡Con beca parcial! No me lo creo. No me lo creo."
+        },
+        {
+          "id": "de7_q2",
+          "text": "¡Enhorabuena, Debbie!",
+          "response": "Gracias, gracias, gracias. Estoy temblando. Mira, las manos. Tres años sirviendo café y ahora... enfermería. Voy a ser enfermera. Suena tan raro dicho en voz alta."
+        },
+        {
+          "id": "de7_q3",
+          "text": "¿Cuándo empiezas?",
+          "response": "En septiembre. Tengo que mudarme a Riverside antes. Buscar un sitio donde vivir, un trabajo a tiempo parcial que sea compatible con las clases. Es mucho, pero por primera vez siento que puedo."
+        },
+        {
+          "id": "de7_q4",
+          "text": "¿Tu madre lo sabe?",
+          "response": "Voy a llamarla ahora mismo al salir. Se va a poner a llorar otra vez. Y yo con ella. Pero esta vez de alegría pura. De la buena. De la que llevábamos esperando mucho tiempo."
+        },
+        {
+          "id": "de7_q5",
+          "text": "¿Qué va a pasar con Bob?",
+          "response": "Le dije anoche. Se le aguaron los ojos, aunque lo negará hasta la muerte. Me dijo que me iba a hacer una fiesta de despedida en el diner. Con tarta y todo. Ese hombre tiene un corazón enorme debajo de toda esa grasa de cocina."
+        },
+        {
+          "id": "de7_q6",
+          "text": "¿Qué película quieres para celebrar?",
+          "response": "La más romántica que tengas. De las de beso bajo la lluvia y música de violines. Hoy estoy tan feliz que hasta lo cursi me parece perfecto."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. Estoy empezando a empaquetar. Es raro meter tu vida en cajas. Pero también es emocionante.",
+      "questions": [
+        {
+          "id": "de8_q1",
+          "text": "¿Cómo llevas la mudanza?",
+          "response": "Poco a poco. No tengo mucho, la verdad. Ropa, algunos libros, las fotos con mi madre. Lo esencial. He encontrado una habitación en Riverside con una chica que también estudia enfermería. Se llama Amy. Parece maja."
+        },
+        {
+          "id": "de8_q2",
+          "text": "¿Tu madre estará bien sola?",
+          "response": "Eso es lo que más me preocupa. Pero la vecina, la señora Reynolds, me ha prometido que la visitará todos los días. Y mi madre es más fuerte de lo que parece. Me dijo: 'Debbie, llevo tres años viéndote sacrificarte por mí. Ahora me toca a mí ser fuerte.'"
+        },
+        {
+          "id": "de8_q3",
+          "text": "¿Nerviosa por la universidad?",
+          "response": "Mucho. No he estudiado desde el instituto. ¿Y si no puedo con el nivel? ¿Y si soy demasiado lenta? Pero luego pienso en todas las mañanas que he madrugado, todos los turnos dobles, y me digo: si puedo con eso, puedo con esto."
+        },
+        {
+          "id": "de8_q4",
+          "text": "¿Vas a echar de menos el diner?",
+          "response": "El café de Bob, sí. Los clientes habituales, sí. El olor a grasa en el pelo, no. Las propinas de cincuenta centavos, no. Las conversaciones a las seis de la mañana con gente medio dormida, eso... bueno, un poco sí."
+        },
+        {
+          "id": "de8_q5",
+          "text": "¿Cómo ves el pueblo ahora que te vas?",
+          "response": "Con cariño y con tristeza. Ha sido mi mundo entero durante veinticinco años. Pero un mundo que no crece se encoge. Y yo necesito crecer."
+        },
+        {
+          "id": "de8_q6",
+          "text": "¿Qué te apetece ver?",
+          "response": "Algo sobre empezar de nuevo. Sobre dejar atrás lo conocido y lanzarse a lo desconocido. Necesito ver que otros lo han hecho y han sobrevivido."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. La fiesta de despedida en el diner fue ayer. Bob hizo tarta de chocolate. Lloramos todos. Hasta el trucker que viene los jueves.",
+      "questions": [
+        {
+          "id": "de9_q1",
+          "text": "¿Cómo fue la fiesta?",
+          "response": "Perfecta. Vinieron más personas de las que esperaba. La señora Henderson trajo flores. El sheriff pasó a darme la mano. Linda me cortó el pelo gratis. Este pueblo tiene sus cosas, pero la gente... la gente es lo mejor."
+        },
+        {
+          "id": "de9_q2",
+          "text": "¿Cuándo te vas?",
+          "response": "El lunes. He comprado el billete de autobús. Riverside no está tan lejos, pero se siente como otro planeta. Un planeta con universidad, cafetería de campus y gente de mi edad. Suena a ciencia ficción."
+        },
+        {
+          "id": "de9_q3",
+          "text": "¿Tu madre está bien?",
+          "response": "Está siendo más valiente que yo. Esta mañana me hizo el desayuno como cuando era pequeña. Tortitas con sirope y zumo de naranja. No dijo nada, solo sonrió. Y yo me comí hasta la última miga."
+        },
+        {
+          "id": "de9_q4",
+          "text": "¿Algún consejo de despedida?",
+          "response": "No dejes que este sitio te consuma. Es fácil quedarse atrapado aquí, haciendo lo mismo día tras día. Tú tienes algo especial: escuchas a la gente de verdad. Eso importa. Pero no te olvides de escucharte a ti mismo."
+        },
+        {
+          "id": "de9_q5",
+          "text": "Te vamos a echar de menos en el diner.",
+          "response": "Y yo a vosotros. Pero vendré a visitar. Y cuando sea enfermera, le haré un chequeo gratis a Bob. Ese hombre lleva treinta años comiendo bacon. Alguien tiene que mirarlo."
+        },
+        {
+          "id": "de9_q6",
+          "text": "¿Penúltima película?",
+          "response": "Algo bonito. De los que te dejan con ganas de abrazar a alguien. Estoy sensible y no me importa. Hoy me lo permito."
+        }
+      ]
+    },
+    {
+      "greeting": "Bueno. Aquí estoy. Última noche. Mañana a las siete cojo el autobús. No podía irme sin venir a despedirme.",
+      "questions": [
+        {
+          "id": "de10_q1",
+          "text": "¿Lista para la aventura?",
+          "response": "Lista es mucho decir. Pero decidida, sí. La maleta está en la puerta, el billete en el bolsillo y las mariposas en el estómago. Es como el primer día de instituto pero multiplicado por mil."
+        },
+        {
+          "id": "de10_q2",
+          "text": "¿Algún arrepentimiento?",
+          "response": "Solo no haber venido antes al cine. Estas noches aquí han sido lo mejor de mis últimos meses. Alguien que me escucha, palomitas con mantequilla y una buena película. La fórmula perfecta."
+        },
+        {
+          "id": "de10_q3",
+          "text": "¿Volverás a visitarnos?",
+          "response": "Por supuesto. Cada vez que venga a ver a mi madre, pasaré por aquí. Y por el diner a tomarme un café de Bob. Aunque ya no estaré detrás de la barra sino sentada como clienta. Qué raro va a ser eso."
+        },
+        {
+          "id": "de10_q4",
+          "text": "¿Qué le dirías a tu yo de hace un año?",
+          "response": "Que deje de mirar el cine desde la ventana del diner y entre de una vez. Que ahí dentro hay alguien que va a escucharla. Y que un día, gracias a esas conversaciones, va a encontrar el valor para cambiar su vida."
+        },
+        {
+          "id": "de10_q5",
+          "text": "Cuídate mucho, Debbie.",
+          "response": "Y tú. Cuida este sitio. Cuida a la gente que viene. Puede que para ti sea solo un cine, pero para gente como yo es el lugar donde empezó todo. No lo olvides nunca."
+        },
+        {
+          "id": "de10_q6",
+          "text": "¿Última película?",
+          "response": "Elige tú. Después de tantas noches juntos, sabes lo que me gusta mejor que yo. Sorpréndeme. Y que sea bonita. Quiero irme de aquí con una sonrisa."
+        }
+      ]
+    }
+  ]
+}

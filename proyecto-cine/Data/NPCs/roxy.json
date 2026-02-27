@@ -1,0 +1,379 @@
+{
+  "id": "roxy",
+  "name": "Roxy Vane",
+  "illustration": "res://Assets/Customers/chica_punk.png",
+  "patience": 5,
+  "tip": 1,
+  "_info": {
+    "description": "Trabaja en una tienda de discos. Punk, rebelde, afilada con las palabras. Bajo la coraza hay alguien inteligente, sola y con miedo a que la rechacen. El cine es el unico sitio donde nadie la juzga.",
+    "occupation": "Dependienta en tienda de discos",
+    "age": 19,
+    "traits": ["rebelde", "punk", "sarcástica", "inteligente", "solitaria", "protectora"]
+  },
+  "preferences": {
+    "must": ["horror", "dark"],
+    "must_not": ["romance", "comedy"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "rootbeer",
+    "food": "",
+    "popcorn": false,
+    "butter": false,
+    "caramel": false,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "Eh. Esto es el cine, no? Pensaba que estaba cerrado. Tiene pinta de estar cerrado. Bueno, da igual, ya que estoy aquí ponme algo. Y que no sea cursi.",
+      "questions": [
+        {
+          "id": "rx0_q1",
+          "text": "No te había visto por aquí.",
+          "response": "Normal. No suelo ir a sitios donde la gente se sienta en fila a comer palomitas como ovejas. Pero la tienda de discos cierra los martes y no tengo nada mejor que hacer. No te emociones."
+        },
+        {
+          "id": "rx0_q2",
+          "text": "Trabajas en la tienda de discos?",
+          "response": "Sí. Vinyl Graveyard. La del callejón junto a la lavandería. Vendemos vinilos, cassettes, algún póster. La gente entra, toca todo, no compra nada y se va. Es como un museo pero peor pagado."
+        },
+        {
+          "id": "rx0_q3",
+          "text": "Qué tipo de música te gusta?",
+          "response": "La que molesta a mis padres. No, en serio. Punk, post-punk, algo de metal. Dead Kennedys, Siouxsie, Bauhaus. Si suena como si el cantante estuviera enfadado con el universo, probablemente me gusta."
+        },
+        {
+          "id": "rx0_q4",
+          "text": "Vienes sola?",
+          "response": "Siempre vengo sola a todos los sitios. Es más fácil. No tienes que esperar a nadie, no tienes que fingir que te lo pasas bien, y si la película es mala te largas sin dar explicaciones."
+        },
+        {
+          "id": "rx0_q5",
+          "text": "No te gustan las comedias ni las románticas?",
+          "response": "Me dan arcadas. La gente riéndose de chistes malos o llorando porque dos idiotas se besan bajo la lluvia. Ponme algo con dientes. Algo que muerda. Horror, thriller, lo que sea que no me trate como si tuviera cinco años."
+        },
+        {
+          "id": "rx0_q6",
+          "text": "Entonces, qué quieres ver?",
+          "response": "Algo oscuro. Que dé mal rollo de verdad. No gore barato, algo con atmósfera. Que al salir mire las sombras distinto. Si puede ser, sin final feliz. Los finales felices son mentira."
+        }
+      ]
+    },
+    {
+      "greeting": "He vuelto. No te hagas ilusiones, es que hoy también cierran la tienda y mi apartamento huele a humedad. Aquí al menos huele a mantequilla rancia, que es una mejora.",
+      "questions": [
+        {
+          "id": "rx1_q1",
+          "text": "Te gustó lo que viste la otra vez?",
+          "response": "No estuvo mal. El final era predecible pero la fotografía era decente. He visto peores. Que es lo más bonito que voy a decir sobre una película, así que apúntatelo."
+        },
+        {
+          "id": "rx1_q2",
+          "text": "Qué tal en la tienda de discos?",
+          "response": "Igual que siempre. Ayer vino un tipo preguntando si teníamos Michael Jackson en vinlo. Le dije que sí, en la sección de pop, y me miró como si le hubiera insultado. La gente no sabe lo que quiere."
+        },
+        {
+          "id": "rx1_q3",
+          "text": "Vives sola?",
+          "response": "Con una compañera de piso que nunca está. Trabaja en el turno de noche en la gasolinera. Nos cruzamos en el pasillo como fantasmas. Me debe tres meses de la luz pero al menos no me molesta."
+        },
+        {
+          "id": "rx1_q4",
+          "text": "Tus padres viven cerca?",
+          "response": "Al otro lado del pueblo. Mi madre trabaja en el supermercado, mi padre en la fábrica de papel. Gente normal haciendo cosas normales. No nos hablamos mucho. No porque nos odiemos. Solo no tenemos nada que decirnos."
+        },
+        {
+          "id": "rx1_q5",
+          "text": "Por qué te gusta el horror?",
+          "response": "Porque es honesto. Las comedias fingen que todo está bien. Los dramas fingen que sufrir es bonito. El horror dice: el mundo da miedo y tú eres pequeño. Eso es verdad. Al menos es verdad."
+        },
+        {
+          "id": "rx1_q6",
+          "text": "Qué quieres ver hoy?",
+          "response": "Lo mismo que la otra vez. Algo con ambiente. Que los personajes tengan miedo de verdad, no que griten como tontos. Terror psicológico, si tienes. De ese que se te mete debajo de la piel."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye. Quiero que sepas que no vengo aquí porque me caigas bien. Vengo porque la entrada es barata y fuera hace un frío que pela. Que quede claro.",
+      "questions": [
+        {
+          "id": "rx2_q1",
+          "text": "Entendido. Algo nuevo en la tienda?",
+          "response": "Nos ha llegado una caja de vinilos de un tío que murió. Su familia no sabía qué hacer con ellos. Había cosas increíbles. Un primer prensaje de Unknown Pleasures. Casi lloro. Casi."
+        },
+        {
+          "id": "rx2_q2",
+          "text": "Te emocionan los discos?",
+          "response": "No es emoción, es respeto. Alguien compró ese disco nuevo, lo escuchó cientos de veces, lo guardó treinta años. Y ahora está en mis manos. Hay una historia ahí que nunca sabré. Eso me parece... importante."
+        },
+        {
+          "id": "rx2_q3",
+          "text": "Alguna vez has querido tocar en una banda?",
+          "response": "Toco el bajo. Bueno, tocaba. Tenía una banda en el instituto. Los Dientes Rotos. Duramos seis meses. El batería se mudó, la cantante se echó novio y yo me quedé con un bajo y un amplificador que zumba."
+        },
+        {
+          "id": "rx2_q4",
+          "text": "No has buscado otra banda?",
+          "response": "En este pueblo? Aquí la gente escucha country y rock cristiano. Encontrar a alguien que sepa quiénes son los Misfits es como encontrar un diamante en un aparcamiento. He dejado de buscar."
+        },
+        {
+          "id": "rx2_q5",
+          "text": "Suena solitario.",
+          "response": "No me vengas con esas. No necesito que nadie me psicoanalize detrás de un mostrador de palomitas. Estoy bien sola. La gente sobrevalorada, el silencio infravalorado. Pon la película y ya."
+        },
+        {
+          "id": "rx2_q6",
+          "text": "Vale. Qué quieres ver?",
+          "response": "Algo con un protagonista que no necesite a nadie. Que sobreviva solo. Con garras. Sin pedir permiso ni disculpas. Eso es lo que quiero ver."
+        }
+      ]
+    },
+    {
+      "greeting": "Eh. Me he traído una root beer del Seven-Eleven pero la tuya sabe distinto. Peor, probablemente, pero distinto. Ponme una. Y calla.",
+      "questions": [
+        {
+          "id": "rx3_q1",
+          "text": "Pensaba que no te gustaba nada de aquí.",
+          "response": "Y no me gusta. Pero tu root beer tiene un sabor raro que no encuentro en ningún otro sitio. Como a vainilla vieja y plástico quemado. Es específico. Me gusta lo específico."
+        },
+        {
+          "id": "rx3_q2",
+          "text": "Has visto algo bueno últimamente fuera del cine?",
+          "response": "He alquilado unas cintas VHS en un mercadillo. Terror italiano de los setenta. Argento, Fulci. La calidad es pésima y el doblaje es criminal, pero tienen algo que las películas nuevas no tienen. Tripas. De las de verdad."
+        },
+        {
+          "id": "rx3_q3",
+          "text": "Tienes reproductor de VHS?",
+          "response": "Encontré uno en la basura detrás de la tienda de electrónica. Lo abrí, limpié las cabezas con alcohol, y funciona. Más o menos. A veces la imagen tiembla. Pero eso lo hace mejor, no peor."
+        },
+        {
+          "id": "rx3_q4",
+          "text": "Pareces una persona con muchos recursos.",
+          "response": "Cuando no tienes dinero, aprendes a arreglar cosas. Mi padre me enseñó eso, lo único útil que me enseñó. Si algo está roto, ábrelo, mira dentro, intenta entenderlo. Funciona con aparatos. Con personas no tanto."
+        },
+        {
+          "id": "rx3_q5",
+          "text": "Hablas poco de tu padre.",
+          "response": "Porque no hay mucho que contar. Es un hombre cansado que llega a casa, ve la tele y se duerme en el sofá. No es malo. Solo está ausente. Hay padres peores. Hay padres mejores. El mío simplemente... está."
+        },
+        {
+          "id": "rx3_q6",
+          "text": "Qué película te pongo?",
+          "response": "Algo con monstruos. Pero monstruos de verdad, no metafóricos. Bichos, criaturas, lo que sea. A veces una solo quiere ver a algo con colmillos persiguiendo a gente por un pasillo oscuro. Simple y eficaz."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye. Te voy a contar algo pero si se lo dices a alguien te arranco la cabeza. El otro día puse un disco de Nick Drake en la tienda y se me saltaron las lágrimas. Ahí, delante de los clientes. Patético.",
+      "questions": [
+        {
+          "id": "rx4_q1",
+          "text": "Nick Drake no es punk exactamente.",
+          "response": "Ya lo sé. Ese es el problema. Se supone que no me gusta esa música. Pero Pink Moon es... joder. Es como si alguien hubiera grabado lo que se siente a las tres de la mañana cuando no puedes dormir. No puedo odiar algo tan verdadero."
+        },
+        {
+          "id": "rx4_q2",
+          "text": "Llorar no es patético.",
+          "response": "Díselo a los dos clientes que me miraron como si me estuviera dando un infarto. Uno me preguntó si necesitaba un vaso de agua. Yo le dije que no, que era alergia. Alergia a la belleza insoportable. No se rió."
+        },
+        {
+          "id": "rx4_q3",
+          "text": "Escondes mucho detrás de la actitud, no?",
+          "response": "... No me hagas eso. No me lances preguntas profundas como si fueras mi terapeuta. Que no tengo terapeuta. Que no puedo permitirme uno. Solo vendo discos y veo películas de miedo. Eso es todo lo que soy."
+        },
+        {
+          "id": "rx4_q4",
+          "text": "No creo que eso sea todo.",
+          "response": "Pues cree lo que quieras. La gente siempre quiere que haya algo más debajo. Algo tierno y vulnerable. A lo mejor debajo de todo esto solo hay más de esto. Más espinas. A lo mejor soy espinas hasta el fondo."
+        },
+        {
+          "id": "rx4_q5",
+          "text": "O a lo mejor no.",
+          "response": "... Eres insufrible. Dame mi root beer y cállate. Y pon una película. Una buena. De las que te hacen olvidar que tienes sentimientos."
+        },
+        {
+          "id": "rx4_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo oscuro pero con un personaje que te caiga bien. Alguien duro por fuera que al final... no sé. Que al final demuestre que le importa algo. Pero sin cursilerías. Si hay cursilerías me voy."
+        }
+      ]
+    },
+    {
+      "greeting": "Vengo del instituto. Bueno, de pasar por delante del instituto. He visto a los chavales salir en grupo, riéndose, empujándose. Hace dos años era yo. Parece que hace veinte.",
+      "questions": [
+        {
+          "id": "rx5_q1",
+          "text": "Echas de menos el instituto?",
+          "response": "Echo de menos tener un sitio donde ir cada mañana sin tener que pensarlo. La tienda de discos está bien, pero cuando abro y no hay nadie, que es casi siempre, me pregunto qué hago con mi vida. Luego llega un cliente y se me pasa."
+        },
+        {
+          "id": "rx5_q2",
+          "text": "Tenías amigos allí?",
+          "response": "Tenía a la banda. Los Dientes Rotos. Ensayábamos en el garaje de la batería. Era ruidoso, desafinado y perfecto. Luego cada uno tiró por su lado y yo me quedé con el ruido en la cabeza pero sin la banda."
+        },
+        {
+          "id": "rx5_q3",
+          "text": "Has pensado en estudiar algo?",
+          "response": "Mis notas no daban para la universidad. Mi madre dijo que podía ir a la escuela técnica pero no me apetecía pasarme dos años aprendiendo fontanería. Así que aquí estoy. Vendiendo discos a un pueblo que prefiere los cassettes."
+        },
+        {
+          "id": "rx5_q4",
+          "text": "Qué te gustaría hacer si pudieras elegir?",
+          "response": "... No sé. A veces pienso en irme a la ciudad. Trabajar en una tienda de discos de verdad, grande, con gente que sepa de música. Pero irme cuesta dinero y dinero es lo único que no tengo. Aparte de amigos."
+        },
+        {
+          "id": "rx5_q5",
+          "text": "Este cine también tiene su público reducido.",
+          "response": "Ya. Pero al menos tú tienes clientes que vuelven. Yo tengo un señor que viene los jueves a buscar discos de Johnny Cash y una adolescente que roba pins cuando cree que no miro. Gran negocio."
+        },
+        {
+          "id": "rx5_q6",
+          "text": "Qué te apetece ver hoy?",
+          "response": "Algo sobre alguien que está atrapado en un sitio pequeño. Un pueblo, un trabajo, una vida que no eligió. Pero que encuentra algo que le da sentido. Aunque sea algo pequeño. No sé por qué te pido eso."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye. He estado pensando en una cosa. Este es el único sitio donde vengo que no me pide nada. La tienda me pide que venda. Mis padres me piden que sea normal. Aquí solo me preguntas qué quiero ver. Eso mola.",
+      "questions": [
+        {
+          "id": "rx6_q1",
+          "text": "Me alegra que te sientas cómoda aquí.",
+          "response": "No he dicho cómoda. He dicho que no me pide nada. Son cosas distintas. Cómoda es una palabra de gente que tiene cojines bonitos. Yo tengo un sofá con un muelle que se clava. Pero aquí al menos me dejan en paz."
+        },
+        {
+          "id": "rx6_q2",
+          "text": "Puedes venir siempre que quieras.",
+          "response": "Ya, bueno. Tampoco te pases de amable que me pone nerviosa. La gente amable siempre quiere algo. Excepto tú, que no pareces querer nada. Y eso es raro. Pero del raro bueno."
+        },
+        {
+          "id": "rx6_q3",
+          "text": "Has hablado con alguien nuevo últimamente?",
+          "response": "Ayer vino un chaval a la tienda que sabía quiénes eran los Descendents. Casi me da un infarto. Hablamos quince minutos de punk californiano. Luego se fue y no le pedí el nombre. Soy idiota."
+        },
+        {
+          "id": "rx6_q4",
+          "text": "Podrías buscarlo.",
+          "response": "En un pueblo de este tamaño, si quiero encontrarlo lo encontraré. Pero luego qué? Le digo oye, quieres ser mi amigo porque sabes de punk? La gente no funciona así. O sí? No sé cómo funciona la gente."
+        },
+        {
+          "id": "rx6_q5",
+          "text": "Funciona exactamente así.",
+          "response": "... Puede. Igual lo busco. Igual no. No me presiones. Bastante tengo con que me gustes tú y este cine de mala muerte. Mi cuota de afecto está al límite."
+        },
+        {
+          "id": "rx6_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo donde alguien que parece duro encuentre un sitio donde estar. No un hogar cursi con chimenea. Un sitio real. Un garaje, un bar, un cine viejo. Un lugar donde la ropa rota no importa."
+        }
+      ]
+    },
+    {
+      "greeting": "Tengo que contarte algo. El dueño de la tienda me ha dicho que va a cerrar. Que no da para más. Tres meses. Puede que menos. Así que muy pronto voy a ser Roxy Vane, la del nada.",
+      "questions": [
+        {
+          "id": "rx7_q1",
+          "text": "Lo siento mucho, Roxy.",
+          "response": "No lo sientas. Las tiendas de discos se mueren, es ley de vida. La gente compra cassettes o los graba de la radio. Nadie quiere vinilos excepto cuatro frikis. Y los cuatro frikis no pagan el alquiler."
+        },
+        {
+          "id": "rx7_q2",
+          "text": "Qué vas a hacer?",
+          "response": "No lo sé. Buscar otro trabajo, supongo. Pero este pueblo no tiene muchas opciones para una chica con el pelo azul y una camiseta de Black Flag. Igual acabo en el McDonald's del kilómetro treinta. Con gorra y todo."
+        },
+        {
+          "id": "rx7_q3",
+          "text": "Podrías irte a la ciudad.",
+          "response": "Con qué? No tengo ahorros. No tengo coche. Tengo un bajo eléctrico y doscientos discos. Eso no paga un billete de autobús. Además... no sé. Irme significaría dejar las pocas cosas que me gustan. Como este cine."
+        },
+        {
+          "id": "rx7_q4",
+          "text": "Las pocas cosas que te gustan?",
+          "response": "La tienda. Aunque cierre. Mi apartamento de mierda. El parque donde voy a leer. Y este sitio. Que huele fatal y las butacas crujen pero al menos nadie me mira raro. No son muchas cosas, pero son mías."
+        },
+        {
+          "id": "rx7_q5",
+          "text": "Puedes seguir viniendo aquí pase lo que pase.",
+          "response": "... Ya. Gracias. Supongo. No sé decir gracias sin que suene raro. Pero lo digo en serio. Este sitio es el único donde me siento como... no sé. Como si pudiera quitarme la armadura un rato. No se lo cuentes a nadie."
+        },
+        {
+          "id": "rx7_q6",
+          "text": "Qué película te pongo?",
+          "response": "Algo sobre alguien que pierde algo y tiene que empezar de cero. Pero que no se hunde. Que se levanta y sigue adelante con los puños cerrados. Necesito esa energía hoy."
+        }
+      ]
+    },
+    {
+      "greeting": "Eh. He encontrado al chaval del punk. Se llama Danny. Toca la guitarra. Es malísimo. Pero tiene actitud. Vamos a ensayar el sábado. No te estoy pidiendo opinión, solo te informo.",
+      "questions": [
+        {
+          "id": "rx8_q1",
+          "text": "Eso es genial, Roxy.",
+          "response": "No es genial. Es un ensayo. Probablemente sea desastroso. Pero al menos habrá ruido. Echo de menos el ruido. El tipo de ruido que haces tú con otras personas y que significa algo."
+        },
+        {
+          "id": "rx8_q2",
+          "text": "Has pensado en un nombre para la banda?",
+          "response": "Danny quiere llamarla Los Perdidos. Yo prefiero algo más agresivo. Estamos negociando. Bueno, yo le digo nombres y él dice que no con la cabeza. Es un proceso democrático muy punk."
+        },
+        {
+          "id": "rx8_q3",
+          "text": "Y la tienda?",
+          "response": "Cierra el mes que viene. He empezado a guardarme algunos discos que el dueño iba a tirar. No los de valor, los que nadie quiere. Los que solo significan algo para mí. Esos son los que importan."
+        },
+        {
+          "id": "rx8_q4",
+          "text": "Cómo estás con todo eso?",
+          "response": "Rara. Es raro perder una cosa y encontrar otra al mismo tiempo. Como si el universo te quitara una puerta y te abriera una ventana, pero la ventana da a un callejón. Aun así, entra aire. Y el aire es nuevo."
+        },
+        {
+          "id": "rx8_q5",
+          "text": "Suenas casi optimista.",
+          "response": "Cállate. No soy optimista. Soy realista con un día bueno. Hay una diferencia. Mañana probablemente vuelva a ser una arpía amargada. Pero hoy... hoy estoy bien. Más o menos. No lo arruines."
+        },
+        {
+          "id": "rx8_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo con buena banda sonora. Que la música sea tan importante como la historia. Estoy con ganas de que los oídos trabajen tanto como los ojos. Sorpréndeme. Confío en ti. Un poco."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye. Escucha. No se me da bien esto, pero tengo que decirte algo. Este cine de mierda y tú sois de las pocas cosas buenas que tengo. Ya está. Ya lo he dicho. Si te ríes te mato.",
+      "questions": [
+        {
+          "id": "rx9_q1",
+          "text": "No me río.",
+          "response": "Bien. Porque lo digo en serio. He pasado dos años en este pueblo pensando que todo era basura. Y en parte lo es. Pero hay sitios donde la basura tiene carácter. Este cine es uno de esos sitios."
+        },
+        {
+          "id": "rx9_q2",
+          "text": "Cómo va la banda?",
+          "response": "Primer concierto el viernes. En el garaje de Danny. Público: su madre, su perro y un vecino que se quejó del ruido. Fue horrible y maravilloso. El perro aulló en el estribillo. Le vamos a fichar como vocalista."
+        },
+        {
+          "id": "rx9_q3",
+          "text": "Y después del cierre de la tienda?",
+          "response": "He conseguido curro en la gasolinera. Turno de noche. Es deprimente, pero paga el alquiler y me deja las tardes libres para ensayar. Y para venir aquí. Que es casi lo mismo que ensayar, pero sentada."
+        },
+        {
+          "id": "rx9_q4",
+          "text": "Has cambiado desde la primera vez que viniste.",
+          "response": "No he cambiado. He dejado de fingir. Que es distinto. La primera vez que entré quería que me odiaras para poder irme. Pero no me odiaste. Me hiciste preguntas. Nadie me hace preguntas. Eso jode todos mis planes de ser miserable."
+        },
+        {
+          "id": "rx9_q5",
+          "text": "El cine estará siempre aquí.",
+          "response": "Más le vale. Porque si cierras te busco y te obligo a reabrirlo. Este sitio es mío tanto como tuyo. Me da igual lo que diga la escritura. Roxy Vane protege lo que quiere. Y quiero este cine. Punto."
+        },
+        {
+          "id": "rx9_q6",
+          "text": "Última película. Qué quieres ver?",
+          "response": "Lo que tú elijas. Me fío. Después de tantas veces, sabes lo que necesito mejor que yo. Ponme algo que me recuerde por qué merece la pena salir de casa. Algo con dientes. Pero también con corazón."
+        }
+      ]
+    }
+  ]
+}

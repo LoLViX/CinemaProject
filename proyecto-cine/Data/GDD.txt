@@ -1,0 +1,2321 @@
+ CINE — DOCUMENTO DE DISEÑO COMPLETO (GDD EXPANDIDO)
+PARTE 1 — VISIÓN GENERAL Y FILOSOFÍA DEL JUEGO
+1.1 Concepto central
+
+El juego es una simulación en primera persona ambientada en un cine pequeño de un pueblo de Estados Unidos en los años 80.
+
+El jugador es el único empleado del cine.
+
+Durante la partida, el jugador debe:
+
+Atender clientes uno por uno.
+
+Conversar con ellos.
+
+Recomendarles una película.
+
+Preparar comida y bebida físicamente.
+
+Gestionar el stock diario.
+
+Detectar entidades infiltradas.
+
+Enviar entidades a una Sala Especial.
+
+Mantener la fama del cine.
+
+Evitar que la distorsión del mundo alcance el máximo.
+
+El juego combina gestión ligera, narrativa progresiva y tensión creciente.
+
+1.2 Naturaleza de la experiencia
+
+El tono del juego evoluciona:
+
+Inicio: ambiente cotidiano, simpático, cercano.
+
+Desarrollo: aparecen elementos extraños.
+
+Progresión: presión creciente y sensación de amenaza.
+
+Final demo: punto de inflexión narrativo en el día 10.
+
+El jugador debe sentir que:
+
+Está trabajando en un lugar real.
+
+Conoce a personas recurrentes.
+
+Tiene responsabilidad real sobre el negocio.
+
+Está conteniendo algo que no comprende del todo.
+
+1.3 Objetivo del jugador
+
+Durante la demo de 10 días, el objetivo es:
+
+Mantener la fama por encima de 0.
+
+Mantener la distorsión por debajo de 10.
+
+Gestionar correctamente entidades.
+
+Sobrevivir hasta el día 10.
+
+No existe “victoria clásica”, sino supervivencia narrativa.
+
+1.4 Recursos principales del juego
+
+Existen tres ejes principales:
+
+Fama (global, persistente en toda la partida).
+
+Distorsión (global, persistente en toda la partida).
+
+Dinero (económico, gestionado día a día).
+
+Además existe:
+
+Satisfacción diaria (reinicia cada día).
+
+Stock (reinicia parcialmente según compras).
+
+1.5 Duración estructural de la demo
+
+La demo cubre 10 días jugables.
+
+El sistema está diseñado para ser escalable en el futuro.
+
+PARTE 2 — ESTRUCTURA GLOBAL Y ESTADOS DEL JUEGO
+
+El juego funciona como una máquina de estados.
+
+En cada momento solo un estado principal puede estar activo.
+
+2.1 Estados principales
+
+MainMenuState
+
+TutorialState (Prólogo)
+
+CarteleraSetupState
+
+QueueIdleState
+
+DialogueState
+
+RecommendationState
+
+FoodServiceState
+
+EndOfDayState
+
+PauseMenuState
+
+2.2 MainMenuState
+
+Escena 3D estática del cine con interfaz 2D lateral.
+
+Opciones:
+
+Nueva partida
+
+Continuar partida
+
+Ajustes
+
+Créditos
+
+Salir del juego
+
+No se ejecuta ningún sistema de juego aquí.
+
+2.3 TutorialState (Prólogo)
+
+No cuenta como Día 1.
+
+El jugador comienza ya en su zona de trabajo.
+
+El Guía aparece como cliente.
+
+En este estado:
+
+Se explican todas las mecánicas.
+
+El Guía hace un pedido completo.
+
+El jugador debe completarlo correctamente.
+
+El Guía no utiliza el camino especial de salida.
+
+Al terminar, se produce un fundido a negro.
+
+Aparece un botón de confirmación para comenzar la partida real.
+
+Se carga el Día 1.
+
+2.4 CarteleraSetupState
+
+Se activa al comenzar cada día real.
+
+Aquí el jugador:
+
+Ve las películas disponibles del día.
+
+Asigna géneros manualmente.
+
+Puede ver cuál es la Sala Especial.
+
+Puede ver la capacidad de la Sala Especial.
+
+Confirma “Abrir Cine”.
+
+No se muestran variables de satisfacción, fama ni distorsión aquí.
+
+2.5 QueueIdleState
+
+Estado en el que el jugador está esperando atender al siguiente cliente.
+
+Se muestra:
+
+Prompt para atender.
+
+Número de cliente actual.
+
+Total de clientes del día.
+
+Asientos disponibles en Sala Especial.
+
+Barra de satisfacción diaria.
+
+Paciencia del cliente actual (si ya está frente al mostrador).
+
+2.6 DialogueState
+
+Se activa cuando se inicia conversación.
+
+Aquí:
+
+El jugador puede hacer hasta 5 preguntas opcionales.
+
+Cada pregunta consume paciencia.
+
+La sexta opción abre el loop de recomendación.
+
+La paciencia disminuye con el tiempo.
+
+2.7 RecommendationState
+
+El jugador:
+
+Ve las películas del día.
+
+Decide qué recomendar.
+
+Puede elegir Sala Especial si hay cupos.
+
+Ve asientos disponibles.
+
+Ve paciencia actual.
+
+Ve cliente actual y total del día.
+
+Ve barra de satisfacción diaria.
+
+2.8 FoodServiceState
+
+El jugador:
+
+Prepara físicamente la bandeja.
+
+Añade y retira elementos.
+
+Si retira algo, se desperdicia.
+
+Puede quedarse sin stock.
+
+Ve:
+
+Pedido del cliente.
+
+Stock actual.
+
+Paciencia.
+
+Cliente actual/total.
+
+Barra de satisfacción.
+
+2.9 EndOfDayState
+
+Se activa tras atender al último cliente.
+
+Aquí se muestra:
+
+Ingresos del día.
+
+Gastos del día.
+
+Beneficio.
+
+Posición final de la barra de satisfacción.
+
+Cambio de fama.
+
+Cambio de distorsión.
+
+Advertencias económicas si aplica.
+
+Botón para avanzar al siguiente día.
+
+Opciones para cargar guardados anteriores.
+
+2.10 PauseMenuState
+
+Puede activarse durante el día.
+
+Opciones:
+
+Reanudar
+
+Ajustes
+
+Guardar
+
+Cargar
+
+Guardar y salir
+
+La pausa congela:
+
+Tiempo
+
+Paciencia
+
+Sistemas activos
+
+PARTE 3 — FLUJO COMPLETO Y DETALLADO DE UN DÍA
+
+Esta sección describe exactamente qué ocurre desde que termina un día hasta que comienza el siguiente, sin explicar implementación técnica, solo comportamiento esperado.
+
+3.1 Fin del día anterior
+
+Al finalizar el último cliente:
+
+Se calcula la posición final de la barra de satisfacción diaria.
+
+Según esa posición:
+
+La fama global puede subir.
+
+Puede mantenerse.
+
+Puede bajar.
+
+Se actualiza la distorsión global según:
+
+Entidades correctamente enviadas a Sala Especial.
+
+Entidades enviadas a salas normales.
+
+Se calculan posibles eventos para el día siguiente.
+
+Se muestra la pantalla de estadísticas.
+
+3.2 Cálculo previo del siguiente día (bloque cerrado)
+
+El siguiente día queda completamente definido en el momento en que termina el anterior.
+
+Eso incluye:
+
+Lista exacta de clientes.
+
+Cuáles son entidades.
+
+Qué NPC ha sido suplantado (si aplica).
+
+Qué evento estructural ocurrirá (si aplica).
+
+Layout alterado (si aplica).
+
+Cartelera generada.
+
+Cupos de Sala Especial.
+
+Probabilidad de nuevos NPCs si la fama sube.
+
+Este cálculo queda fijado.
+
+Si el jugador carga un día anterior, ese cálculo se descarta y se vuelve a generar al terminar ese día nuevamente.
+
+3.3 Inicio del día
+
+Orden:
+
+Pantalla de carga.
+
+Aplicación de evento estructural si existe.
+
+Aplicación de distorsiones persistentes.
+
+Entrada en CarteleraSetupState.
+
+3.4 Generación de la cartelera
+
+Reglas:
+
+Siempre hay 5 películas.
+
+Las películas cambian cada día.
+
+Puede repetirse alguna del día anterior.
+
+Nunca puede repetirse exactamente la misma combinación del día anterior.
+
+Si una película ya apareció en esta partida:
+
+Mantiene los géneros asignados previamente.
+
+Excepto si una distorsión alteró sus tags.
+
+Si hay sabotaje de distorsión:
+
+Una o más películas pueden tener sus tags alterados automáticamente.
+
+El jugador puede no darse cuenta si confía en lo ya marcado.
+
+3.5 Confirmación de apertura
+
+Al pulsar “Abrir Cine”:
+
+Se bloquea la cartelera.
+
+Se inicia el QueueIdleState.
+
+Se carga el primer cliente del día.
+
+3.6 Orden de clientes
+
+Reglas estructurales:
+
+Días 1–3:
+
+Solo humanos.
+
+Día 1 → 4 clientes.
+
+Día 2 → 5 clientes si fama estable.
+
+Día 3 → depende de fama.
+
+Día 3 incluye visita del Guía/Jefe.
+
+Desde Día 4 en adelante:
+
+Hay entidades.
+
+Número de entidades depende de:
+
+Número total de clientes.
+
+Nivel de fama.
+
+Estado de distorsión.
+
+Los clientes no se randomizan completamente.
+
+Reglas de recurrencia:
+
+Si un NPC apareció en la partida, está obligado a reaparecer diariamente.
+
+Excepto si:
+
+La fama baja y se elimina uno.
+
+Muere por evento.
+
+Evento especial lo elimina.
+
+Si la fama sube:
+
+Se añade un NPC nuevo.
+
+Si un NPC es suplantado:
+
+Ocupa el slot de entidad.
+
+El NPC humano no aparece ese día.
+
+Mantiene su secuencia narrativa alterada.
+
+3.7 Atención individual
+
+Para cada cliente:
+
+Aparece en cola.
+
+Se mueve por el path estándar.
+
+Se posiciona en el mostrador.
+
+Se activa el prompt de atención.
+
+El Guía utiliza un path alternativo para retirarse.
+
+Clientes especiales (como los que abandonan por paciencia roja agotada) usan ese mismo path alternativo.
+
+3.8 Fase de diálogo
+
+Cada NPC tiene:
+
+10 encuentros secuenciales.
+
+Se activan por número de veces visto.
+
+No dependen del día.
+
+El encuentro puede ser reemplazado si el NPC es entidad suplantada.
+
+El jugador puede:
+
+Hacer hasta 5 preguntas.
+
+La sexta opción abre recomendación.
+
+Paciencia:
+
+Baja con el tiempo.
+
+Baja por cada pregunta.
+
+Baja si hay errores en servicio.
+
+Si llega a 0:
+
+Cambia a barra roja secundaria de 15 segundos.
+
+Si se agota:
+
+El cliente se retira por path alternativo.
+
+No genera satisfacción positiva.
+
+Afecta negativamente a la barra diaria.
+
+3.9 Fase de recomendación
+
+El jugador:
+
+Elige una película.
+
+Puede seleccionar Sala Especial si hay cupos.
+
+Reglas de Sala Especial:
+
+Tiene capacidad diaria limitada.
+
+Si está llena:
+
+El botón aparece gris.
+
+Muestra texto “SALA LLENA”.
+
+Humanos pueden entrar sin efectos negativos.
+
+Entidades deben entrar ahí para estabilizar.
+
+Si entidad va a sala normal:
+
+Aumenta distorsión.
+
+Incrementa probabilidad de evento.
+
+Si entidad va a sala especial:
+
+Reduce distorsión.
+
+Si ninguna entidad se cuela ese día:
+
+Se mantiene o baja la distorsión.
+
+3.10 Fase de comida
+
+El jugador:
+
+Añade elementos a la bandeja.
+
+Si retira uno:
+
+Se pierde.
+
+Puede quedarse sin stock.
+
+Puede entregar pedido incompleto.
+
+No puede sustituir productos agotados.
+
+Errores comunes:
+
+Equivocarse de topping.
+
+Confusión por distorsión visual.
+
+Falta de stock.
+
+Error en bebida (color incorrecto).
+
+Penalizaciones:
+
+Baja satisfacción diaria.
+
+Puede afectar propina.
+
+3.11 Pago
+
+Ingreso compuesto por:
+
+Entrada fija.
+
+Venta de comida.
+
+Propina variable.
+
+Propina estándar:
+
+2$ para la mayoría.
+
+Ajustable por personaje.
+
+3.12 Final del día
+
+Tras el último cliente:
+
+Se calcula barra diaria final.
+
+Se traduce a impacto en fama global.
+
+Se actualiza distorsión.
+
+Se evalúa muerte de NPC si aplica.
+
+Se muestran estadísticas.
+
+Se activa sistema de advertencia económica.
+
+PARTE 4 — SISTEMA COMPLETO DE CLIENTES
+
+Esta sección define cómo existen, reaparecen, evolucionan y pueden desaparecer los NPCs.
+
+4.1 Tipos de clientes
+
+Existen tres categorías estructurales:
+
+Humanos permanentes
+
+Entidades permanentes
+
+Humanos suplantables
+
+En la demo inicial predominan humanos permanentes y humanos suplantables.
+
+Las entidades permanentes pueden aparecer más adelante en versiones ampliadas.
+
+4.2 Humanos permanentes
+
+Siempre son humanos.
+
+Tienen 10 encuentros secuenciales.
+
+Son recurrentes.
+
+Pueden morir por evento.
+
+No pueden convertirse en entidades.
+
+Son parte importante de la narrativa del pueblo.
+
+4.3 Humanos suplantables
+
+Funcionan como humanos normales.
+
+En determinados días pueden ser reemplazados por una entidad.
+
+El jugador no recibe aviso explícito.
+
+Su diálogo del día es sustituido por uno de “encuentros de entidad”.
+
+Reglas de suplantación:
+
+Ocupa el slot de entidad del día.
+
+El humano original no aparece ese día.
+
+No rompe la secuencia narrativa humana.
+
+Si vuelve al día siguiente, continúa su encuentro secuencial normal.
+
+4.4 Entidades
+
+No son demonios explícitos.
+
+Son “cosas” que:
+
+Imitan comportamientos humanos.
+
+Pueden tener diálogos incoherentes.
+
+No comprenden del todo la experiencia humana.
+
+Son atraídas por la modificación de la Sala Especial.
+
+El Guía afirma que:
+
+El cine fue diseñado por alguien que sabía.
+
+La Sala Especial fue alterada.
+
+Las entidades sienten atracción por ese cambio.
+
+No deben descubrir el motivo real.
+
+4.5 Encuentros
+
+Cada NPC humano tiene:
+
+10 encuentros numerados.
+
+Se activan por número de veces visto.
+
+No dependen del día.
+
+Si un NPC aparece por primera vez en día 4, activa Encuentro 1.
+
+En apariciones posteriores, avanza secuencialmente.
+
+Reglas:
+
+No se puede repetir pregunta dentro del mismo encuentro.
+
+La sexta opción siempre abre recomendación.
+
+El primer encuentro incluye presentación coherente con pueblo pequeño años 80.
+
+4.6 Patrones de reaparición
+
+Si un NPC ha aparecido en la partida:
+
+Está obligado a reaparecer diariamente.
+
+Excepto si:
+
+La fama baja y es eliminado del día.
+
+Muere por evento.
+
+Evento especial lo elimina temporalmente.
+
+Si la fama sube:
+
+Se añade un nuevo NPC.
+
+Nunca se eliminan todos los antiguos a la vez.
+
+Un NPC puede saltarse un día si la fama ha bajado.
+
+4.7 Muerte de NPC
+
+Puede ocurrir por evento estructural.
+
+Reglas:
+
+Solo una muerte por run.
+
+Se selecciona un NPC recurrente con más encuentros vistos.
+
+Al día siguiente:
+
+El primer cliente menciona la muerte.
+
+Frase seleccionada de lista editable.
+
+El NPC muerto:
+
+No vuelve a aparecer.
+
+Su ID queda marcado como eliminado permanentemente.
+
+El cliente que menciona la muerte:
+
+No conversa ese día.
+
+Pide comida directamente.
+
+No afecta satisfacción diaria.
+
+4.8 Paciencia
+
+Cada NPC tiene:
+
+Valor de paciencia 1–10.
+
+Mínimo permitido: 3.
+
+Media recomendada: 7.
+
+Comportamiento:
+
+Baja con el tiempo.
+
+Baja por preguntas.
+
+Baja por errores.
+
+Si llega a 0:
+
+Se activa barra roja secundaria (15 segundos).
+
+Si no se atiende:
+
+Se retira por path alternativo.
+
+Penaliza satisfacción.
+
+Si llega a 0 pero se atiende antes de agotarse la roja:
+
+Se queda.
+
+Cambia frase de despedida.
+
+4.9 Entidades y reemplazo de encuentros
+
+Si un NPC es entidad ese día:
+
+Su encuentro normal se reemplaza por uno del pool de encuentros de entidad.
+
+El sistema debe permitir:
+
+10 encuentros genéricos de entidad.
+
+Sustituir el encuentro correspondiente al número secuencial del NPC.
+
+No afecta su secuencia humana futura.
+
+PARTE 5 — SISTEMA DE CARTELERA Y RECOMENDACIÓN
+
+Esta sección define cómo funcionan las películas, los géneros y la recomendación.
+
+5.1 Generación diaria de películas
+
+Cada día se generan exactamente 5 películas.
+
+Reglas obligatorias:
+
+La cartelera nunca puede ser exactamente igual al día anterior.
+
+Puede repetirse una o varias películas.
+
+Si se repite una película:
+
+Conserva los géneros que el jugador le asignó en esta partida.
+
+Las películas pueden repetirse múltiples veces durante la run.
+
+Las combinaciones deben variar cada día.
+
+La generación debe depender únicamente del sistema interno del juego, no del jugador.
+
+5.2 Asignación de géneros
+
+Cada película:
+
+Tiene título.
+
+Tiene sinopsis.
+
+Tiene lista de géneros posibles.
+
+El jugador:
+
+Debe activar manualmente los géneros correctos.
+
+Los géneros empiezan vacíos la primera vez que aparece esa película en la partida.
+
+Si vuelve a aparecer más adelante:
+
+Mantiene los géneros ya asignados.
+
+Distorsión puede:
+
+Alterar géneros ya asignados.
+
+Cambiar géneros correctos por incorrectos.
+
+Añadir o eliminar alguno sin aviso explícito.
+
+El jugador puede confiar en su memoria o revisar manualmente.
+
+5.3 Interfaz de cartelera
+
+Durante CarteleraSetupState:
+
+Se muestra una película en grande a la izquierda (portada).
+
+A la derecha:
+
+Título arriba.
+
+Sinopsis debajo.
+
+Géneros abajo a la derecha (checkables).
+
+Flecha derecha para avanzar a siguiente película.
+
+En la última:
+
+Animación mostrando todas las portadas elegidas.
+
+Suben y salen de pantalla.
+
+Comienza el día.
+
+Una de las películas muestra indicador:
+
+“SALA ESPECIAL — X ASIENTOS”
+
+5.4 Recomendación al cliente
+
+En RecommendationState:
+
+El jugador ve:
+
+Lista de películas del día.
+
+Paciencia actual.
+
+Número de cliente actual.
+
+Total clientes del día.
+
+Asientos disponibles en Sala Especial.
+
+Barra de satisfacción diaria.
+
+El jugador selecciona una película.
+
+Si la Sala Especial está llena:
+
+Botón deshabilitado.
+
+Texto “SALA LLENA”.
+
+No permite selección.
+
+5.5 Lógica de acierto
+
+Si la película coincide con preferencias:
+
+No se informa explícitamente.
+
+El cliente reacciona positivamente.
+
+Aumenta satisfacción diaria.
+
+Si no coincide:
+
+Cliente puede mostrar duda.
+
+Afecta satisfacción diaria.
+
+No afecta directamente su percepción consciente de error.
+
+Impacta fama global al final del día.
+
+PARTE 6 — SISTEMA DE SALA ESPECIAL
+6.1 Naturaleza
+
+La Sala Especial:
+
+Parece normal.
+
+Solo el jugador sabe cuál es.
+
+Fue modificada por el Guía.
+
+Tiene capacidad limitada diaria.
+
+Es pequeña por diseño narrativo.
+
+El Guía afirma que:
+
+Si fuera más grande perdería eficacia.
+
+El efecto está concentrado.
+
+6.2 Capacidad
+
+La capacidad es diaria.
+
+Funciona como cupo de sesión única.
+
+Todas las sesiones comienzan “a la vez”.
+
+Si se llena, no puede usarse más ese día.
+
+6.3 Efectos sobre humanos
+
+Ningún efecto negativo.
+
+No aumenta distorsión.
+
+No genera penalización directa.
+
+El problema es estratégico:
+
+Usar la Sala Especial para humanos reduce capacidad disponible para entidades.
+
+6.4 Efectos sobre entidades
+
+Si entidad va a Sala Especial:
+
+Se contiene.
+
+Se debilita.
+
+Reduce o mantiene distorsión.
+
+Contribuye a estabilizar el mundo.
+
+Si entidad va a sala normal:
+
+Aumenta distorsión.
+
+Incrementa probabilidad de evento.
+
+Puede activar consecuencias graves.
+
+Si ninguna entidad se cuela en todo el día:
+
+Distorsión puede bajar si estaba elevada.
+
+PARTE 7 — SISTEMA ECONÓMICO COMPLETO
+
+Este sistema define cómo entra y sale el dinero y cómo puede producirse derrota económica.
+
+7.1 Ingresos
+
+Cada cliente genera ingresos compuestos por:
+
+Precio fijo de entrada (valor entero).
+
+Venta de comida y bebida (valores enteros).
+
+Propina (valor entero, normalmente 2$, editable por NPC).
+
+No existen decimales en ningún sistema económico.
+
+7.2 Venta de comida (valores balanceados)
+
+Precios orientativos balanceados para el sistema actual:
+
+Palomitas base → 5$
+
+Mantequilla → +2$
+
+Caramelo → +2$
+
+Hotdog base → 6$
+
+Ketchup → +2$
+
+Mostaza → +2$
+
+Chocolate → 4$
+
+Refrescos (cola, naranja, root beer) → 4$
+
+Errores en comida:
+
+No restan dinero directamente.
+
+Restan satisfacción diaria.
+
+Reducen propina.
+
+7.3 Costes
+
+El único coste diario real es la compra de stock.
+
+El stock se compra al final del día.
+
+No existe gasto fijo estructural.
+
+7.4 Sistema de compra de stock
+
+En EndOfDayState:
+
+El jugador ve consumo del día.
+
+Decide cuántas unidades comprar.
+
+Los valores por defecto se rellenan con lo comprado el día anterior.
+
+El día 1 comienza todo en 0.
+
+Si compras demasiado:
+
+Lo no usado se pierde.
+
+Si compras poco:
+
+Puedes quedarte sin producto.
+
+El día siguiente comienza con el stock comprado.
+
+7.5 Desperdicio
+
+Si el jugador:
+
+Añade un elemento a la bandeja.
+
+Lo retira.
+
+Lo vuelve a añadir.
+
+Lo retira otra vez.
+
+Ha consumido dos unidades.
+
+El desperdicio es permanente.
+
+Puede provocar quedarse sin stock y entregar pedidos incompletos.
+
+7.6 Derrota económica
+
+Se produce si:
+
+Dinero = 0
+Y
+
+No se puede comprar stock mínimo viable.
+
+En ese caso:
+
+El botón “Día Siguiente” muestra derrota.
+
+Se activa cinemática de cierre del cine.
+
+Final de partida.
+
+7.7 Sistema de advertencia económica
+
+En EndOfDayState:
+
+El juego calcula un coste promedio del día anterior.
+
+Si el dinero disponible es inferior a cierto umbral recomendado:
+
+Muestra advertencia.
+
+Sugiere cargar día anterior.
+
+No bloquea avance.
+
+Solo bloquea si es matemáticamente imposible operar.
+
+PARTE 8 — SISTEMA DE SATISFACCIÓN Y FAMA
+8.1 Satisfacción diaria
+
+Es un medidor tipo aguja.
+
+Va de:
+
+MALA — NORMAL — INCREÍBLE
+
+Durante el día:
+
+Subir satisfacción (servicio correcto, comida perfecta).
+
+Bajar satisfacción (errores, paciencia agotada, cliente abandona).
+
+Valores orientativos:
+
+Comida perfecta → +10%
+Error leve → −10%
+Error grave → −25%
+Cliente abandona → penalización fuerte
+
+La aguja se mueve dinámicamente.
+
+8.2 Conversión a fama global
+
+Al finalizar el día:
+
+Según posición final de aguja:
+
+Zona INCREÍBLE → fama +1
+Zona NORMAL → fama se mantiene
+Zona MALA → fama −1
+
+La fama:
+
+Es global.
+
+Persistente.
+
+No se reinicia.
+
+Rango mínimo 0.
+
+Rango recomendado máximo 10.
+
+8.3 Efectos de fama
+
+Si fama alta:
+
+Aumenta número de clientes.
+
+Se añaden nuevos NPCs.
+
+Si fama baja:
+
+Se eliminan clientes del siguiente día.
+
+Puede desaparecer un NPC recurrente temporalmente.
+
+Si fama llega a 0:
+
+Derrota.
+
+Cierre del cine.
+
+Final narrativo.
+
+PARTE 9 — SISTEMA DE DISTORSIÓN
+9.1 Naturaleza
+
+Distorsión representa la inestabilidad del mundo.
+
+Rango 0–10.
+
+Persistente durante la partida.
+
+9.2 Aumenta cuando:
+
+Una entidad entra en sala normal.
+
+Fallos acumulados de contención.
+
+Eventos específicos.
+
+9.3 Disminuye cuando:
+
+Todas las entidades del día son enviadas a Sala Especial.
+
+No se cuela ninguna.
+
+Se estabiliza durante varios días consecutivos.
+
+9.4 Efectos de distorsión
+
+Puede provocar:
+
+Alteración de tags en cartelera.
+
+Cambio de orden de películas.
+
+Alteración visual de carteles 2D.
+
+Cambio de iluminación.
+
+Texturas alteradas.
+
+Cambio de layout comida.
+
+Intercambio de ketchup/mostaza.
+
+Intercambio mantequilla/caramelo.
+
+Bebidas con chorro de color incorrecto.
+
+Estas alteraciones:
+
+Se aplican al inicio del día.
+
+No cambian entre cliente y cliente.
+
+Se mantienen hasta que la distorsión baja.
+
+9.5 Eventos
+
+Si distorsión es alta:
+
+Mayor probabilidad de evento.
+
+Eventos no repetibles por run.
+
+Muerte de NPC ocurre máximo una vez.
+
+Eventos estructurales se aplican al cargar el día.
+
+PARTE 10 — SISTEMA DE EVENTOS
+
+Los eventos son consecuencias estructurales derivadas principalmente del nivel de distorsión.
+
+Se calculan al finalizar el día anterior y se aplican al cargar el siguiente día.
+
+10.1 Tipos de eventos
+
+Existen dos grandes categorías:
+
+A) Eventos estructurales no repetibles (por run)
+
+Muerte de NPC.
+
+Evento narrativo único.
+
+Alteración importante del entorno.
+
+Evento especial de historia.
+
+Reglas:
+
+No pueden repetirse en la misma partida.
+
+Se almacenan como ya ocurridos.
+
+Si el pool se agota, deben existir suficientes eventos adicionales.
+
+B) Eventos persistentes dependientes de distorsión
+
+Cambio de layout comida.
+
+Intercambio de ketchup / mostaza.
+
+Intercambio mantequilla / caramelo.
+
+Bebidas con chorro incorrecto.
+
+Alteración visual de carteles.
+
+Texturas cambiadas.
+
+Iluminación alterada.
+
+Reglas:
+
+Se aplican al inicio del día.
+
+No cambian entre clientes.
+
+Pueden mantenerse varios días.
+
+Desaparecen si distorsión baja suficientemente.
+
+10.2 Evento de muerte
+
+Solo puede ocurrir una vez por partida.
+
+Proceso:
+
+Se elige un NPC recurrente con mayor número de encuentros vistos.
+
+Ese NPC muere y queda eliminado permanentemente.
+
+Al día siguiente:
+
+Primer cliente menciona su muerte.
+
+Frase aleatoria de base de datos.
+
+Ese cliente no conversa.
+
+No afecta satisfacción.
+
+Siempre es humano.
+
+10.3 Aplicación de eventos
+
+Los eventos se activan:
+
+Durante la carga del día.
+
+Antes de entrar en cartelera.
+
+Nunca en mitad del día.
+
+Nunca entre cliente y cliente.
+
+PARTE 11 — SISTEMA DE GUARDADO Y PERSISTENCIA
+11.1 Guardado automático diario
+
+Al finalizar cada día:
+
+Se guarda automáticamente el estado completo de ese día.
+
+Incluye:
+
+Fama
+
+Distorsión
+
+Dinero
+
+NPCs vivos
+
+NPCs vistos
+
+Secuencia de encuentros
+
+Stock comprado
+
+Eventos ocurridos
+
+Estos guardados aparecen en un selector superior.
+
+11.2 Guardado manual
+
+Durante el día:
+
+El jugador puede guardar manualmente.
+
+Se conserva:
+
+Cliente actual
+
+Paciencia
+
+Estado de bandeja
+
+Layout activo
+
+Eventos activos
+
+Asientos ocupados
+
+Distorsión
+
+Satisfacción actual
+
+Los guardados manuales aparecen en un selector inferior.
+
+11.3 Regeneración de día
+
+El día siguiente queda fijado al finalizar el anterior.
+
+Si se carga un guardado del día anterior:
+
+Se recalcula completamente el siguiente día.
+
+Se regenera:
+
+Clientes
+
+Entidades
+
+Eventos
+
+Cartelera
+
+Layout alterado
+
+No se permite explotar guardados para evitar consecuencias sin repetir el día completo.
+
+PARTE 12 — SISTEMA COMPLETO DE HUD
+
+Cada estado tiene su HUD específico.
+
+12.1 CarteleraSetupState
+
+Muestra:
+
+Película actual.
+
+Título.
+
+Sinopsis.
+
+Géneros activables.
+
+Indicador Sala Especial.
+
+Botón Abrir Cine.
+
+No muestra fama, distorsión ni satisfacción.
+
+12.2 QueueIdleState
+
+Muestra:
+
+Prompt atender.
+
+Cliente actual / total.
+
+Paciencia.
+
+Asientos Sala Especial.
+
+Barra satisfacción diaria.
+
+12.3 DialogueState
+
+Muestra:
+
+Sistema de diálogo.
+
+Opciones disponibles.
+
+Paciencia.
+
+Cliente actual / total.
+
+Barra satisfacción.
+
+12.4 RecommendationState
+
+Muestra:
+
+Lista películas.
+
+Paciencia.
+
+Cliente actual / total.
+
+Asientos Sala Especial.
+
+Barra satisfacción.
+
+12.5 FoodServiceState
+
+Muestra:
+
+Pedido.
+
+Stock.
+
+Paciencia.
+
+Cliente actual / total.
+
+Barra satisfacción.
+
+12.6 Barra de paciencia
+
+Tiene dos estados:
+
+Normal (disminuye gradualmente).
+
+Roja secundaria (15 segundos).
+
+Si roja llega a 0:
+
+Cliente abandona por path alternativo.
+
+12.7 Debug
+
+Se muestra centrado arriba.
+
+Solo en fase desarrollo.
+
+PARTE 13 — CONDICIONES DE DERROTA
+
+Derrota puede ocurrir si:
+
+Fama llega a 0.
+
+Distorsión llega a 10.
+
+Dinero insuficiente para operar (0$ sin stock viable).
+
+En todos los casos:
+
+Se muestra cinemática.
+
+Fin de partida.
+
+PARTE 14 — CASOS LÍMITE Y VALIDACIONES
+14.1 Entidad nunca detectada
+
+Si el jugador falla repetidamente:
+
+Distorsión sube progresivamente.
+
+Eventos aumentan.
+
+Se vuelve más difícil estabilizar.
+
+14.2 Sala Especial mal usada
+
+Si se usa siempre para humanos:
+
+Puede no haber hueco cuando llegue entidad.
+
+Aumenta riesgo de distorsión.
+
+14.3 Stock 0
+
+Puede entregar pedido incompleto.
+
+Penaliza satisfacción.
+
+Puede llevar a derrota económica.
+
+14.4 Cliente AFK
+
+Si jugador no interactúa:
+
+Paciencia llega a 0.
+
+Barra roja.
+
+Cliente abandona.
+
+14.5 Layout alterado
+
+Si bebidas intercambiadas:
+
+El jugador ve chorro incorrecto.
+
+Se considera error.
+
+Se desperdicia bebida.
+
+14.6 Escalabilidad
+
+El sistema está diseñado para:
+
+Expandir número de días.
+
+Expandir número de NPCs.
+
+Añadir más eventos.
+
+Añadir más alteraciones.
+
+LISTA DE VERIFICACIÓN PARA IA
+
+(Auditoría completa del proyecto)
+
+Este checklist debe permitir a una IA revisar el repositorio y detectar si el juego está completo según diseño.
+
+No indica cómo programarlo.
+Indica qué debe existir y comportarse correctamente.
+
+1. ESTRUCTURA GENERAL DEL PROYECTO
+
+La IA debe verificar que existen:
+
+Un sistema de estados principales.
+
+Transiciones claras entre estados.
+
+Persistencia entre días.
+
+Persistencia entre guardados.
+
+Estados obligatorios:
+
+MainMenuState
+
+TutorialState
+
+CarteleraSetupState
+
+QueueIdleState
+
+DialogueState
+
+RecommendationState
+
+FoodServiceState
+
+EndOfDayState
+
+PauseMenuState
+
+2. SISTEMA DE DÍAS
+
+La IA debe verificar:
+
+Día 1, 2 y 3 sin entidades.
+
+Día 3 incluye visita del Guía.
+
+Día 4 en adelante permite entidades.
+
+El día siguiente se calcula al terminar el actual.
+
+Si se carga un día anterior, el siguiente día se recalcula.
+
+Debe existir:
+
+Generación diaria de clientes.
+
+Generación diaria de cartelera.
+
+Generación diaria de cupos Sala Especial.
+
+3. SISTEMA DE CLIENTES
+
+Debe existir:
+
+Base de datos editable de NPCs.
+
+Cada NPC tiene:
+
+id
+
+nombre
+
+paciencia
+
+propina
+
+10 encuentros
+
+Los encuentros avanzan por número de apariciones.
+
+No dependen del número de día.
+
+No pueden repetirse preguntas en el mismo encuentro.
+
+La sexta opción abre recomendación.
+
+La IA debe verificar:
+
+NPC recurrente reaparece diariamente.
+
+Si fama baja, puede desaparecer temporalmente.
+
+Si fama sube, puede añadirse uno nuevo.
+
+Si un NPC muere, no vuelve a aparecer.
+
+4. SISTEMA DE ENTIDADES
+
+Debe existir:
+
+Pool de encuentros de entidad.
+
+Sistema de suplantación de NPC humano.
+
+Reemplazo del encuentro correspondiente por uno de entidad.
+
+No afecta la secuencia humana futura.
+
+La IA debe verificar:
+
+Entidad ocupa slot del día.
+
+No aparece además del humano original.
+
+Si entidad va a sala normal → distorsión aumenta.
+
+Si entidad va a sala especial → distorsión no aumenta.
+
+5. SISTEMA DE SALA ESPECIAL
+
+Debe existir:
+
+Capacidad diaria limitada.
+
+Botón deshabilitado cuando está llena.
+
+Texto visible “SALA LLENA”.
+
+Indicador de asientos visibles en HUD.
+
+La IA debe verificar:
+
+Humanos pueden entrar sin efecto negativo.
+
+Entidades reducen o estabilizan distorsión si entran.
+
+Capacidad no se reinicia entre clientes, solo entre días.
+
+6. SISTEMA DE CARTELERA
+
+Debe existir:
+
+5 películas por día.
+
+Nunca repetir exactamente la misma combinación del día anterior.
+
+Posibilidad de repetir películas individuales.
+
+Conservación de géneros ya asignados.
+
+Posibilidad de sabotaje de tags por distorsión.
+
+La IA debe verificar:
+
+Géneros asignables manualmente.
+
+Persistencia de tags durante la partida.
+
+Alteración por distorsión posible.
+
+7. SISTEMA DE RECOMENDACIÓN
+
+Debe existir:
+
+Evaluación de coincidencia de película con cliente.
+
+Impacto en satisfacción diaria.
+
+Impacto indirecto en fama global.
+
+La IA debe verificar:
+
+No hay indicador explícito de “acierto/fallo”.
+
+Reacción del cliente depende de coincidencia.
+
+8. SISTEMA DE COMIDA Y BEBIDA
+
+Debe existir:
+
+Bandeja física.
+
+Elementos añadibles y removibles.
+
+Remover elemento lo consume.
+
+Stock decrementa correctamente.
+
+Pedido incompleto es entregable.
+
+No se pueden sustituir productos agotados.
+
+La IA debe verificar:
+
+Intercambio visual posible de ketchup/mostaza.
+
+Intercambio mantequilla/caramelo.
+
+Bebida con chorro de color incorrecto.
+
+Alteraciones solo se aplican al inicio del día.
+
+9. SISTEMA ECONÓMICO
+
+Debe existir:
+
+Precio fijo de entrada.
+
+Precio entero de comida.
+
+Propina editable por NPC.
+
+Compra de stock al final del día.
+
+Pérdida de stock no usado.
+
+Derrota si dinero = 0 y sin stock viable.
+
+La IA debe verificar:
+
+Sistema de advertencia económica.
+
+No bloquea salvo imposibilidad matemática.
+
+Guardado automático diario.
+
+10. SISTEMA DE SATISFACCIÓN
+
+Debe existir:
+
+Barra tipo aguja (Mala–Normal–Increíble).
+
+Movimiento dinámico durante el día.
+
+Conversión final en impacto de fama.
+
+La IA debe verificar:
+
+Errores graves bajan más que errores leves.
+
+Cliente abandonando penaliza fuertemente.
+
+Entrega perfecta sube ligeramente.
+
+11. SISTEMA DE FAMA
+
+Debe existir:
+
+Valor global persistente.
+
+Influye en número de clientes.
+
+Si llega a 0 → derrota.
+
+Si sube → nuevos NPCs.
+
+La IA debe verificar:
+
+No se reinicia entre días.
+
+No depende solo del último cliente.
+
+12. SISTEMA DE DISTORSIÓN
+
+Debe existir:
+
+Valor global 0–10.
+
+Aumenta por entidad mal enviada.
+
+Disminuye si todas se contienen.
+
+Activa probabilidad de eventos.
+
+La IA debe verificar:
+
+Si llega a 10 → derrota.
+
+Alteraciones persistentes mientras esté alta.
+
+13. SISTEMA DE EVENTOS
+
+Debe existir:
+
+Pool de eventos no repetibles.
+
+Evento de muerte máximo una vez.
+
+Eventos estructurales aplicados al cargar día.
+
+Eventos persistentes eliminables si distorsión baja.
+
+La IA debe verificar:
+
+Evento no ocurre entre clientes.
+
+Se decide al finalizar el día anterior.
+
+14. SISTEMA DE GUARDADO
+
+Debe existir:
+
+Guardado automático por día.
+
+Guardado manual en mitad del día.
+
+Recalculo del siguiente día si se carga uno anterior.
+
+Persistencia completa de:
+
+NPCs vivos
+
+Encuentros
+
+Distorsión
+
+Fama
+
+Stock
+
+Eventos
+
+15. HUD
+
+Debe existir HUD diferenciado por estado:
+
+Cartelera:
+
+Película
+
+Géneros
+
+Sala Especial
+
+Diálogo:
+
+Paciencia
+
+Opciones
+
+Cliente actual/total
+
+Recomendación:
+
+Paciencia
+
+Sala Especial asientos
+
+Cliente actual/total
+
+Barra satisfacción
+
+Comida:
+
+Pedido
+
+Stock
+
+Paciencia
+
+Cliente actual/total
+
+Barra satisfacción
+
+Idle:
+
+Prompt
+
+Paciencia
+
+Cliente actual/total
+
+Asientos disponibles
+
+Debug:
+
+Visible arriba centrado.
+
+16. CONDICIONES DE DERROTA
+
+La IA debe verificar que existen:
+
+Derrota por fama 0.
+
+Derrota por distorsión 10.
+
+Derrota económica.
+
+Cinemática asociada.
+
+17. COHERENCIA GLOBAL
+
+La IA debe verificar que:
+
+Ningún sistema contradice otro.
+
+No hay día posible sin clientes.
+
+No hay estado sin salida válida.
+
+No puede generarse día imposible sin advertencia previa.
+
+No se puede duplicar NPC muerto.
+
+No se puede repetir evento no repetible.
+
+Ahora entramos en modo paranoia preventiva real.
+
+Aquí no voy a repetir diseño.
+Voy a buscar puntos donde el sistema puede romperse, generar exploits o inconsistencias lógicas.
+
+INCONSISTENCIAS POTENCIALES A VIGILAR
+
+(Análisis crítico del sistema completo)
+
+1. CRECIMIENTO DE CLIENTES VS BASE DE DATOS LIMITADA
+
+Problema potencial:
+
+Si la fama suma +1 cliente por día y la demo dura 10 días, puedes terminar necesitando más slots de los NPC que tienes definidos.
+
+Escenario:
+
+Día 1: 4 clientes.
+
+Día 2: 5.
+
+Día 3: 6.
+
+Día 4: 7.
+
+Día 5: 8.
+
+Día 6: 9.
+
+Día 7: 10.
+
+Día 8: 11.
+
+Día 9: 12.
+
+Día 10: 13.
+
+Si tu base tiene 15 NPCs totales y algunos mueren, puedes quedarte corto.
+
+Pregunta crítica:
+
+¿Quieres límite máximo de clientes por día?
+¿O quieres que el crecimiento esté capado?
+
+2. SUPlANTACIÓN + MUERTE
+
+Escenario raro:
+
+Un NPC es suplantado ese día.
+Ese mismo día ocurre evento de muerte.
+El sistema elige como candidato a ese NPC.
+
+¿Muere el humano original?
+¿Muere la entidad?
+¿Muere alguien que técnicamente no apareció?
+
+Esto debe estar definido explícitamente.
+
+3. SALA ESPECIAL Y META-GAME
+
+Jugador óptimo puede hacer:
+
+Guardar 2 huecos siempre.
+
+Mandar humanos a salas normales.
+
+Solo usar sala especial si detecta entidad clara.
+
+Eso es correcto.
+
+Pero escenario:
+
+¿Puede existir día con 2 entidades consecutivas cuando solo queda 1 asiento?
+
+Si sí → el segundo siempre sube distorsión inevitablemente.
+
+Eso no es malo, pero debe ser intencional.
+
+4. STOCK IMPOSIBLE SIN AVISO
+
+Escenario:
+
+Jugador compra poco stock.
+Tiene dinero.
+Pero compra tan poco que el día siguiente está matemáticamente condenado a bajar satisfacción.
+
+¿El sistema de advertencia económica detecta solo dinero o también stock?
+
+Actualmente solo dinero.
+
+Podría generarse:
+
+Día jugable pero inevitablemente malo.
+
+5. DISTORSIÓN QUE SE ACUMULA DEMASIADO RÁPIDO
+
+Si en un día hay 2 entidades y ambas van mal:
+
+Distorsión sube rápido.
+
+Si el jugador comete 2 errores fuertes seguidos en días 4 y 5:
+
+¿Puede llegar a 10 antes del día 10?
+
+Si sí, ¿eso es deseado o rompe la demo?
+
+6. ALTERACIONES PERSISTENTES SIN LÍMITE
+
+Distorsión alta puede:
+
+Cambiar layout comida.
+
+Cambiar bebidas.
+
+Cambiar texturas.
+
+Alterar cartelera.
+
+Si el jugador estabiliza un día:
+
+¿Se limpian todas las alteraciones?
+¿O solo algunas?
+¿O progresivamente?
+
+Esto no está completamente definido.
+
+7. PACIENCIA Y AFK ABUSE
+
+Jugador podría:
+
+No hablar.
+
+No preguntar.
+
+Ir directo a recomendar.
+
+Minimizar riesgo.
+
+¿Eso trivializa detección de entidades?
+
+Si la entidad requiere diálogo para ser detectada,
+pero el jugador puede saltárselo,
+podría jugar ultra seguro.
+
+8. MUERTE DE NPC IMPORTANTE NARRATIVAMENTE
+
+Si muere un NPC con historia fuerte:
+
+¿Se rompen líneas futuras?
+¿Sus encuentros restantes quedan inutilizados?
+
+Debe existir sistema de “bloqueo narrativo” si ese NPC muere.
+
+9. EVENTOS NO REPETIBLES INSUFICIENTES
+
+Si tienes 8 eventos únicos y la demo dura 10 días:
+
+Puedes agotarlos.
+
+Ya lo mencionaste.
+
+Debe haber más eventos que días potenciales.
+
+10. FAMA BAJA + RECURRENCIA
+
+Si fama baja y elimina NPCs del día:
+
+¿Se puede romper progresión narrativa?
+¿Se puede dejar al jugador sin suficientes clientes?
+
+Debe existir mínimo absoluto de clientes diarios.
+
+11. REGENERACIÓN DEL DÍA Y EXPLOIT
+
+Jugador puede:
+
+Terminar día.
+
+Ver que siguiente día es difícil.
+
+Cargar día anterior.
+
+Repetir hasta que el siguiente día salga fácil.
+
+Es aceptable porque recalcula.
+
+Pero implica:
+
+El sistema debe recalcular completamente.
+
+Si algo no se recalcula, se puede explotar.
+
+12. ENTIDAD OBVIA VS DEMASIADO OBVIA
+
+Dijiste:
+
+“No quiero falsos positivos ni negativos.”
+
+Eso significa:
+
+Si el jugador presta atención siempre debe poder detectarla.
+
+Pero cuidado:
+
+Si es demasiado obvio → pierde tensión.
+
+Si es demasiado sutil → injusto.
+
+Esto no es técnico, es de diseño fino.
+
+13. SALA ESPECIAL SIEMPRE DISPONIBLE EN DÍAS 1–3
+
+Días 1–3 no hay entidades.
+
+¿La sala especial existe ya?
+
+Si sí, jugador puede acostumbrarse a usarla para humanos.
+
+Si no, aparece recién día 4.
+
+Eso afecta curva de aprendizaje.
+
+14. DISTORSIÓN LLEGA A 10 EN MITAD DE DÍA
+
+¿Puede subir a 10 durante el día?
+¿O solo se evalúa al finalizar?
+
+Debe estar definido.
+
+15. SATISFACCIÓN DIARIA DEMASIADO PUNITIVA
+
+Si error grave baja −25%:
+
+Con 4 errores ya estás muerto ese día.
+
+¿Eso es intencional?
+
+Hay que testear matemáticamente.
+
+16. ESCALADO DE ENTIDADES
+
+Tú planteaste:
+
+1 entidad normal.
+
+2 si fama alta.
+
+Tal vez 3.
+
+Si un día hay 3 entidades y solo 5 asientos:
+
+Eso es brutal.
+
+¿Es fase endgame o puede pasar en día 6?
+
+17. LAYOUT ALTERADO Y MEMORIA
+
+Si bebidas están intercambiadas:
+
+Jugador puede memorizarlo tras primer error.
+
+Eso está bien.
+
+Pero si cada día cambia distinto layout:
+
+Puede ser frustrante.
+
+18. GUÍA COMO ENTIDAD IMPOSIBLE
+
+El Guía es jefe.
+
+Nunca debe poder morir.
+Nunca debe poder ser suplantado.
+
+Eso debe estar bloqueado.
+
+19. CASO EXTREMO: SIN HUMANOS
+
+Si fama baja mucho:
+
+¿Puede generarse día con solo entidades?
+
+Eso rompería lógica narrativa.
+
+Debe existir mínimo humano diario.
+
+20. SISTEMA COMPLETO ES MUY SENSIBLE A BALANCE
+
+Tu juego es extremadamente dependiente de:
+
+Curva de satisfacción.
+
+Curva de distorsión.
+
+Precio comida.
+
+Número entidades.
+
+Número clientes.
+
+Pequeños ajustes cambian todo el juego.
+
+CONCLUSIÓN
+
+Tu sistema es sólido.
+
+No tiene agujeros graves.
+
+Pero los puntos más delicados son:
+
+Escalado de clientes.
+
+Escalado de entidades.
+
+Persistencia de alteraciones.
+
+Balance económico.
+
+Interacción entre fama y narrativa.

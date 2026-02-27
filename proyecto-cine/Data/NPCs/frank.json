@@ -1,0 +1,379 @@
+{
+  "id": "frank",
+  "name": "Frank Russo",
+  "illustration": "res://Assets/Customers/hombre_pescadero.png",
+  "patience": 7,
+  "tip": 3,
+  "_info": {
+    "description": "Pescadero del mercado municipal. Exterior brusco pero corazón de oro. Hijo de inmigrantes italianos. Preocupado porque el nuevo supermercado le está quitando clientes.",
+    "occupation": "Pescadero",
+    "age": 50,
+    "traits": ["gruñón", "honesto", "nostálgico", "generoso"]
+  },
+  "preferences": {
+    "must": ["adventure", "action"],
+    "must_not": ["romance", "sci-fi"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "rootbeer",
+    "food": "hotdog",
+    "popcorn": false,
+    "butter": false,
+    "caramel": false,
+    "ketchup": true,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "Buenas. Soy Frank. Frank Russo, del puesto de pescado del mercado. Huelo a mar y a trabajo, lo sé. No he tenido tiempo de cambiarme. Un vecino me ha dicho que este cine merece la pena. Vamos a ver si es verdad.",
+      "questions": [
+        {
+          "id": "f1_q1",
+          "text": "¿Llevas mucho con la pescadería?",
+          "response": "Treinta años. La abrió mi padre cuando llegó de Sicilia. Yo empecé a los veinte, limpiando cajas. Ahora la llevo yo solo. Bueno, mi hijo me ayuda los sábados cuando le da la gana. Que es casi nunca."
+        },
+        {
+          "id": "f1_q2",
+          "text": "¿Tu familia es italiana?",
+          "response": "Mis padres vinieron de Sicilia en el cincuenta y ocho. No tenían nada. Mi padre sabía de pescado y mi madre sabía cocinar. Con eso montaron el puesto. América, ya sabes. El sueño ese."
+        },
+        {
+          "id": "f1_q3",
+          "text": "¿Vienes mucho al cine?",
+          "response": "No. Casi nunca. Trabajo de seis de la mañana a las cuatro de la tarde. Cuando llego a casa solo quiero sentarme y no pensar. Pero hoy he dicho: Frank, sal de la rutina. Y aquí estoy."
+        },
+        {
+          "id": "f1_q4",
+          "text": "¿Qué tal el negocio?",
+          "response": "Mal. Bueno, no mal del todo, pero peor que antes. Desde que abrieron el supermercado grande a las afueras, la gente compra el pescado allí. Congelado, envasado, sin alma. Pero más barato. ¿Qué le vas a hacer?"
+        },
+        {
+          "id": "f1_q5",
+          "text": "¿Tienes familia aquí?",
+          "response": "Mi mujer Gloria y dos hijos. Tony, el mayor, tiene veinticuatro y trabaja en la ciudad. Dice que vender pescado no es para él. La pequeña, Maria, estudia enfermería. De mis padres ya no queda nadie. Mi madre murió hace tres años."
+        },
+        {
+          "id": "f1_q6",
+          "text": "¿Qué tipo de películas te gustan?",
+          "response": "De las de antes. Aventuras, acción. Películas donde un hombre hace lo que tiene que hacer y punto. Nada de historias de amor ni de marcianos. Cosas con los pies en el suelo."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. He vuelto. La película de la otra vez no estuvo mal. Y la root beer estaba fría, que es lo mínimo. Me gusta este sitio. Es tranquilo.",
+      "questions": [
+        {
+          "id": "f2_q1",
+          "text": "¿Qué tal la semana en el mercado?",
+          "response": "Regular. El martes solo vinieron seis clientes en toda la mañana. Seis. Antes venían treinta. Me he quedado mirando el puesto vacío pensando en mi padre. Él nunca habría aguantado ver esto."
+        },
+        {
+          "id": "f2_q2",
+          "text": "¿Tu padre era estricto?",
+          "response": "Mucho. Nos levantaba a las cinco. Decía que el pescado no espera a los vagos. Tenía razón. Era duro pero justo. Me enseñó todo lo que sé. A filetear, a tratar con la gente, a no bajar la cabeza."
+        },
+        {
+          "id": "f2_q3",
+          "text": "¿Echas de menos a tus padres?",
+          "response": "Todos los días. Mi madre hacía una sopa de pescado que... bueno, no he vuelto a probar nada igual. Tengo la receta pero no me sale como a ella. Hay cosas que no se pueden heredar, solo recordar."
+        },
+        {
+          "id": "f2_q4",
+          "text": "¿Gloria viene al cine contigo?",
+          "response": "Le he dicho que viniera pero dice que prefiere sus novelas. Lleva treinta años leyendo novelas de amor. Yo no entiendo esas cosas, pero la quiero igual. Cada uno tiene sus vicios."
+        },
+        {
+          "id": "f2_q5",
+          "text": "¿Te gusta la root beer desde siempre?",
+          "response": "Desde crío. Mi padre la odiaba, decía que era un invento americano sin clase. Pero a mí me encanta. Fría, con espuma. Es lo más americano que tengo, aparte del pasaporte."
+        },
+        {
+          "id": "f2_q6",
+          "text": "¿Qué te apetece ver hoy?",
+          "response": "Algo con aventura. Una historia de un tipo normal que se enfrenta a algo grande. No necesito superhéroes. Solo alguien con agallas."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola, chaval. Hoy he cerrado una hora antes. No había nadie. Una hora mirando el hielo derretirse y he pensado: mejor me voy al cine que quedarme aquí amargándome.",
+      "questions": [
+        {
+          "id": "f3_q1",
+          "text": "¿Tan mal está la cosa?",
+          "response": "No quiero ser dramático, pero... sí. El supermercado ha puesto pescado fresco. Fresco entre comillas, claro, pero a la gente le da igual. Es más barato y no tienen que madrugar para ir al mercado. Lo entiendo. Pero duele."
+        },
+        {
+          "id": "f3_q2",
+          "text": "¿Has pensado en cambiar algo del negocio?",
+          "response": "¿Cómo qué? ¿Poner luces de neón? ¿Hacer descuentos? Mi padre decía que el producto se vende solo si es bueno. Y mi pescado es bueno. Pero la gente ya no valora eso. Valora lo cómodo y lo barato."
+        },
+        {
+          "id": "f3_q3",
+          "text": "¿Tony no quiere hacerse cargo?",
+          "response": "Tony trabaja en una oficina en la ciudad. Lleva camisa y corbata. Gana más en un mes que yo en tres. No le culpo por no querer venir a pelar gambas. Pero me habría gustado que el puesto siguiera en la familia."
+        },
+        {
+          "id": "f3_q4",
+          "text": "¿Y Maria?",
+          "response": "Maria es lista, demasiado lista para estar detrás de un mostrador. Va a ser enfermera. Me siento orgulloso, de verdad. Pero a veces pienso que cuando yo me retire el puesto se cerrará. Y con él, todo lo que construyó mi padre."
+        },
+        {
+          "id": "f3_q5",
+          "text": "¿Eso te preocupa mucho?",
+          "response": "Más de lo que dejo ver. Gloria dice que soy un cabezota sentimental. Tiene razón. Ese puesto es mi padre. Es su olor, sus manos, su acento. Si lo cierro, ¿qué queda de él? ¿Fotos?"
+        },
+        {
+          "id": "f3_q6",
+          "text": "¿Qué te pongo para animarte?",
+          "response": "Algo de acción, donde las cosas se resuelvan a puñetazos. Hoy no estoy para sutilezas. Necesito que alguien le pegue a algo."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas. He traído un bocadillo de atún. Espero que no te importe. Es que tu hotdog me gusta, pero hoy tenía atún sobrante y no iba a tirarlo. Un Russo no tira comida.",
+      "questions": [
+        {
+          "id": "f4_q1",
+          "text": "No me importa. ¿Cómo estás?",
+          "response": "Cansado. El cuerpo me pide jubilarme pero la cabeza no me deja. ¿Quién va a abrir a las seis si no voy yo? El pescado no se vende solo. Bueno, según mi padre sí, pero él era un optimista."
+        },
+        {
+          "id": "f4_q2",
+          "text": "¿Gloria te dice que pares?",
+          "response": "Todos los días. Dice que ya hemos ahorrado suficiente. Que nos vayamos a Florida como los demás jubilados. Florida. Con el calor y los mosquitos. Prefiero mi mercado con corrientes de aire."
+        },
+        {
+          "id": "f4_q3",
+          "text": "¿Echas de menos Sicilia?",
+          "response": "Nunca he estado. Mis padres se fueron antes de que yo naciera. Tengo fotos, recetas, historias. Pero Sicilia es un sitio que solo existe en la cocina de mi madre. A veces creo que la inventaron para tener algo bonito que recordar."
+        },
+        {
+          "id": "f4_q4",
+          "text": "¿Cocinas las recetas de tu madre?",
+          "response": "Lo intento. La sopa de pescado, el risotto, los arancini. Nunca me salen igual. Gloria dice que están buenos, pero miente por cariño. Le falta algo. Creo que le falta mi madre removiendo y cantando canciones en siciliano."
+        },
+        {
+          "id": "f4_q5",
+          "text": "¿Has intentado enseñarle a Tony o a Maria?",
+          "response": "Tony no sabe ni hervir agua. Maria cocina bien, pero vive lejos. Le di el cuaderno de recetas de mi madre por si acaso. Por si algún día quiere hacer la sopa. Al menos que alguien la recuerde."
+        },
+        {
+          "id": "f4_q6",
+          "text": "Venga, ¿qué vemos hoy?",
+          "response": "Algo con aventura. Viajes, lugares lejanos. Hoy me apetece ver mundo sin moverme de la butaca."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye, tengo una buena noticia. Un restaurante nuevo del centro me ha hecho un pedido fijo. Semanal. Quieren pescado fresco de verdad. No mucho, pero algo es algo. ¿Ves? Aún queda gente con gusto.",
+      "questions": [
+        {
+          "id": "f5_q1",
+          "text": "¡Eso es estupendo, Frank!",
+          "response": "No te emociones, que es un restaurante pequeño. Pero el chef sabe lo que quiere. Ha venido al puesto, ha olido el salmón, ha tocado las gambas y me ha dicho: usted es de los de verdad. Hacía años que no me decían eso."
+        },
+        {
+          "id": "f5_q2",
+          "text": "¿Eso cambia las cosas para el negocio?",
+          "response": "Un poco. No me va a hacer rico, pero me da una razón para seguir abriendo. Es como cuando pescar era difícil y de repente picaba uno grande. Te acordabas de por qué estabas ahí."
+        },
+        {
+          "id": "f5_q3",
+          "text": "¿Le has contado a Gloria?",
+          "response": "Sí. Ha sonreído y me ha dicho: ya era hora. Treinta años casados y esa mujer sigue sorprendiéndome. Pensé que me diría que era poco. Pero no. Ha dicho que se alegraba por mí. Así, sin más."
+        },
+        {
+          "id": "f5_q4",
+          "text": "¿Y Tony?",
+          "response": "Le he llamado y me ha dicho: bien, papá. Dos palabras. Eso es Tony. Pero me ha mandado un mensaje luego diciendo que estaba orgulloso. Por escrito, que en persona no le sale. Son cosas de esta generación."
+        },
+        {
+          "id": "f5_q5",
+          "text": "¿Cómo está Maria?",
+          "response": "Bien, acabando las prácticas en el hospital. Me ha dicho que el otro día le dio de comer a un paciente y se acordó de mí. Dice que tiene la misma cara que yo cuando despacho: seria pero contenta. Me ha hecho gracia."
+        },
+        {
+          "id": "f5_q6",
+          "text": "¿Qué vemos para celebrar?",
+          "response": "Algo grande. Aventura a lo grande. Hoy me siento como mi padre cuando abrió el puesto. Con ganas."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola, chaval. Hoy he encontrado una foto de mi padre en el puesto. De mil novecientos sesenta y pocos. Sonriendo con un atún enorme. Se la he enmarcado y la he puesto junto a la caja. Necesitaba venir a sentarme un rato.",
+      "questions": [
+        {
+          "id": "f6_q1",
+          "text": "¿Estás bien, Frank?",
+          "response": "Sí. Es solo que... los recuerdos te pillan cuando menos te lo esperas. Estaba limpiando el almacén y ahí estaba la foto, dentro de una caja de mi madre. Se me ha puesto un nudo aquí que no se me quita."
+        },
+        {
+          "id": "f6_q2",
+          "text": "¿Qué más había en la caja?",
+          "response": "Cartas. De mi madre a su hermana en Sicilia. Escritas a mano, en italiano. No entiendo todo pero se nota que echaba de menos su tierra. Habla del frío, de que el mercado huele diferente, de que mi padre trabaja demasiado."
+        },
+        {
+          "id": "f6_q3",
+          "text": "¿Tu madre fue feliz aquí?",
+          "response": "Creo que sí. A su manera. Nunca se quejó, pero a veces la pillaba mirando por la ventana con una expresión que yo no entendía de niño. Ahora sí. Era nostalgia. Se puede ser feliz y echar de menos algo al mismo tiempo."
+        },
+        {
+          "id": "f6_q4",
+          "text": "¿Tú sientes eso a veces?",
+          "response": "Echo de menos cosas que no he vivido. El pueblo de mis padres, la cocina de mi abuela, las calles de Palermo. Es raro echar de menos un sitio donde nunca has estado. Pero es lo que hay."
+        },
+        {
+          "id": "f6_q5",
+          "text": "¿Has pensado en viajar a Sicilia?",
+          "response": "Gloria me lo dice siempre. Pero me da miedo. ¿Y si llego y no es como lo imagino? ¿Y si las calles son normales y la cocina de mi abuela ya no existe? A veces el recuerdo es mejor que la realidad."
+        },
+        {
+          "id": "f6_q6",
+          "text": "¿Qué te apetece ver hoy?",
+          "response": "Algo de aventura con sentimiento. De esas que te cuentan la historia de alguien que busca sus raíces. Hoy estoy nostálgico, lo sé. Pero no me disculpo."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. ¿Sabes qué? El chef del restaurante me ha invitado a cenar. Ha cocinado con mi pescado y quería que lo probara. Estaba increíble. Ha usado una receta italiana y me ha preguntado si era parecida a la de mi madre. Le he dicho que casi.",
+      "questions": [
+        {
+          "id": "f7_q1",
+          "text": "Eso suena muy bien.",
+          "response": "Sí. Se llama Daniel. Es joven, tiene treinta y pocos. Me recuerda a mí cuando empecé. Con ganas, con respeto por el producto. Le he contado cosas de mi padre y ha escuchado de verdad. Eso se nota cuando alguien escucha."
+        },
+        {
+          "id": "f7_q2",
+          "text": "¿Os habéis hecho amigos?",
+          "response": "No sé si amigos. Pero hay un respeto. Él valora lo que hago y yo valoro lo que hace con mi pescado. Es una buena relación. Como las de antes. Basada en el trabajo, no en la palabrería."
+        },
+        {
+          "id": "f7_q3",
+          "text": "¿Ha mejorado el negocio?",
+          "response": "Un poco más. Algunos clientes del restaurante han empezado a venir al puesto directamente. Dice Daniel que les habla de mí. De que el pescado viene del viejo Frank del mercado. Viejo. Qué morro. Pero le perdono."
+        },
+        {
+          "id": "f7_q4",
+          "text": "¿Gloria ha conocido a Daniel?",
+          "response": "Sí, fueron a cenar juntos el sábado. Gloria ha dicho que la pasta estaba mejor que la mía. Me he ofendido un poco, pero tenía razón. El chico tiene mano. Mi madre habría aprobado."
+        },
+        {
+          "id": "f7_q5",
+          "text": "¿Sigues pensando en jubilarte?",
+          "response": "Menos. Ahora hay una razón para seguir. Cuando Daniel viene al puesto y huele el pescado con la misma cara que ponía mi padre... no sé. Siento que la cadena no se rompe. Que alguien sigue valorando lo que hacemos."
+        },
+        {
+          "id": "f7_q6",
+          "text": "¿Qué te pongo hoy?",
+          "response": "Acción. Algo con un tipo duro que hace las cosas bien. Sin complicaciones. Hoy estoy de buen humor y quiero mantenerlo."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola. Hoy he hablado con Tony por teléfono. Me ha dicho que quiere traer a su novia a cenar a casa el mes que viene. Y que quiere que haga la sopa de pescado de mi madre. Tony. Mi Tony. Pidiendo la sopa.",
+      "questions": [
+        {
+          "id": "f8_q1",
+          "text": "Eso es importante para ti.",
+          "response": "No te haces una idea. Ese chico lleva años comiendo porquerías en la ciudad. Y ahora quiere la sopa de la abuela. Algo ha cambiado. O está enamorado de verdad, o se ha vuelto loco. Espero que sea lo primero."
+        },
+        {
+          "id": "f8_q2",
+          "text": "¿Vas a hacerla?",
+          "response": "Llevo practicando toda la semana. Gloria me ha dicho que la cocina huele a puerto pesquero. Pero cada vez me sale más parecida. Nunca será igual, pero quizá no tiene que serlo. Quizá tiene que ser la mía."
+        },
+        {
+          "id": "f8_q3",
+          "text": "¿Cómo se llama la novia?",
+          "response": "Sarah. No es italiana. Tony dice que es americana de pura cepa. Le he dicho que eso no importa, que mi madre tampoco era americana y mira qué bien cocinaba. Lo importante es la persona, no el apellido."
+        },
+        {
+          "id": "f8_q4",
+          "text": "Tu padre estaría orgulloso de ti, Frank.",
+          "response": "No lo sé. Era un hombre difícil de complacer. Pero creo que... sí. Creo que vería el puesto, vería a los clientes, vería la foto enmarcada junto a la caja y diría: no está mal, Frankie. No está mal."
+        },
+        {
+          "id": "f8_q5",
+          "text": "¿Te llamaba Frankie?",
+          "response": "Solo cuando estaba de buen humor. Que era poco. Pero cuando lo decía, sabías que todo estaba bien. Frankie. Hace años que nadie me llama así. Gloria me llama Frank. Los clientes, señor Russo. Pero Frankie... eso era de mi padre."
+        },
+        {
+          "id": "f8_q6",
+          "text": "¿Qué te apetece hoy?",
+          "response": "Una buena aventura. Algo que me haga sentir joven. Hoy tengo ganas de creer que todo es posible. Como mi padre cuando llegó a este país con veinte dólares y un cuchillo de filetear."
+        }
+      ]
+    },
+    {
+      "greeting": "Chaval, la cena ha sido un éxito. Tony ha repetido sopa. Tres veces. Sarah ha dicho que era la mejor sopa que había probado en su vida. Gloria ha llorado. Yo también, pero en el baño, que tengo una reputación que mantener.",
+      "questions": [
+        {
+          "id": "f9_q1",
+          "text": "Me alegro mucho, Frank.",
+          "response": "Gracias. Ha sido... especial. Tener a la familia en la mesa, con la sopa de mi madre, en la cocina donde ella cocinaba. Por un momento he sentido que estaba allí. Que sonreía desde algún sitio."
+        },
+        {
+          "id": "f9_q2",
+          "text": "¿Tony ha cambiado?",
+          "response": "Un poco. Me ha preguntado por el puesto. Cómo va, si necesito ayuda. No creo que vaya a dejarlo todo para vender pescado, pero ha mostrado interés. Y eso, viniendo de Tony, es mucho."
+        },
+        {
+          "id": "f9_q3",
+          "text": "¿Y Sarah? ¿Cómo es?",
+          "response": "Callada, educada, come de todo. Me ha ayudado a recoger los platos sin que nadie se lo pidiera. Eso dice mucho de una persona. Mi madre siempre decía: fíjate en quién recoge la mesa, ese es el bueno."
+        },
+        {
+          "id": "f9_q4",
+          "text": "¿Has pensado más en lo de Sicilia?",
+          "response": "Sí. Gloria y yo hemos decidido ir en primavera. Encontrar el pueblo de mis padres. Ver si queda algo. Tengo miedo, pero ya no puedo seguir imaginándolo. Necesito verlo."
+        },
+        {
+          "id": "f9_q5",
+          "text": "¿Quién se queda con el puesto?",
+          "response": "Daniel ha dicho que él me lo cuida dos semanas. Y Tony va a venir un par de días. No es ideal, pero es algo. El puesto sobrevivirá. Siempre sobrevive."
+        },
+        {
+          "id": "f9_q6",
+          "text": "¿Qué vemos hoy?",
+          "response": "Algo épico. De viajes, de aventuras. De alguien que cruza el mar para encontrar algo importante. Hoy me identifico con esas historias."
+        }
+      ]
+    },
+    {
+      "greeting": "Hola, chaval. He vuelto de Sicilia. He encontrado el pueblo. He encontrado la casa de mis abuelos. Estaba medio en ruinas, pero estaba ahí. He llorado como un niño en medio de la calle y me ha dado igual.",
+      "questions": [
+        {
+          "id": "f10_q1",
+          "text": "¿Cómo ha sido el viaje?",
+          "response": "Increíble. Las calles son estrechas, huele a mar y a albahaca. La gente grita para hablar, igual que mi padre. He comido en una trattoria que lleva abierta cien años. La sopa de pescado era casi como la de mi madre. Casi."
+        },
+        {
+          "id": "f10_q2",
+          "text": "¿Has encontrado familia allí?",
+          "response": "Un primo segundo que se llama Salvatore. Tiene un bar junto al puerto. Cuando le he dicho quién era se ha puesto a llorar y me ha abrazado. Olía a aceite de oliva y a tabaco. Como mi padre."
+        },
+        {
+          "id": "f10_q3",
+          "text": "¿Gloria ha disfrutado?",
+          "response": "Más que yo. Ha aprendido tres recetas, se ha comprado un sombrero de paja y ha dicho que quiere volver. Gloria. La mujer que lleva treinta años diciendo que no le gusta viajar. Sicilia la ha cambiado."
+        },
+        {
+          "id": "f10_q4",
+          "text": "¿Vas a seguir con el puesto?",
+          "response": "Sí. Pero diferente. He hablado con Daniel y vamos a hacer algo juntos. Eventos de cocina italiana con mi pescado. Contar la historia de mis padres mientras la gente come. Darle sentido a todo esto."
+        },
+        {
+          "id": "f10_q5",
+          "text": "Ha sido un placer conocerte, Frank.",
+          "response": "Lo mismo digo, chaval. Este cine ha sido más de lo que esperaba. Vine buscando una película y encontré un sitio donde sentarme a pensar. Eso vale más que cualquier entrada. Gracias. De parte de Frank y de Frankie."
+        },
+        {
+          "id": "f10_q6",
+          "text": "¿Última película, qué quieres ver?",
+          "response": "La mejor aventura que tengas. Algo grande, con alma. Como el viaje que acabo de hacer. Como la vida de mis padres. Ponme algo que merezca la pena recordar."
+        }
+      ]
+    }
+  ]
+}

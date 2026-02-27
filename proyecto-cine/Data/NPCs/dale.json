@@ -1,0 +1,381 @@
+{
+  "id": "dale",
+  "name": "Sheriff Dale Harris",
+  "illustration": "res://Assets/Customers/hombre_policia.png",
+  "npc_type": "human",
+  "patience": 6,
+  "tip": 3,
+  "_info": {
+    "description": "Sheriff del pueblo. Serio, profesional, con un humor seco que asoma cuando baja la guardia. Viene al cine para desconectar del trabajo. Lleva años viendo cosas que no puede explicar.",
+    "occupation": "Sheriff",
+    "age": 45,
+    "traits": ["serio", "justo", "observador", "humor seco"],
+    "arc": "Empieza reservado y profesional. Poco a poco revela que hay cosas en el pueblo que le preocupan y que no puede resolver con la ley. Acaba confiando en el jugador y compartiendo sus dudas más profundas."
+  },
+  "preferences": {
+    "must": ["crime", "mystery"],
+    "must_not": ["romance", "comedy"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "cola",
+    "food": "hotdog",
+    "popcorn": false,
+    "butter": false,
+    "caramel": false,
+    "ketchup": true,
+    "mustard": true
+  },
+  "encounters": [
+    {
+      "greeting": "Buenas noches. Sheriff Dale Harris. No vengo de servicio, tranquilo. Vengo como civil. A ver una película, que falta me hace.",
+      "questions": [
+        {
+          "id": "da1_q1",
+          "text": "¿Mucho trabajo últimamente?",
+          "response": "Siempre. En un pueblo pequeño piensas que no pasa nada, pero pasa de todo. Peleas domésticas, robos en granjas, adolescentes haciendo el idiota en el embalse. No paro."
+        },
+        {
+          "id": "da1_q2",
+          "text": "¿Lleva mucho tiempo de sheriff?",
+          "response": "Dieciocho años. Empecé como ayudante con el viejo sheriff McNally. Cuando se retiró, me dejó la placa y me dijo: 'Dale, este pueblo es más complicado de lo que parece.' Tenía razón."
+        },
+        {
+          "id": "da1_q3",
+          "text": "¿Qué tipo de películas le gustan?",
+          "response": "Policíacas. De detectives. Misterio. Sé que suena a deformación profesional, pero me gusta ver cómo resuelven los casos en la ficción. A veces es más limpio que en la realidad."
+        },
+        {
+          "id": "da1_q4",
+          "text": "¿Viene mucho al cine?",
+          "response": "No tanto como me gustaría. Mi mujer dice que debería salir más del despacho. Tiene razón, pero cuando llevas la placa encima, nunca estás del todo libre. Hoy he hecho un esfuerzo."
+        },
+        {
+          "id": "da1_q5",
+          "text": "¿Le gusta este pueblo?",
+          "response": "Es mi pueblo. Nací aquí, me casé aquí, mis hijos crecieron aquí. No es perfecto, pero es mío. Y yo soy responsable de que funcione. Eso pesa, pero también tiene algo bueno."
+        },
+        {
+          "id": "da1_q6",
+          "text": "¿Qué le apetece ver?",
+          "response": "Un buen thriller. De esos donde el detective va dos pasos por detrás hasta que de repente todo encaja. Necesito esa sensación de que las cosas encajan, aunque sea en la pantalla."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas. He vuelto. La película del otro día no estaba mal. Mi mujer me ha dicho que salí del cine con mejor cara que cuando entré. Algo es algo.",
+      "questions": [
+        {
+          "id": "da2_q1",
+          "text": "¿Le gustó la película?",
+          "response": "Más de lo que esperaba. Aunque el procedimiento policial era un desastre. Ningún detective real haría eso. Pero bueno, es ficción. Me lo pasé bien señalando errores mentalmente."
+        },
+        {
+          "id": "da2_q2",
+          "text": "¿Semana tranquila en el pueblo?",
+          "response": "Relativamente. Un par de quejas por ruido, un perro perdido que resultó estar dormido debajo del porche del dueño. Lo normal. Aunque hubo una cosa rara el miércoles que aún me da vueltas."
+        },
+        {
+          "id": "da2_q3",
+          "text": "¿Qué pasó el miércoles?",
+          "response": "Alguien llamó a la comisaría diciendo que había visto figuras cerca del bosque de noche. Fui a mirar y no encontré nada. Pero las huellas en el barro... no eran de animal ni de persona. No sé qué eran."
+        },
+        {
+          "id": "da2_q4",
+          "text": "¿Le preocupa?",
+          "response": "Preocupar es una palabra fuerte. Digamos que lo tengo en la lista de cosas pendientes. En este trabajo aprendes a no descartar nada hasta tener pruebas. Y a no alarmarte hasta que sea necesario."
+        },
+        {
+          "id": "da2_q5",
+          "text": "¿Cómo está su familia?",
+          "response": "Bien. Mi hijo mayor está en el último año de instituto. Quiere ser abogado. Mi hija quiere ser veterinaria. Ninguno quiere ser sheriff, que es lo más inteligente que han hecho en su vida."
+        },
+        {
+          "id": "da2_q6",
+          "text": "¿Qué quiere ver hoy?",
+          "response": "Algo de misterio. Pero del bueno, donde las pistas están ahí desde el principio y no te das cuenta hasta el final. Eso es lo que respeto de un buen guión."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas noches. Vengo directo del trabajo. No me he quitado ni la placa. Necesitaba salir de la comisaría un rato.",
+      "questions": [
+        {
+          "id": "da3_q1",
+          "text": "¿Día complicado?",
+          "response": "El viejo Thompson vino a poner una denuncia formal. Dice que alguien entra en su propiedad por las noches. Le tomé declaración, pero lo que describe no tiene mucho sentido. Habla de sombras que se mueven solas."
+        },
+        {
+          "id": "da3_q2",
+          "text": "¿Le cree?",
+          "response": "Thompson lleva cuarenta años en ese rancho. No bebe, no exagera, y su vista está perfecta. Si dice que vio algo, vio algo. Que yo pueda explicarlo o no es otro tema."
+        },
+        {
+          "id": "da3_q3",
+          "text": "¿Ha investigado la zona?",
+          "response": "Fui con el ayudante Jenkins. No encontramos nada concreto. Pero Jenkins me dijo algo que no puedo quitarme de la cabeza: que el aire olía raro. Como a ozono. Yo también lo noté pero no quise decir nada."
+        },
+        {
+          "id": "da3_q4",
+          "text": "¿Puede hacer algo al respecto?",
+          "response": "Con lo que tengo, no mucho. No puedo poner en un informe 'olor raro y sombras.' Me tomarían por loco. Y un sheriff loco no le sirve a nadie. Así que espero y observo."
+        },
+        {
+          "id": "da3_q5",
+          "text": "¿Le ha contado algo a su mujer?",
+          "response": "A medias. No quiero asustarla. Pero Carol me conoce demasiado bien. Sabe que algo me ronda. Anoche me dijo: 'Dale, tienes la misma cara que cuando desapareció el chico Williams.' Eso fue hace diez años."
+        },
+        {
+          "id": "da3_q6",
+          "text": "¿Qué necesita ver hoy?",
+          "response": "Algo donde el bueno gane al final. Sé que suena ingenuo viniendo de un sheriff, pero a veces necesito recordar por qué hago lo que hago."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas. Perdona el retraso. He tenido que pasar por la comisaría a firmar unos papeles. Otra familia que se ha ido del pueblo sin avisar.",
+      "questions": [
+        {
+          "id": "da4_q1",
+          "text": "¿Otra familia?",
+          "response": "Los Miller. Se fueron el martes. Sin decir nada, sin cancelar el correo, sin despedirse de nadie. Dejaron la puerta abierta y la cena a medio hacer. Eso no es normal."
+        },
+        {
+          "id": "da4_q2",
+          "text": "¿Ha pasado antes?",
+          "response": "Alguna vez, sí. Pero no tan seguido. En los últimos dos meses van cuatro familias. Cada vez que investigo, la pista se enfría antes de empezar. Es como perseguir humo."
+        },
+        {
+          "id": "da4_q3",
+          "text": "¿Tiene alguna teoría?",
+          "response": "Oficialmente, no. Extraoficialmente... algo asusta a la gente. Y lo que asusta no es un oso ni un ladrón. Es algo que no saben nombrar. Y lo que no puedes nombrar no puedes denunciar."
+        },
+        {
+          "id": "da4_q4",
+          "text": "¿Se siente impotente?",
+          "response": "Sí. Y no estoy acostumbrado a eso. Llevo la placa para proteger a esta gente, pero si el enemigo no tiene forma ni nombre, ¿contra qué lucho? Es... frustrante. Muy frustrante."
+        },
+        {
+          "id": "da4_q5",
+          "text": "¿Ha hablado con alguien de fuera?",
+          "response": "Llamé a la policía estatal. Me dijeron que sin evidencia concreta no pueden hacer nada. Les dije que tengo familias enteras desapareciendo y me contestaron que probablemente se mudaron. Así funciona el sistema."
+        },
+        {
+          "id": "da4_q6",
+          "text": "¿Qué quiere ver esta noche?",
+          "response": "Algo de crimen. De esos donde un detective terco no se rinde hasta descubrir la verdad. Necesito inspiración profesional."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas noches. Antes de que preguntes: sí, estoy bien. No, no quiero hablar del trabajo. Bueno, quizás un poco.",
+      "questions": [
+        {
+          "id": "da5_q1",
+          "text": "¿Qué ha pasado?",
+          "response": "Encontré algo en el bosque. No te voy a decir qué porque ni yo mismo sé cómo describirlo. Pero hice fotos y cuando las revelé... estaban en blanco. Todas. La cámara funcionaba perfectamente antes y después."
+        },
+        {
+          "id": "da5_q2",
+          "text": "¿Alguien más lo vio?",
+          "response": "Jenkins estaba conmigo. No dijo nada en ese momento, pero después, en el coche, me miró y dijo: 'Sheriff, creo que deberíamos dejar esto.' Y Jenkins no es de los que se asustan fácilmente."
+        },
+        {
+          "id": "da5_q3",
+          "text": "¿Va a dejarlo?",
+          "response": "No puedo. Es mi trabajo. Si dejo de investigar las cosas raras, ¿para qué llevo la placa? Pero tampoco puedo poner en un informe lo que vi sin que me suspendan de empleo."
+        },
+        {
+          "id": "da5_q4",
+          "text": "¿Cómo está Carol?",
+          "response": "Preocupada. Anoche le conté más de lo que debería. Me escuchó sin interrumpir, que es mucho viniendo de ella. Luego me abrazó y me dijo que tuviera cuidado. No me pidió que parara. Eso me dice mucho."
+        },
+        {
+          "id": "da5_q5",
+          "text": "¿Confía en mí para contarme más?",
+          "response": "Confío en ti más de lo que debería. Eres de las pocas personas de este pueblo que no me miran como si estuviera loco cuando hablo de esto. Eso vale mucho para un sheriff que se siente muy solo."
+        },
+        {
+          "id": "da5_q6",
+          "text": "¿Qué película necesita hoy?",
+          "response": "Algo oscuro. De esos misterios donde nada es lo que parece. Necesito ver que alguien enfrenta lo inexplicable y sobrevive para contarlo."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas. Me he saltado la cena por venir. Carol me va a matar, pero necesitaba hablar con alguien que no lleve placa.",
+      "questions": [
+        {
+          "id": "da6_q1",
+          "text": "¿Qué le ronda la cabeza?",
+          "response": "Estoy empezando a pensar que lo que pasa en este pueblo no es nuevo. Encontré informes viejos de McNally, el sheriff anterior. Carpetas que nunca abrí. Había cosas ahí dentro que... bueno. McNally sabía."
+        },
+        {
+          "id": "da6_q2",
+          "text": "¿Qué decían los informes?",
+          "response": "Desapariciones. Avistamientos. Quejas de vecinos. Todo archivado y olvidado. McNally no los investigó. O si lo hizo, no dejó constancia. Me pregunto si por eso se retiró tan de repente."
+        },
+        {
+          "id": "da6_q3",
+          "text": "¿Ha intentado contactar con McNally?",
+          "response": "Murió hace tres años. Pero su viuda vive en la residencia de ancianos de Millbrook. Podría ir a verla. Parte de mí quiere saber y parte de mí tiene miedo de lo que pueda decirme."
+        },
+        {
+          "id": "da6_q4",
+          "text": "¿Cómo lleva todo esto emocionalmente?",
+          "response": "Soy sheriff. Se supone que no tengo emociones. Pero entre tú y yo... duermo mal. Tengo pesadillas con ese bosque. Y cada vez que suena el teléfono de noche, me da un vuelco el estómago."
+        },
+        {
+          "id": "da6_q5",
+          "text": "¿Ha pensado en dejar el cargo?",
+          "response": "Cada mañana. Y cada mañana me pongo la placa y salgo a trabajar. Porque si no soy yo, ¿quién? Jenkins es buen chico pero no está preparado. Y este pueblo necesita a alguien que mire donde otros no quieren mirar."
+        },
+        {
+          "id": "da6_q6",
+          "text": "¿Qué quiere ver hoy?",
+          "response": "Un buen thriller psicológico. De esos que te hacen dudar de todo. Al menos en la ficción puedes rebobinar y buscar las pistas que te perdiste."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas noches. Fui a ver a la viuda de McNally. Me contó cosas. Necesito sentarme un rato y pensar.",
+      "questions": [
+        {
+          "id": "da7_q1",
+          "text": "¿Qué le contó?",
+          "response": "Que McNally sabía que había algo en el pueblo. Algo que venía y se iba en ciclos. Cada ciertos años, las mismas cosas: desapariciones, luces, gente que se comporta raro. Él decidió no investigar para proteger a su familia."
+        },
+        {
+          "id": "da7_q2",
+          "text": "¿Y usted qué va a hacer?",
+          "response": "No lo sé. McNally eligió mirar para otro lado y vivió hasta los ochenta. Pero yo no soy McNally. No puedo ignorar lo que sé. No está en mi naturaleza."
+        },
+        {
+          "id": "da7_q3",
+          "text": "¿Tiene miedo?",
+          "response": "Tengo miedo de no tener miedo. Llevo semanas viendo cosas que deberían aterrarme y cada vez reacciono menos. No sé si me estoy acostumbrando o si algo está cambiando en mí."
+        },
+        {
+          "id": "da7_q4",
+          "text": "¿Carol sabe todo esto?",
+          "response": "Sabe lo suficiente. Es una mujer fuerte. Me dijo que haga lo que tenga que hacer, pero que vuelva a casa cada noche. Esa es nuestra regla: siempre volver a casa."
+        },
+        {
+          "id": "da7_q5",
+          "text": "¿Hay algo que pueda hacer por usted?",
+          "response": "Sigue haciendo lo que haces. Mantén este sitio abierto. La gente necesita lugares normales donde ir cuando todo lo demás se vuelve raro. Este cine es más importante de lo que crees."
+        },
+        {
+          "id": "da7_q6",
+          "text": "¿Qué película le vendría bien?",
+          "response": "Algo con un protagonista que enfrenta la verdad aunque le duela. Necesito saber que eso es posible fuera de los libros."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas. He tomado una decisión. Voy a dejar de buscar respuestas y centrarme en proteger a la gente que queda. Es lo que puedo hacer.",
+      "questions": [
+        {
+          "id": "da8_q1",
+          "text": "¿Ha aceptado lo que pasa?",
+          "response": "Aceptar es mucho decir. Digamos que he aceptado que no puedo resolverlo todo. Hay fuerzas que van más allá de una placa de sheriff. Mi trabajo es mantener a la gente segura, no explicar lo inexplicable."
+        },
+        {
+          "id": "da8_q2",
+          "text": "¿Cómo está el pueblo?",
+          "response": "Más tranquilo. No sé si es buena señal o mala. A veces la calma es real y a veces es solo el ojo del huracán. He aprendido a no fiarme de la calma en este pueblo."
+        },
+        {
+          "id": "da8_q3",
+          "text": "¿Jenkins sigue con usted?",
+          "response": "Sigue. Es más valiente de lo que pensaba. El otro día me dijo que si hay algo ahí fuera, prefiere enfrentarlo conmigo que solo. Casi me emociono, pero los sheriffs no lloran. O eso dicen."
+        },
+        {
+          "id": "da8_q4",
+          "text": "¿Algún consejo para mí?",
+          "response": "Presta atención a tus clientes. No solo a lo que dicen, sino a cómo lo dicen. A veces la gente te cuenta cosas importantes sin darse cuenta. Tú estás en una posición privilegiada para escuchar."
+        },
+        {
+          "id": "da8_q5",
+          "text": "¿Se siente mejor que hace unas semanas?",
+          "response": "Distinto. No mejor ni peor, distinto. He dejado de luchar contra lo que no entiendo y he empezado a proteger lo que puedo. Es un cambio de enfoque, no una rendición."
+        },
+        {
+          "id": "da8_q6",
+          "text": "¿Qué le apetece ver?",
+          "response": "Algo donde un hombre normal hace lo correcto en circunstancias extraordinarias. No un héroe, un hombre normal. Eso es lo que necesito ver."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas noches. Vengo de hacer la ronda. Todo en orden, por una vez. He pensado que merecía un descanso.",
+      "questions": [
+        {
+          "id": "da9_q1",
+          "text": "¿Cómo van las cosas?",
+          "response": "Mejor. Las desapariciones han parado. La gente parece más tranquila. No sé si hemos pasado lo peor o si solo estamos en un respiro. Pero por ahora, lo acepto."
+        },
+        {
+          "id": "da9_q2",
+          "text": "¿Ha aprendido algo de todo esto?",
+          "response": "Que hay cosas que no están en los manuales de la academia. Que un buen sheriff no es el que lo resuelve todo, sino el que se queda cuando otros se van. Y que necesito más noches de cine."
+        },
+        {
+          "id": "da9_q3",
+          "text": "¿Cómo está su familia?",
+          "response": "Bien. Mi hijo ha sido aceptado en la universidad de derecho. Carol está orgullosa. Yo también, aunque no se lo diga tanto como debería. Es el defecto de ser un hombre duro del medio oeste."
+        },
+        {
+          "id": "da9_q4",
+          "text": "¿Seguirá viniendo al cine?",
+          "response": "Mientras esté abierto, sí. Este sitio se ha convertido en mi terapia. Más barato que un psicólogo y las palomitas son mejores. Bueno, yo no pido palomitas, pero el hotdog está bien."
+        },
+        {
+          "id": "da9_q5",
+          "text": "¿Hay algo que quiera decirme?",
+          "response": "Que eres buena gente. Este pueblo tiene suerte de tenerte. Y que si alguna vez necesitas algo, lo que sea, tienes al sheriff de tu lado. Eso no se lo digo a cualquiera."
+        },
+        {
+          "id": "da9_q6",
+          "text": "¿Qué quiere ver hoy?",
+          "response": "Sorpréndeme. Después de tantas noches aquí, confío en tu criterio. Ponme lo que creas que necesito ver."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas noches. Vengo con la placa guardada y el sombrero en casa. Esta noche solo soy Dale. Un tipo que viene al cine.",
+      "questions": [
+        {
+          "id": "da10_q1",
+          "text": "¿Todo bien, Dale?",
+          "response": "Sí. De verdad que sí. Por primera vez en mucho tiempo, me siento en paz. El pueblo está tranquilo, mi familia está bien, y estoy aquí. A veces eso es suficiente."
+        },
+        {
+          "id": "da10_q2",
+          "text": "¿Ha cambiado su forma de ver las cosas?",
+          "response": "Mucho. Antes creía que mi trabajo era tener todas las respuestas. Ahora sé que mi trabajo es estar aquí, pase lo que pase. Las respuestas a veces llegan y a veces no. Y hay que vivir con eso."
+        },
+        {
+          "id": "da10_q3",
+          "text": "¿Qué haría si todo volviera a empezar?",
+          "response": "Lo mismo que hice: quedarme. Investigar lo que pueda. Proteger a quien pueda. Y venir aquí a ver una película cuando el peso sea demasiado. Es un buen sistema."
+        },
+        {
+          "id": "da10_q4",
+          "text": "¿Algún último consejo?",
+          "response": "Cuida este sitio. En un pueblo pequeño, los lugares donde la gente puede ser ella misma son más valiosos que cualquier comisaría. Aquí dentro la gente baja la guardia. Eso es un regalo."
+        },
+        {
+          "id": "da10_q5",
+          "text": "Ha sido un placer, Sheriff.",
+          "response": "El placer es mío. Y llámame Dale. Después de todo lo que hemos hablado, creo que nos lo hemos ganado. Cuídate, ¿de acuerdo? Y deja la puerta abierta. Volveré."
+        },
+        {
+          "id": "da10_q6",
+          "text": "¿Última película?",
+          "response": "La mejor que tengas. Esta noche no quiero pensar en crímenes ni en misterios. Solo quiero disfrutar de una buena historia. Creo que me lo he ganado."
+        }
+      ]
+    }
+  ]
+}

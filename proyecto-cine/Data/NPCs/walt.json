@@ -1,0 +1,381 @@
+{
+  "id": "walt",
+  "name": "Walt Morrison",
+  "illustration": "res://Assets/Customers/hombre_mayor_veterano.png",
+  "npc_type": "human",
+  "patience": 7,
+  "tip": 3,
+  "_info": {
+    "description": "Veterano de Vietnam, jubilado. Hombre duro y parco en palabras. Viene al cine porque le recuerda a cuando traía a su difunta esposa Margaret. Lleva años solo y no sabe cómo decirlo.",
+    "occupation": "Jubilado (veterano de guerra)",
+    "age": 68,
+    "traits": ["brusco", "orgulloso", "leal", "melancólico"],
+    "arc": "Empieza cerrado y hosco, casi antipático. Apenas habla. Poco a poco revela su pasado en Vietnam, la muerte de su esposa Margaret, y la relación rota con su hijo en California. El cine se convierte en su refugio. Al final se ablanda y encuentra una especie de paz."
+  },
+  "preferences": {
+    "must": ["action", "drama"],
+    "must_not": ["sci-fi", "comedy"]
+  },
+  "food_order": {
+    "drink": true,
+    "drink_type": "rootbeer",
+    "food": "hotdog",
+    "popcorn": false,
+    "butter": false,
+    "caramel": false,
+    "ketchup": true,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "Buenas. Morrison. Walt Morrison. No me mires así, solo quiero ver una película. Hace años que no piso un cine. Desde que Margaret... En fin. Estoy aquí. Eso es lo que importa.",
+      "questions": [
+        {
+          "id": "w1_q1",
+          "text": "Bienvenido, señor Morrison. ¿Primera vez aquí?",
+          "response": "Primera vez en este cine, sí. No es la primera vez que entro en uno. Antes veníamos Margaret y yo. Todos los viernes. Pero eso fue hace mucho."
+        },
+        {
+          "id": "w1_q2",
+          "text": "¿Quién es Margaret?",
+          "response": "Mi mujer. Era mi mujer. Murió hace cuatro años. No quiero hablar de eso. Siguiente pregunta."
+        },
+        {
+          "id": "w1_q3",
+          "text": "¿Lleva mucho en el pueblo?",
+          "response": "Toda la vida, menos los años que pasé fuera. Servicio militar. Vietnam. Volví en el setenta y tres y no me he movido desde entonces. No tengo motivos para irme."
+        },
+        {
+          "id": "w1_q4",
+          "text": "¿A qué se dedica?",
+          "response": "Estoy jubilado. Trabajé treinta años en la ferretería de Main Street. Antes de eso, el ejército. Ahora no me dedico a nada. Arreglo cosas en casa. Leo el periódico. Poco más."
+        },
+        {
+          "id": "w1_q5",
+          "text": "¿Tiene familia?",
+          "response": "Un hijo. David. Vive en California. No hablamos mucho. Las cosas se complicaron hace años. No voy a entrar en detalles."
+        },
+        {
+          "id": "w1_q6",
+          "text": "¿Qué tipo de película le apetece?",
+          "response": "Algo con sustancia. Acción, drama. Nada de payasadas ni de naves espaciales. Una historia de verdad, con gente de verdad. Como las de antes."
+        }
+      ]
+    },
+    {
+      "greeting": "He vuelto. No te emociones. Es que no hay nada en la tele y la casa está muy callada. La root beer de la otra vez estaba bien. Ponme otra.",
+      "questions": [
+        {
+          "id": "w2_q1",
+          "text": "Me alegro de verle, señor Morrison.",
+          "response": "Walt. Llámame Walt. Lo de señor Morrison me hace sentir más viejo de lo que ya soy. Que ya es bastante."
+        },
+        {
+          "id": "w2_q2",
+          "text": "¿Qué tal la semana?",
+          "response": "Igual que todas. Silenciosa. Antes Margaret ponía la radio por las mañanas. Ahora desayuno en silencio. Te acostumbras, pero no del todo."
+        },
+        {
+          "id": "w2_q3",
+          "text": "¿Echas de menos el trabajo?",
+          "response": "A veces. En la ferretería al menos hablaba con gente. Ahora puedo pasar tres días sin abrir la boca. No es sano, pero es lo que hay."
+        },
+        {
+          "id": "w2_q4",
+          "text": "¿Qué te gusta hacer en tu tiempo libre?",
+          "response": "Arreglar cosas. Tengo un taller en el garaje. Restauro muebles viejos. Es lo único que me mantiene ocupado. Las manos necesitan estar haciendo algo."
+        },
+        {
+          "id": "w2_q5",
+          "text": "¿Fuiste a Vietnam muy joven?",
+          "response": "Dieciocho años. Un crío. Me alisté voluntario porque pensaba que era lo correcto. No voy a decir si me arrepiento o no. Es complicado."
+        },
+        {
+          "id": "w2_q6",
+          "text": "¿Qué te apetece ver hoy?",
+          "response": "Algo serio. Con peso. Que cuando termine la película me quede pensando un rato. No quiero reírme, quiero sentir algo."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. Ya me conoces la rutina. Hotdog con ketchup y root beer. Y algo decente en pantalla, si puede ser.",
+      "questions": [
+        {
+          "id": "w3_q1",
+          "text": "Te estás volviendo un cliente habitual, Walt.",
+          "response": "No te acostumbres. Vengo porque el sitio es tranquilo y no me hacéis preguntas. Bueno, tú sí me haces preguntas, pero al menos son educadas."
+        },
+        {
+          "id": "w3_q2",
+          "text": "¿Siempre has sido tan reservado?",
+          "response": "No siempre. De joven era más hablador. Vietnam te cambia. Vuelves y ya no sabes qué decirle a la gente. Margaret era la única que entendía mis silencios."
+        },
+        {
+          "id": "w3_q3",
+          "text": "¿Cómo conociste a Margaret?",
+          "response": "En una feria del condado, verano del setenta y cuatro. Yo acababa de volver. Ella vendía limonada. Me miró sin miedo. Eso fue suficiente. Nos casamos al año siguiente."
+        },
+        {
+          "id": "w3_q4",
+          "text": "Suena como una buena mujer.",
+          "response": "La mejor. Tenía paciencia infinita. Conmigo hacía falta. Yo no era fácil. Las pesadillas, los silencios, los días malos. Ella aguantó todo. No sé cómo."
+        },
+        {
+          "id": "w3_q5",
+          "text": "¿Los días malos por la guerra?",
+          "response": "Sí. Hay cosas que no se van. Ruidos. Olores. A veces me despertaba gritando y Margaret me ponía la mano en el pecho hasta que se me pasaba. Sin decir nada. Solo la mano ahí."
+        },
+        {
+          "id": "w3_q6",
+          "text": "¿Qué película te pongo hoy?",
+          "response": "Una de acción. De las buenas. Donde el protagonista tenga que tomar decisiones difíciles. De esas que te recuerdan que la vida no es blanca ni negra."
+        }
+      ]
+    },
+    {
+      "greeting": "Llevo todo el día en el garaje lijando una cómoda vieja. Las manos me huelen a barniz. Necesito sentarme dos horas y no pensar. Este sitio sirve para eso.",
+      "questions": [
+        {
+          "id": "w4_q1",
+          "text": "¿Qué mueble estás restaurando?",
+          "response": "Una cómoda de roble. Era de la madre de Margaret. Estaba hecha polvo. La tenía en el desván desde que ella murió. He decidido arreglarla. No sé para qué, pero me da igual."
+        },
+        {
+          "id": "w4_q2",
+          "text": "Quizás es tu forma de recordarla.",
+          "response": "Puede ser. No soy de los que hablan de sentimientos. Pero sí, supongo que lijar esa madera es como... cuidar algo que ella tocó. Suena ridículo dicho en voz alta."
+        },
+        {
+          "id": "w4_q3",
+          "text": "No suena ridículo para nada.",
+          "response": "Hmm. Gracias. Margaret diría lo mismo. Ella siempre decía que yo sentía más de lo que dejaba ver. Probablemente tenía razón. Casi siempre la tenía."
+        },
+        {
+          "id": "w4_q4",
+          "text": "¿Cómo te va con tu hijo David?",
+          "response": "Igual. No llama. Yo tampoco llamo. Los dos somos orgullosos. Demasiado parecidos, decía Margaret. Cuando ella vivía, al menos venía por Navidad. Ahora ni eso."
+        },
+        {
+          "id": "w4_q5",
+          "text": "¿Qué pasó entre vosotros?",
+          "response": "Discutimos. Fuerte. Él quería que fuera al médico. Que hablara de la guerra con un profesional. Yo le dije que no necesitaba a ningún loquero. Se fue dando un portazo. Eso fue hace seis años."
+        },
+        {
+          "id": "w4_q6",
+          "text": "¿Qué te gustaría ver hoy?",
+          "response": "Un drama. De esos que duelen un poco. Hoy estoy con ganas de que me recuerden que hay gente que la pasa peor que yo. O igual. No sé."
+        }
+      ]
+    },
+    {
+      "greeting": "He soñado con Margaret esta noche. Estábamos en un cine, como este. Ella se reía de algo y yo la miraba. Me he despertado tranquilo, que es raro. He pensado en venir aquí. Así que aquí estoy.",
+      "questions": [
+        {
+          "id": "w5_q1",
+          "text": "¿Sueñas con ella a menudo?",
+          "response": "Antes sí. Ahora menos. Al principio eran sueños tristes. Ahora son más... normales. Como recuerdos que se repiten. No me quejo. Es la única forma de verla."
+        },
+        {
+          "id": "w5_q2",
+          "text": "¿Cómo era ella?",
+          "response": "Pequeña. Rubia. Una sonrisa enorme. Hablaba por los codos. Lo contrario a mí. Creo que por eso funcionábamos. Ella ponía las palabras que a mí me faltaban."
+        },
+        {
+          "id": "w5_q3",
+          "text": "¿Teníais alguna película favorita juntos?",
+          "response": "Le gustaban las de Paul Newman. Decía que se parecía a mí. Mentira, pero me hacía gracia. Vimos Butch Cassidy tres veces. Al final me la sabía de memoria."
+        },
+        {
+          "id": "w5_q4",
+          "text": "¿Qué le dirías si pudiera oírte?",
+          "response": "Que tenía razón. En todo. En lo del médico, en lo de David, en lo de no guardarme las cosas. Que debería haber sido mejor marido. Que la echo de menos cada día. Pero eso ya lo sabe."
+        },
+        {
+          "id": "w5_q5",
+          "text": "¿Has pensado en llamar a David?",
+          "response": "Todos los días. Pero cojo el teléfono y no sé qué decir. ¿Perdóname? ¿Tenías razón? Soy un viejo testarudo. Las palabras se me atascan en la garganta. Siempre ha sido así."
+        },
+        {
+          "id": "w5_q6",
+          "text": "¿Qué película quieres ver?",
+          "response": "Una que hable de segundas oportunidades. Si existe eso. O de gente que se equivoca y aprende a vivir con ello. Hoy necesito eso."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye. Quería decirte algo. He llamado a David. Bueno, he marcado el número. Ha saltado el contestador. He colgado. Pero es un avance. Para mí es un avance.",
+      "questions": [
+        {
+          "id": "w6_q1",
+          "text": "Eso es un gran paso, Walt.",
+          "response": "No exageres. He marcado un número y he colgado como un cobarde. Pero sí, tienes razón. Hace un mes ni habría cogido el teléfono. Algo es algo."
+        },
+        {
+          "id": "w6_q2",
+          "text": "¿Qué le habrías dicho?",
+          "response": "No lo sé. Probablemente algo torpe. Hola, soy tu padre. Como si no lo supiera. No sé hablar de estas cosas. En el ejército te enseñan a obedecer órdenes, no a pedir perdón."
+        },
+        {
+          "id": "w6_q3",
+          "text": "¿David sabe lo de Margaret? ¿Vino al funeral?",
+          "response": "Sí, vino. Estuvo tres días. Apenas hablamos. Él lloró. Yo no. No porque no quisiera. No podía. Me miró como si me odiara por eso. Luego se fue y ya no volvió."
+        },
+        {
+          "id": "w6_q4",
+          "text": "No llorar no significa no sentir.",
+          "response": "Lo sé. Ahora lo sé. Pero a los sesenta y ocho años. Un poco tarde, ¿no? Vietnam me enseñó a cerrar la puerta. El problema es que después no supe abrirla. Ni para mi propio hijo."
+        },
+        {
+          "id": "w6_q5",
+          "text": "¿Qué recuerdas de Vietnam que te marcó más?",
+          "response": "Un amigo. Tommy Reeves. Tenía veinte años. Murió a tres metros de mí. No pude hacer nada. Desde ese día aprendí que si no sientes, no duele. Pero es mentira. Duele igual. Solo que por dentro."
+        },
+        {
+          "id": "w6_q6",
+          "text": "¿Qué te pongo hoy, Walt?",
+          "response": "Acción. Algo con honor. Soldados, policías, lo que sea. Gente que hace lo que tiene que hacer aunque les cueste. Eso sí lo entiendo."
+        }
+      ]
+    },
+    {
+      "greeting": "He vuelto a llamar. Esta vez no colgué. David contestó. Dijo hola. Yo dije hola. Y nos quedamos callados quince segundos. Luego dije que solo quería saber cómo estaba. Dijo que bien. Y colgamos. Pero esta vez los dos.",
+      "questions": [
+        {
+          "id": "w7_q1",
+          "text": "Eso es enorme, Walt. ¿Cómo te sientes?",
+          "response": "Raro. Como si hubiera levantado algo muy pesado. Estoy cansado. Pero bien. Creo que bien. No sé cuándo fue la última vez que dije eso."
+        },
+        {
+          "id": "w7_q2",
+          "text": "¿Vas a volver a llamarle?",
+          "response": "Sí. Creo que sí. Margaret estaría orgullosa. O me daría un cachete por haber tardado seis años. Probablemente las dos cosas."
+        },
+        {
+          "id": "w7_q3",
+          "text": "¿Qué hacía David antes de irse a California?",
+          "response": "Estudiaba ingeniería. Era listo. Mucho más que yo. Se fue a San Francisco con una beca. Yo quería que se quedara aquí, que trabajara con las manos. Otro error mío. Querer que fuera como yo en vez de dejarlo ser él."
+        },
+        {
+          "id": "w7_q4",
+          "text": "¿Y cómo era de niño?",
+          "response": "Callado. Se parecía a mí en eso. Le gustaba dibujar. Pasaba horas con sus lápices. Yo nunca le dije que dibujaba bien. Debería habérselo dicho. Hay muchas cosas que debería haber dicho."
+        },
+        {
+          "id": "w7_q5",
+          "text": "Todavía estás a tiempo.",
+          "response": "Eso espero. A los sesenta y ocho no sabes cuánto tiempo te queda. Pero mientras pueda marcar ese número, lo haré. Le debo eso. A él y a Margaret."
+        },
+        {
+          "id": "w7_q6",
+          "text": "Bueno, ¿qué vemos hoy?",
+          "response": "Un buen drama. De padres e hijos si hay. O de gente que intenta arreglar lo que rompió. Hoy me siento con fuerzas para eso."
+        }
+      ]
+    },
+    {
+      "greeting": "David me ha llamado a mí. Él a mí. Hemos hablado veinte minutos. Me ha contado que trabaja en una empresa de tecnología. Que tiene una novia que se llama Sarah. Veinte minutos. No me lo creo todavía.",
+      "questions": [
+        {
+          "id": "w8_q1",
+          "text": "Walt, eso es maravilloso.",
+          "response": "Sí. Sí que lo es. Perdona si estoy un poco... No sé. No estoy acostumbrado a que las cosas vayan bien. Me pone nervioso. Pero es bueno. Es muy bueno."
+        },
+        {
+          "id": "w8_q2",
+          "text": "¿De qué habéis hablado?",
+          "response": "De todo y de nada. Su trabajo. El tiempo en California. Me ha preguntado por la casa. Le he contado que estoy restaurando la cómoda de su abuela. Se ha quedado callado un momento. Creo que le ha emocionado."
+        },
+        {
+          "id": "w8_q3",
+          "text": "¿Le has hablado de este sitio?",
+          "response": "Sí. Le he dicho que vengo al cine. Que he conocido a buena gente aquí. Se ha reído. Ha dicho que le alegra que salga de casa. Suena igual que Margaret cuando dice esas cosas."
+        },
+        {
+          "id": "w8_q4",
+          "text": "¿Cómo te sientes con todo esto?",
+          "response": "Como si me hubieran quitado un peso de encima. Llevo años cargando con esta piedra. La culpa, la rabia, el orgullo. Y de repente mi hijo me llama y todo pesa un poco menos."
+        },
+        {
+          "id": "w8_q5",
+          "text": "Margaret estaría contenta.",
+          "response": "Estaría llorando de alegría. Y luego me diría: ¿ves, Walt? ¿Tan difícil era? Y yo le diría que sí. Que sí era difícil. Pero que al final lo hice. Tarde, pero lo hice."
+        },
+        {
+          "id": "w8_q6",
+          "text": "¿Qué te apetece ver?",
+          "response": "Hoy me da igual. Lo que sea. Ponme algo bueno. Estoy de buen humor. Que no se diga que Walt Morrison no sabe sonreír de vez en cuando."
+        }
+      ]
+    },
+    {
+      "greeting": "David viene a visitarme. El mes que viene. Va a traer a Sarah. Voy a conocer a la novia de mi hijo. Llevo una semana limpiando la casa como un loco. Margaret se reiría de verme con la fregona.",
+      "questions": [
+        {
+          "id": "w9_q1",
+          "text": "¡Walt, eso es fantástico!",
+          "response": "No me lo puedo creer todavía. Seis años sin verle y ahora viene a casa. He comprado sábanas nuevas. Yo, comprando sábanas. Si mis compañeros de pelotón me vieran."
+        },
+        {
+          "id": "w9_q2",
+          "text": "¿Estás nervioso?",
+          "response": "Aterrorizado. ¿Y si no sé qué decirle en persona? Por teléfono es más fácil. Pero cara a cara... Van a ver a un viejo gruñón en una casa vacía. No es muy impresionante."
+        },
+        {
+          "id": "w9_q3",
+          "text": "Van a ver a un padre que les quiere. Eso es suficiente.",
+          "response": "Maldita sea. No me hagas esto. Que estamos en público. Pero... gracias. En serio. Hace mucho que nadie me dice algo así. Desde Margaret."
+        },
+        {
+          "id": "w9_q4",
+          "text": "¿Vas a enseñarle la cómoda restaurada?",
+          "response": "Sí. La he terminado esta semana. Ha quedado preciosa. La he puesto en la entrada, donde la tenía su abuela. Cuando David la vea... No sé. Espero que entienda lo que significa."
+        },
+        {
+          "id": "w9_q5",
+          "text": "¿Hay algo que quieras decirle cuando llegue?",
+          "response": "Que lo siento. Que debería haber sido mejor padre. Que estoy orgulloso de él aunque nunca se lo dije. Y que su madre nunca dejó de hablar de lo mucho que le quería. Ni un solo día."
+        },
+        {
+          "id": "w9_q6",
+          "text": "¿Qué película nos toca hoy?",
+          "response": "Algo épico. Grande. Una historia de las que te hacen sentir que las cosas pueden salir bien. Hoy me lo creo. Hoy me creo que las cosas pueden salir bien."
+        }
+      ]
+    },
+    {
+      "greeting": "Oye. Siéntate un momento. No, déjate el hotdog. Solo escucha. David ha venido. Ha estado una semana entera. Hemos hablado. Hemos llorado. Los dos. Yo también. Después de cuarenta años, he llorado. Y no se ha acabado el mundo.",
+      "questions": [
+        {
+          "id": "w10_q1",
+          "text": "Walt... no sabes cuánto me alegro.",
+          "response": "Lo sé. Y tú has tenido mucho que ver. Este sitio. Estas conversaciones. No sé cuándo empecé a hablar de verdad, pero empezó aquí. En esta sala que huele a palomitas."
+        },
+        {
+          "id": "w10_q2",
+          "text": "¿Cómo fue la visita?",
+          "response": "El primer día fue raro. Nos miramos y no sabíamos qué hacer. Luego le enseñé la cómoda. Pasó la mano por la madera y dijo: es la de la abuela. Y ahí se rompió el hielo. Y se rompimos nosotros un poco también."
+        },
+        {
+          "id": "w10_q3",
+          "text": "¿Qué tal Sarah?",
+          "response": "Es buena chica. Lista. Le planta cara a David cuando hace falta. Me recuerda a Margaret. Le he dicho eso y se ha puesto roja. David se ha reído. Hacía años que no oía a mi hijo reír en mi casa."
+        },
+        {
+          "id": "w10_q4",
+          "text": "¿Le has dicho todo lo que querías decirle?",
+          "response": "Casi todo. Le he pedido perdón. Le he dicho que estoy orgulloso de él. Que su madre también lo estaba. Ha dicho que ya lo sabía, pero que necesitaba oírlo. Tenía razón. Siempre necesitamos oírlo."
+        },
+        {
+          "id": "w10_q5",
+          "text": "¿Y ahora qué, Walt?",
+          "response": "Ahora sigo viniendo aquí. Sigo restaurando muebles. Sigo llamando a David los domingos. Y sigo viviendo. No es mucho, pero es más de lo que tenía hace unos meses. Margaret, si me estás oyendo: lo conseguí, cariño. Tarde, pero lo conseguí."
+        },
+        {
+          "id": "w10_q6",
+          "text": "¿Qué te pongo hoy, viejo amigo?",
+          "response": "¿Viejo amigo? Hmm. Sí. Supongo que sí. Ponme lo que quieras. Hoy confío en ti. Hoy confío en todo el mundo. No me reconozco, pero me gusta."
+        }
+      ]
+    }
+  ]
+}

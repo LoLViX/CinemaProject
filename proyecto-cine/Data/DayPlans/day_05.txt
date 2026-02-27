@@ -1,0 +1,6 @@
+# Día 5 — entidades consolidadas, guía explica Sala Especial
+slots: 5
+entity_slots: 1
+story_npc: debbie
+story_npc: guia
+familia_alterada

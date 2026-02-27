@@ -1,0 +1,380 @@
+{
+  "id": "entidad_a",
+  "name": "La figura del pasillo",
+  "illustration": "res://Assets/Customers/entidad_a_vendedor_de_casas.png",
+  "patience": 0,
+  "tip": 0,
+  "npc_type": "entity",
+  "_info": {
+    "description": "Entidad que imita la apariencia de un joven estudiante. Su imitación del comportamiento humano empieza siendo casi convincente pero se degrada con cada visita. Confunde detalles, inventa recuerdos, pierde la noción del tiempo. Al final ni siquiera intenta parecer humano.",
+    "occupation": "desconocida",
+    "age": -1,
+    "traits": ["entidad", "imitación torpe", "descontextualizado", "inquietante", "decadente"]
+  },
+  "preferences": {
+    "must": ["dark", "horror"],
+    "must_not": ["comedy", "adventure", "action"]
+  },
+  "food_order": {
+    "drink": false,
+    "drink_type": "",
+    "food": "",
+    "popcorn": false,
+    "butter": false,
+    "caramel": false,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "Hola. Vengo a ver una película. Como la gente. Soy gente. He caminado hasta aquí con mis piernas y ahora estoy delante del mostrador. Eso es lo que se hace, verdad?",
+      "questions": [
+        {
+          "id": "ea0_q1",
+          "text": "Es la primera vez que vienes?",
+          "response": "Primera vez. Sí. La primera. Estoy aquí por primera vez. Hoy. Las otras veces no cuentan porque no estaba... despierto. O no estaba. Una de las dos."
+        },
+        {
+          "id": "ea0_q2",
+          "text": "Cómo te llamas?",
+          "response": "Tengo un nombre. Todos tienen uno. Es una palabra que va delante de la cara. La mía es... larga. Tiene varias partes. No me acuerdo del orden. Importa el orden?"
+        },
+        {
+          "id": "ea0_q3",
+          "text": "De dónde vienes?",
+          "response": "De fuera. Donde están las calles. Y los árboles. Y el cielo, que es lo que hay arriba. He pasado por la acera. La acera es la parte dura del suelo donde se camina. He caminado correctamente."
+        },
+        {
+          "id": "ea0_q4",
+          "text": "Qué tipo de películas te gustan?",
+          "response": "Las que tienen personas dentro. Haciendo cosas de personas. Cosas lentas. Oscuras. Que se muevan despacio. Me gustan las sombras. Las sombras tienen la misma forma que las cosas pero están vacías. Eso me parece interesante."
+        },
+        {
+          "id": "ea0_q5",
+          "text": "Te encuentras bien?",
+          "response": "Bien. Sí. Encontrado. Estoy en el lugar correcto. Eso me dijeron. Bueno. No me dijeron. Lo supe. Saber y que te digan son cosas distintas. Creo."
+        },
+        {
+          "id": "ea0_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo oscuro. Donde haya poca luz. La luz enseña demasiado. La oscuridad es más honesta. En la oscuridad todo es lo mismo. Eso me gusta. Ser lo mismo que todo lo demás."
+        }
+      ]
+    },
+    {
+      "greeting": "He vuelto. El edificio sigue aquí. Eso está bien. Los edificios a veces no siguen. Yo sigo también. Estamos los dos aquí. El edificio y yo. Y tú.",
+      "questions": [
+        {
+          "id": "ea1_q1",
+          "text": "Te gustó lo que viste?",
+          "response": "Los colores eran correctos. Había personas y hacían ruidos con la boca. Algunos ruidos eran tristes. Me quedé hasta que la luz volvió. No me gusta cuando la luz vuelve."
+        },
+        {
+          "id": "ea1_q2",
+          "text": "Qué tal tu semana?",
+          "response": "La semana tiene siete partes. Estuve en todas. Algunas eran más largas. El miércoles duró mucho. O el jueves. Uno de los que están en medio."
+        },
+        {
+          "id": "ea1_q3",
+          "text": "Dónde vives?",
+          "response": "Hay un sitio donde estoy cuando no estoy aquí. Tiene paredes y un techo. El techo es lo que impide que el cielo entre. Es importante. Sin techo el cielo entra y eso es demasiado."
+        },
+        {
+          "id": "ea1_q4",
+          "text": "Has venido con alguien?",
+          "response": "No. Siempre hay alguien detrás de mí. En la cola. O en la calle. Pero no vienen conmigo. Vienen al lado. Muy cerca. A veces demasiado cerca."
+        },
+        {
+          "id": "ea1_q5",
+          "text": "Tienes hambre? Quieres algo de comer?",
+          "response": "Comer. He visto cómo se hace. Se pone algo en la boca y luego desaparece. No me apetece que las cosas desaparezcan. Ya desaparecen bastantes cosas solas."
+        },
+        {
+          "id": "ea1_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo con pasillos. Pasillos largos. Donde la gente camina hacia algo que no se ve. El final del pasillo es lo mejor. Porque no sabes si hay algo o no hay nada. Las dos opciones son buenas."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas. Tardes. O noches. No sé cuándo cambia uno al otro. El cielo era de un color cuando salí. Ahora será de otro. Los colores del cielo son poco fiables.",
+      "questions": [
+        {
+          "id": "ea2_q1",
+          "text": "Llevas mucho esperando fuera?",
+          "response": "El tiempo es difícil de medir sin instrumentos. Yo tengo un reloj pero no le miro. Hace tic. Tic es un sonido que el tiempo hace cuando quiere que sepas que está ahí. Es amenazante, si lo piensas."
+        },
+        {
+          "id": "ea2_q2",
+          "text": "Te acuerdas de mí?",
+          "response": "Sí. Eres la persona del mostrador. Siempre estás aquí. Cada vez que vengo, estás. Es reconfortante. Como una pared. Las paredes siempre están."
+        },
+        {
+          "id": "ea2_q3",
+          "text": "A qué te dedicas?",
+          "response": "Hago una cosa. Repetida. Con las manos. Muchas veces. Es difícil explicar qué es. Pero lo hago. Y cuando termino, empiezo otra vez. Así funciona todo aquí. Repetición."
+        },
+        {
+          "id": "ea2_q4",
+          "text": "Has comido hoy?",
+          "response": "Me puse algo en la boca. Era de un color. Tenía una textura. Creo que era correcto. Los demás también lo hacen. Lo he observado. Observar y hacer son casi lo mismo. Casi."
+        },
+        {
+          "id": "ea2_q5",
+          "text": "Hay algo que te preocupe?",
+          "response": "Los espejos. Cuando te cruzas con uno y ves a alguien. Luego descubres que eres tú. Pero hay un momento antes de descubrirlo. Ese momento es malo. Porque no sabes quién está mirando."
+        },
+        {
+          "id": "ea2_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo en sitios cerrados. Habitaciones. Sótanos. Donde no se salga afuera. Afuera es demasiado grande. Demasiado abierto. No tiene bordes. Y las cosas sin bordes me ponen nervioso."
+        }
+      ]
+    },
+    {
+      "greeting": "Aquí estoy. Otra vez. Uno va a los sitios y vuelve. Eso hacen los clientes. Soy un cliente. Tengo dinero. Monedas con caras de gente que no conozco. Las doy y me dan cosas. Así funciona.",
+      "questions": [
+        {
+          "id": "ea3_q1",
+          "text": "Siempre vienes los mismos días?",
+          "response": "Los días tienen nombres. Lunes. Y otros. Vengo cuando el cuerpo camina hacia aquí. No decido yo. Las piernas saben el camino. Los pies conocen las grietas de la acera. Todo está automatizado."
+        },
+        {
+          "id": "ea3_q2",
+          "text": "Tienes amigos?",
+          "response": "He visto cómo funciona eso. Dos personas se miran y hacen sonidos agradables con la boca. Luego se tocan los brazos. He intentado hacerlo pero mi cara no coopera. Hace otras cosas. Cosas que asustan a la gente."
+        },
+        {
+          "id": "ea3_q3",
+          "text": "Notas algo raro últimamente en el barrio?",
+          "response": "Raro es relativo. Las farolas se encienden cuando oscurece. Los coches pasan. La gente camina. Menos por la noche. Por la noche caminan menos los que son de aquí. Los que no son de aquí caminan más."
+        },
+        {
+          "id": "ea3_q4",
+          "text": "Los que no son de aquí?",
+          "response": "He dicho eso? No quería decir eso. Quería decir los que. No. Los. Que caminan. De noche. Por la calle. Como todo el mundo. Todo el mundo camina. Eso es lo que hacemos. Lo que hacen."
+        },
+        {
+          "id": "ea3_q5",
+          "text": "Te gusta este cine?",
+          "response": "Tiene una temperatura. Y un olor. Palomitas, dicen. El olor me recuerda a otro sitio. Uno que no existe todavía. O que dejó de existir. No sé cuál de las dos cosas es más triste."
+        },
+        {
+          "id": "ea3_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo donde alguien busque. No importa qué. Solo que busque. Buscar es la parte interesante. Encontrar no. Encontrar es el final. Y los finales son... difíciles."
+        }
+      ]
+    },
+    {
+      "greeting": "He practicado sonreír. Antes de entrar. Con el cristal de la puerta. Creo que me ha salido bien. Mira. Se levanta la boca y se enseñan los dientes. No todos. Solo algunos. Es difícil saber cuántos.",
+      "questions": [
+        {
+          "id": "ea4_q1",
+          "text": "Por qué practicas sonreír?",
+          "response": "Porque los otros lo hacen sin pensar. Yo tengo que pensarlo primero. Boca arriba. Ojos un poco cerrados. Mejillas tensas. Es como una operación con muchas piezas. Y a veces las piezas no encajan."
+        },
+        {
+          "id": "ea4_q2",
+          "text": "Alguien te ha dicho que eres raro?",
+          "response": "Una señora me dijo que dejara de mirarla. Pero yo estaba aprendiendo. Cómo movía los brazos. Cómo sujetaba la bolsa. Con una mano. Siempre la misma. Cómo saben cuál mano usar? Hay un manual?"
+        },
+        {
+          "id": "ea4_q3",
+          "text": "Has ido al médico alguna vez?",
+          "response": "Médico. Es una persona que te toca y dice cosas. No he ido. Creo que si me tocan no encontrarán lo que esperan encontrar. O encontrarán algo que no esperan. Ninguna opción es buena."
+        },
+        {
+          "id": "ea4_q4",
+          "text": "Qué haces por las noches?",
+          "response": "Hay un periodo donde todo está oscuro y no me muevo. Supongo que es dormir. Pero no vienen imágenes. Solo presión. Como si algo empujara desde dentro. Hacia fuera. Pero no hay fuera."
+        },
+        {
+          "id": "ea4_q5",
+          "text": "Te da miedo algo?",
+          "response": "Los nombres. Cuando alguien me pregunta el mío y no lo tengo preparado. Hay un segundo de vacío donde debería haber una respuesta y no hay nada. Solo un hueco con forma de palabra."
+        },
+        {
+          "id": "ea4_q6",
+          "text": "Qué quieres ver?",
+          "response": "Una donde alguien finja ser algo que no es. Y nadie se dé cuenta. O se den cuenta demasiado tarde. Cuando ya no importa. Cuando ya es parte del paisaje. Eso es lo que me gusta."
+        }
+      ]
+    },
+    {
+      "greeting": "Vengo. Siempre vengo. Es lo que hago ahora. Soy el que viene al cine. Antes era otra cosa. No recuerdo qué. Algo sin forma. Ahora tengo forma. Más o menos.",
+      "questions": [
+        {
+          "id": "ea5_q1",
+          "text": "Qué eras antes?",
+          "response": "Antes de esto. No tenía bordes. O tenía demasiados. Ahora solo tengo estos. Una cara. Dos brazos. Las cosas que van dentro. Las de dentro son las más difíciles de mantener en su sitio."
+        },
+        {
+          "id": "ea5_q2",
+          "text": "Tienes familia?",
+          "response": "Familia es cuando varias personas comparten espacio y se parecen entre sí. Yo no me parezco a nadie. Pero el otro día vi a alguien que caminaba como yo. El mismo ritmo. La misma falta de ritmo. Eso me inquietó."
+        },
+        {
+          "id": "ea5_q3",
+          "text": "Hay otros como tú?",
+          "response": "No. Sí. No sé. A veces paso por una calle y noto que alguien me mira sin mover los ojos. Reconoce. No conoce. Reconoce. Es distinto. Conocer es para personas. Reconocer es para lo demás."
+        },
+        {
+          "id": "ea5_q4",
+          "text": "Notas cambios en el barrio?",
+          "response": "El barrio está más blando. Las esquinas menos definidas. Los colores tardan más en llegar por la mañana. Como si alguien estuviera pintando el mundo y cada día le costara un poco más terminarlo."
+        },
+        {
+          "id": "ea5_q5",
+          "text": "Sabes lo que eres?",
+          "response": "Sé lo que no soy. No soy lo que era. No soy lo que parezco. Soy lo que queda entre esas dos cosas. Un espacio. Pequeño. Pero ocupado. Como el hueco entre dos paredes que nadie ve."
+        },
+        {
+          "id": "ea5_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo donde el protagonista descubra que su mundo no es real. Pero se quede de todas formas. Porque no hay otro sitio. Porque quedarse es lo único que sabe hacer. Eso es muy... cercano."
+        }
+      ]
+    },
+    {
+      "greeting": "He venido antes de lo normal. No sé cuánto antes. El sol estaba en un sitio distinto. Los soles se mueven. Es alarmante si lo piensas. Pero la gente no lo piensa. Yo sí.",
+      "questions": [
+        {
+          "id": "ea6_q1",
+          "text": "Tienes prisa?",
+          "response": "Prisa no. Nunca. El tiempo no me afecta como a los demás. Para ellos avanza en línea recta. Para mí está. Simplemente. Como el suelo. No va a ningún sitio. Solo está debajo."
+        },
+        {
+          "id": "ea6_q2",
+          "text": "Has hablado con alguien hoy?",
+          "response": "He intentado saludar a una persona. Le dije hola. Me preguntó la hora. No la sabía. Se fue. Creo que fallé en algún paso del protocolo. El protocolo tiene muchos pasos."
+        },
+        {
+          "id": "ea6_q3",
+          "text": "Cómo te sientes hoy?",
+          "response": "Sentir es como temperatura pero por dentro. Hoy tengo una temperatura neutra. Ni alta ni baja. Solo presente. Como el zumbido de las luces del techo. Siempre ahí. Nunca importante."
+        },
+        {
+          "id": "ea6_q4",
+          "text": "Quieres contarme algo?",
+          "response": "Sí. Pero las palabras que uso son prestadas. De otros. De gente que las usó antes que yo. Yo las junto distinto. A veces mal. A veces las junto y no significan lo que deberían. Pero suenan bien. Creo."
+        },
+        {
+          "id": "ea6_q5",
+          "text": "Las manos te tiemblan.",
+          "response": "Hacen cosas que no les pido. Tamborilear. Rascar superficies. El otro día una abrió un grifo sola. Yo solo miraba. Las manos tienen opiniones propias. Es preocupante."
+        },
+        {
+          "id": "ea6_q6",
+          "text": "Qué quieres ver?",
+          "response": "Una película sin música. Solo los sonidos reales. Pasos. Puertas. Respiración. La música miente sobre lo que deberías sentir. Los sonidos reales no mienten. No saben cómo."
+        }
+      ]
+    },
+    {
+      "greeting": "Se queda de pie mirando el mostrador un rato largo. Luego dice: Madera. Es madera. La madera fue un árbol. Y antes de eso fue una semilla. Y antes de eso fue nada. Todo fue nada antes. Todo volverá a ser nada después.",
+      "questions": [
+        {
+          "id": "ea7_q1",
+          "text": "Estás bien hoy?",
+          "response": "Me encuentro. Sí. Cada mañana me busco y ahí estoy. En el mismo sitio. Con la misma forma. Aunque la forma pesa más cada día. Como si se llenara de algo. No sé de qué."
+        },
+        {
+          "id": "ea7_q2",
+          "text": "Has cambiado últimamente?",
+          "response": "Los bordes se difuminan. Las líneas que separan el dentro del fuera son más borrosas. Antes sabía dónde terminaba yo y empezaba el aire. Ahora no estoy seguro. A lo mejor no termino. A lo mejor no empiezo."
+        },
+        {
+          "id": "ea7_q3",
+          "text": "Alguien más nota estas cosas?",
+          "response": "Una vecina me dijo buenos días dos veces en la misma mañana. La segunda vez no me reconoció. O yo no era el mismo que la primera vez. No sé cuál de las dos opciones es más verdad."
+        },
+        {
+          "id": "ea7_q4",
+          "text": "Has pensado en dejar de venir?",
+          "response": "Sí. Lo pensé. Pero mis piernas caminaron hacia aquí. Y mi boca dijo hola. Y ya estoy dentro. Es un proceso que no controlo. Como la gravedad. Caes hacia donde caes."
+        },
+        {
+          "id": "ea7_q5",
+          "text": "Hay algo que quieras que sepa?",
+          "response": "El pasillo de la derecha huele diferente. Siempre ha olido diferente desde que vengo. Creo que soy yo. Las cosas que están mucho tiempo cerca de algo lo cambian. Sin querer. Sin permiso."
+        },
+        {
+          "id": "ea7_q6",
+          "text": "Qué quieres ver?",
+          "response": "Algo que asuste a los demás. Quiero ver sus caras cuando se asustan. Es el momento más honesto de una persona. Cuando el miedo borra todo lo que fingen ser. Debajo del miedo todos son iguales."
+        }
+      ]
+    },
+    {
+      "greeting": "Entra y mira la pared lateral. Ese póster ha cambiado. No. Yo he cambiado. El póster está igual. Es difícil saber quién se mueve y quién se queda quieto cuando todo es relativo.",
+      "questions": [
+        {
+          "id": "ea8_q1",
+          "text": "Me reconoces?",
+          "response": "Eres constante. Siempre aquí. Siempre con esa cara. La misma. Eso me ancla. Cuando todo lo demás se desliza, tú sigues en el mismo sitio. Como un clavo en una pared que se hunde."
+        },
+        {
+          "id": "ea8_q2",
+          "text": "Qué quieres decir con que todo se desliza?",
+          "response": "Que las cosas se mueven sin que nadie las empuje. Las calles cambian de largo. Las casas cambian de color. Los nombres de la gente suenan distinto los martes. Nadie más lo nota. Yo sí. Porque yo también me deslizo."
+        },
+        {
+          "id": "ea8_q3",
+          "text": "Hay otros como tú?",
+          "response": "Silencio largo. Sí. Pero no nos buscamos. Nos encontramos. En sitios así. Donde hay oscuridad controlada y gente que se queda quieta mirando algo. Cines. Iglesias. Salas de espera. Ascensores."
+        },
+        {
+          "id": "ea8_q4",
+          "text": "Os comunicáis entre vosotros?",
+          "response": "No con palabras. Las palabras son vuestras. Nosotros usamos otra cosa. Presión. Dirección. Ausencia. Es difícil traducir. Es como explicar un color a alguien que no ve. No hay palabras suficientes."
+        },
+        {
+          "id": "ea8_q5",
+          "text": "Qué sientes hacia este cine?",
+          "response": "Algo parecido a lo que ustedes llaman necesidad. No es amor. No es hambre. Es la sensación de que este sitio me contiene. Y sin contenedor, me derramaría. Y derramarse es peor que desaparecer."
+        },
+        {
+          "id": "ea8_q6",
+          "text": "Qué película hoy?",
+          "response": "La que quieras. Ya no me importa la historia. Vengo por la oscuridad de la sala. Y por la compañía. Aunque nadie sepa que estoy aquí de verdad. Aunque yo mismo no sepa si estoy de verdad."
+        }
+      ]
+    },
+    {
+      "greeting": "Está de pie. Muy quieto. Más quieto de lo que un cuerpo debería estar. Luego dice: He venido a estar aquí una vez más. No a despedirme. Despedirse es para los que terminan. Yo no termino. Me desplazo.",
+      "questions": [
+        {
+          "id": "ea9_q1",
+          "text": "Te vas?",
+          "response": "A otro sitio que no tiene nombre todavía. O tiene demasiados. No es lejos. Es al lado. Pero en una dirección que no se puede señalar con el dedo. Las direcciones que importan no aparecen en los mapas."
+        },
+        {
+          "id": "ea9_q2",
+          "text": "Volverás?",
+          "response": "Volver implica irse. Yo nunca me voy del todo. Una parte se queda en los sitios donde estuve. En el asiento de la sala. En el pasillo. En el olor. En el aire que respiré. Respirar. Qué costumbre más extraña."
+        },
+        {
+          "id": "ea9_q3",
+          "text": "Has aprendido algo aquí?",
+          "response": "Que las personas se sientan en la oscuridad a mirar historias de otras personas. Y lloran. Y ríen. Y no les importa que nada sea real. Es lo más cerca que he estado de entender. De entender qué, no sé."
+        },
+        {
+          "id": "ea9_q4",
+          "text": "Hay algo que quieras decirme?",
+          "response": "Que el pasillo huele diferente por mi culpa. Lo he cambiado sin querer. Las cosas que estamos mucho tiempo cerca de algo lo alteran. Lo siento. O no lo siento. No sé si tengo eso. Sentir."
+        },
+        {
+          "id": "ea9_q5",
+          "text": "Te echaré de menos. A tu manera.",
+          "response": "A mi manera. Sí. Mi manera es distinta. No es peor. No es mejor. Solo es distinta. Como las sombras no son peores que las cosas. Solo están en otro plano. Más abajo. Más quietas."
+        },
+        {
+          "id": "ea9_q6",
+          "text": "Última película?",
+          "response": "No. Pon la que sea. No voy a entrar a la sala. Voy a quedarme en el pasillo. Mirando la pared. Es donde mejor estoy. Siempre fue así. El pasillo. Mi pasillo. El único sitio que huele a mí."
+        }
+      ]
+    }
+  ]
+}

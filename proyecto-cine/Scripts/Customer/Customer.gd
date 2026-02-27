@@ -24,10 +24,22 @@ var look_at_camera_on_arrive: bool = false
 var bob_time: float = 0.0
 
 @onready var visual: Node3D = $Visual
+@onready var sprite: Sprite3D = $Visual/Sprite
 var visual_base_y: float = 0.0
 
 func _ready() -> void:
 	visual_base_y = visual.position.y
+
+## Asigna la ilustración PNG al sprite billboard.
+func set_illustration(path: String) -> void:
+	if sprite == null:
+		return
+	if path == "" or not ResourceLoader.exists(path):
+		push_warning("Customer: illustration no encontrada: " + path)
+		return
+	var tex := load(path) as Texture2D
+	if tex != null:
+		sprite.texture = tex
 
 func go_to(pos: Vector3, look_at_cam: bool) -> void:
 	target_position = pos
@@ -59,25 +71,14 @@ func _arrive() -> void:
 	velocity = Vector3.ZERO
 	_reset_bob()
 
-	# SOLO mostrador: pop + giro
+	# Pop al llegar al mostrador
 	if look_at_camera_on_arrive:
 		var pop := create_tween()
 		pop.tween_property(visual, "position:y", visual_base_y + pop_height, pop_up_time)\
 			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		pop.tween_property(visual, "position:y", visual_base_y, pop_down_time)\
 			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-
-		var cam := get_viewport().get_camera_3d()
-		if cam:
-			var dir := cam.global_position - global_position
-			dir.y = 0.0
-			if dir.length() > 0.001:
-				dir = dir.normalized()
-				# nariz = -Z
-				var target_yaw := atan2(-dir.x, -dir.z)
-				var turn := create_tween()
-				turn.tween_property(self, "rotation:y", target_yaw, turn_duration)\
-					.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		# Billboard se encarga de mirar a cámara, no hace falta rotar
 
 	emit_signal("arrived", self)
 
@@ -88,3 +89,13 @@ func _apply_bob(delta: float) -> void:
 func _reset_bob() -> void:
 	bob_time = 0.0
 	visual.position.y = visual_base_y
+
+## VFX placeholder: "plop" al recoger bandeja (escala rápida + fade).
+func play_plop() -> void:
+	if sprite == null:
+		return
+	var tw := create_tween()
+	tw.tween_property(sprite, "scale", sprite.scale * 1.15, 0.06)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tw.tween_property(sprite, "scale", sprite.scale, 0.08)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)

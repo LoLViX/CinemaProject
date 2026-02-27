@@ -25,6 +25,7 @@ var _colliders: Node3D = null
 
 var _food: Node3D = null        # HOTDOG o CHOCOLATE
 var _popcorn: Node3D = null     # POPCORN
+var _placed_drink_type: String = ""   # qué bebida fue puesta ("cola", "orange", "rootbeer")
 
 # toppings instanciados
 var _hotdog_ketchup: Node3D = null
@@ -243,7 +244,12 @@ func add_caramel() -> bool:
 # ------------------------------------------------------------
 # Clear
 # ------------------------------------------------------------
+## Registra qué tipo de bebida fue colocada (llamado desde DrinkStation).
+func set_drink_type(type: String) -> void:
+	_placed_drink_type = type
+
 func clear_drink() -> void:
+	_placed_drink_type = ""
 	if _items == null: return
 	for ch in _items.get_children():
 		if ch.name == "DRINK_DONE":
@@ -293,7 +299,8 @@ func get_state() -> Dictionary:
 				has_drink = true
 				break
 	return {
-		"drink":    has_drink,
+		"drink":      has_drink,
+		"drink_type": _placed_drink_type,   # "" si no hay bebida, "cola"/"orange"/"rootbeer"
 		"food":     _food.name.to_lower() if _food != null and is_instance_valid(_food) else "",
 		"popcorn":  _popcorn != null and is_instance_valid(_popcorn),
 		"ketchup":  _hotdog_ketchup != null and is_instance_valid(_hotdog_ketchup),
@@ -311,3 +318,4 @@ func clear_items() -> void:
 	clear_drink()
 	_clear_hotdog_toppings()
 	_clear_popcorn_toppings()
+	_placed_drink_type = ""

@@ -34,12 +34,31 @@ var _queue_panel: Panel = null
 var _queue_label: Label = null
 var _queue_dots: Label = null
 
+var _sat_panel: Panel = null
+var _sat_bar: ProgressBar = null
+var _sat_label: Label = null
+
+# ── Barra de paciencia (bottom-left) ────────────────────────
+var _patience_bar_panel: Panel       = null
+var _patience_bar:       ProgressBar = null
+var _patience_pct_label: Label       = null
+
+# ── Sala Especial indicator (bottom-right) ───────────────────
+var _special_room_panel: Panel = null
+var _special_room_label: Label = null
+var _special_room_dots:  Label = null
+
+var _popup_count: int = 0   # para apilar popups de dinero
+
 func _ready() -> void:
 	_build_prompt()
 	_build_bubble()
 	_build_debug()
 	_build_attend()
 	_build_queue_bar()
+	_build_satisfaction_bar()
+	_build_patience_bar()
+	_build_special_room()
 	# Ocultar todo explícitamente al arrancar (sin guards)
 	_force_hide_all()
 
@@ -53,6 +72,12 @@ func _force_hide_all() -> void:
 		_attend_panel.visible = false
 	if _queue_panel:
 		_queue_panel.visible = false
+	if _sat_panel:
+		_sat_panel.visible = false
+	if _patience_bar_panel:
+		_patience_bar_panel.visible = false
+	if _special_room_panel:
+		_special_room_panel.visible = false
 	_prompt_visible = false
 	_attend_open    = false
 
@@ -255,12 +280,14 @@ func show_attend(request_line: String, movies: Array, tags_by_movie: Dictionary)
 		var card_w   := 200.0
 		var poster_h := 280.0
 
-		for m in movies:
+		for i in range(movies.size()):
+			var m: Dictionary = movies[i] as Dictionary
 			var mid         := String(m.get("id", ""))
 			var tkey        := String(m.get("title_key", ""))
 			var poster      := String(m.get("poster", ""))
 			var player_tags: Array = tags_by_movie.get(mid, [])
-			var card := _make_movie_card(mid, tkey, poster, player_tags, card_w, poster_h)
+			var is_sr: bool = (i == movies.size() - 1)   # última siempre es Sala Especial
+			var card := _make_movie_card(mid, tkey, poster, player_tags, card_w, poster_h, is_sr)
 			hbox.add_child(card)
 
 	hide_prompt()
@@ -268,7 +295,8 @@ func show_attend(request_line: String, movies: Array, tags_by_movie: Dictionary)
 	_attend_panel.visible = true
 
 func _make_movie_card(mid: String, title_key: String, poster_path: String,
-		player_tags: Array, card_w: float, poster_h: float) -> PanelContainer:
+		player_tags: Array, card_w: float, poster_h: float,
+		is_special_room: bool = false) -> PanelContainer:
 
 	var card := PanelContainer.new()
 	card.custom_minimum_size = Vector2(card_w, 0)
@@ -301,16 +329,35 @@ func _make_movie_card(mid: String, title_key: String, poster_path: String,
 	title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	vbox.add_child(title_lbl)
 
-	# Géneros etiquetados por el jugador
+	# Géneros etiquetados por el jugador (nombre localizado vía TagDB)
 	var font_size_tags := int(clampf(card_w * 0.058, 9.0, 13.0))
 	var tags_lbl := Label.new()
-	tags_lbl.text = ", ".join(player_tags) if player_tags.size() > 0 else "(sin etiquetar)"
+	var localized_tags: Array[String] = []
+	for t in player_tags:
+		localized_tags.append(TagDB.label(String(t)))
+	tags_lbl.text = ", ".join(localized_tags) if localized_tags.size() > 0 else "(sin etiquetar)"
 	tags_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tags_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tags_lbl.add_theme_font_size_override("font_size", font_size_tags)
 	tags_lbl.add_theme_color_override("font_color", C_GOLD)
 	tags_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	vbox.add_child(tags_lbl)
+
+	# Badge Sala Especial (solo en la última tarjeta)
+	if is_special_room:
+		var badge := Label.new()
+		badge.text = "★  SALA ESPECIAL"
+		badge.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		badge.add_theme_font_size_override("font_size", 12)
+		badge.add_theme_color_override("font_color", C_GOLD)
+		badge.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var badge_sb := StyleBoxFlat.new()
+		badge_sb.bg_color = Color(0.40, 0.30, 0.00, 0.60)
+		badge_sb.corner_radius_top_left = 4; badge_sb.corner_radius_top_right = 4
+		badge_sb.corner_radius_bottom_left = 4; badge_sb.corner_radius_bottom_right = 4
+		badge_sb.content_margin_top = 4; badge_sb.content_margin_bottom = 4
+		badge.add_theme_stylebox_override("normal", badge_sb)
+		vbox.add_child(badge)
 
 	# Botón elegir
 	var btn := Button.new()
@@ -348,15 +395,16 @@ func _build_debug() -> void:
 	_debug_label = Label.new()
 	add_child(_debug_label)
 	_debug_label.name = "DebugLabel"
-	_debug_label.anchor_left   = 1.0
-	_debug_label.anchor_right  = 1.0
-	_debug_label.anchor_top    = 0.0
-	_debug_label.anchor_bottom = 0.0
-	_debug_label.offset_left   = -380
-	_debug_label.offset_top    =   18
-	_debug_label.offset_right  =  -18
-	_debug_label.offset_bottom =   70
-	_debug_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	# Debug: centro-inferior, por encima de los paneles del fondo
+	_debug_label.anchor_left   = 0.5
+	_debug_label.anchor_right  = 0.5
+	_debug_label.anchor_top    = 1.0
+	_debug_label.anchor_bottom = 1.0
+	_debug_label.offset_left   = -300
+	_debug_label.offset_right  =  300
+	_debug_label.offset_top    = -165
+	_debug_label.offset_bottom = -140
+	_debug_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_debug_label.vertical_alignment   = VERTICAL_ALIGNMENT_TOP
 	_debug_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_debug_label.modulate = Color(1, 1, 0, 1)
@@ -499,28 +547,238 @@ func update_queue(done: int, total: int) -> void:
 # ──────────────────────────────────────────────────────────────
 
 ## Muestra un texto flotante animado de dinero ("+$50") que sube y desaparece.
+## Hasta 4 popups apilados verticalmente sin solaparse.
 func show_money_popup(text: String) -> void:
+	var row := _popup_count % 4
+	_popup_count += 1
+
+	var y_base := -20 - row * 30   # apila hacia arriba
 	var lbl := Label.new()
 	lbl.text = text
-	lbl.add_theme_font_size_override("font_size", 22)
+	lbl.add_theme_font_size_override("font_size", 18)
 	lbl.add_theme_color_override("font_color", C_GOLD)
-	# Posición: centro-abajo de la pantalla
-	lbl.anchor_left   = 0.5
-	lbl.anchor_right  = 0.5
+	# Posición: lado derecho, medio-abajo (no tapa barra paciencia ni diálogo)
+	lbl.anchor_left   = 1.0
+	lbl.anchor_right  = 1.0
 	lbl.anchor_top    = 0.75
 	lbl.anchor_bottom = 0.75
-	lbl.offset_left   = -80
-	lbl.offset_right  =  80
-	lbl.offset_top    = -20
-	lbl.offset_bottom =  20
-	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.offset_left   = -160
+	lbl.offset_right  =  -8
+	lbl.offset_top    = y_base
+	lbl.offset_bottom = y_base + 26
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	add_child(lbl)
 
 	var tw := lbl.create_tween()
 	tw.set_parallel(true)
-	tw.tween_property(lbl, "offset_top",    lbl.offset_top    - 70, 1.4)
-	tw.tween_property(lbl, "offset_bottom", lbl.offset_bottom - 70, 1.4)
+	tw.tween_property(lbl, "offset_top",    y_base - 55, 1.4)
+	tw.tween_property(lbl, "offset_bottom", y_base + 26 - 55, 1.4)
 	tw.tween_property(lbl, "modulate:a", 0.0, 1.4).set_delay(0.5)
 	tw.tween_callback(lbl.queue_free).set_delay(1.4)
+
+# ──────────────────────────────────────────────────────────────
+# BARRA DE SATISFACCIÓN DIARIA  (esquina superior derecha)
+# ──────────────────────────────────────────────────────────────
+func _build_satisfaction_bar() -> void:
+	_sat_panel = Panel.new()
+	_sat_panel.visible = false
+	_sat_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
+	add_child(_sat_panel)
+	_sat_panel.name = "SatPanel"
+	_sat_panel.anchor_left   = 1.0
+	_sat_panel.anchor_right  = 1.0
+	_sat_panel.anchor_top    = 0.0
+	_sat_panel.anchor_bottom = 0.0
+	_sat_panel.offset_left   = -270
+	_sat_panel.offset_right  =  -18
+	_sat_panel.offset_top    =   18
+	_sat_panel.offset_bottom =   80
+
+	var vbox := VBoxContainer.new()
+	vbox.anchor_left   = 0.0; vbox.anchor_right  = 1.0
+	vbox.anchor_top    = 0.0; vbox.anchor_bottom = 1.0
+	vbox.offset_left   =  10; vbox.offset_right  = -10
+	vbox.offset_top    =   6; vbox.offset_bottom =  -6
+	vbox.add_theme_constant_override("separation", 4)
+	_sat_panel.add_child(vbox)
+
+	_sat_label = Label.new()
+	_sat_label.text = "SATISFACCIÓN — 0 / 0"
+	_sat_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_sat_label.add_theme_font_size_override("font_size", 11)
+	_sat_label.add_theme_color_override("font_color", C_GOLD)
+	vbox.add_child(_sat_label)
+
+	_sat_bar = ProgressBar.new()
+	_sat_bar.min_value = 0
+	_sat_bar.max_value = 100
+	_sat_bar.value = 0
+	_sat_bar.show_percentage = false
+	_sat_bar.custom_minimum_size = Vector2(0, 12)
+	_sat_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var bg := StyleBoxFlat.new()
+	bg.bg_color = Color(0.15, 0.06, 0.06)
+	bg.corner_radius_top_left = 3; bg.corner_radius_top_right = 3
+	bg.corner_radius_bottom_left = 3; bg.corner_radius_bottom_right = 3
+	_sat_bar.add_theme_stylebox_override("background", bg)
+	var fill := StyleBoxFlat.new()
+	fill.bg_color = Color(0.25, 0.70, 0.35)  # verde satisfacción
+	fill.corner_radius_top_left = 3; fill.corner_radius_top_right = 3
+	fill.corner_radius_bottom_left = 3; fill.corner_radius_bottom_right = 3
+	_sat_bar.add_theme_stylebox_override("fill", fill)
+	vbox.add_child(_sat_bar)
+
+## Actualiza la barra de satisfacción diaria. Muestra el panel si max_sat > 0.
+func update_satisfaction(current: int, max_sat: int) -> void:
+	if _sat_panel == null or not is_instance_valid(_sat_panel):
+		_build_satisfaction_bar()
+	if max_sat <= 0:
+		_sat_panel.visible = false
+		return
+	_sat_panel.visible = true
+	_sat_bar.max_value = max_sat
+	_sat_bar.value = current
+	var pct := int(100.0 * current / max_sat)
+	_sat_label.text = "SATISFACCIÓN — %d%% (%d/%d)" % [pct, current, max_sat]
+
+# ──────────────────────────────────────────────────────────────
+# BARRA DE PACIENCIA  (franja delgada en el borde superior)
+# ──────────────────────────────────────────────────────────────
+func _build_patience_bar() -> void:
+	_patience_bar_panel = Panel.new()
+	_patience_bar_panel.name = "PatienceBarPanel"
+	_patience_bar_panel.visible = false
+	_patience_bar_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
+	add_child(_patience_bar_panel)
+	# Posición: esquina superior izquierda (no tapa el diálogo)
+	_patience_bar_panel.anchor_left   = 0.0
+	_patience_bar_panel.anchor_right  = 0.0
+	_patience_bar_panel.anchor_top    = 0.0
+	_patience_bar_panel.anchor_bottom = 0.0
+	_patience_bar_panel.offset_left   =  18
+	_patience_bar_panel.offset_right  = 210
+	_patience_bar_panel.offset_top    =  18
+	_patience_bar_panel.offset_bottom =  66
+
+	var vbox := VBoxContainer.new()
+	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vbox.add_theme_constant_override("separation", 3)
+	_patience_bar_panel.add_child(vbox)
+
+	var hbox := HBoxContainer.new()
+	hbox.add_theme_constant_override("separation", 6)
+	vbox.add_child(hbox)
+
+	var lbl_title := Label.new()
+	lbl_title.text = "Paciencia"
+	lbl_title.add_theme_font_size_override("font_size", 11)
+	lbl_title.add_theme_color_override("font_color", C_GOLD)
+	lbl_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hbox.add_child(lbl_title)
+
+	_patience_pct_label = Label.new()
+	_patience_pct_label.text = "100%"
+	_patience_pct_label.add_theme_font_size_override("font_size", 11)
+	_patience_pct_label.add_theme_color_override("font_color", C_CREAM)
+	_patience_pct_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	hbox.add_child(_patience_pct_label)
+
+	_patience_bar = ProgressBar.new()
+	_patience_bar.min_value = 0
+	_patience_bar.max_value = 100
+	_patience_bar.value = 100
+	_patience_bar.show_percentage = false
+	_patience_bar.custom_minimum_size = Vector2(0, 8)
+	_patience_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	vbox.add_child(_patience_bar)
+
+	var bar_bg := StyleBoxFlat.new()
+	bar_bg.bg_color = Color(0.08, 0.03, 0.03, 0.85)
+	_patience_bar.add_theme_stylebox_override("background", bar_bg)
+
+	var bar_fill := StyleBoxFlat.new()
+	bar_fill.bg_color = Color(0.25, 0.80, 0.35)
+	_patience_bar.add_theme_stylebox_override("fill", bar_fill)
+
+## Actualiza la barra de paciencia. fraction: 0.0–1.0.
+func set_patience_bar(show_it: bool, fraction: float, is_critical: bool = false) -> void:
+	if _patience_bar_panel == null or not is_instance_valid(_patience_bar_panel):
+		_build_patience_bar()
+	if not show_it:
+		_patience_bar_panel.visible = false
+		return
+	_patience_bar.value = fraction * 100.0
+	if _patience_pct_label != null:
+		if is_critical:
+			_patience_pct_label.text = "!!"
+		else:
+			_patience_pct_label.text = "%d%%" % int(fraction * 100.0)
+	# Color: verde → ámbar → rojo / fase crítica = rojo pulsante
+	var bar_fill := StyleBoxFlat.new()
+	if is_critical:
+		var pulse := 0.5 + 0.5 * sin(Time.get_ticks_msec() * 0.008)
+		bar_fill.bg_color = Color(0.90, 0.05, 0.05).lerp(Color(1.0, 0.30, 0.10), pulse)
+	elif fraction > 0.5:
+		bar_fill.bg_color = Color(0.25, 0.80, 0.35)   # verde
+	elif fraction > 0.25:
+		bar_fill.bg_color = Color(0.90, 0.60, 0.10)   # ámbar
+	else:
+		bar_fill.bg_color = Color(0.85, 0.12, 0.12)   # rojo
+	_patience_bar.add_theme_stylebox_override("fill", bar_fill)
+	_patience_bar_panel.visible = true
+
+# ──────────────────────────────────────────────────────────────
+# INDICADOR SALA ESPECIAL  (esquina inferior derecha)
+# ──────────────────────────────────────────────────────────────
+func _build_special_room() -> void:
+	_special_room_panel = Panel.new()
+	_special_room_panel.name = "SpecialRoomPanel"
+	_special_room_panel.visible = false
+	_special_room_panel.add_theme_stylebox_override("panel", UITheme.cinema_panel_style())
+	add_child(_special_room_panel)
+	_special_room_panel.anchor_left   = 1.0
+	_special_room_panel.anchor_right  = 1.0
+	_special_room_panel.anchor_top    = 1.0
+	_special_room_panel.anchor_bottom = 1.0
+	_special_room_panel.offset_left   = -210
+	_special_room_panel.offset_right  =  -18
+	_special_room_panel.offset_top    =  -80
+	_special_room_panel.offset_bottom =  -18
+
+	var vbox := VBoxContainer.new()
+	vbox.anchor_left   = 0.0; vbox.anchor_right  = 1.0
+	vbox.anchor_top    = 0.0; vbox.anchor_bottom = 1.0
+	vbox.offset_left   =  10; vbox.offset_right  = -10
+	vbox.offset_top    =   6; vbox.offset_bottom =  -6
+	vbox.add_theme_constant_override("separation", 4)
+	_special_room_panel.add_child(vbox)
+
+	_special_room_label = Label.new()
+	_special_room_label.text = "Sala especial,\nasientos libres"
+	_special_room_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_special_room_label.add_theme_font_size_override("font_size", 10)
+	_special_room_label.add_theme_color_override("font_color", C_GOLD)
+	vbox.add_child(_special_room_label)
+
+	_special_room_dots = Label.new()
+	_special_room_dots.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_special_room_dots.add_theme_font_size_override("font_size", 22)
+	_special_room_dots.add_theme_color_override("font_color", C_CREAM)
+	_special_room_dots.text = "5"
+	vbox.add_child(_special_room_dots)
+
+## Actualiza el indicador de la Sala Especial.
+## capacity = huecos totales hoy, used = neutralizaciones ya hechas.
+func update_special_room(capacity: int, used: int) -> void:
+	if _special_room_panel == null or not is_instance_valid(_special_room_panel):
+		_build_special_room()
+	_special_room_panel.visible = true
+	var free_slots := capacity - used
+	_special_room_dots.text = str(free_slots)
+
+## Oculta el indicador de Sala Especial (durante fase comida o cartelera).
+func hide_special_room() -> void:
+	if _special_room_panel != null and is_instance_valid(_special_room_panel):
+		_special_room_panel.visible = false
 
 # Estilos: ver UITheme.gd

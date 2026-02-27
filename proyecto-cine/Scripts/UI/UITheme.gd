@@ -13,6 +13,7 @@ const C_GOLD_DIM := Color(0.95, 0.76, 0.15, 0.45)  # dorado suave (separadores)
 const C_RED      := Color(0.70, 0.06, 0.06)         # rojo telón
 const C_CREAM    := Color(0.97, 0.93, 0.80)         # crema cálida (texto principal)
 const C_CREAM_D  := Color(0.80, 0.75, 0.60)         # crema atenuada (texto secundario)
+const C_GREEN    := Color(0.25, 0.90, 0.35)         # verde positivo (vendido, ok)
 
 # ── Estilos ──────────────────────────────────────────────────
 

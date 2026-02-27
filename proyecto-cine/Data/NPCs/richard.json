@@ -1,0 +1,379 @@
+{
+  "id": "richard",
+  "name": "Richard Blake",
+  "illustration": "res://Assets/Customers/hombre_empresario_creido.png",
+  "patience": 4,
+  "tip": 5,
+  "_info": {
+    "description": "Empresario e inversor inmobiliario. El hombre más rico del pueblo. Arrogante y condescendiente en apariencia, pero profundamente solo. El cine es el único sitio donde no tiene que aparentar.",
+    "occupation": "Empresario inmobiliario",
+    "age": 48,
+    "traits": ["arrogante", "solitario", "inteligente", "vulnerable"]
+  },
+  "preferences": {
+    "must": ["drama", "crime"],
+    "must_not": ["comedy", "adventure"]
+  },
+  "food_order": {
+    "drink": false,
+    "drink_type": "",
+    "food": "chocolate",
+    "popcorn": false,
+    "butter": false,
+    "caramel": false,
+    "ketchup": false,
+    "mustard": false
+  },
+  "encounters": [
+    {
+      "greeting": "Buenas tardes. Richard Blake. Supongo que sabe quién soy. Tengo media hora antes de una llamada y alguien me ha dicho que este sitio tiene cierto... encanto. Veamos si es verdad.",
+      "questions": [
+        {
+          "id": "ri1_q1",
+          "text": "¿Es usted el Richard Blake de Blake Investments?",
+          "response": "El mismo. Inmobiliaria, desarrollo urbanístico, algo de comercio. Llevo treinta años haciendo negocios en este pueblo y en los de alrededor. Cuando ve una casa nueva, probablemente la he construido yo. O al menos he firmado el cheque."
+        },
+        {
+          "id": "ri1_q2",
+          "text": "¿Viene mucho al cine?",
+          "response": "No. No tengo tiempo para esto normalmente. Mi agenda está llena de reuniones, cenas de negocios y llamadas. Pero hoy se me ha cancelado una cita y no tenía ganas de volver a la oficina. Así que aquí estoy."
+        },
+        {
+          "id": "ri1_q3",
+          "text": "¿Vive en el pueblo?",
+          "response": "En la colina. La casa grande con la verja blanca. Sí, esa. Seis dormitorios, piscina, garaje para tres coches. Antes era para toda la familia. Ahora es solo para mí. Pero eso no viene al caso."
+        },
+        {
+          "id": "ri1_q4",
+          "text": "¿Solo para usted?",
+          "response": "Mi mujer se fue hace dos años. A la ciudad. Dice que necesitaba espacio. Irónico, considerando que la casa tiene trescientos metros cuadrados. Pero supongo que se refería a otro tipo de espacio."
+        },
+        {
+          "id": "ri1_q5",
+          "text": "¿Tiene hijos?",
+          "response": "Dos. Amanda, veintitrés, vive en Nueva York. Trabaja en publicidad. Michael, veinte, está en la universidad. Los veo en Navidad. A veces. Cuando sus agendas coinciden con la mía, que es casi nunca."
+        },
+        {
+          "id": "ri1_q6",
+          "text": "¿Qué tipo de películas le interesan?",
+          "response": "Drama. Cine serio. Historias de poder, de decisiones difíciles. También me gustan las de crimen bien hechas. Nada de comedias infantiles ni aventuritas. Quiero algo con sustancia. ¿Puede ofrecerme eso?"
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. He vuelto. No me pregunte por qué. La película de la otra vez fue aceptable. Y el chocolate era decente. Eso ya es más de lo que puedo decir de la mayoría de sitios de este pueblo.",
+      "questions": [
+        {
+          "id": "ri2_q1",
+          "text": "Me alegra que haya vuelto.",
+          "response": "No se emocione. He vuelto porque es conveniente. Mi oficina está a cinco minutos y la alternativa era volver a una casa vacía a las seis de la tarde. Esto es logística, no sentimiento."
+        },
+        {
+          "id": "ri2_q2",
+          "text": "¿Cómo le ha ido la semana?",
+          "response": "Productiva. He cerrado dos operaciones. Un terreno junto a la autopista y un edificio de oficinas en la ciudad. Números buenos, márgenes aceptables. Eso es lo que importa."
+        },
+        {
+          "id": "ri2_q3",
+          "text": "¿Siempre habla de negocios?",
+          "response": "¿De qué más voy a hablar? ¿Del tiempo? ¿De deportes? Los negocios son lo que sé. Lo que hago. Lo que me define. Si le quitas eso a Richard Blake, ¿qué queda? Prefiero no averiguarlo."
+        },
+        {
+          "id": "ri2_q4",
+          "text": "¿No tiene aficiones?",
+          "response": "Jugaba al golf. Dejé de jugar cuando me di cuenta de que solo iba para cerrar tratos, no porque me gustara. Leía, antes. Ahora leo informes. ¿Cuenta eso? Probablemente no."
+        },
+        {
+          "id": "ri2_q5",
+          "text": "¿Cena solo?",
+          "response": "La mayoría de noches, sí. Tengo una señora que cocina y deja los platos preparados. Yo llego, caliento, como y reviso emails. A las diez me acuesto. A las seis me levanto. Es una rutina eficiente."
+        },
+        {
+          "id": "ri2_q6",
+          "text": "¿Qué le apetece ver hoy?",
+          "response": "Drama. Algo con personajes complejos. Gente que toma decisiones difíciles y vive con las consecuencias. Eso es lo que me interesa. La realidad filtrada por una buena historia."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. Hoy es el aniversario de mi boda. Bueno, lo era. Veinte años. Se supone que íbamos a cenar en el restaurante francés. En fin. Póngame una película y un chocolate.",
+      "questions": [
+        {
+          "id": "ri3_q1",
+          "text": "Lo siento, señor Blake.",
+          "response": "No lo sienta. Los matrimonios fracasan. Las estadísticas son claras. El cincuenta por ciento acaba en divorcio. Yo simplemente estoy en la mitad equivocada. O en la correcta, según se mire."
+        },
+        {
+          "id": "ri3_q2",
+          "text": "¿La echa de menos?",
+          "response": "Echo de menos... la rutina. Saber que había alguien al otro lado de la mesa. No el amor, eso se fue hace años. Pero la compañía. El ruido de otra persona en la casa. Ahora el silencio es ensordecedor."
+        },
+        {
+          "id": "ri3_q3",
+          "text": "¿Por qué se fue?",
+          "response": "Porque yo no estaba nunca. Y cuando estaba, no estaba de verdad. Siempre pensando en el siguiente proyecto, la siguiente inversión. Ella decía que vivía con un fantasma que firmaba cheques. Tenía razón. Pero eso no lo supe entonces."
+        },
+        {
+          "id": "ri3_q4",
+          "text": "¿Ha intentado hablar con ella?",
+          "response": "¿Para qué? ¿Para decirle que la casa está vacía y que los domingos son interminables? Eso no cambia nada. Los errores no se deshacen con palabras. Se deshacen con tiempo. Y el tiempo ya ha pasado."
+        },
+        {
+          "id": "ri3_q5",
+          "text": "¿Sus hijos saben que hoy es el aniversario?",
+          "response": "Amanda me ha mandado un mensaje. Breve. Michael no ha dicho nada. Probablemente no se acuerda. O no quiere acordarse. Los hijos eligen bando en un divorcio aunque nadie se lo pida."
+        },
+        {
+          "id": "ri3_q6",
+          "text": "¿Qué quiere ver esta noche?",
+          "response": "Algo de crimen. Oscuro. Donde la gente cometa errores y pague por ellos. Hoy no quiero finales felices. Quiero honestidad."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. Antes de que diga nada: sé que soy un cliente difícil. Tengo poca paciencia y mucha exigencia. Pero sigo viniendo, y eso debería decirle algo.",
+      "questions": [
+        {
+          "id": "ri4_q1",
+          "text": "Dice bastante, sí.",
+          "response": "No se pase de listo. Lo que quiero decir es que este sitio tiene algo. No sé qué. No es la decoración, que es modesta. Ni la comida, que es básica. Es... no sé. La tranquilidad. Aquí nadie me pide nada."
+        },
+        {
+          "id": "ri4_q2",
+          "text": "¿La gente le pide mucho?",
+          "response": "Todo el mundo quiere algo de Richard Blake. Dinero, favores, inversiones, donaciones. El alcalde, los vecinos, el club de fútbol. Soy un cajero automático con traje. A veces me pregunto si alguien me invitaría a cenar si no tuviera dinero."
+        },
+        {
+          "id": "ri4_q3",
+          "text": "¿Tiene amigos de verdad?",
+          "response": "Tenía. Cuando era joven y no tenía nada. Ahora tengo socios, contactos, conocidos. Gente que me saluda en la calle porque sabe quién soy. Pero si mañana me arruinara, ¿cuántos me llamarían? Pocos. Quizá ninguno."
+        },
+        {
+          "id": "ri4_q4",
+          "text": "¿Eso no le entristece?",
+          "response": "La tristeza es un lujo que no me puedo permitir. Tengo una empresa que gestionar. Si me paro a sentir, las cosas se caen. Así funciona esto. Producir o morir. Es el sistema que yo mismo he construido."
+        },
+        {
+          "id": "ri4_q5",
+          "text": "¿Nunca se permite parar?",
+          "response": "Aquí. Solo aquí. Dos horas en una butaca, con un chocolate y una película. Es lo más cerca que estoy de parar. No se lo diga a nadie. Tengo una reputación que mantener."
+        },
+        {
+          "id": "ri4_q6",
+          "text": "¿Qué le pongo hoy?",
+          "response": "Drama con buenos actores. Una historia donde alguien tenga que elegir entre lo que quiere y lo que debe. Ese es mi género. Supongo que porque lo vivo a diario."
+        }
+      ]
+    },
+    {
+      "greeting": "Michael me ha llamado. Mi hijo. Quiere dejar la universidad. Dice que no le interesa el derecho. Que quiere ser fotógrafo. Fotógrafo. He pagado cien mil dólares de matrícula para que mi hijo saque fotos.",
+      "questions": [
+        {
+          "id": "ri5_q1",
+          "text": "¿Cómo ha reaccionado?",
+          "response": "Mal. Le he dicho que era una irresponsabilidad. Que la fotografía no es una carrera. Que ya se arrepentiría. Todas las cosas que un padre no debería decir. Pero las he dicho. Porque soy yo."
+        },
+        {
+          "id": "ri5_q2",
+          "text": "¿Cómo ha respondido él?",
+          "response": "Ha colgado. Así, sin más. Clic. Hace dos días que no me coge el teléfono. Amanda dice que le deje espacio. Todo el mundo dice que deje espacio. ¿Qué espacio? Si ya hay un océano entre nosotros."
+        },
+        {
+          "id": "ri5_q3",
+          "text": "¿Le molesta que deje los estudios o lo que quiere hacer?",
+          "response": "Las dos cosas. No. Solo la primera. Bueno... no lo sé. Quizá me molesta que no quiera ser como yo. Que no valore lo que he construido. Que mire todo esto y diga: no, gracias. Eso duele."
+        },
+        {
+          "id": "ri5_q4",
+          "text": "¿Usted eligió libremente su camino?",
+          "response": "Mi padre era contable. Murió con sesenta años sin un centavo. Yo juré que no iba a acabar así. ¿Libre? No. Fue miedo. Todo lo que he construido es por miedo a ser pobre. Eso no es libertad. Es una jaula de oro."
+        },
+        {
+          "id": "ri5_q5",
+          "text": "¿Quizá Michael quiere algo diferente a una jaula?",
+          "response": "Quizá. Quizá es más listo que yo. O más valiente. O más estúpido. No lo sé. Lo que sé es que es mi hijo y no quiero perderlo. Pero no sé cómo decírselo sin que suene a condición."
+        },
+        {
+          "id": "ri5_q6",
+          "text": "¿Qué quiere ver?",
+          "response": "Un buen drama. Algo donde un padre se equivoque y tenga que arreglarlo. Si existe esa película, la necesito. Con urgencia."
+        }
+      ]
+    },
+    {
+      "greeting": "He llamado a Michael. Le he pedido disculpas. No me ha resultado fácil. De hecho, ha sido lo más difícil que he hecho en mi vida. Y he hecho cosas difíciles. Pero decirle a tu hijo que te has equivocado...",
+      "questions": [
+        {
+          "id": "ri6_q1",
+          "text": "¿Cómo ha ido?",
+          "response": "Ha habido un silencio largo. Luego me ha dicho: gracias, papá. Solo eso. Gracias, papá. Y yo me he quedado mirando la pared como un idiota con los ojos húmedos. Yo. Richard Blake. Con los ojos húmedos."
+        },
+        {
+          "id": "ri6_q2",
+          "text": "Eso es muy valiente.",
+          "response": "No use esa palabra conmigo. Valiente es un soldado. Yo solo he hecho lo que debería haber hecho hace años. Escuchar. Es curioso que un hombre que negocia millones no sepa escuchar a su propio hijo."
+        },
+        {
+          "id": "ri6_q3",
+          "text": "¿Va a apoyarle con la fotografía?",
+          "response": "Le he dicho que termine el semestre y luego hablamos. No es un sí, pero tampoco es un no. Es un tal vez. Para mí, eso es un progreso enorme. Mi padre nunca dijo tal vez. Solo sí o no."
+        },
+        {
+          "id": "ri6_q4",
+          "text": "¿Amanda está contenta?",
+          "response": "Me ha mandado un mensaje que decía: era hora, papá. Tiene razón. Esa chica siempre tiene razón. Ha salido a su madre en eso. Y en todo lo bueno, la verdad. Lo malo lo han heredado de mí."
+        },
+        {
+          "id": "ri6_q5",
+          "text": "No sea tan duro consigo mismo.",
+          "response": "No sé ser de otra forma. Es mi configuración por defecto. Exigente con los demás, despiadado conmigo. Mi terapeuta dice que... sí, tengo terapeuta. Sorpresa. Dice que tengo que aprender a perdonarme. Fácil decirlo."
+        },
+        {
+          "id": "ri6_q6",
+          "text": "¿Qué le apetece hoy?",
+          "response": "Drama. Pero hoy me gustaría que tuviera algo de esperanza. No mucha. No soy un optimista. Pero un poco. Solo un poco."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. He recibido un sobre de Michael. Con fotos. Las ha hecho él. Paisajes, retratos, calles. Son... buenas. Objetivamente buenas. No lo digo porque sea mi hijo. Lo digo porque sé reconocer calidad.",
+      "questions": [
+        {
+          "id": "ri7_q1",
+          "text": "¿Le ha sorprendido?",
+          "response": "Mucho. Hay una foto de un viejo en un banco de un parque. La luz, la composición... se ve soledad sin que nadie lo diga. Me he quedado mirándola diez minutos. No sabía que Michael viera el mundo así."
+        },
+        {
+          "id": "ri7_q2",
+          "text": "¿Se lo ha dicho a él?",
+          "response": "Le he llamado y le he dicho que las fotos eran excelentes. Ha habido otro silencio. Y luego ha dicho: ¿de verdad lo piensas, papá? De verdad. Eso le he dicho. De verdad."
+        },
+        {
+          "id": "ri7_q3",
+          "text": "¿Cómo va la relación con Amanda?",
+          "response": "Mejor. Viene a cenar el próximo fin de semana. Sola. Quiere hablar de algo, dice. No sé de qué. Espero que no sea dinero. Aunque si es dinero, se lo doy. Ya no me importa para qué. Solo quiero verla."
+        },
+        {
+          "id": "ri7_q4",
+          "text": "Ha cambiado usted, señor Blake.",
+          "response": "No me llame señor Blake. Richard. Llámeme Richard. El señor Blake es el que firma contratos y asiste a galas benéficas. Richard es el que viene aquí, come chocolate y mira películas. Prefiero ser Richard."
+        },
+        {
+          "id": "ri7_q5",
+          "text": "¿Ha hablado con su exmujer?",
+          "response": "Un email. Breve. Le he contado lo de Michael. Me ha respondido: me alegro de que por fin le escuches. Sin rencor. Solo eso. Es más de lo que merezco, probablemente."
+        },
+        {
+          "id": "ri7_q6",
+          "text": "¿Qué quiere ver, Richard?",
+          "response": "Un buen drama de crimen. Pero hoy no necesito oscuridad. Algo inteligente con personajes que crecen. Resulta que me identifico con las historias de redención. ¿Quién lo iba a decir?"
+        }
+      ]
+    },
+    {
+      "greeting": "Amanda ha venido a cenar. ¿Sabe qué me ha dicho? Que va a casarse. Mi hija se casa. Me ha pedido que la lleve al altar. He dicho que sí antes de que terminara la frase.",
+      "questions": [
+        {
+          "id": "ri8_q1",
+          "text": "Enhorabuena, Richard.",
+          "response": "Gracias. Se llama James. Trabaja en publicidad, como ella. Es educado, habla poco y mira a mi hija como si fuera lo mejor del mundo. Que lo es. Puedo ser muchas cosas, pero un mal juez de carácter no soy."
+        },
+        {
+          "id": "ri8_q2",
+          "text": "¿Cómo fue la cena?",
+          "response": "Cocinó ella. En mi cocina. Que llevaba dos años sin que nadie cocinara de verdad allí. Ha hecho pasta. No estaba perfecta, pero daba igual. Olía a casa. A hogar. Hacía mucho que la casa no olía así."
+        },
+        {
+          "id": "ri8_q3",
+          "text": "¿Michael vendrá a la boda?",
+          "response": "Sí. Y va a hacer las fotos. Amanda se lo ha pedido y él ha aceptado encantado. Mis dos hijos, juntos, en un evento feliz. No recuerdo la última vez que pasó eso. Creo que nunca ha pasado."
+        },
+        {
+          "id": "ri8_q4",
+          "text": "¿Su exmujer irá?",
+          "response": "Sí. Amanda quiere que los dos estemos. No juntos, obviamente. Pero en el mismo sitio, siendo civilizados. Puedo hacer eso. He cerrado tratos con gente que me odiaba. Puedo estar en la misma sala que mi exmujer."
+        },
+        {
+          "id": "ri8_q5",
+          "text": "¿Está nervioso?",
+          "response": "Aterrorizado. No por la boda. Por el discurso. Tengo que decir algo bonito delante de doscientas personas. Yo, que soy capaz de hablar tres horas de tasas de interés pero no puedo decir te quiero sin que me tiemble la voz."
+        },
+        {
+          "id": "ri8_q6",
+          "text": "¿Qué le pongo hoy?",
+          "response": "Un drama familiar. Bueno. De esos que te remueven por dentro pero de la forma correcta. Necesito practicar sentir cosas antes de la boda."
+        }
+      ]
+    },
+    {
+      "greeting": "La boda ha sido perfecta. Amanda estaba preciosa. Michael ha hecho fotos increíbles. Mi exmujer me ha dicho que el discurso fue bonito. Yo he llorado. Delante de doscientas personas. Y no me ha importado.",
+      "questions": [
+        {
+          "id": "ri9_q1",
+          "text": "¿Qué ha dicho en el discurso?",
+          "response": "Que mi hija es mejor persona de lo que yo seré nunca. Que su madre hizo un trabajo extraordinario. Que James es afortunado. Y que llegar tarde a ser un buen padre es mejor que no llegar nunca. La gente ha aplaudido. No sé si lo merecía."
+        },
+        {
+          "id": "ri9_q2",
+          "text": "Claro que lo merecía.",
+          "response": "Es usted demasiado amable. Pero gracias. Amanda me ha abrazado después y me ha dicho: te quiero, papá. Llevaba años sin oír eso. Años. He tenido que ir al baño a recomponerme. Dos veces."
+        },
+        {
+          "id": "ri9_q3",
+          "text": "¿Cómo fue ver a su exmujer?",
+          "response": "Extraño. Se la veía bien. Tranquila. Me ha dicho que le alegraba que hubiera cambiado. Le he dicho que yo también. No ha habido rencor. Solo dos personas que se conocieron hace mucho mirando cómo su hija era feliz."
+        },
+        {
+          "id": "ri9_q4",
+          "text": "¿Michael va a seguir con la fotografía?",
+          "response": "Sí. Y he decidido apoyarle. Le voy a financiar una exposición pequeña en la galería del pueblo. No porque sea mi hijo, sino porque su trabajo lo merece. Bueno, también porque es mi hijo. Las dos cosas."
+        },
+        {
+          "id": "ri9_q5",
+          "text": "¿Se siente diferente, Richard?",
+          "response": "Me siento... más ligero. Como si hubiera soltado un peso que llevaba décadas cargando. El dinero sigue ahí, la empresa sigue. Pero ya no es lo único. Ahora hay más. Hay familia. Hay esto. Hay chocolate."
+        },
+        {
+          "id": "ri9_q6",
+          "text": "¿Qué vemos hoy?",
+          "response": "Drama. El mejor que tenga. Hoy estoy preparado para sentir. Es una frase que nunca pensé que diría. Pero aquí estamos."
+        }
+      ]
+    },
+    {
+      "greeting": "Buenas tardes. He venido con algo para usted. Un chocolate belga que he traído de un viaje de negocios. Para agradecerle... esto. Todo esto. No soy bueno dando las gracias, pero estoy intentando aprender.",
+      "questions": [
+        {
+          "id": "ri10_q1",
+          "text": "No tenía que molestarse, Richard.",
+          "response": "No es molestia. Es lo mínimo. He venido aquí docenas de veces con mi peor cara y usted nunca me ha tratado diferente. Ni como el rico del pueblo ni como el pobre hombre solo. Solo como un cliente. Eso tiene valor."
+        },
+        {
+          "id": "ri10_q2",
+          "text": "¿Cómo están sus hijos?",
+          "response": "Amanda está embarazada. Voy a ser abuelo. Michael ha vendido su primera foto a una revista. Y los dos me llaman cada semana. Cada semana. No sabe lo que eso significa para un hombre que cenaba solo hace un año."
+        },
+        {
+          "id": "ri10_q3",
+          "text": "¿Va a seguir con la empresa?",
+          "response": "Sí, pero estoy delegando más. He contratado a un director general para el día a día. Yo me quedo con la estrategia. El resto del tiempo es para mí. Suena egoísta, pero a los cuarenta y ocho años creo que me lo he ganado."
+        },
+        {
+          "id": "ri10_q4",
+          "text": "¿Qué hace con el tiempo libre?",
+          "response": "Leo. He vuelto a leer. Novelas, no informes. He empezado a caminar por las mañanas. Y vengo aquí. Este cine es lo mejor que le ha pasado a este pueblo. Y lo mejor que me ha pasado a mí en mucho tiempo."
+        },
+        {
+          "id": "ri10_q5",
+          "text": "Ha sido un honor conocerle, Richard.",
+          "response": "El honor es mío. Y no lo digo por educación, que ya me conoce. Lo digo en serio. He entrado aquí siendo Richard Blake, el empresario insufrible. Y salgo siendo... bueno, sigo siendo insufrible, pero menos. Es un progreso."
+        },
+        {
+          "id": "ri10_q6",
+          "text": "¿Última película, qué le apetece?",
+          "response": "El mejor drama que tenga. Algo con peso, con verdad, con personajes que se equivocan y aprenden. Como la vida. Como la mía. Póngame algo que merezca recordarse."
+        }
+      ]
+    }
+  ]
+}

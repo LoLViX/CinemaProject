@@ -8,7 +8,9 @@ const CUSTOMER_SCENE_PATH := "res://Scenes/Customer.tscn"
 
 @export var max_in_queue: int = 5
 @export var ground_y: float = 0.0
-@export var queue_step: float = 1.15
+@export var queue_step: float = 1.8
+@export var queue_stagger: float = 0.25   # zigzag alterno para evitar clipping de sprites
+@export var queue_lateral_offset: float = 0.50  # desplazamiento lateral fijo de toda la cola
 
 @export var exit_turn_duration: float = 0.18
 @export var exit_pop_height: float = 0.10
@@ -34,6 +36,7 @@ var _counter_customer: Node = null
 
 var _day_total: int = 0
 var _spawned_total: int = 0
+var _illustrations: Array = []   # illustration paths, indexado por orden de spawn
 
 # special leaving: c -> phase (0 back, 1 exit)
 var _special_leaving: Dictionary = {}
@@ -43,6 +46,10 @@ func _ready() -> void:
 	customer_scene = load(CUSTOMER_SCENE_PATH) as PackedScene
 	if customer_scene == null:
 		push_error("CustomerManager: no se pudo cargar " + CUSTOMER_SCENE_PATH)
+
+## Configura las ilustraciones para el día. Llamar ANTES de start_day().
+func set_illustrations(list: Array) -> void:
+	_illustrations = list
 
 func start_day(total_customers: int) -> void:
 	_day_total = total_customers
@@ -141,6 +148,13 @@ func _spawn_customer() -> void:
 	if c.has_signal("arrived"):
 		c.arrived.connect(_on_customer_arrived)
 
+	# Aplicar ilustración PNG si está disponible
+	var illus_idx := _spawned_total  # 0-based
+	if illus_idx < _illustrations.size():
+		var illus_path: String = String(_illustrations[illus_idx])
+		if illus_path != "" and c.has_method("set_illustration"):
+			c.call("set_illustration", illus_path)
+
 	# spawn espaciado
 	var start_spawn := _flat(spawn_point.global_position)
 	var back_dir := _back_dir()
@@ -182,7 +196,15 @@ func _set_target(c: Node, target: Vector3, look_at_cam: bool, force: bool) -> vo
 func _queue_pos(slot_index: int) -> Vector3:
 	var start := _flat(queue_start.global_position)
 	var back_dir := _back_dir()
-	return start + back_dir * queue_step * float(slot_index - 1)
+	var perp := Vector3(-back_dir.z, 0.0, back_dir.x)  # perpendicular en XZ
+	var base := start + back_dir * queue_step * float(slot_index - 1)
+	# Offset fijo: toda la cola se desplaza lateralmente respecto al mostrador
+	base += perp * queue_lateral_offset
+	# Zigzag alterno: pares a un lado, impares al otro → evita clipping
+	if queue_stagger > 0.0:
+		var side := 1.0 if slot_index % 2 == 0 else -1.0
+		base += perp * queue_stagger * side
+	return base
 
 func _back_dir() -> Vector3:
 	var start := _flat(queue_start.global_position)
